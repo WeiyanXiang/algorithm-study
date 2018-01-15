@@ -9,4 +9,11 @@ package string;
  */
 public class LongestPalindromicSubstring {
 
+	/*
+	* added main method 
+	*/
+	public static void main(String[] args) {
+
+	}
+
 }
