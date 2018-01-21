@@ -15,7 +15,7 @@ public class LongestPalindromicSubstring {
      * @param s
      * @return
      */
-    public static String longestPalindrome(String s) {
+    public static String longestPalindromeCentral(String s) {
         int n = s.length();
         if (n == 1)
             return s;
@@ -27,15 +27,22 @@ public class LongestPalindromicSubstring {
         return answer;
     }
 
+    public static String longestPalindromeReverse(String input) {
+        StringBuilder builder = new StringBuilder();
+        builder.append(input);
+        String reversedInput = builder.reverse().toString();
+        /*
+         * aebbecd dcebbea
+         */
+        return "";
+    }
+
     private static String max(String left, String right) {
         return left.length() > right.length() ? left : right;
     }
 
-    public static String getPalindrome(int left, int right, String s) {
-        if (right >= s.length())
-            return "";
-        int n = s.length();
-        while (left >= 0 && right < n && s.charAt(left) == s.charAt(right)) {
+    private static String getPalindrome(int left, int right, String s) {
+        while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
             left--;
             right++;
         }
@@ -47,9 +54,9 @@ public class LongestPalindromicSubstring {
      */
     public static void main(String[] args) {
         String test1 = "cbbd";
-        System.out.println(longestPalindrome(test1) + " == bb");
+        System.out.println(longestPalindromeCentral(test1) + " == bb");
         String test2 = "ccabacd";
-        System.out.println(longestPalindrome(test2) + " == cabac");
+        System.out.println(longestPalindromeCentral(test2) + " == cabac");
     }
 
 }
