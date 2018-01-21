@@ -53,7 +53,9 @@ public class LongestPalindromicSubstring {
      * added main method
      */
     public static void main(String[] args) {
+        System.out.println(String.valueOf(-100));
         String test1 = "cbbd";
+        System.out.println(Integer.MAX_VALUE);
         System.out.println(longestPalindromeCentral(test1) + " == bb");
         String test2 = "ccabacd";
         System.out.println(longestPalindromeCentral(test2) + " == cabac");
