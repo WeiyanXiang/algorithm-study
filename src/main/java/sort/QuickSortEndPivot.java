@@ -14,6 +14,8 @@ public class QuickSortEndPivot {
         for (int element : testObj) {
             System.out.println(element);
         }
+        System.out.println(21438474 > Integer.MAX_VALUE / 10);
+
     }
 
     private void quickSort(int[] input, int start, int end) {

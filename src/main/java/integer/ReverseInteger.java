@@ -8,26 +8,20 @@ package integer;
  * @date 21 Jan 2018
  */
 public class ReverseInteger {
-    public int reverse(int x) {
-        if (x > Integer.MAX_VALUE || x < Integer.MIN_VALUE)
-            return 0;
-        String raw = String.valueOf(x);
-        String rawAnswer = "";
-        int i = raw.length() - 1;
-        while (raw.charAt(i) == '0') {
-            i--;
+    public static int reverse(int x) {
+        int answer = 0;
+        while (x != 0) {
+            int tail = x % 10;
+            int newAnswer = answer * 10 + tail;
+            if ((newAnswer - tail) / 10 != answer)
+                return 0;
+            answer = newAnswer;
+            x /= 10;
         }
-        for (; i >= 0; i--) {
-            if (raw.charAt(i) != '-') {
-                rawAnswer += raw.charAt(i);
-            } else {
-                rawAnswer = "-".concat(rawAnswer);
-            }
-        }
-        try {
-            return Integer.parseInt(rawAnswer);
-        } catch (Exception e) {
-            return 0;
-        }
+        return answer;
+    }
+
+    public static void main(String[] args) {
+        System.out.println("reverse(-2147483412) -> == -2143847412  ? " + (reverse(-2147483412) == -2143847412));
     }
 }
