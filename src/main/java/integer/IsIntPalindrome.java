@@ -31,7 +31,7 @@ public class IsIntPalindrome {
         if (x < 0)
             return false;
         if (x != 0 && x % 10 == 0)
-            return true;
+            return false;
 
         int rev = 0;
         while (rev < x) {
