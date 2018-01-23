@@ -45,4 +45,16 @@ public class IsIntPalindrome {
         System.out.println("isPalindrome(-2147483648) == false ? " + isPalindrome(-2147483648));
         System.out.println("isPalindrome(-2147483648) == false ? " + isPalindromeNoMemory(-2147483648));
     }
+
+    public static boolean isIntPalindrome(int x) {
+        int reverse = 0;
+        while (x != 0) {
+            int digit = x % 10;
+            int newRev = reverse * 10 + digit;
+            if ((newRev - digit) / 10 != reverse) {
+
+            }
+        }
+        return false;
+    }
 }
