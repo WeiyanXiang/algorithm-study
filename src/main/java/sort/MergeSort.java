@@ -48,7 +48,7 @@ public class MergeSort {
 
     public static void main(String[] args) {
         MergeSort mergeSort = new MergeSort();
-        mergeSort.sortPrac(testObj, 0, testObj.length - 1);
+        mergeSort.sort(testObj, 0, testObj.length - 1);
         for (int element : testObj) {
             System.out.println(element);
         }
