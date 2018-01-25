@@ -1,7 +1,7 @@
 /**
  * 
  */
-package design.pattern;
+package design.pattern.singleton;
 
 /**
  * @author weiyan.xiang
