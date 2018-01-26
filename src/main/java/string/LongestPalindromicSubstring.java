@@ -7,7 +7,7 @@ package string;
  * @author weiyan.xiang
  * @date 14 Jan 2018
  */
-public class LongestPalindromicSubstring {
+public class LongestPalindromicSubstring extends Thread {
 
     /**
      * central around method. efficiency: O(n^2) space: O(1)
@@ -59,6 +59,7 @@ public class LongestPalindromicSubstring {
         System.out.println(longestPalindromeCentral(test1) + " == bb");
         String test2 = "ccabacd";
         System.out.println(longestPalindromeCentral(test2) + " == cabac");
+
     }
 
 }
