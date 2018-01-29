@@ -18,73 +18,84 @@ import java.util.concurrent.Future;
 public class ExecutorDemo {
     public static void main(String[] args) {
         ExecutorService executorService = Executors.newFixedThreadPool(3);
-        RunnableImpl runnableTask = new RunnableImpl();
-        CallalableImpl callalableTask = new CallalableImpl();
-
-        executorService.execute(runnableTask);
-        Future<?> submit1 = executorService.submit(runnableTask);
-        Future<String> submit2 = executorService.submit(callalableTask);
-
         try {
-            String invokeAnyReturnedValue = executorService.invokeAny(Arrays.asList(new Callable<String>() {
-                @Override
-                public String call() throws Exception {
-                    System.out.println("SECOND callable is invoked");
-                    return "SECOND callable is invoked";
-                }
-            }, new Callable<String>() {
-                @Override
-                public String call() throws Exception {
-                    System.out.println("THIRD callable is invoked");
-                    return "THIRD callable is invoked";
-                }
-            }, new Callable<String>() {
-                @Override
-                public String call() throws Exception {
-                    System.out.println("FOUR callable is invoked");
-                    return "FOUR callable is invoked";
-                }
-            }));
-            System.out.println("executorService.invokeAny method returns: " + invokeAnyReturnedValue);
+            RunnableImpl runnableTask = new RunnableImpl();
+            CallalableImpl callalableTask = new CallalableImpl();
 
-            List<Future<String>> invokeAllFutures = executorService.invokeAll(Arrays.asList(new Callable<String>() {
-                @Override
-                public String call() throws Exception {
-                    System.out.println("SECOND callable is invoked");
-                    return "5th callable is invoked";
-                }
-            }, new Callable<String>() {
-                @Override
-                public String call() throws Exception {
-                    System.out.println("THIRD callable is invoked");
-                    return "6th callable is invoked";
-                }
-            }, new Callable<String>() {
-                @Override
-                public String call() throws Exception {
-                    System.out.println("FOUR callable is invoked");
-                    return "7th callable is invoked";
-                }
-            }));
-            invokeAllFutures.stream().forEach(eachFuture -> {
-                try {
-                    System.out.println("Each Future after invokeAll is: " + eachFuture.get());
-                } catch (InterruptedException | ExecutionException e) {
-                    e.printStackTrace();
-                }
-            });
-
-            if (submit1.isDone()) {
-                System.out.println("executor.submit(new RunnableImpl() is done and returned: " + submit1.get());
-            }
-            Thread.sleep(400);
-            if (submit2.isDone()) {
-                System.out.println("executor.submit(new CallalableImpl()) is done and returned: " + submit2.get());
-            }
+            System.out.println("below is submit and execute demo ==> \n");
+            submitAndExecuteDemo(executorService, runnableTask, callalableTask);
+            System.out.println("------------------------------------------------------------------------------");
+            System.out.println("below is invokeAny demo ==> \n");
+            invokeAnyDemo(executorService);
+            System.out.println("------------------------------------------------------------------------------");
+            System.out.println("below is invokeAll demo ==> \n");
+            invokeAllDemo(executorService);
         } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
         } finally {
             executorService.shutdown();
         }
+    }
+
+    private static void submitAndExecuteDemo(ExecutorService executorService, RunnableImpl runnableTask,
+            CallalableImpl callalableTask) throws InterruptedException, ExecutionException {
+        executorService.execute(runnableTask);
+        Future<?> submit1 = executorService.submit(runnableTask);
+        Future<String> submit2 = executorService.submit(callalableTask);
+
+        System.out.println("executor.submit(new RunnableImpl() is done? " + submit1.isDone());
+        System.out.println("executor.submit(new CallalableImpl()) is done ? " + submit2.isDone());
+    }
+
+    private static void invokeAllDemo(ExecutorService executorService) throws InterruptedException {
+        List<Future<String>> invokeAllFutures = executorService.invokeAll(Arrays.asList(new Callable<String>() {
+            @Override
+            public String call() throws Exception {
+                System.out.println("5th callable is invoked");
+                return "5th callable is invoked";
+            }
+        }, new Callable<String>() {
+            @Override
+            public String call() throws Exception {
+                System.out.println("6th callable is invoked");
+                return "6th callable is invoked";
+            }
+        }, new Callable<String>() {
+            @Override
+            public String call() throws Exception {
+                System.out.println("7th callable is invoked");
+                return "7th callable is invoked";
+            }
+        }));
+        invokeAllFutures.stream().forEach(eachFuture -> {
+            try {
+                System.out.println("Each Future after invokeAll is: " + eachFuture.get());
+            } catch (InterruptedException | ExecutionException e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
+    private static void invokeAnyDemo(ExecutorService executorService) throws InterruptedException, ExecutionException {
+        String invokeAnyReturnedValue = executorService.invokeAny(Arrays.asList(new Callable<String>() {
+            @Override
+            public String call() throws Exception {
+                System.out.println("2nd callable is invoked");
+                return "2nd callable is invoked";
+            }
+        }, new Callable<String>() {
+            @Override
+            public String call() throws Exception {
+                System.out.println("3rd callable is invoked");
+                return "3rd callable is invoked";
+            }
+        }, new Callable<String>() {
+            @Override
+            public String call() throws Exception {
+                System.out.println("4th callable is invoked");
+                return "4th callable is invoked";
+            }
+        }));
+        System.out.println("executorService.invokeAny method returns: " + invokeAnyReturnedValue);
     }
 }
