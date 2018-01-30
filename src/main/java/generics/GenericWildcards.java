@@ -34,4 +34,9 @@ public class GenericWildcards {
      */
     public static void setAnotherListLowerBounded(List<? super Integer> aList) {
     }
+
+    public static void main(String[] args) {
+        int test1 = 0b0101_0110;
+        System.out.println(test1);
+    }
 }
