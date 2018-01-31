@@ -10,6 +10,14 @@ import java.util.Arrays;
  * @date 30 Jan 2018
  */
 public class CountTripletsLessThanInput {
+
+    /**
+     * time: O(n^2); space: no extra
+     * 
+     * @param array
+     * @param value
+     * @return
+     */
     public static int countTriplets(int[] array, int value) {
         Arrays.sort(array);
         int n = array.length;
