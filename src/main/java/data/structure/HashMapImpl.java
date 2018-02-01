@@ -52,6 +52,7 @@ public class HashMapImpl {
     public Object get(int key) {
         LinkedList<MyEntry> bucket = this.buckets.get(hashCode(key) & (capacity - 1));
         for (MyEntry entry : bucket) {
+            // internally it calls .equals method
             if (entry.key == key) {
                 return entry.value;
             }
