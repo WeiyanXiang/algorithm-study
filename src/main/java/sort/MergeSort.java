@@ -25,24 +25,19 @@ public class MergeSort {
         for (int i = start; i <= end; i++) {
             helper[i] = input[i];
         }
-        int i = start, j = mid + 1, k = start;
-        while (i <= mid && j <= end) {
-            if (helper[i] <= helper[j]) {
-                input[k] = helper[i];
-                i++;
+        int a = start, b = mid + 1, index = start;
+        while (a <= mid && b <= end) {
+            if (helper[a] < helper[b]) {
+                input[index++] = helper[a++];
             } else {
-                input[k] = helper[j];
-                j++;
+                input[index++] = helper[b++];
             }
-            k++;
         }
         // fill up the rest, no needs for j <= end because at end of array it
         // should be already the larger ones there, consider an example of 1 6 7
         // | 4 5 8 or 4 5 8 | 1 6 7
-        while (i <= mid) {
-            input[k] = helper[i];
-            k++;
-            i++;
+        while (a <= mid) {
+            input[index++] = helper[a++];
         }
     }
 
