@@ -34,12 +34,12 @@ public class ImplementQueueWithStack {
      * enqueue, make it costly and make dequeue quick
      */
     public void add(String element) {
-        // move all elements in s1 to s2
+        // move all from s1 to s2
         while (!s1.isEmpty()) {
             s2.push(s1.pop());
         }
+        // push all from s2 to s1
         s1.push(element);
-        // move s2 elements back to s1
         while (!s2.isEmpty()) {
             s1.push(s2.pop());
         }
