@@ -17,17 +17,10 @@ public class StairsCount {
     /*
      * space complexity: O(n) time complexity: O(3^n) normal fib approach
      */
-    private static int fibCount(int length) {
-        if (length == 0)
-            return 0;
-        if (length == 1)
-            return 1;
-        if (length == 2)
-            return 2;
-        if (length == 3)
-            return 3;
-        else
-            return fibCount(length - 1) + fibCount(length - 2) + fibCount(length - 3);
+    public static int fibCount(int n) {
+        if (n <= 3)
+            return n;
+        return fibCount(n - 1) + fibCount(n - 2) + fibCount(n - 3);
     }
 
     /*
@@ -37,14 +30,17 @@ public class StairsCount {
      * 
      */
     private static int fibCacheCount(int n) {
-        cache[0] = 0;
+        if (n == 0)
+            return 0;
         cache[1] = 1;
         cache[2] = 2;
         cache[3] = 3;
-        for (int i = 3; i <= n; i++) {
+        for (int i = 4; i <= n; i++) {
             cache[i] = cache[i - 1] + cache[i - 2] + cache[i - 3];
+
         }
         return cache[n];
+
     }
 
     /*
@@ -55,19 +51,19 @@ public class StairsCount {
     private static int fibParamCount(int n) {
         if (n == 0)
             return 0;
-        if (n == 1)
-            return 1;
-        if (n == 2)
-            return 2;
-        if (n == 3)
-            return 3;
-        int answer = 0;
-        for (int i = 3; i < n; i++) {
+        int answer = 0, a = 1, b = 2, c = 3;
+        for (int i = 4; i <= n; i++) {
             answer = a + b + c;
             a = b;
             b = c;
             c = answer;
         }
         return answer;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(fibCount(10));
+        System.out.println(fibParamCount(10));
+        System.out.println(fibCacheCount(10));
     }
 }
