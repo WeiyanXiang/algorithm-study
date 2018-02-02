@@ -28,39 +28,28 @@ public class IsIntPalindrome {
     }
 
     /**
-     * optimal method
+     * optimal method: compare half of the digits in x, so don’t need to deal
+     * with overflow.
      * 
      * @param x
      * @return
      */
     public static boolean isPalindromeNoMemory(int x) {
-        if (x < 0)
+        if (x < 0 || x != 0 && x % 10 == 0)
             return false;
-        if (x != 0 && x % 10 == 0)
-            return false;
-
         int rev = 0;
         while (rev < x) {
             rev = x % 10 + rev * 10;
             x /= 10;
         }
-        return rev / 10 == x || rev == x;
+        return rev == x || rev / 10 == x;
     }
 
     public static void main(String[] args) {
+        System.out.println("isPalindrome(1234321) == true ? " + isPalindromeNoMemory(1234321));
+        System.out.println("isPalindrome(123321) == true ? " + isPalindromeNoMemory(123321));
         System.out.println("isPalindrome(-2147483648) == false ? " + isPalindrome(-2147483648));
         System.out.println("isPalindrome(-2147483648) == false ? " + isPalindromeNoMemory(-2147483648));
     }
 
-    public static boolean isIntPalindrome(int x) {
-        int reverse = 0;
-        while (x != 0) {
-            int digit = x % 10;
-            int newRev = reverse * 10 + digit;
-            if ((newRev - digit) / 10 != reverse) {
-
-            }
-        }
-        return false;
-    }
 }
