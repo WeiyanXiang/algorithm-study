@@ -74,7 +74,10 @@ public class OptionalDemo {
         System.out.println("empty == " + testObj1.orElse("empty"));
         System.out.println("empty == " + testObj1.orElseGet(() -> "empty"));
         System.out.println("a string == " + testObj2.orElse("empty"));
-        System.out.println("a string == " + testObj2.orElseGet(() -> "empty"));
+        System.out.println("empty == " + testObj1.orElseGet(() -> {
+            System.out.println("do something here as Supplier method");
+            return "empty";
+        }));
     }
 
     public static void main(String[] args) {

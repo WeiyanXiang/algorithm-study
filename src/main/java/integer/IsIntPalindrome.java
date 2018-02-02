@@ -27,6 +27,12 @@ public class IsIntPalindrome {
         return true;
     }
 
+    /**
+     * optimal method
+     * 
+     * @param x
+     * @return
+     */
     public static boolean isPalindromeNoMemory(int x) {
         if (x < 0)
             return false;
