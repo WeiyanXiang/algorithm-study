@@ -20,29 +20,46 @@ public class BinarySearch {
         System.out.println("Key 432's position (recur): " + mbs.binarySearchRecur(arr1, 1, 0, 7));
     }
 
+    /**
+     * recursive
+     * 
+     * @param arr
+     * @param key
+     * @param j
+     * @param k
+     * @return
+     */
     private int binarySearchRecur(int[] arr, int key, int j, int k) {
-        if (j <= k) {
+        if (j < k) {
             int mid = (k + j) / 2;
-            if (key == arr[mid]) {
+            if (arr[mid] == key) {
                 return mid;
             } else if (key > arr[mid]) {
                 return binarySearchRecur(arr, key, mid + 1, k);
             } else {
-                return binarySearchRecur(arr, key, j, mid - 1);
+                return binarySearchRecur(arr, key, j, mid);
             }
         }
         return -1;
     }
 
+    /**
+     * iterative
+     * 
+     * @param arr
+     * @param key
+     * @return
+     */
     private int binarySearch(int[] arr, int key) {
-        int i = arr.length / 2;
-        while (i > 0 && i < arr.length) {
-            if (key == arr[i]) {
-                return i;
-            } else if (key > arr[i]) {
-                i++;
+        int a = 0, b = arr.length - 1;
+        while (a <= b) {
+            int mid = (a + b) / 2;
+            if (key == arr[mid]) {
+                return mid;
+            } else if (key > arr[mid]) {
+                a = mid + 1;
             } else {
-                i--;
+                b = mid - 1;
             }
         }
         return -1;
