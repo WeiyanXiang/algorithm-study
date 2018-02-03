@@ -22,6 +22,10 @@ public class PassByValueDemo {
 
     }
 
+    /*
+     * this method demostrates pass reference By Value and altering the end
+     * object will be reflected to actual object
+     */
     public void increase(int input) {
         value = input;
     }
@@ -33,6 +37,7 @@ public class PassByValueDemo {
 
         /*
          * pass by value example
+         * 
          */
         TestPoint tp1 = instance.new TestPoint("TP1");
         TestPoint tp2 = instance.new TestPoint("TP2");
@@ -42,12 +47,34 @@ public class PassByValueDemo {
         System.out.println("After badSwap, tp1 => " + tp1.name);
         System.out.println("After badSwap, tp2 => " + tp2.name);
 
+        /**
+         * Because pass by value means a copy of reference passed to method but
+         * it points to the original object, so swap will fail because the
+         * copies of ref swapped, the original refs are still same. But Object
+         * altering happened because the ref points to the actual object
+         */
+        TestPoint tp3 = instance.new TestPoint("TP3");
+        TestPoint tp4 = instance.new TestPoint("TP4");
+        System.out.println("Before trickySwap, tp3 => " + tp3.name);
+        System.out.println("Before trickySwap, tp4 => " + tp4.name);
+        trickySwap(tp3, tp4);
+        System.out.println("After trickySwap, tp3 => " + tp3.name);
+        System.out.println("After trickySwap, tp4 => " + tp4.name);
+
     }
 
     public static void badSwap(TestPoint tp1, TestPoint tp2) {
         TestPoint temp = tp1;
         tp1 = tp2;
         tp2 = temp;
+    }
+
+    public static void trickySwap(TestPoint input1, TestPoint input2) {
+        input1.name = "INPUT1";
+        input2.name = "INPUT2";
+        TestPoint temp = input1;
+        input1 = input2;
+        input2 = temp;
     }
 
 }
