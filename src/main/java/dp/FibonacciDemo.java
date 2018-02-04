@@ -9,6 +9,12 @@ package dp;
  */
 public class FibonacciDemo {
 
+    /**
+     * Time: O(2^n)
+     * 
+     * @param n
+     * @return
+     */
     public static int fibRecursice(int n) {
         return n <= 1 ? n : fibRecursice(n - 1) + fibRecursice(n - 2);
     }
@@ -16,18 +22,18 @@ public class FibonacciDemo {
     public static int fibOptimalDp(int n) {
         if (n < 2)
             return n;
-        int answer = 0, a = 0, b = 1;
+        int c = 0, a = 0, b = 1;
         for (int i = 2; i <= n; i++) {
-            answer = a + b;
+            c = a + b;
             b = a;
-            a = answer;
+            a = c;
         }
         return a + b;
     }
 
     /**
-     * use an array to cache already done computations and hence increase
-     * performance
+     * Time: O(n), use an array to cache already done computations and hence
+     * increase performance
      * 
      * @param n
      * @return
@@ -44,6 +50,12 @@ public class FibonacciDemo {
         return cache[n];
     }
 
+    /**
+     * Time: O(n)
+     * 
+     * @param n
+     * @return
+     */
     public static int fibTopBottomDp(int n) {
         return doTopBottomFib(n, new int[n + 1]);
     }
