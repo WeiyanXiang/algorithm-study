@@ -51,6 +51,28 @@ public class MergeTwoSortedLists {
         return answer;
     }
 
+    /**
+     * recursive version optimal
+     * 
+     * @param l1
+     * @param l2
+     * @return
+     */
+    public ListNode mergeTwoListsRecursive(ListNode l1, ListNode l2) {
+        if (l1 == null)
+            return l2;
+        if (l2 == null)
+            return l1;
+        if (l1.val < l2.val) {
+            l1.next = mergeTwoLists(l1.next, l2);
+            return l1;
+        } else {
+            l2.next = mergeTwoLists(l1, l2.next);
+            return l2;
+        }
+
+    }
+
     public static void main(String[] args) {
         MergeTwoSortedLists testObject = new MergeTwoSortedLists();
         /*
@@ -74,7 +96,10 @@ public class MergeTwoSortedLists {
         r3.next = r4;
 
         ListNode answer = testObject.mergeTwoLists(l1, r1);
+        ListNode anotherAnswer = testObject.mergeTwoListsRecursive(l1, r1);
         print(answer);
+        System.out.println();
+        print(anotherAnswer);
     }
 
     private static void print(ListNode listNode) {
