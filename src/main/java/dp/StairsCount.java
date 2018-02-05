@@ -10,9 +10,6 @@ package dp;
 public class StairsCount {
 
     private static int[] cache = new int[11];
-    private static int a = 1;
-    private static int b = 2;
-    private static int c = 3;
 
     /*
      * space complexity: O(n) time complexity: O(3^n) normal fib approach
