@@ -1,7 +1,7 @@
 /**
  * 
  */
-package comparator;
+package knowledge.comparator;
 
 import java.util.Comparator;
 
