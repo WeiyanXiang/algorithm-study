@@ -37,8 +37,34 @@ public class FindKthLargestInArray {
      * @param k
      * @return
      */
-    private static int quickSelect(int[] a, int i, int j, int k) {
-        return 0;
+    private static int quickSelect(int[] a, int l, int h, int k) {
+        int pivot = a[h];
+        int i = l, j = h;
+        while (i < j) {
+            if (a[i++] > pivot)
+                swap(a, --i, --j);
+        }
+        swap(a, i, h);
+
+        // count the nums that are <= pivot from lo
+        int m = i - l + 1;
+
+        // pivot is the one!
+        if (m == k)
+            return i;
+        // pivot is too big, so it must be on the left
+        else if (m > k)
+            return quickSelect(a, l, i - 1, k);
+        // pivot is too small, so it must be on the right
+        else
+            return quickSelect(a, i + 1, h, k - m);
+
+    }
+
+    private static void swap(int[] a, int i, int j) {
+        int temp = a[i];
+        a[i] = a[j];
+        a[j] = temp;
     }
 
     public static int findKthLargestNaive(int[] nums, int k) {
@@ -54,5 +80,7 @@ public class FindKthLargestInArray {
         System.out.println();
         System.out.println(findKthLargestNaive(arr, 12));
         System.out.println(findKthLargestNaive(arr, 2));
+        System.out.println(findKthLargest(arr, 12));
+        System.out.println(findKthLargest(arr, 2));
     }
 }
