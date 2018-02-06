@@ -41,8 +41,9 @@ public class FindKthLargestInArray {
         int pivot = a[h];
         int i = l, j = h;
         while (i < j) {
-            if (a[i++] > pivot)
+            if (a[i++] > pivot) {
                 swap(a, --i, --j);
+            }
         }
         swap(a, i, h);
 
