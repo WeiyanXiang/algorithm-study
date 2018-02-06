@@ -3,13 +3,56 @@
  */
 package array;
 
+import java.util.Arrays;
+
 /**
  * @author weiyan.xiang
  * @date 5 Feb 2018
  */
 public class FindKthLargestInArray {
 
-    public int findKthLargest(int[] nums, int k) {
+    /**
+     * take use of quick sort thinking to put nums that are <= pivot to the left
+     * and put nums that are > pivot to the right
+     * 
+     * @param nums
+     * @param k
+     * @return
+     */
+    public static int findKthLargest(int[] a, int k) {
+        int n = a.length;
+        if (k < n) {
+            int i = quickSelect(a, 0, n - 1, n - k + 1);
+            return a[i];
+        }
         return -1;
+    }
+
+    /**
+     * to do
+     * 
+     * @param a
+     * @param i
+     * @param j
+     * @param k
+     * @return
+     */
+    private static int quickSelect(int[] a, int i, int j, int k) {
+        return 0;
+    }
+
+    public static int findKthLargestNaive(int[] nums, int k) {
+        if (k > nums.length - 1)
+            return -1;
+        Arrays.sort(nums);
+        return nums[nums.length - k];
+    }
+
+    public static void main(String[] args) {
+        int[] arr = { 1, 5, 2, 4, 5, 12, 15, 3, 7 };
+        Arrays.stream(arr).forEach(s -> System.out.print(s + ", "));
+        System.out.println();
+        System.out.println(findKthLargestNaive(arr, 12));
+        System.out.println(findKthLargestNaive(arr, 2));
     }
 }
