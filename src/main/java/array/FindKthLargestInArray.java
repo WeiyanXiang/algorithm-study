@@ -13,54 +13,43 @@ public class FindKthLargestInArray {
 
     /**
      * take use of quick sort thinking to put nums that are <= pivot to the left
-     * and put nums that are > pivot to the right
+     * and put nums that are > pivot to the right, take end element as pivot
+     * each time
      * 
-     * @param nums
+     * @param arr
      * @param k
      * @return
      */
-    public static int findKthLargest(int[] a, int k) {
-        return quickSelect(a, 0, a.length - 1, a.length - k);
+    private static int findKthLargest(int[] arr, int k) {
+        return quickSelect(arr, 0, arr.length - 1, arr.length - k);
     }
 
-    private static int quickSelect(int[] a, int l, int r, int k) {
-        if (k < r - l + 1 && k > 0) {
-            int p = partition(a, l, r);
+    private static int quickSelect(int[] arr, int l, int r, int k) {
+        if (l <= r && l <= k && k <= r) {
+            int p = partition(arr, l, r);
             if (p == k) {
-                return a[k];
+                return arr[p];
             } else if (p < k) {
-                return quickSelect(a, p + 1, r, k);
+                return quickSelect(arr, p + 1, r, k);
             } else {
-                return quickSelect(a, l, p - 1, k);
+                return quickSelect(arr, l, p - 1, k);
             }
         }
         return -1;
     }
 
-    /**
-     * to do
-     * 
-     * @param a
-     * @param i
-     * @param j
-     * @return
-     */
-    private static int partition(int[] a, int l, int r) {
-        int pivot = a[r];
+    private static int partition(int[] arr, int l, int r) {
+        int pivot = arr[r];
         int i = l;
-        for (int j = l; j <= r - 1; j++) {
-            if (a[j] <= pivot) {
-                swap(a, i, j);
+        for (int m = i; m <= r - 1; m++) {
+            if (arr[m] < pivot) {
+                int temp = arr[m];
+                arr[m] = arr[i];
+                arr[i] = temp;
                 i++;
             }
         }
         return i;
-    }
-
-    private static void swap(int[] a, int i, int j) {
-        int temp = a[i];
-        a[i] = a[j];
-        a[j] = temp;
     }
 
     public static int findKthLargestNaive(int[] nums, int k) {
@@ -79,4 +68,5 @@ public class FindKthLargestInArray {
         System.out.println(findKthLargest(arr, 12));
         System.out.println(findKthLargest(arr, 2));
     }
+
 }
