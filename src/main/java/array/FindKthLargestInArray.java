@@ -20,10 +20,19 @@ public class FindKthLargestInArray {
      * @return
      */
     public static int findKthLargest(int[] a, int k) {
-        int n = a.length;
-        if (k < n) {
-            int i = quickSelect(a, 0, n - 1, n - k + 1);
-            return a[i];
+        return quickSelect(a, 0, a.length - 1, a.length - k);
+    }
+
+    private static int quickSelect(int[] a, int l, int r, int k) {
+        if (k < r - l + 1 && k > 0) {
+            int p = partition(a, l, r);
+            if (p == k) {
+                return a[k];
+            } else if (p < k) {
+                return quickSelect(a, p + 1, r, k);
+            } else {
+                return quickSelect(a, l, p - 1, k);
+            }
         }
         return -1;
     }
@@ -34,32 +43,18 @@ public class FindKthLargestInArray {
      * @param a
      * @param i
      * @param j
-     * @param k
      * @return
      */
-    private static int quickSelect(int[] a, int l, int h, int k) {
-        int pivot = a[h];
-        int i = l, j = h;
-        while (i < j) {
-            if (a[i++] > pivot) {
-                swap(a, --i, --j);
+    private static int partition(int[] a, int l, int r) {
+        int pivot = a[r];
+        int i = l;
+        for (int j = l; j <= r - 1; j++) {
+            if (a[j] <= pivot) {
+                swap(a, i, j);
+                i++;
             }
         }
-        swap(a, i, h);
-
-        // count the nums that are <= pivot from lo
-        int m = i - l + 1;
-
-        // pivot is the one!
-        if (m == k)
-            return i;
-        // pivot is too big, so it must be on the left
-        else if (m > k)
-            return quickSelect(a, l, i - 1, k);
-        // pivot is too small, so it must be on the right
-        else
-            return quickSelect(a, i + 1, h, k - m);
-
+        return i;
     }
 
     private static void swap(int[] a, int i, int j) {
