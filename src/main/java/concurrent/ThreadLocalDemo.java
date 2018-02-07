@@ -5,6 +5,7 @@ package concurrent;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * @author weiyan.xiang
@@ -38,6 +39,17 @@ public class ThreadLocalDemo {
         }
     }
 
+    public static class SampleThreadAnother implements Runnable {
+
+        private int threadLocalRandom = ThreadLocalRandom.current().nextInt();
+
+        @Override
+        public void run() {
+            System.out.println("Thread- " + Thread.currentThread().getName()
+                    + " is running, the thread local random number is: " + threadLocalRandom);
+        }
+    }
+
     public static void main(String[] args) {
         SampleThread instance = new SampleThread();
         Thread t1 = new Thread(instance);
@@ -45,6 +57,13 @@ public class ThreadLocalDemo {
 
         t1.start();
         t2.start();
+
+        SampleThreadAnother anotherInstance = new SampleThreadAnother();
+        Thread t3 = new Thread(anotherInstance);
+        Thread t4 = new Thread(anotherInstance);
+
+        t3.start();
+        t4.start();
     }
 
 }
