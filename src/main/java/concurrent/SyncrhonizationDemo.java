@@ -3,6 +3,9 @@
  */
 package concurrent;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 /**
  * @author weiyan.xiang
  * @date 8 Feb 2018
@@ -33,72 +36,76 @@ public class SyncrhonizationDemo {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        // ExecutorService executorService = Executors.newFixedThreadPool(5);
-        // executorService.submit(() -> {
-        // try {
-        // lockedBySynchronizedBlock();
-        // } catch (InterruptedException e) {
-        // e.printStackTrace();
-        // }
-        // });
-        // executorService.submit(() -> {
-        // try {
-        // lockedBySynchronizedBlock();
-        // } catch (InterruptedException e) {
-        // e.printStackTrace();
-        // }
-        // });
 
-        Thread t1 = new Thread(() -> {
-            try {
-                new SyncrhonizationDemo().lockedByThis();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        });
-        Thread t2 = new Thread(() -> {
-            try {
-                new SyncrhonizationDemo().lockedByThis();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        });
-        Thread t3 = new Thread(() -> {
-            try {
-                new SyncrhonizationDemo().lockedByThis();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        });
-        Thread t4 = new Thread(() -> {
-            try {
-                new SyncrhonizationDemo().lockedByThis();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        });
-        Thread t5 = new Thread(() -> {
-            try {
-                new SyncrhonizationDemo().lockedByThis();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        });
-        Thread t6 = new Thread(() -> {
-            try {
-                new SyncrhonizationDemo().lockedByThis();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        });
-        t1.start();
-        t2.start();
-        t3.start();
-        t4.start();
-        t5.start();
-        t6.start();
-        Thread.sleep(1000);
-        System.out.println("eventually the value is: " + demoValue);
+        ExecutorService executorService = Executors.newFixedThreadPool(5);
+        try {
+            // executorService.submit(() -> {
+            // try {
+            // lockedBySynchronizedBlock();
+            // } catch (InterruptedException e) {
+            // e.printStackTrace();
+            // }
+            // });
+            // executorService.submit(() -> {
+            // try {
+            // lockedBySynchronizedBlock();
+            // } catch (InterruptedException e) {
+            // e.printStackTrace();
+            // }
+            // });
 
+            Thread t1 = new Thread(() -> {
+                try {
+                    new SyncrhonizationDemo().lockedByThis();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            });
+            Thread t2 = new Thread(() -> {
+                try {
+                    new SyncrhonizationDemo().lockedByThis();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            });
+            Thread t3 = new Thread(() -> {
+                try {
+                    new SyncrhonizationDemo().lockedByThis();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            });
+            Thread t4 = new Thread(() -> {
+                try {
+                    new SyncrhonizationDemo().lockedByThis();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            });
+            Thread t5 = new Thread(() -> {
+                try {
+                    new SyncrhonizationDemo().lockedByThis();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            });
+            Thread t6 = new Thread(() -> {
+                try {
+                    new SyncrhonizationDemo().lockedByThis();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            });
+            t1.start();
+            t2.start();
+            t3.start();
+            t4.start();
+            t5.start();
+            t6.start();
+            Thread.sleep(1000);
+            System.out.println("eventually the value is: " + demoValue);
+        } finally {
+            // executorService.shutdown();
+        }
     }
 }
