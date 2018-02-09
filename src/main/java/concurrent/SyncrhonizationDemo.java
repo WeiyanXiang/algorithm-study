@@ -3,9 +3,6 @@
  */
 package concurrent;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -116,9 +113,5 @@ public class SyncrhonizationDemo {
         t6.start();
         Thread.sleep(1000);
         System.out.println("eventually the value is: " + demoValue);
-
-        ConcurrentHashMap<String, String> cm = new ConcurrentHashMap<>();
-        cm.put(null, "ds");
-        Map<String, String> aMap = new HashMap<>();
     }
 }

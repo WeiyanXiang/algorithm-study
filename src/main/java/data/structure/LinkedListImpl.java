@@ -20,7 +20,7 @@ public class LinkedListImpl {
      * @author weiyan.xiang
      * @date 1 Feb 2018
      */
-    private static class Node {
+    public static class Node {
         private int value;
         private Node next;
 
