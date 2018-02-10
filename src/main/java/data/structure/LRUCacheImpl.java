@@ -34,11 +34,16 @@ public class LRUCacheImpl {
         }
 
         public void addFirst(Node newRoot) {
-            newRoot.next = head;
-            if (head != null) {
+            if (head.key == null || head == null) {
+                head = newRoot;
+            } else {
+                if (head.next == null) {
+                    tail = head;
+                }
+                newRoot.next = head;
                 head.prev = newRoot;
+                head = newRoot;
             }
-            head = newRoot;
         }
 
         public Node popTail() {
@@ -59,9 +64,7 @@ public class LRUCacheImpl {
     public LRUCacheImpl(int size) {
         this.map = new HashMap<>();
         this.head = new Node(null, null);
-        this.tail = new Node(null, null);
-        head.next = tail;
-        tail.prev = head;
+        this.tail = null;
         this.size = size;
         this.count = 0;
     }
@@ -144,10 +147,11 @@ public class LRUCacheImpl {
     private static void printCache(Node head) {
         Node toLoop = head;
         System.out.println();
-        while (toLoop != null) {
+        while (toLoop.next != null) {
             System.out.print(toLoop.value + " -> ");
             toLoop = toLoop.next;
         }
+        System.out.print(toLoop.value);
 
     }
 
