@@ -90,7 +90,7 @@ public class LRUCacheImpl {
                 int oldValueToReturn = toMove.value;
                 toMove.value = value;
                 moveToHead(toMove);
-                map.put(key, toMove);
+                map.put(key, head);
                 return oldValueToReturn;
             } else {
                 /*
@@ -100,6 +100,7 @@ public class LRUCacheImpl {
                 map.remove(tail.key);
                 head.popTail();
                 head.addFirst(new Node(key, value));
+                map.put(key, head);
                 return value;
             }
         }
@@ -108,14 +109,24 @@ public class LRUCacheImpl {
 
     private void moveToHead(Node node) {
         if (head != node) {
-            node.prev.next = node.next;
-            node.next.prev = node.prev;
+            Node prev = node.prev;
+            Node next = node.next;
+            if (prev != null) {
+                prev.next = next;
+            }
+            if (next != null) {
+                next.prev = prev;
+            }
             head.addFirst(node);
         }
     }
 
     public Integer get(int key) {
-        return this.map.get(key).value;
+        if (this.map.containsKey(key)) {
+            moveToHead(map.get(key));
+            return this.map.get(key).value;
+        }
+        return null;
     }
 
     public static void main(String[] args) {
@@ -142,6 +153,13 @@ public class LRUCacheImpl {
         printCache(testObj.head);
         testObj.put(5, 5); // [5,4,3]
         printCache(testObj.head);
+        testObj.get(4); // [4,5,3]
+        printCache(testObj.head);
+        testObj.put(2, 2); // [2,4,5]
+        printCache(testObj.head);
+        testObj.get(5); // [5,2,4]
+        printCache(testObj.head);
+
     }
 
     private static void printCache(Node head) {
