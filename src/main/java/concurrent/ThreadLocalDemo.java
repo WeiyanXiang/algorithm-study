@@ -51,16 +51,14 @@ public class ThreadLocalDemo {
     }
 
     public static void main(String[] args) {
-        SampleThread instance = new SampleThread();
-        Thread t1 = new Thread(instance);
-        Thread t2 = new Thread(instance);
+        Thread t1 = new Thread(new SampleThread());
+        Thread t2 = new Thread(new SampleThread());
 
         t1.start();
         t2.start();
 
-        SampleThreadAnother anotherInstance = new SampleThreadAnother();
-        Thread t3 = new Thread(anotherInstance);
-        Thread t4 = new Thread(anotherInstance);
+        Thread t3 = new Thread(new SampleThreadAnother());
+        Thread t4 = new Thread(new SampleThreadAnother());
 
         t3.start();
         t4.start();

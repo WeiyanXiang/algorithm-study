@@ -3,6 +3,7 @@
  */
 package generics;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -33,10 +34,17 @@ public class GenericWildcards {
      * @param aList
      */
     public static void setAnotherListLowerBounded(List<? super Integer> aList) {
+        aList.stream().forEach(System.out::println);
     }
 
     public static void main(String[] args) {
         int test1 = 0b0101_0110;
         System.out.println(test1);
+
+        setAnotherListUpperBounded(Arrays.asList(1, 2, 1.1f, 1.3d));
+        // setAnotherListUpperBounded(Arrays.asList(1, 1, "this will not compile
+        // due to wild card bound"));
+
+        // setAnotherListLowerBounded(Arrays.asList(1, 2.1, "dsa"));
     }
 }
