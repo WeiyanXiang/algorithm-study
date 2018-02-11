@@ -53,8 +53,16 @@ public final class ImmutableClassDemo {
         User newUser = new User("username", 28);
         ImmutableClassDemo instance = new ImmutableClassDemo(new Date(), "demo 1", newUser);
         System.out.println(instance.getUser().getUsername() + ", " + instance.getUser().getAge());
-        instance.getUser().setAge(55);
-        instance.getUser().setUsername("another username");
+        /*
+         * below for checking constructor ref leak
+         */
+        newUser.setAge(55);
+        newUser.setUsername("another username");
+        /*
+         * below for checking getter ref leak
+         */
+        instance.getUser().setAge(66);
+        instance.getUser().setUsername("another another username");
         System.out.println(instance.getUser().getUsername() + ", " + instance.getUser().getAge());
     }
 
