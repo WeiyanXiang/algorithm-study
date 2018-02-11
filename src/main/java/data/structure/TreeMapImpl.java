@@ -43,17 +43,17 @@ public class TreeMapImpl {
 
     public static void testTreeMap() {
         TreeMap<Key, String> treeMap = new TreeMap<>();
-        treeMap.put(new Key(3, "C"), "value 3");
-        treeMap.put(new Key(1, "A"), "value 1");
-        treeMap.put(new Key(2, "B"), "value 2");
-        treeMap.put(new Key(2, "A"), "value 4");
+        treeMap.put(new Key(3, "C"), " 3");
+        treeMap.put(new Key(1, "A"), " 1");
+        treeMap.put(new Key(2, "B"), " 2");
+        treeMap.put(new Key(2, "A"), " 4");
 
         /*
          * Treemap class is like HashMap which stores key- value pairs . The
          * major difference is that Treemap sorts the key in ascending order.
          */
         for (Entry<Key, String> entry : treeMap.entrySet()) {
-            System.out.println("key: " + entry.getKey().getValue() + " ,value: " + entry.getValue());
+            System.out.println("key: " + entry.getKey().getValue() + ", value: " + entry.getValue());
         }
 
     }
