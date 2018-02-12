@@ -12,6 +12,10 @@ import java.util.Map.Entry;
  * @date 12 Feb 2018
  */
 public class KDiffPairs {
+    /*
+     * Given an array of integers and an integer k, you need to find the number
+     * of unique k-diff pairs in the array
+     */
     public static int findPairs(int[] nums, int k) {
         Map<Integer, Integer> map = new HashMap<>();
         int count = 0;

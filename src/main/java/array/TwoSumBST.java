@@ -28,7 +28,7 @@ public class TwoSumBST {
     }
 
     public static void main(String[] args) {
-        // int[] input = { 2,7,11,15 };
+        // { 2,7,11,15 };
         TreeNode root = new TreeNode(2);
         root.left = new TreeNode(7);
         TreeNode rightSubNode = new TreeNode(11);
