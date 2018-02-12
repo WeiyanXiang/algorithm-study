@@ -19,15 +19,19 @@ public class KDiffPairs {
          * we have to use first loop to store frequency for situation of
          * filtering duplicate elements
          */
-        for (int j : nums) {
-            map.put(j, map.getOrDefault(j, 0) + 1);
+        for (int element : nums) {
+            map.put(element, map.getOrDefault(element, 0) + 1);
         }
+
         for (Entry<Integer, Integer> entry : map.entrySet()) {
             if (k == 0) {
                 if (entry.getValue() > 1) {
                     count++;
                 }
             } else {
+                /*
+                 * entry.getKey() + k or entry.getKey() - k
+                 */
                 if (map.containsKey(entry.getKey() + k)) {
                     count++;
                 }
