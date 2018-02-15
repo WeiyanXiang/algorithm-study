@@ -19,7 +19,7 @@ public class ForEachDemo {
      * For this reason, the benchmarks illustrate the cost of element access
      * mainly.
      */
-    private static void forEachDemo() {
+    private static void forEachDemoAccessingMore() {
         List<Integer> aList = new ArrayList<>(Arrays.asList(1, 2, 4, 2, 5, 2, 5, 1, 4, 21));
         System.out.println("below is enhanced for each with indexes");
         long s1 = System.currentTimeMillis();
@@ -45,7 +45,7 @@ public class ForEachDemo {
     }
 
     public static void main(String[] args) {
-        forEachDemo();
+        forEachDemoAccessingMore();
     }
 
 }
