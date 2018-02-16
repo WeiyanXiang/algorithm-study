@@ -17,7 +17,7 @@ public class BlockingQueueDemo {
 
     private static final BlockingQueue<Integer> queue = new ArrayBlockingQueue<>(20);
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void blockingQueueDemo() {
         ExecutorService executor = Executors.newFixedThreadPool(2);
         try {
             Runnable runnable = new Runnable() {
@@ -62,6 +62,10 @@ public class BlockingQueueDemo {
         } finally {
             executor.shutdown();
         }
+    }
+
+    public static void main(String[] args) throws InterruptedException {
+        blockingQueueDemo();
     }
 
 }
