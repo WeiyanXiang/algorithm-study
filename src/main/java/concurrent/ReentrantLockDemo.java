@@ -56,24 +56,33 @@ public class ReentrantLockDemo {
     }
 
     private static void normalLockDemo() {
-        Thread t1 = getThread("Thread 1");
-        Thread t2 = getThread("Thread 2");
-        Thread t3 = getThread("Thread 3");
+        Thread t1 = getThread("Thread 1", 0);
+        Thread t2 = getThread("Thread 2", 1100);
+        Thread t3 = getThread("Thread 3", 2200);
         t1.start();
         t2.start();
         t3.start();
     }
 
-    private static Thread getThread(String threadInfo) {
+    private static Thread getThread(String threadInfo, int waitingLength) {
         return new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
                     System.out.println("Enterring thread: " + threadInfo + ", trying to get the lock.");
-                    if (lock.tryLock(800, TimeUnit.MILLISECONDS)) {
+                    /*
+                     * because there are 3 threads, e.g. t1 started, t2 will
+                     * need tryLock over 1000ms, t3 will need tryLock over
+                     * 1000+1000=2000ms. order of t1,t2 and t3 will be dif btw.
+                     * 
+                     * 
+                     */
+                    if (lock.tryLock(waitingLength, TimeUnit.MILLISECONDS)) {
                         Thread.sleep(1000);
-                        System.out.println("this is " + threadInfo);
+                        System.out.println("This is " + threadInfo);
                     }
+                    System.out.println("Finishing current thread: " + threadInfo);
+
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } finally {
