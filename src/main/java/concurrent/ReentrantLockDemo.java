@@ -55,10 +55,15 @@ public class ReentrantLockDemo {
         });
     }
 
+    /*
+     * 3 threads, the order or exec may differs, so the safest tryLock timeout
+     * is 10 + 10ms which is over 20ms
+     * 
+     */
     private static void normalLockDemo() {
-        Thread t1 = getThread("Thread 1", 0);
-        Thread t2 = getThread("Thread 2", 1100);
-        Thread t3 = getThread("Thread 3", 2200);
+        Thread t1 = getThread("Thread 0", 25);
+        Thread t2 = getThread("Thread 1", 25);
+        Thread t3 = getThread("Thread 2", 25);
         t1.start();
         t2.start();
         t3.start();
@@ -70,15 +75,8 @@ public class ReentrantLockDemo {
             public void run() {
                 try {
                     System.out.println("Enterring thread: " + threadInfo + ", trying to get the lock.");
-                    /*
-                     * because there are 3 threads, e.g. t1 started, t2 will
-                     * need tryLock over 1000ms, t3 will need tryLock over
-                     * 1000+1000=2000ms. order of t1,t2 and t3 will be dif btw.
-                     * 
-                     * 
-                     */
                     if (lock.tryLock(waitingLength, TimeUnit.MILLISECONDS)) {
-                        Thread.sleep(1000);
+                        Thread.sleep(10);
                         System.out.println("This is " + threadInfo);
                     }
                     System.out.println("Finishing current thread: " + threadInfo);
