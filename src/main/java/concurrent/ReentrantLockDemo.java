@@ -15,9 +15,13 @@ public class ReentrantLockDemo {
     private static final ReentrantLock lock = new ReentrantLock();
     private static final ReentrantLock fairLock = new ReentrantLock(true);
 
+    /*
+     * fairness allows lock prefers to be given to longest w8 thread; tryLock
+     * will Not respect fairness
+     */
     public static void main(String[] args) throws InterruptedException {
         // lockDemo(false);
-        lockDemo(true);
+        lockDemo(false);
 
     }
 
@@ -49,14 +53,17 @@ public class ReentrantLockDemo {
             public void run() {
                 try {
                     if (isFair) {
-                        if (fairLock.tryLock(waitingLength, TimeUnit.MILLISECONDS)) {
-                            Thread.sleep(10);
-                            System.out.println("Enterring thread: " + threadInfo);
-                        }
+                        fairLock.lock();
+                        Thread.sleep(100);
+                        System.out.println(
+                                "Enterring FAIR thread: " + Thread.currentThread().getName() + ", Queue length: "
+                                        + fairLock.getQueueLength() + ", Hold count: " + fairLock.getHoldCount());
                     } else {
                         if (lock.tryLock(waitingLength, TimeUnit.MILLISECONDS)) {
                             Thread.sleep(10);
-                            System.out.println("Enterring thread: " + threadInfo);
+                            System.out.println(
+                                    "Enterring NORMAL thread: " + Thread.currentThread().getName() + ", Queue length: "
+                                            + lock.getQueueLength() + ", Hold count: " + lock.getHoldCount());
                         }
                     }
                 } catch (InterruptedException e) {
@@ -69,7 +76,7 @@ public class ReentrantLockDemo {
                     }
                 }
             }
-        });
+        }, threadInfo);
     }
 
 }
