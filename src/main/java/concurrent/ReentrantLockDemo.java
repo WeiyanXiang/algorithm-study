@@ -21,7 +21,7 @@ public class ReentrantLockDemo {
      */
     public static void main(String[] args) throws InterruptedException {
         // lockDemo(false);
-        lockDemo(false);
+        lockDemo(true);
 
     }
 
