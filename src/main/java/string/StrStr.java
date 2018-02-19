@@ -18,8 +18,6 @@ public class StrStr {
     public static void main(String[] args) {
         System.out.println("2 == " + strStr("hello", "ll"));
         System.out.println("-1 == " + strStr("aaaaa", "bba"));
-        System.out.println("2 == " + strStrOptimal("hello", "ll"));
-        System.out.println("-1 == " + strStrOptimal("aaaaa", "bba"));
     }
 
     private static int strStr(String haystack, String needle) {
