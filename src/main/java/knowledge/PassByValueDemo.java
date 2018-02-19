@@ -70,8 +70,8 @@ public class PassByValueDemo {
     }
 
     public static void trickySwap(TestPoint input1, TestPoint input2) {
-        input1.name = "INPUT1";
-        input2.name = "INPUT2";
+        input1.name = "INPUT3";
+        input2.name = "INPUT4";
         TestPoint temp = input1;
         input1 = input2;
         input2 = temp;

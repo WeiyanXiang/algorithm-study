@@ -38,6 +38,10 @@ public class StringInternDemo {
 
         System.out.println(instance.name1.intern() == s3.intern());
         System.out.println(instance.name1.intern() == instance.name2.intern());
+        System.out.println();
+        System.out.println(new String("123") == new String("123"));
+        System.out.println(new String("123").equals(new String("123")));
+        System.out.println(new String("123").intern() == new String("123").intern());
     }
 
 }
