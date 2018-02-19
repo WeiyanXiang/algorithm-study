@@ -18,12 +18,14 @@ public class StrStr {
     public static void main(String[] args) {
         System.out.println("2 == " + strStr("hello", "ll"));
         System.out.println("-1 == " + strStr("aaaaa", "bba"));
+        System.out.println("2 == " + strStrOptimal("hello", "ll"));
+        System.out.println("-1 == " + strStrOptimal("aaaaa", "bba"));
     }
 
     private static int strStr(String haystack, String needle) {
         if (needle.length() == 0)
             return 0;
-        for (int i = 0; i < haystack.length(); i++) {
+        for (int i = 0; i < haystack.length() - needle.length(); i++) {
             int a = i, b = 0;
             while (a < haystack.length() && b < needle.length() && haystack.charAt(a) == needle.charAt(b)) {
                 a++;
@@ -35,4 +37,5 @@ public class StrStr {
         }
         return -1;
     }
+
 }
