@@ -23,10 +23,11 @@ public class HashMapImpl {
      * corresponding bucket to fetch value, use .equals() to distinguish values
      * in each bucket
      * 
-     * the process of put: compute index, go to corresponding bucket, loop
-     * bucket to try to find key using equals(), if found, replace the value
-     * with new value and return the old one, if not, return null and insert
-     * key-value into bucket
+     * the process of put: compute index, go to corresponding bucket, check via
+     * hashCode() and equals() method that if both the keys are same. If keys
+     * are same, replace the value with current value. Otherwise connect this
+     * node object to the previous node object via linked list and both are
+     * stored
      */
     public HashMapImpl() {
         this.buckets = new ArrayList<>(capacity);
