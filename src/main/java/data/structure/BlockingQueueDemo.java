@@ -17,6 +17,11 @@ public class BlockingQueueDemo {
 
     private static final BlockingQueue<Integer> queue = new ArrayBlockingQueue<>(20);
 
+    /**
+     * BQ is based on queue and sync both enqueue and dequeue method to achieve
+     * thread-safe, the internal queue should also be volatile to ensure data
+     * visibility
+     */
     public static void blockingQueueDemo() {
         ExecutorService executor = Executors.newFixedThreadPool(2);
         try {
