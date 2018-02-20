@@ -18,6 +18,16 @@ public class HashMapImpl {
     private List<LinkedList<MyEntry>> buckets;
     private int capacity = 16;
 
+    /**
+     * each bucket is a linkedlist, the process of get: compute index, go to
+     * corresponding bucket to fetch value, use .equals() to distinguish values
+     * in each bucket
+     * 
+     * the process of put: compute index, go to corresponding bucket, loop
+     * bucket to try to find key using equals(), if found, replace the value
+     * with new value and return the old one, if not, return null and insert
+     * key-value into bucket
+     */
     public HashMapImpl() {
         this.buckets = new ArrayList<>(capacity);
         for (int i = 0; i < capacity; i++) {
