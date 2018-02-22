@@ -12,6 +12,9 @@ import java.util.Map;
  */
 public class HashSetImpl {
     private Map<String, String> memory;
+    /**
+     * dummy value to save memory for the internal hashmap
+     */
     private final static String DEFAULT_VALUE = "";
 
     public HashSetImpl() {
