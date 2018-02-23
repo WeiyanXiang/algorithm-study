@@ -14,6 +14,13 @@ public class LinkedHashMapDemo {
 
     public static void main(String[] args) {
 
+        /*
+         * it differs from HashMap in that it maintains a doubly linked list
+         * running through all of its entries. o The reason why double linked
+         * list rather than single is because to implement O(1) removal of
+         * element requires the node to know previous node as well.
+         * 
+         */
         Map<String, String> testObj = new LinkedHashMap<>();
 
         testObj.put("key1", "value1");
