@@ -64,6 +64,9 @@ public class LinkedListImpl {
         node.next = element;
     }
 
+    /*
+     * Complexity: O(n)
+     */
     public static void add(int index, Node element) {
         if (index == 0) {
             addFirst(element);

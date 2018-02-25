@@ -22,8 +22,8 @@ public class LRUUsingLinkedHashMapImpl extends LinkedHashMap<Integer, Integer> {
      */
     public LRUUsingLinkedHashMapImpl(int capacity, float loadFactor) {
         /*
-         * accessOrder - the ordering mode - TRUE for access-order, FALSE for
-         * insertion-order
+         * third params is accessOrder - the ordering mode - TRUE for
+         * access-order, FALSE for insertion-order
          */
         super(capacity, loadFactor, true);
         this.capacity = capacity;
