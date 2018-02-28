@@ -14,7 +14,7 @@ public class MaxSubArray {
      */
     public static int maxSubArray(int[] nums) {
         int dp[] = new int[nums.length];
-        dp[0] = nums[0];
+        dp[0] = nums[0]; // dpp[i] means the sub-max sum until index i
         int max = dp[0];
         for (int i = 1; i < nums.length; i++) {
             dp[i] = nums[i] + (dp[i - 1] > 0 ? dp[i - 1] : 0);
