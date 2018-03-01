@@ -31,11 +31,12 @@ public class LenOfLastWord {
             if (s.charAt(i) == ' ') {
                 if (count != 0)
                     return count;
+                i--;
                 continue;
             } else {
                 count++;
+                i--;
             }
-            i--;
         }
         return count;
     }
@@ -43,5 +44,6 @@ public class LenOfLastWord {
     public static void main(String[] args) {
         System.out.println("5 == " + lengthOfLastWord("Hello World"));
         System.out.println("5 == " + lengthOfLastWord("Hello World  "));
+        System.out.println("0 == " + lengthOfLastWord(" "));
     }
 }
