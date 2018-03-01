@@ -13,12 +13,15 @@ public class MaxSubArray {
      * subarray [4,-1,2,1] has the largest sum = 6.
      */
     public static int maxSubArray(int[] nums) {
+        if (nums == null || nums.length == 0)
+            return -1;
         int dp[] = new int[nums.length];
-        dp[0] = nums[0]; // dpp[i] means the sub-max sum until index i
-        int max = dp[0];
+        dp[0] = nums[0];
+        int max = nums[0];
         for (int i = 1; i < nums.length; i++) {
+            // dp[i] means the maximum subarray ending with A[i];
             dp[i] = nums[i] + (dp[i - 1] > 0 ? dp[i - 1] : 0);
-            max = max > dp[i] ? max : dp[i];
+            max = dp[i] < max ? max : dp[i];
         }
         return max;
     }
