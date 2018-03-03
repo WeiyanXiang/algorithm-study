@@ -24,57 +24,20 @@ public class AddBinary {
      * @return
      */
     public static String addBinary(String a, String b) {
-        int intA = Integer.parseInt(a);
-        int intB = Integer.parseInt(b);
-
-        String answer = "";
-        char digitForNext = '0';
-        for (int i = Math.max(a.length() - 1, b.length()); i >= 0; i--) {
-            if (i < b.length()) {
-                if (digitForNext == '0') {
-                    if (a.charAt(i) == '1' && b.charAt(i) == '1') {
-                        answer += '0';
-                        digitForNext = '1';
-                    } else if (a.charAt(i) == '0' && b.charAt(i) == '0') {
-                        answer += '0';
-                        digitForNext = '0';
-                    } else if (a.charAt(i) == '1' && b.charAt(i) == '0') {
-                        answer += '1';
-                        digitForNext = '0';
-                    } else if (a.charAt(i) == '0' && b.charAt(i) == '1') {
-                        answer += '1';
-                        digitForNext = '0';
-                    }
-                } else {
-                    if (a.charAt(i) == '1' && b.charAt(i) == '1') {
-                        answer += '1';
-                        digitForNext = '1';
-                    } else if (a.charAt(i) == '0' && b.charAt(i) == '0') {
-                        answer += '1';
-                        digitForNext = '0';
-                    } else if (a.charAt(i) == '1' && b.charAt(i) == '0') {
-                        answer += '0';
-                        digitForNext = '1';
-                    } else if (a.charAt(i) == '0' && b.charAt(i) == '1') {
-                        answer += '0';
-                        digitForNext = '1';
-                    }
-                }
-            } else {
-                answer += a.charAt(i);
-            }
+        StringBuilder sb = new StringBuilder();
+        int i = a.length() - 1, j = b.length() - 1, carry = 0;
+        while (i >= 0 || j >= 0) {
+            int sum = carry;
+            if (j >= 0)
+                sum += b.charAt(j--) - '0';
+            if (i >= 0)
+                sum += a.charAt(i--) - '0';
+            sb.append(sum % 2);
+            carry = sum / 2;
         }
-        return answer;
-    }
-
-    private static int toBinary(int input) {
-        int n = input;
-        int answer = 1;
-        while (n > 0) {
-            answer += n % 2;
-            answer *= 10;
-        }
-        return -1;
+        if (carry != 0)
+            sb.append(carry);
+        return sb.reverse().toString();
     }
 
     public static void main(String[] args) {
