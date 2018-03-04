@@ -7,7 +7,7 @@ package dp;
  * @author weiyan.xiang
  * @date 14 Jan 2018
  */
-public class StairsCount {
+public class StairsCountThree {
 
     private static int[] cache = new int[11];
 
