@@ -9,7 +9,7 @@ package array;
  */
 public class RemoveDuplicatesFromSortedLinkedList {
 
-    public class ListNode {
+    public static class ListNode {
         int val;
         ListNode next;
 
@@ -18,11 +18,52 @@ public class RemoveDuplicatesFromSortedLinkedList {
         }
     }
 
+    /**
+     * Given a sorted linked list, delete all duplicates such that each element
+     * appear only once.
+     * 
+     * For example, Given 1->1->2, return 1->2. Given 1->1->2->3->3, return
+     * 1->2->3.
+     * 
+     * @param head
+     * @return
+     */
     public static ListNode deleteDuplicates(ListNode head) {
-        return null;
+        if (head == null)
+            return null;
+        ListNode node = head;
+        while (node != null) {
+            ListNode toLoop = node.next;
+            while (toLoop != null && node.val == toLoop.val) {
+                toLoop = toLoop.next;
+            }
+            node.next = toLoop;
+            node = node.next;
+        }
+        return head;
     }
 
     public static void main(String[] args) {
+        ListNode h1 = new ListNode(1);
+        ListNode h2 = new ListNode(1);
+        ListNode h3 = new ListNode(1);
+        ListNode h4 = new ListNode(3);
+        ListNode h5 = new ListNode(3);
 
+        h4.next = h5;
+        h3.next = h4;
+        h2.next = h3;
+        h1.next = h2;
+
+        printLinkedList(deleteDuplicates(h1));
+
+    }
+
+    private static void printLinkedList(ListNode head) {
+        ListNode node = head;
+        while (node != null) {
+            System.out.print(node.val + " -> ");
+            node = node.next;
+        }
     }
 }
