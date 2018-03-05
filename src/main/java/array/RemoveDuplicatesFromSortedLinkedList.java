@@ -28,7 +28,7 @@ public class RemoveDuplicatesFromSortedLinkedList {
      * @param head
      * @return
      */
-    public static ListNode deleteDuplicates(ListNode head) {
+    public static ListNode deleteDuplicatesMyAnswer(ListNode head) {
         if (head == null)
             return null;
         ListNode node = head;
@@ -39,6 +39,22 @@ public class RemoveDuplicatesFromSortedLinkedList {
             }
             node.next = toLoop;
             node = node.next;
+        }
+        return head;
+    }
+
+    public static ListNode deleteDuplicatesBetter(ListNode head) {
+        ListNode node = head;
+        while (node != null) {
+            ListNode next = node.next;
+            if (next == null) {
+                break;
+            }
+            if (node.val == next.val) {
+                node.next = next.next;
+            } else {
+                node = node.next;
+            }
         }
         return head;
     }
@@ -55,7 +71,9 @@ public class RemoveDuplicatesFromSortedLinkedList {
         h2.next = h3;
         h1.next = h2;
 
-        printLinkedList(deleteDuplicates(h1));
+        printLinkedList(deleteDuplicatesMyAnswer(h1));
+        System.out.println();
+        printLinkedList(deleteDuplicatesBetter(h1));
 
     }
 
