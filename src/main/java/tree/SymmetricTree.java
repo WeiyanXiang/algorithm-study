@@ -8,6 +8,7 @@ package tree;
  * @date 11 Mar 2018
  */
 public class SymmetricTree {
+
     public class TreeNode {
         int val;
         TreeNode left;
@@ -38,6 +39,12 @@ public class SymmetricTree {
      */
     //@formatter:on
     public boolean isSymmetric(TreeNode root) {
+        if (root == null)
+            return true;
+        if (root.left != null)
+            return isSymmetric(root.left);
+        if (root.right != null)
+            return isSymmetric(root.right);
         return false;
     }
 
