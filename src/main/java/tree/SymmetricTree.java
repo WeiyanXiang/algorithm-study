@@ -9,7 +9,7 @@ package tree;
  */
 public class SymmetricTree {
 
-    public class TreeNode {
+    public static class TreeNode {
         int val;
         TreeNode left;
         TreeNode right;
@@ -37,8 +37,9 @@ public class SymmetricTree {
         Note:
         Bonus points if you could solve it both recursively and iteratively.
      */
-    //@formatter:on
-    public boolean isSymmetric(TreeNode root) {
+    //@formatter:on 
+    public static boolean isSymmetric(TreeNode root) {
+        System.out.println(root.val);
         if (root == null)
             return true;
         if (root.left != null)
@@ -49,6 +50,21 @@ public class SymmetricTree {
     }
 
     public static void main(String[] args) {
+        TreeNode root = new TreeNode(1);
+        TreeNode node2 = new TreeNode(2);
+        TreeNode node3 = new TreeNode(2);
+        TreeNode node4 = new TreeNode(3);
+        TreeNode node5 = new TreeNode(3);
+        TreeNode node6 = new TreeNode(4);
+        TreeNode node7 = new TreeNode(4);
+        root.left = node2;
+        root.right = node3;
+        node2.left = node4;
+        node2.right = node6;
+        node3.left = node7;
+        node3.right = node5;
+
+        isSymmetric(root);
 
     }
 
