@@ -11,16 +11,6 @@ import java.util.Stack;
  */
 public class SymmetricTree {
 
-    public static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
-
     //@formatter:off
     /*
      * Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).
@@ -40,6 +30,9 @@ public class SymmetricTree {
         Bonus points if you could solve it both recursively and iteratively.
      */
     //@formatter:on 
+    /*
+     * Recursive approach is more effective
+     */
     public static boolean isSymmetricRecur(TreeNode root) {
         return root == null || isSubTreeSymmetric(root.left, root.right);
     }
