@@ -12,11 +12,12 @@ import java.util.Queue;
  * @author weiyan.xiang
  * @date 13 Mar 2018
  */
-public class BinaryTreeLevelOrderTraversal {
+public class BinaryTreeLevelOrderTraversalTwo {
 
     //@formatter:off
     /*
-     * Given a binary tree, return the level order traversal of its nodes' values. (ie, from left to right, level by level).
+     * Given a binary tree, return the bottom-up level order traversal of its nodes' values. (ie, from left to right, level by level from leaf to root).
+
         For example:
         Given binary tree [3,9,20,null,null,15,7],
             3
@@ -24,15 +25,18 @@ public class BinaryTreeLevelOrderTraversal {
           9  20
             /  \
            15   7
-        return its level order traversal as:
+        return its bottom-up level order traversal as:
         [
-          [3],
+          [15,7],
           [9,20],
-          [15,7]
+          [3]
         ]
      */
     //@formatter:on
-    public static List<List<Integer>> levelOrder(TreeNode root) {
+    /*
+     * BFS
+     */
+    public static List<List<Integer>> levelOrderBottomBFS(TreeNode root) {
         if (root == null)
             return new ArrayList<>();
         List<List<Integer>> answer = new ArrayList<>();
@@ -51,10 +55,21 @@ public class BinaryTreeLevelOrderTraversal {
                     queue.add(top.right);
                 }
             }
-            answer.add(row);
+            answer.add(0, row);
         }
         return answer;
+    }
 
+    public static List<List<Integer>> levelOrderBottomDFS(TreeNode root) {
+        if (root == null)
+            return new ArrayList<>();
+        List<List<Integer>> answer = new ArrayList<>();
+        doDFSPopulating(answer, root, 0);
+        return answer;
+    }
+
+    private static List<List<Integer>> doDFSPopulating(List<List<Integer>> answer, TreeNode root, int lvl) {
+        return null;
     }
 
     public static void main(String[] args) {
@@ -81,8 +96,10 @@ public class BinaryTreeLevelOrderTraversal {
         node3.left = null;
         node3.right = node7;
 
-        TreeNode.printListOfList(levelOrder(root));
+        System.out.println("BFS: ");
+        TreeNode.printListOfList(levelOrderBottomBFS(root));
+        System.out.println("DFS: ");
+        TreeNode.printListOfList(levelOrderBottomDFS(root));
 
     }
-
 }
