@@ -70,7 +70,10 @@ public class BinaryTreeLevelOrderTraversalTwo {
 
     private static void doDFSPopulating(List<List<Integer>> answer, TreeNode root, int lvl) {
         while (lvl > answer.size()) {
-            answer.add(new ArrayList<>());
+            /*
+             * because of (answer.size() - lvl - 1) index was reverted
+             */
+            answer.add(0, new ArrayList<>());
         }
         if (root != null) {
             doDFSPopulating(answer, root.left, lvl + 1);
