@@ -68,8 +68,15 @@ public class BinaryTreeLevelOrderTraversalTwo {
         return answer;
     }
 
-    private static List<List<Integer>> doDFSPopulating(List<List<Integer>> answer, TreeNode root, int lvl) {
-        return null;
+    private static void doDFSPopulating(List<List<Integer>> answer, TreeNode root, int lvl) {
+        while (lvl > answer.size()) {
+            answer.add(new ArrayList<>());
+        }
+        if (root != null) {
+            doDFSPopulating(answer, root.left, lvl + 1);
+            doDFSPopulating(answer, root.right, lvl + 1);
+            answer.get(answer.size() - lvl - 1).add(root.val);
+        }
     }
 
     public static void main(String[] args) {
@@ -87,7 +94,7 @@ public class BinaryTreeLevelOrderTraversalTwo {
         TreeNode node3 = new TreeNode(3);
         TreeNode node4 = new TreeNode(4);
         TreeNode node5 = new TreeNode(5);
-        // TreeNode node6 = new TreeNode(6);
+        TreeNode node6 = new TreeNode(6);
         TreeNode node7 = new TreeNode(7);
         root.left = node2;
         root.right = node3;
@@ -100,6 +107,7 @@ public class BinaryTreeLevelOrderTraversalTwo {
         TreeNode.printListOfList(levelOrderBottomBFS(root));
         System.out.println("DFS: ");
         TreeNode.printListOfList(levelOrderBottomDFS(root));
+        // doDFSPopulating(null, root, 0);
 
     }
 }

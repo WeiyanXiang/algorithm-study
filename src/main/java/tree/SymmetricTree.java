@@ -37,6 +37,16 @@ public class SymmetricTree {
         return root == null || isSubTreeSymmetric(root.left, root.right);
     }
 
+    private static boolean isSubTreeSymmetric(TreeNode left, TreeNode right) {
+        if (left == null || right == null) {
+            return left == right;
+        } else if (left.val != right.val) {
+            return false;
+        } else {
+            return isSubTreeSymmetric(left.left, right.right) && isSubTreeSymmetric(left.right, right.left);
+        }
+    }
+
     public static boolean isSymmetricIterative(TreeNode root) {
         if (root == null)
             return true;
@@ -58,16 +68,6 @@ public class SymmetricTree {
             }
         }
         return true;
-    }
-
-    private static boolean isSubTreeSymmetric(TreeNode left, TreeNode right) {
-        if (left == null || right == null) {
-            return left == right;
-        } else if (left.val != right.val) {
-            return false;
-        } else {
-            return isSubTreeSymmetric(left.left, right.right) && isSubTreeSymmetric(left.right, right.left);
-        }
     }
 
     public static void main(String[] args) {
