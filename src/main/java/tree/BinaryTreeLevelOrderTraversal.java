@@ -54,7 +54,6 @@ public class BinaryTreeLevelOrderTraversal {
             answer.add(row);
         }
         return answer;
-
     }
 
     public static void main(String[] args) {
