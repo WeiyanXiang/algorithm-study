@@ -49,7 +49,6 @@ public class ConvertSortedArrayToBST {
     public static void main(String[] args) {
         // int[] nums = { -10, -3, 0, 5, 9 };
         // printTreeInLevelOrder(sortedArrayToBST(nums));
-        System.out.println("5CA7CE0F-C4E6-449D-A88B-EC651DCDF076".toLowerCase());
     }
 
 }
