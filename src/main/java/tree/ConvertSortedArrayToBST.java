@@ -39,16 +39,16 @@ public class ConvertSortedArrayToBST {
         int left = (m + l) / 2, right = (m + r) / 2;
         if (l < left && left < m) {
             root.left = new TreeNode(nums[left]);
+            doConvert(nums, root.left, l, m, right);
         }
         if (m < right && right < r) {
             root.right = new TreeNode(nums[right]);
+            doConvert(nums, root.right, l, m, right);
         }
-        doConvert(nums, root.left, l, m, right);
     }
 
     public static void main(String[] args) {
-        // int[] nums = { -10, -3, 0, 5, 9 };
-        // printTreeInLevelOrder(sortedArrayToBST(nums));
+        int[] nums = { -10, -3, 0, 5, 9 };
     }
 
 }
