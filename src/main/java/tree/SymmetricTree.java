@@ -31,7 +31,7 @@ public class SymmetricTree {
      */
     //@formatter:on 
     /*
-     * Recursive approach is more effective
+     * Recursive approach is more effective and human readable
      */
     public static boolean isSymmetricRecur(TreeNode root) {
         return root == null || isSubTreeSymmetric(root.left, root.right);
