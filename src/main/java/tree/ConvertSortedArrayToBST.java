@@ -31,24 +31,29 @@ public class ConvertSortedArrayToBST {
             return null;
         int mid = nums.length / 2;
         TreeNode root = new TreeNode(nums[mid]);
-        doConvert(nums, root, 0, mid, nums.length);
+        doConvert(nums, root, 0, nums.length - 1);
         return root;
     }
 
-    private static void doConvert(int[] nums, TreeNode root, int l, int m, int r) {
-        int left = (m + l) / 2, right = (m + r) / 2;
-        if (l < left && left < m) {
-            root.left = new TreeNode(nums[left]);
-            doConvert(nums, root.left, l, m, right);
+    private static void doConvert(int[] nums, TreeNode root, int l, int r) {
+        int m = (l + r) / 2;
+        if (l < r) {
+            root.left = new TreeNode(nums[(l + m) / 2]);
+            root.right = new TreeNode(nums[(m + r) / 2]);
+            doConvert(nums, root.left, l, m);
+            doConvert(nums, root.right, m, r);
         }
-        if (m < right && right < r) {
-            root.right = new TreeNode(nums[right]);
-            doConvert(nums, root.right, l, m, right);
-        }
+        return;
+        // if (nums[m] < root.val) {
+        // root.left = new TreeNode(nums[m]);
+        // } else {
+        // root.right = new TreeNode(nums[m]);
+        // }
     }
 
     public static void main(String[] args) {
         int[] nums = { -10, -3, 0, 5, 9 };
+        TreeNode.printTreeInLevelOrder(sortedArrayToBST(nums));
     }
 
 }
