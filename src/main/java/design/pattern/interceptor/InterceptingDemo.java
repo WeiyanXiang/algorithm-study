@@ -8,6 +8,7 @@ package design.pattern.interceptor;
  * @date 21 Mar 2018
  */
 public class InterceptingDemo {
+
     public static void main(String[] args) {
         Target target = new Target();
         FilterManager filterManager = new FilterManager(target);

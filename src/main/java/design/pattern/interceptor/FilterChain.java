@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Filter Chain carries multiple filters and help to execute them in defined
+ * order on target.
+ * 
  * @author weiyan.xiang
  * @date 21 Mar 2018
  */

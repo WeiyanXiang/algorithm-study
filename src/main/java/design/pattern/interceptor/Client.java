@@ -4,6 +4,8 @@
 package design.pattern.interceptor;
 
 /**
+ * Client is the object who sends request to the Target object.
+ * 
  * @author weiyan.xiang
  * @date 21 Mar 2018
  */

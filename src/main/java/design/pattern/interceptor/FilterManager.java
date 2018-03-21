@@ -4,10 +4,13 @@
 package design.pattern.interceptor;
 
 /**
+ * Filter Manager manages the filters and Filter Chain.
+ * 
  * @author weiyan.xiang
  * @date 21 Mar 2018
  */
 public class FilterManager {
+
     private FilterChain filterChain;
 
     /**
