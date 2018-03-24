@@ -52,12 +52,7 @@ public class BalancedBinaryTree {
     }
 
     private static int getDfsLength(TreeNode node) {
-        if (node == null)
-            return 0;
-        while (node.left != null || node.right != null) {
-            return 1 + Math.max(getDfsLength(node.left), getDfsLength(node.right));
-        }
-        return 0;
+        return node == null ? 0 : 1 + Math.max(getDfsLength(node.left), getDfsLength(node.right));
     }
 
     public static void main(String[] args) {
@@ -75,6 +70,23 @@ public class BalancedBinaryTree {
         node3.left = node6;
         node3.right = node7;
 
-        System.out.println(isBalanced(root));
+        System.out.println("true == " + isBalanced(root));
+        //@formatter:off
+        /*
+         *     1
+              / 
+             2   
+            /
+           3
+         */
+        //@formatter:on
+        TreeNode node_1 = new TreeNode(1);
+        TreeNode node_2 = new TreeNode(2);
+        TreeNode node_3 = new TreeNode(3);
+        node_1.left = node_2;
+        node_2.left = node_3;
+        TreeNode.printTreeInLevelOrder(node_1);
+        System.out.println("\nfalse == " + isBalanced(node_1));
+
     }
 }
