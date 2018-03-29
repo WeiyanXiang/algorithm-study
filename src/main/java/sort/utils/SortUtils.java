@@ -11,6 +11,11 @@ import java.util.Arrays;
  */
 public class SortUtils {
 
+    /**
+     * using stream to print
+     * 
+     * @param nums
+     */
     public static void printArray(int[] nums) {
         Arrays.stream(nums).forEach(System.out::println);
     }
