@@ -18,11 +18,23 @@ public class MinimumDepthOfBinaryTree {
      * @return
      */
     public static int minDepth(TreeNode root) {
-        return root == null ? 0 : 1 + Math.min(minDepth(root.left), minDepth(root.right));
+        if (root == null)
+            return 0;
+        if (root.left == null) {
+            return 1 + getDfsMinLength(root.right);
+        }
+        if (root.right == null) {
+            return 1 + getDfsMinLength(root.left);
+        }
+        return getDfsMinLength(root);
+    }
+
+    private static int getDfsMinLength(TreeNode node) {
+        return node == null ? 0 : 1 + Math.max(getDfsMinLength(node.left), getDfsMinLength(node.right));
     }
 
     public static void main(String[] args) {
-      //@formatter:off
+        //@formatter:off
         /*
                 1
                / \
