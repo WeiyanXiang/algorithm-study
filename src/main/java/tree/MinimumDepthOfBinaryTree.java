@@ -21,17 +21,21 @@ public class MinimumDepthOfBinaryTree {
         if (root == null)
             return 0;
         if (root.left == null)
-            return getDfsMinLength(root.right);
+            return 1 + getDfsMinLength(root.right);
         if (root.right == null)
-            return getDfsMinLength(root.left);
-        return Math.min(getDfsMinLength(root.left), getDfsMinLength(root.right));
+            return 1 + getDfsMinLength(root.left);
+        return 1 + Math.min(getDfsMinLength(root.left), getDfsMinLength(root.right));
     }
 
     private static int getDfsMinLength(TreeNode node) {
         if (node == null) {
             return 0;
         } else {
-            return 1 + Math.max(getDfsMinLength(node.left), getDfsMinLength(node.right));
+            if (node.left == null && node.right == null) {
+                return 1 + getDfsMinLength(node.right);
+            } else {
+                return 1 + Math.max(getDfsMinLength(node.left), getDfsMinLength(node.right));
+            }
         }
     }
 
