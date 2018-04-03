@@ -17,6 +17,14 @@ public class MinimumDepthOfBinaryTree {
      * @param root
      * @return
      */
+    public static int minDepthOptimal(TreeNode root) {
+        if (root == null)
+            return 0;
+        int left = minDepthOptimal(root.left);
+        int right = minDepthOptimal(root.right);
+        return left == 0 || right == 0 ? left + right + 1 : 1 + Math.min(left, right);
+    }
+
     public static int minDepth(TreeNode root) {
         if (root == null)
             return 0;
@@ -69,5 +77,6 @@ public class MinimumDepthOfBinaryTree {
         node3.right = node7;
 
         System.out.println(minDepth(root));
+        System.out.println(minDepthOptimal(root));
     }
 }
