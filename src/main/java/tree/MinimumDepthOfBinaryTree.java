@@ -34,7 +34,12 @@ public class MinimumDepthOfBinaryTree {
             if (node.left == null && node.right == null) {
                 return 1 + getDfsMinLength(node.right);
             } else {
-                return 1 + Math.max(getDfsMinLength(node.left), getDfsMinLength(node.right));
+                if (node.left == null)
+                    return 1 + getDfsMinLength(node.right);
+                if (node.right == null)
+                    return 1 + getDfsMinLength(node.left);
+                else
+                    return 1 + Math.min(getDfsMinLength(node.left), getDfsMinLength(node.right));
             }
         }
     }
