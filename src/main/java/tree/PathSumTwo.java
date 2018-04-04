@@ -3,6 +3,7 @@
  */
 package tree;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,7 +13,25 @@ import java.util.List;
 public class PathSumTwo {
 
     public static List<List<Integer>> pathSum(TreeNode root, int sum) {
-        return null;
+        List<List<Integer>> answer = new ArrayList<>();
+        generatePathSum(root, sum, answer, new ArrayList<>());
+        return answer;
+    }
+
+    public static void generatePathSum(TreeNode node, int sum, List<List<Integer>> answer, List<Integer> path) {
+        if (node == null) {
+            return;
+        }
+        if (node.val == sum && node.left == null && node.right == null) {
+            path.add(node.val);
+            answer.add(path);
+            return;
+        } else if (node.left != null || node.right != null) {
+            // return hasPathSum(node.left, sum - node.val) ||
+            // hasPathSum(node.right, sum - node.val);
+        } else {
+            // return false;
+        }
     }
 
     public static void main(String[] args) {
