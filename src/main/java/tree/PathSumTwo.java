@@ -22,6 +22,9 @@ public class PathSumTwo {
         if (node == null) {
             return;
         }
+        if (node.left != null || node.right != null) {
+
+        }
         if (node.val == sum && node.left == null && node.right == null) {
             path.add(node.val);
             answer.add(path);
