@@ -30,8 +30,6 @@ public class PathSumTwo {
             answer.add(path);
             return;
         } else if (node.left != null || node.right != null) {
-            // return hasPathSum(node.left, sum - node.val) ||
-            // hasPathSum(node.right, sum - node.val);
         } else {
             // return false;
         }
