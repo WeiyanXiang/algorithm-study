@@ -3,4 +3,12 @@
   <groupId>algorithm-study</groupId>
   <artifactId>algorithm-study</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <dependencies>
+  	<!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
+	<dependency>
+	    <groupId>org.apache.httpcomponents</groupId>
+	    <artifactId>httpclient</artifactId>
+	    <version>4.5.2</version>
+	</dependency>
+  </dependencies>
 </project>
