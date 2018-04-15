@@ -12,6 +12,13 @@ import java.util.List;
  */
 public class PathSumTwo {
 
+    /**
+     * return a list of path which achieve the given sum
+     * 
+     * @param root
+     * @param sum
+     * @return
+     */
     public static List<List<Integer>> pathSum(TreeNode root, int sum) {
         List<List<Integer>> answer = new ArrayList<>();
         generatePathSum(root, sum, answer, new ArrayList<>());
