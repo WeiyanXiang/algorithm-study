@@ -11,15 +11,17 @@ import java.util.Date;
  */
 public final class ImmutableClassDemo {
 
+    //@formatter:off
     /**
-     * o Declare the class as final so it can’t be extended. o Make all fields
-     * private so that direct access is not allowed. o Don’t provide setter
-     * methods for variables o Make all mutable fields final so that it’s value
-     * can be assigned only once. o Initialize all the fields via a constructor
-     * performing deep copy. o Perform cloning of objects in the getter methods
-     * to return a copy rather than returning the actual object reference.
+     * o Declare the class as final so it can’t be extended. 
+     * o Make all fields private so that direct access is not allowed. 
+     * o Don’t provide setter methods for variables 
+     * o Make all mutable fields final so that it’s value can be assigned only once. 
+     * o Initialize all the fields via a constructor performing deep copy. 
+     * o Perform cloning of objects in the getter methods to return a copy rather than returning the actual object reference.
      * 
      */
+    //@formatter:on
     private final Date date;
     private final String name;
     private final User user;
