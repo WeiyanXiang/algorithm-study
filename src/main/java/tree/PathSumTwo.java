@@ -13,7 +13,7 @@ import java.util.List;
 public class PathSumTwo {
 
     /**
-     * return a list of path which achieve the given sum
+     * return a list of path which can sum up to the given input
      * 
      * @param root
      * @param sum
