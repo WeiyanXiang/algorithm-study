@@ -3,6 +3,7 @@
  */
 package array;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,7 +12,7 @@ import java.util.List;
  */
 public class PascalsTriangle {
 
-    //@formatter:off
+	//@formatter:off    
     /**Given numRows, generate the first numRows of Pascal's triangle.
 
         For example, given numRows = 5,
@@ -29,12 +30,19 @@ public class PascalsTriangle {
      * @return
      */
     //@formatter:on
-    public static List<List<Integer>> generate(int numRows) {
-        return null;
-    }
+	public static List<List<Integer>> generate(int n) {
+		List<List<Integer>> answer = new ArrayList<>();
+		for (int i = 0; i < n; i++) {
 
-    public static void main(String[] args) {
+		}
+		return null;
+	}
 
-    }
+	public static void main(String[] args) {
+		List<List<Integer>> answer = generate(5);
+		// here what we expect is to print the example output above.
+		answer.forEach(System.out::println);
+
+	}
 
 }
