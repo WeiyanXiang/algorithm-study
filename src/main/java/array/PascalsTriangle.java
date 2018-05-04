@@ -54,10 +54,26 @@ public class PascalsTriangle {
 		return answer;
 	}
 
+	public static List<List<Integer>> generateOptimal(int n) {
+		List<List<Integer>> answer = new ArrayList<>();
+		List<Integer> row = new ArrayList<>();
+		for (int i = 0; i < n; i++) {
+			row.add(0, 1);
+			for (int j = 1; j < row.size() - 1; j++) {
+				row.set(j, row.get(j) + row.get(j + 1));
+			}
+			answer.add(new ArrayList<Integer>(row));
+		}
+		return answer;
+	}
+
 	public static void main(String[] args) {
 		List<List<Integer>> answer = generate(5);
+		List<List<Integer>> answerOptimal = generateOptimal(5);
 		// here what we expect is to print the example output above.
 		answer.forEach(System.out::println);
+		System.out.println();
+		answerOptimal.forEach(System.out::println);
 
 	}
 
