@@ -28,7 +28,7 @@ public class PascalsTriangle {
         ]
      * 
      * @param numRows
-     * @return
+     * @return 
      */
     //@formatter:on
 	public static List<List<Integer>> generate(int n) {
@@ -63,7 +63,6 @@ public class PascalsTriangle {
 				// not easy to pick up, the reason why to add row.get(j) + row.get(j + 1) rather
 				// than row.get(j -1 ) + row.get(j ) is because we have a row.add(0,1) in the
 				// beginning
-
 				row.set(j, row.get(j) + row.get(j + 1));
 			}
 			answer.add(new ArrayList<Integer>(row));
