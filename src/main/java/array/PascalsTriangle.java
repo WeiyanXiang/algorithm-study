@@ -33,18 +33,15 @@ public class PascalsTriangle {
     //@formatter:on
 	public static List<List<Integer>> generate(int n) {
 		if (n == 0)
-			return null;
+			return new ArrayList<>();
 		List<List<Integer>> answer = new ArrayList<>();
 		for (int i = 1; i <= n; i++) {
 			if (i == 1) {
 				answer.add(Arrays.asList(1));
-			} else if (i == 2) {
-				answer.add(Arrays.asList(1, 1));
 			} else {
 				List<Integer> row = new ArrayList<>();
 				row.add(1);
 				int currentIndex = i - 2;
-				System.out.println("current index is " + currentIndex);
 				List<Integer> previousRow = answer.get(currentIndex);
 				for (int j = 0; j < previousRow.size() - 1; j++) {
 					int subSum = previousRow.get(j) + previousRow.get(j + 1);
@@ -55,7 +52,6 @@ public class PascalsTriangle {
 			}
 		}
 		return answer;
-
 	}
 
 	public static void main(String[] args) {
