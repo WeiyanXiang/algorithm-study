@@ -4,6 +4,7 @@
 package array;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -31,11 +32,26 @@ public class PascalsTriangle {
      */
     //@formatter:on
 	public static List<List<Integer>> generate(int n) {
+		if (n == 0)
+			return null;
 		List<List<Integer>> answer = new ArrayList<>();
-		for (int i = 0; i < n; i++) {
-
+		for (int i = 1; i <= n; i++) {
+			if (i == 1) {
+				answer.add(Arrays.asList(1));
+			} else {
+				if (i == 2) {
+					answer.add(Arrays.asList(1, 1));
+				} else {
+					List<Integer> row = new ArrayList<>();
+					row.add(1);
+					for (int j = 0; j < answer.get(i - 1).size() - 1; j++) {
+						int subSum = answer.get(i - 1).get(j) + answer.get(i - 1).get(j);
+						row.add(subSum);
+					}
+				}
+			}
 		}
-		return null;
+		return answer;
 	}
 
 	public static void main(String[] args) {
