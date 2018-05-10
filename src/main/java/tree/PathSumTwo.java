@@ -38,13 +38,6 @@ public class PathSumTwo {
 		return answer;
 	}
 
-	/**
-	 * 
-	 * @param node
-	 * @param sum
-	 * @param answer
-	 * @param path
-	 */
 	public static void generatePathSum(TreeNode node, int sum, List<List<Integer>> answer, List<Integer> path) {
 		if (node == null) {
 			return;
