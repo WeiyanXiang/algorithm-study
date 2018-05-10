@@ -39,20 +39,6 @@ public class PathSumTwo {
 	}
 
 	public static void generatePathSum(TreeNode node, int sum, List<List<Integer>> answer, List<Integer> path) {
-		if (node == null) {
-			return;
-		}
-		if (node.left != null || node.right != null) {
-
-		}
-		if (node.val == sum && node.left == null && node.right == null) {
-			path.add(node.val);
-			answer.add(path);
-			return;
-		} else if (node.left != null || node.right != null) {
-		} else {
-			// return false;
-		}
 	}
 
 	public static void main(String[] args) {
