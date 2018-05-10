@@ -11,14 +11,27 @@ import java.util.List;
  * @date 3 Apr 2018
  */
 public class PathSumTwo {
-
-	/**
-	 * return a list of path which can sum up to the given input called sum
-	 * 
-	 * @param root
-	 * @param sum
-	 * @return
+	//@formatter:off
+	/*
+	 * Given a binary tree and a sum, find all root-to-leaf paths where each path's sum equals the given sum.
+		Note: A leaf is a node with no children.
+		Example:
+		Given the below binary tree and sum = 22,
+		
+		      5
+		     / \
+		    4   8
+		   /   / \
+		  11  13  4
+		 /  \    / \
+		7    2  5   1
+		Return:
+		[
+		   [5,4,11,2],
+		   [5,8,4,5]
+		]
 	 */
+	//@formatter:on
 	public static List<List<Integer>> pathSum(TreeNode root, int sum) {
 		List<List<Integer>> answer = new ArrayList<>();
 		generatePathSum(root, sum, answer, new ArrayList<>());
