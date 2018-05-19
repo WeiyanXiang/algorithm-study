@@ -30,19 +30,15 @@ public class PascalsTriangleTwo {
 	 */
 	//@formatter:on  
 	public static List<Integer> getRow(int n) {
-		List<List<Integer>> answer = new ArrayList<>();
 		List<Integer> row = new ArrayList<>();
-		for (int i = 0; i < n; i++) {
+		for (int i = 0; i <= n; i++) {
 			row.add(0, 1);
 			for (int j = 1; j < row.size() - 1; j++) {
-				// not easy to pick up, the reason why to add row.get(j) + row.get(j + 1) rather
-				// than row.get(j -1 ) + row.get(j ) is because we have a row.add(0,1) in the
-				// beginning
 				row.set(j, row.get(j) + row.get(j + 1));
 			}
-			answer.add(new ArrayList<Integer>(row));
+			row = new ArrayList<Integer>(row);
 		}
-		return answer.get(answer.size() - 1);
+		return row;
 	}
 
 	public static void main(String[] args) {
