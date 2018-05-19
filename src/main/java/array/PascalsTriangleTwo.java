@@ -29,6 +29,7 @@ public class PascalsTriangleTwo {
 	 */
 	//@formatter:on  
 	public List<Integer> getRow(int rowIndex) {
+
 		return null;
 	}
 
