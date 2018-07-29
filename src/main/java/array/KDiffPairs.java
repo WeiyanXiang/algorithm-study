@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package array;
 
@@ -19,7 +19,7 @@ public class KDiffPairs {
     public static int findPairs(int[] nums, int k) {
         Map<Integer, Integer> map = new HashMap<>();
         int count = 0;
-        /*
+        /**
          * we have to use first loop to store frequency for situation of
          * filtering duplicate elements
          */
@@ -33,7 +33,7 @@ public class KDiffPairs {
                     count++;
                 }
             } else {
-                /*
+                /**
                  * entry.getKey() + k or entry.getKey() - k
                  */
                 if (map.containsKey(entry.getKey() + k)) {
@@ -49,13 +49,13 @@ public class KDiffPairs {
      */
 
     public static void main(String[] args) {
-        int[] input1 = { 3, 1, 4, 1, 5 };
+        int[] input1 = {3, 1, 4, 1, 5};
         int k1 = 2;
-        int[] input2 = { 1, 2, 3, 4, 5 };
+        int[] input2 = {1, 2, 3, 4, 5};
         int k2 = 1;
-        int[] input3 = { 1, 3, 1, 5, 4 };
+        int[] input3 = {1, 3, 1, 5, 4};
         int k3 = 0;
-        int[] input4 = { 1, 2, 3, 4, 5 };
+        int[] input4 = {1, 2, 3, 4, 5};
         int k4 = 3;
 
         System.out.println("2 == " + findPairs(input1, k1));
