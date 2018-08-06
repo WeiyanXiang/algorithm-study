@@ -36,9 +36,9 @@ public class GenericMethodDemo {
      * Generic Methods and multiple Bounded Type Parameters
      * 
      */
-    public static <T extends List<?> & Map<?, ?>> void inspectMulti(T input) {
-        System.out.println("input class type is: " + input.getClass().getName());
-    }
+//    public static <T extends List<?> & Map<?, ?>> void inspectMulti(T input) {
+//        System.out.println("input class type is: " + input.getClass().getName());
+//    }
 
     public static void main(String[] args) {
         GenericClassDemo<String, String, String> obj1 = new GenericClassDemo<>("", "", "");
