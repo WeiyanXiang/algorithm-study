@@ -19,7 +19,14 @@ package knowledge.lambda.functional;
  * C) Conceptually, a functional interface has exactly one abstract method. Since default methods have an
  * implementation, they are not abstract. Since default methods are not abstract you’re free to add default methods to
  * your functional interface as many as you like. Below is valid functional interface:
+ * <p>
+ * D) If an interface declares an abstract method overriding one of the public methods of java.lang.Object, that also
+ * does not count toward the interface’s abstract method count since any implementation of the interface will have an
+ * implementation from java.lang.Object or elsewhere. e.g. Comparator is a functional interface even though it declared
+ * two abstract methods. Why? Because one of these abstract methods  “equals()” which has signature equal to public
+ * method in Object class.
  */
+
 @FunctionalInterface
 public interface FunctionalInterfaceDemo {
     void hello();
@@ -31,4 +38,11 @@ public interface FunctionalInterfaceDemo {
     default void doSomeMoreWork2() {
         //Method body
     }
+
+    @Override
+    boolean equals(Object obj);        //Overridden from Object class
+
+
+    @Override
+    String toString();        //Overridden from Object class
 }
