@@ -6,11 +6,11 @@ import java.util.function.Predicate;
  * @author Weiyan Xiang on 2018/8/6
  */
 public class Employee {
-    private Integer id;
-    private Integer age;
-    private String gender;
-    private String firstName;
-    private String lastName;
+    public Integer id;
+    public Integer age;
+    public String gender;
+    public String firstName;
+    public String lastName;
 
     public Employee(Integer id, Integer age, String gender, String fName, String lName) {
         this.id = id;
@@ -20,13 +20,14 @@ public class Employee {
         this.lastName = lName;
     }
 
-    protected int getAge() {
+    public int getAge() {
         return this.age;
     }
 
     public String getGender() {
         return this.gender;
     }
+
 
     //Please generate Getter and Setters
     @Override
