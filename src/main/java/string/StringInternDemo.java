@@ -1,7 +1,7 @@
 /**
  * 
  */
-package knowledge;
+package string;
 
 /**
  * @author weiyan.xiang

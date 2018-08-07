@@ -1,7 +1,7 @@
 /**
  * 
  */
-package knowledge;
+package knowledge.lambda.stream;
 
 import java.util.ArrayList;
 import java.util.Arrays;

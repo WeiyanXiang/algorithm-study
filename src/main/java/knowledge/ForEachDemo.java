@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package knowledge;
 
@@ -14,7 +14,7 @@ import java.util.List;
 public class ForEachDemo {
 
     /*
-     * • If we are not doing too much processing, the major timing is in
+     *  If we are not doing too much processing, the major timing is in
      * accessing element, then the stream is not fast as compared to foreach.
      * For this reason, the benchmarks illustrate the cost of element access
      * mainly.
