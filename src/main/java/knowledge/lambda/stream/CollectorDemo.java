@@ -1,7 +1,9 @@
 package knowledge.lambda.stream;
 
-import java.util.Arrays;
-import java.util.List;
+import knowledge.lambda.predicate.Employee;
+
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @author Weiyan Xiang on 2018/8/7
@@ -38,5 +40,26 @@ public class CollectorDemo {
                 (response1, response2) -> response1.append(",").append(response2.toString()))
                 .toString();
         System.out.println("Result: " + result);
+
+        Employee e1 = new Employee(1, 23, "M", "Rick", "Beethovan");
+        Employee e2 = new Employee(2, 13, "F", "Martina", "Hengis");
+        Employee e3 = new Employee(3, 43, "M", "Ricky", "Martin");
+        Employee e4 = new Employee(4, 26, "M", "Jon", "Lowman");
+        Employee e5 = new Employee(5, 19, "F", "Cristine", "Maria");
+        Employee e6 = new Employee(6, 15, "M", "David", "Feezor");
+        Employee e7 = new Employee(7, 68, "F", "Melissa", "Roy");
+        Employee e8 = new Employee(8, 79, "M", "Alex", "Gussin");
+        Employee e9 = new Employee(9, 15, "F", "Neetu", "Singh");
+        Employee e10 = new Employee(10, 45, "M", "Naveen", "Jain");
+
+        /**
+         * https://stackoverflow.com/questions/45231351/java-stream-collect-map-which-contains-list
+         */
+        List<Employee> employees = new ArrayList<>();
+        employees.addAll(Arrays.asList(new Employee[]{e1, e2, e3, e4, e5, e6, e7, e8, e9, e10}));
+        Map<Integer, Integer> employeeMap = employees.stream().collect(Collectors.toMap(e -> e.id, e -> e.age));
+        employeeMap.entrySet().stream().forEach(System.out::println);
+        Map<String, List<Employee>> groupedMap = employees.stream().collect(Collectors.groupingBy(Employee::getGender));
+        groupedMap.entrySet().stream().forEach(System.out::println);
     }
 }
