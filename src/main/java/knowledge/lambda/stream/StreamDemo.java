@@ -1,12 +1,14 @@
 /**
- * 
+ *
  */
 package knowledge.lambda.stream;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * @author weiyan.xiang
@@ -27,6 +29,14 @@ public class StreamDemo {
                 Arrays.asList("apple", "", "cow", "blue", "deer", "yellow", "english", "hello"));
         aList.stream().filter(s -> s.length() > 3).map(String::toUpperCase).collect(Collectors.toList())
                 .forEach(System.out::println);
+
+        System.out.println("--------------------------------------");
+
+        List<List<String>> listOfList = new ArrayList<>();
+        listOfList.addAll(Arrays.asList(Arrays.asList("apple"), Arrays.asList("cow"), Arrays.asList("blue"), Arrays.asList("deer"), Arrays.asList("yellow"), Arrays.asList("hello")));
+        listOfList.stream().map(Collection::stream).collect(Collectors.toList()).forEach(System.out::println);
+        System.out.println("/////////////////////////////////////");
+        listOfList.stream().flatMap(Collection::stream).collect(Collectors.toList()).forEach(System.out::println);
     }
 
     public static void compareWithParallelStreams() {
