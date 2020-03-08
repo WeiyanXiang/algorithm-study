@@ -2,6 +2,8 @@ package string;
 
 /**
  * @author Weiyan Xiang on 2020/3/5
+ *
+ * https://leetcode.com/problems/string-compression/
  */
 public class StringCompression {
 
