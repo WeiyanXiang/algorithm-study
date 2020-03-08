@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package array;
 
@@ -8,6 +8,8 @@ import java.util.Arrays;
 /**
  * @author weiyan.xiang
  * @date 19 Feb 2018
+ * <p>
+ * https://leetcode.com/problems/remove-element/
  */
 public class RemoveElement {
 
@@ -18,9 +20,7 @@ public class RemoveElement {
                 j--;
             }
             if (nums[i] == val && j >= 0 && i < j) {
-                int temp = nums[i];
                 nums[i] = nums[j];
-                nums[j] = temp;
                 j--;
             }
         }
@@ -28,9 +28,9 @@ public class RemoveElement {
     }
 
     public static void main(String[] args) {
-        int[] input = new int[] { 3, 3, 4, 3, 5, 6, 3 };
-        System.out.println("4 == " + removeElement(input, 3));
-        Arrays.stream(input).forEach(System.out::println);
+        int[] input = {0, 1, 2, 2, 3, 0, 4, 2};
+        System.out.println("5 == " + removeElement(input, 2));
+        Arrays.stream(input).forEach(e -> System.out.print(e + ", "));
     }
 
 }
