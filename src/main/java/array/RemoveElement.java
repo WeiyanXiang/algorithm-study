@@ -27,6 +27,22 @@ public class RemoveElement {
         return j + 1;
     }
 
+    /**
+     * better 
+     * @param nums
+     * @param val
+     * @return
+     */
+    public static int doRemoveElement(int[] nums, int val) {
+        int w = 0;
+        for(int i=0;i<nums.length;i++){
+            if(nums[i] != val) {
+                nums[w++] = nums[i];
+            }
+        }
+        return w;
+    }
+
     public static void main(String[] args) {
         int[] input = {0, 1, 2, 2, 3, 0, 4, 2};
         System.out.println("5 == " + removeElement(input, 2));
