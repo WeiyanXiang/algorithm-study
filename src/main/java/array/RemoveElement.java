@@ -28,7 +28,7 @@ public class RemoveElement {
     }
 
     /**
-     * better 
+     * better
      * @param nums
      * @param val
      * @return

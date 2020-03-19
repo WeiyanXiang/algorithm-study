@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package dp;
 
@@ -22,9 +22,9 @@ public class StairsCountThree {
 
     /*
      * use an array to cache already calculated countings
-     * 
+     *
      * Space: O(n) Time: O(n)
-     * 
+     *
      */
     private static int fibCacheCount(int n) {
         if (n == 0)
@@ -42,8 +42,8 @@ public class StairsCountThree {
 
     /*
      * use three parameters to store already calculated countings Space:
-     * 
-     * O(1) Time: O(n)
+     *
+     * Space: O(1) Time: O(n)
      */
     private static int fibParamCount(int n) {
         if (n == 0)
