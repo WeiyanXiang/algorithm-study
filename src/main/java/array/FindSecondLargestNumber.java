@@ -3,7 +3,7 @@ package array;
 /**
  * @author Weiyan Xiang on 2020/3/20
  */
-public class SecondLargestNumber {
+public class FindSecondLargestNumber {
 
     private static int solution(int[] array) {
         if (array == null || array.length == 0) throw new RuntimeException("array cannot be null/empty");
