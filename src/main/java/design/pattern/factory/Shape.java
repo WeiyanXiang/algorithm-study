@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package design.pattern.factory;
 
@@ -9,4 +9,6 @@ package design.pattern.factory;
  */
 public interface Shape {
     void draw();
+
+    ShapeType type();
 }

@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package design.pattern.factory;
 
@@ -9,13 +9,14 @@ package design.pattern.factory;
  */
 public class ShapeFactory {
 
-    public Shape getShape(String shape) {
-        if (("cycle").equalsIgnoreCase(shape)) {
-            return new Cycle();
-        } else if (("square").equalsIgnoreCase(shape)) {
-            return new Square();
+    public Shape get(ShapeType shape) {
+        switch (shape) {
+            case CYCLE:
+                return new Cycle();
+            case SQUARE:
+            default:
+                return new Square();
         }
-        return null;
     }
 
 }
