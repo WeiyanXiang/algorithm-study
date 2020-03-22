@@ -1,7 +1,10 @@
 /**
- * 
+ *
  */
 package design.pattern.factory;
+
+import static design.pattern.factory.ShapeType.CYCLE;
+import static design.pattern.factory.ShapeType.SQUARE;
 
 /**
  * @author weiyan.xiang
@@ -10,7 +13,7 @@ package design.pattern.factory;
 public class ShapeDemo {
     public static void main(String[] args) {
         ShapeFactory factory = new ShapeFactory();
-        factory.getShape("cycle").draw();
-        factory.getShape("SQUARE").draw();
+        factory.get(CYCLE).draw();
+        factory.get(SQUARE).draw();
     }
 }
