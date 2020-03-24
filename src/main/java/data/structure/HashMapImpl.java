@@ -1,13 +1,9 @@
 package data.structure;
 /**
- * 
+ *
  */
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.Map.Entry;
 
 /**
@@ -19,15 +15,12 @@ public class HashMapImpl {
     private int capacity = 16;
 
     /**
-     * each bucket is a linkedlist, the process of get: compute index, go to
-     * corresponding bucket to fetch value, use .equals() to distinguish values
-     * in each bucket
-     * 
-     * the process of put: compute index, go to corresponding bucket, check via
-     * hashCode() and equals() method that if both the keys are same. If keys
-     * are same, replace the value with current value. Otherwise connect this
-     * node object to the previous node object via linked list and both are
-     * stored
+     * each bucket is a linkedlist, the process of get: compute index, go to corresponding bucket to fetch value, use
+     * .equals() to distinguish values in each bucket
+     * <p>
+     * the process of put: compute index, go to corresponding bucket, check via hashCode() and equals() method that if
+     * both the keys are same. If keys are same, replace the value with current value. Otherwise connect this node
+     * object to the previous node object via linked list and both are stored
      */
     public HashMapImpl() {
         this.buckets = new ArrayList<>(capacity);
@@ -46,7 +39,7 @@ public class HashMapImpl {
     }
 
     public Object put(int key, Object value) {
-        LinkedList<MyEntry> bucket = this.buckets.get(hashCode(key) & (capacity - 1));
+        LinkedList<MyEntry> bucket = this.buckets.get(hashCode(key) % (capacity - 1));
         for (int i = 0; i < bucket.size(); i++) {
             MyEntry entryInCurrentBucket = bucket.get(i);
             if (entryInCurrentBucket.key == key) {
@@ -61,7 +54,7 @@ public class HashMapImpl {
     }
 
     public Object get(int key) {
-        LinkedList<MyEntry> bucket = this.buckets.get(hashCode(key) & (capacity - 1));
+        LinkedList<MyEntry> bucket = this.buckets.get(hashCode(key) % (capacity - 1));
         for (MyEntry entry : bucket) {
             // internally it calls .equals method
             if (entry.key == key) {
@@ -71,7 +64,7 @@ public class HashMapImpl {
         return null;
     }
 
-    public class MyEntry {
+    class MyEntry {
         private final int key;
         private Object value;
 
@@ -112,5 +105,6 @@ public class HashMapImpl {
         aMap.put(1, "value4");
         aMap.put(1, "value5");
         aMap.put(17, "value17");
+
     }
 }
