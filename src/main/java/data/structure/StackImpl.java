@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package data.structure;
 
