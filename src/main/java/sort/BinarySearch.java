@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package sort;
 
@@ -12,17 +12,17 @@ public class BinarySearch {
     public static void main(String[] args) {
 
         BinarySearch mbs = new BinarySearch();
-        int[] arr = { 2, 4, 6, 8, 10, 12, 14, 16 };
+        int[] arr = {2, 4, 6, 8, 10, 12, 14, 16};
         System.out.println("Key 14's position: " + mbs.binarySearch(arr, 14));
         System.out.println("Key 14's position (recur): " + mbs.binarySearchRecur(arr, 14, 0, 7));
-        int[] arr1 = { 6, 34, 78, 123, 432, 900 };
+        int[] arr1 = {6, 34, 78, 123, 432, 900};
         System.out.println("Key 432's position: " + mbs.binarySearch(arr1, 1));
         System.out.println("Key 432's position (recur): " + mbs.binarySearchRecur(arr1, 1, 0, 7));
     }
 
     /**
      * recursive
-     * 
+     *
      * @param arr
      * @param key
      * @param j
@@ -45,7 +45,7 @@ public class BinarySearch {
 
     /**
      * iterative
-     * 
+     *
      * @param arr
      * @param key
      * @return
