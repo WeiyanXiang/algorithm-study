@@ -60,8 +60,8 @@ public class PascalsTriangle {
 		for (int i = 0; i < n; i++) {
 			row.add(0, 1);
 			for (int j = 1; j < row.size() - 1; j++) {
-				// not easy to pick up, the reason why to add row.get(j) + row.get(j + 1) rather
-				// than row.get(j -1 ) + row.get(j ) is because we have a row.add(0,1) in the
+				// not easy to pick up, the reason why to enqueue row.get(j) + row.get(j + 1) rather
+				// than row.get(j -1 ) + row.get(j ) is because we have a row.enqueue(0,1) in the
 				// beginning
 				row.set(j, row.get(j) + row.get(j + 1));
 			}
