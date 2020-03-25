@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package concurrent;
 
@@ -12,7 +12,7 @@ import java.util.concurrent.Callable;
 public class CallalableImpl implements Callable<String> {
 
     @Override
-    public String call() throws Exception {
+    public String call() {
         System.out.println("CallalableImpl is invoked");
         return "CallalableImpl is invoked";
     }
