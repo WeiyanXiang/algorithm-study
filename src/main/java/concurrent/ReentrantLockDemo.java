@@ -59,7 +59,7 @@ public class ReentrantLockDemo {
     private static Thread getThreadWithFairLock(String threadInfo, int waitingLength) {
         return new Thread(() -> {
             try {
-                if (REENTRANT_LOCK.tryLock(waitingLength, TimeUnit.SECONDS)) {
+                if (REENTRANT_LOCK.tryLock() || REENTRANT_LOCK.tryLock(waitingLength, TimeUnit.SECONDS)) {
                     Thread.sleep(100);
                     System.out.println("Entering FAIR: " + Thread.currentThread().getName() + ", Queue length: "
                             + REENTRANT_LOCK.getQueueLength() + ", Hold count: " + REENTRANT_LOCK.getHoldCount());
