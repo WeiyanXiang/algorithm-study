@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package concurrent;
 
@@ -20,17 +20,14 @@ public class ThreadLocalDemo {
      * SimpleDateForamt. Since SimpleDateFormat is not thread safe, having a
      * global formatter may not work but having per Thread formatter will
      * certainly work.
-     * 
-     * 
+     *
+     *
      */
     public static class SampleThread implements Runnable {
-        private ThreadLocal<SimpleDateFormat> threadLocal = new ThreadLocal<SimpleDateFormat>() {
-            @Override
-            protected SimpleDateFormat initialValue() {
-                System.out.println("Thread local created.");
-                return new SimpleDateFormat("yyyyMMdd HHmm");
-            }
-        };
+        private ThreadLocal<SimpleDateFormat> threadLocal = ThreadLocal.withInitial(() -> {
+            System.out.println("Thread local created.");
+            return new SimpleDateFormat("yyyyMMdd HHmm");
+        });
 
         @Override
         public void run() {
