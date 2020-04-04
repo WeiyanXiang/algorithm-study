@@ -1,13 +1,9 @@
 /**
- * 
+ *
  */
 package data.structure;
 
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 
 /**
  * @author weiyan.xiang
@@ -18,37 +14,33 @@ public class BlockingQueueDemo {
     private static final BlockingQueue<Integer> queue = new ArrayBlockingQueue<>(20);
 
     /**
-     * BQ is based on queue and sync both enqueue and dequeue method to achieve
-     * thread-safe, the internal queue should also be volatile to ensure data
-     * visibility
+     * BQ is based on queue and sync both enqueue and dequeue method to achieve thread-safe, the internal queue should
+     * also be volatile to ensure data visibility
      */
     public static void blockingQueueDemo() {
         ExecutorService executor = Executors.newFixedThreadPool(2);
         try {
-            Runnable runnable = new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        Thread.sleep(1000);
-                        queue.add(1);
-                        queue.add(1);
-                        queue.add(1);
-                        queue.add(1);
-                        queue.add(1);
-                        queue.add(1);
-                        queue.add(1);
-                        queue.add(1);
-                        queue.add(1);
-                        queue.add(1);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-
+            Runnable runnable = () -> {
+                try {
+                    Thread.sleep(1000);
+                    queue.add(1);
+                    queue.add(1);
+                    queue.add(1);
+                    queue.add(1);
+                    queue.add(1);
+                    queue.add(1);
+                    queue.add(1);
+                    queue.add(1);
+                    queue.add(1);
+                    queue.add(1);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
+
             };
             executor.submit(runnable);
 
-            System.out.println("Below is to poll from blocking queue");
+            System.out.println("Below is to dequeue from blocking queue");
             System.out.println(queue.poll(200, TimeUnit.MILLISECONDS));
             System.out.println(queue.poll(200, TimeUnit.MILLISECONDS));
             System.out.println(queue.poll(200, TimeUnit.MILLISECONDS));
@@ -56,7 +48,7 @@ public class BlockingQueueDemo {
             System.out.println(queue.poll(200, TimeUnit.MILLISECONDS));
 
             executor.submit(runnable);
-            System.out.println("Below is to poll from blocking queue");
+            System.out.println("Below is to dequeue from blocking queue");
             System.out.println(queue.poll(200, TimeUnit.MILLISECONDS));
             System.out.println(queue.poll(200, TimeUnit.MILLISECONDS));
             System.out.println(queue.poll(200, TimeUnit.MILLISECONDS));

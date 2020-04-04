@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package data.structure;
 
@@ -16,7 +16,7 @@ public class LinkedListImpl {
 
     /**
      * have the node def first
-     * 
+     *
      * @author weiyan.xiang
      * @date 1 Feb 2018
      */
@@ -84,7 +84,7 @@ public class LinkedListImpl {
 
     /**
      * return element previously in the position
-     * 
+     *
      * @param index
      * @return
      */

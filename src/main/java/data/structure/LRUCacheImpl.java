@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package data.structure;
 
@@ -25,6 +25,8 @@ public class LRUCacheImpl {
         public Node next;
 
         /**
+         * double linked list
+         *
          * @param key
          * @param value
          */
@@ -72,7 +74,7 @@ public class LRUCacheImpl {
     public Integer put(int key, int value) {
         if (count < size) {
             /*
-             * since not reach size, map just put, cache just add to first each
+             * since not reach size, map just put, cache just enqueue to first each
              * time
              */
             Node toAdd = new Node(key, value);
@@ -94,7 +96,7 @@ public class LRUCacheImpl {
                 return oldValueToReturn;
             } else {
                 /*
-                 * reaching size and key not in cache, add it to head and remove
+                 * reaching size and key not in cache, enqueue it to head and remove
                  * the last element in cache
                  */
                 map.remove(tail.key);
