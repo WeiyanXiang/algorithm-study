@@ -25,3 +25,6 @@ reason is the comparison of 2 groups give info about the third group
 please refer to attached screenshot
 ![alt text](defective_ball_analysis.PNG "Analysis")
 
+effectively, at second step, if -, 1,2,5 and 3,6,9 (9 is the normal ball confirmed, we cannot just swap to be 1,2,5 and 3,6,7)
+ this will create symmetry and additioanl steps needed to be able to verify
+
