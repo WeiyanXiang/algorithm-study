@@ -15,7 +15,9 @@ start from 1:
 so it looks 5 and 10 will resulting trailing 0s, as there are 10 times 5 and 11 times 10 (100 is 2 zeros)
 so there are 21 zeros.
 
-WRONG
+verdict: not 100% correct!
+11 zeors + 10 times 5 + additional 5s (25,50,75,100)
+
 
 Solution:
 each pair of 2 and 5 will give a trailing zero.
