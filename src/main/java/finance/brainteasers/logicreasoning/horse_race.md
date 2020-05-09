@@ -33,4 +33,6 @@ the top 3 will be 6  and top 2 of above
 Total 5+1+1 = 7 races needed
 
 Solution:
+what I made wrong is that last round 
+race [1] 2 3 6 7 11, the top 2 fatest
 
