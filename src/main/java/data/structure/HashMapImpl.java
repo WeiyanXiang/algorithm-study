@@ -22,6 +22,17 @@ public class HashMapImpl {
      * both the keys are same. If keys are same, replace the value with current value. Otherwise connect this node
      * object to the previous node object via linked list and both are stored
      */
+    /**
+     * for my info, example hashCode is using a price to multiply the class field
+     @Override
+     public int hashCode() {
+     int hash = 7;
+     hash = 31 * hash + (int) id;
+     hash = 31 * hash + (name == null ? 0 : name.hashCode());
+     hash = 31 * hash + (email == null ? 0 : email.hashCode());
+     return hash;
+     }
+     */
     public HashMapImpl() {
         this.buckets = new ArrayList<>(capacity);
         for (int i = 0; i < capacity; i++) {
