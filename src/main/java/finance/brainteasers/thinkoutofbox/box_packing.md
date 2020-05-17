@@ -27,6 +27,7 @@ Another way to ask: can you cover all 62 quares using bricks without any bricks 
 
 ![alt text](box_packing_1.PNG "Analysis")
 ![alt text](box_packing_2.PNG "Analysis")
+![alt text](box_packing_3.PNG "Analysis")
 
 
 
