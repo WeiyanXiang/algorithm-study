@@ -18,6 +18,7 @@ Actually,
 Still no way out to me.
 
 
+
 Solution:
 this is a prob exteded from chess board prob. 
 i.e. 8 * 8 board with 2 small squares at the opposite diagonal corners (duixiao xian) removed.
@@ -28,6 +29,10 @@ Another way to ask: can you cover all 62 quares using bricks without any bricks 
 ![alt text](box_packing_1.PNG "Analysis")
 ![alt text](box_packing_2.PNG "Analysis")
 ![alt text](box_packing_3.PNG "Analysis")
+
+
+review:
+think in the solution's pattern, i.e. black/white cell -> 3D version.
 
 
 
