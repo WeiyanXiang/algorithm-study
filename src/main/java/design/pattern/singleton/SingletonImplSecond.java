@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package design.pattern.singleton;
 
@@ -24,7 +24,7 @@ public class SingletonImplSecond {
          * approach to use. But in most of the scenarios, Singleton classes are
          * created for resources such as File System, Database connections etc
          * and we should avoid the instantiation until unless client calls the
-         * getInstance method. Also this method doesn’t provide any options for
+         * getInstance method. Also this method doesnï¿½t provide any options for
          * exception handling.
          */
         SingletonImplSecond instance = SingletonImplSecond.INSTANCE;

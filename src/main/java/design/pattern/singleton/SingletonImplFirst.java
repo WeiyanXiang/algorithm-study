@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package design.pattern.singleton;
 
@@ -13,7 +13,7 @@ public class SingletonImplFirst {
 
     /**
      * lazy initialization
-     * 
+     *
      * @return
      */
     public static SingletonImplFirst getInstanceLazy() {
@@ -25,7 +25,7 @@ public class SingletonImplFirst {
 
     /**
      * thread safe
-     * 
+     *
      * @return
      */
     public static synchronized SingletonImplFirst getInstanceThreadSafe() {
@@ -37,7 +37,7 @@ public class SingletonImplFirst {
 
     /**
      * A performance enhancement but not thread-safe
-     * 
+     *
      * @return
      */
     public static SingletonImplFirst getInstanceEnhancedThreadSafe() {
