@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package data.structure;
 
@@ -9,6 +9,14 @@ package data.structure;
  */
 public class TreeTraverse {
 
+
+    /*
+     *        1
+     *       / \
+     *      2    3
+     *     / \
+     *    4   5
+     */
     private class Node {
         int key;
         Node left, right;
