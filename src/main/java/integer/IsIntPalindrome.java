@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package integer;
 
@@ -11,7 +11,7 @@ public class IsIntPalindrome {
 
     /**
      * using a additional string
-     * 
+     *
      * @param x
      * @return
      */
@@ -28,9 +28,8 @@ public class IsIntPalindrome {
     }
 
     /**
-     * optimal method: compare half of the digits in x, so don’t need to deal
-     * with overflow.
-     * 
+     * optimal method: compare half of the digits in x, so donï¿½t need to deal with overflow.
+     *
      * @param x
      * @return
      */

@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package string;
 
@@ -11,19 +11,30 @@ public class ReverseString {
 
     public static String reverse(String input) {
         int i = 0, j = input.length() - 1;
-        char[] inputArray = input.toCharArray();
+        char[] chars = input.toCharArray();
         char temp;
         while (i < j) {
-            temp = inputArray[i];
-            inputArray[i] = inputArray[j];
-            inputArray[j] = temp;
-            i++;
-            j--;
+            temp = chars[i];
+            chars[i++] = chars[j];
+            chars[j--] = temp;
         }
-        return String.valueOf(inputArray);
+        return String.valueOf(chars);
     }
 
+    public static String reverseForLoop(String input) {
+        char[] s = input.toCharArray();
+        for (int i = 0; i < s.length / 2; i++) {
+            char tmp = s[i];
+            int j = s.length - i - 1;
+            s[i] = s[j];
+            s[j] = tmp;
+        }
+        return String.valueOf(s);
+    }
+
+
     public static void main(String[] args) {
-        System.out.println("hello 123 <->" + reverse("hello 123"));
+        System.out.println("1 23 45 67 89 <- reverse ->" + reverse("1 23 45 67 89"));
+        System.out.println("1 23 45 67 89 <- reverse ->" + reverseForLoop("1 23 45 67 89"));
     }
 }
