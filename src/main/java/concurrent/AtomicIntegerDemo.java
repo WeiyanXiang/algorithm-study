@@ -33,6 +33,9 @@ public class AtomicIntegerDemo {
             return counter.get();
         }
 
+        /**
+         * below while true and compareAndSet is because wanting to keep counter running,
+         */
         public void increment() {
             while (true) {
                 int existingValue = getValue();
@@ -41,6 +44,13 @@ public class AtomicIntegerDemo {
                     return;
                 }
             }
+        }
+
+        /**
+         * thread-safe simply can do getAndIncrement
+         */
+        public void incrementSimple() {
+            counter.getAndIncrement();
         }
     }
 }
