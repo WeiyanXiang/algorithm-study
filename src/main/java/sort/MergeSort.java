@@ -1,15 +1,17 @@
 /**
- * 
+ *
  */
 package sort;
+
+import sort.utils.SortUtils;
 
 /**
  * @author weiyan.xiang
  * @date 17 Jan 2018
  */
 public class MergeSort {
-    private static int[] testObj = { 1, 4, 6, 2, 7, 12, 3, 8, 5 };
-    private int[] helper = new int[testObj.length];
+    private static int[] inputs = {1, 4, 6, 2, 7, 12, 3, 8, 5};
+    private int[] helper = new int[inputs.length];
 
     private void sort(int[] input, int start, int end) {
         if (start < end) {
@@ -43,9 +45,7 @@ public class MergeSort {
 
     public static void main(String[] args) {
         MergeSort mergeSort = new MergeSort();
-        mergeSort.sort(testObj, 0, testObj.length - 1);
-        for (int element : testObj) {
-            System.out.println(element);
-        }
+        mergeSort.sort(inputs, 0, inputs.length - 1);
+        SortUtils.printArray(inputs);
     }
 }

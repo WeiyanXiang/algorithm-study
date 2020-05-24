@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package concurrent;
 
@@ -34,6 +34,42 @@ public class SyncrhonizationDemo {
             Thread.sleep(2000);
             System.out.println("synchronized block, demo value is: " + demoValue);
             System.out.println("\n\n\n");
+        }
+    }
+
+    static class StateHolder {
+        private volatile int count;
+
+        public StateHolder(int count) {
+            this.count = count;
+        }
+
+        public void act() {
+            count++;
+        }
+    }
+
+    /**
+     * Synchronized Block
+     * <p>
+     * Note: if StateHolder.class in below example is null then Java synchronized block will throw a
+     * NullPointerException.
+     */
+    public void actOnClassLevel() {
+        StateHolder stateHolder = new StateHolder(1);
+        synchronized (StateHolder.class) {
+            stateHolder.act();
+        }
+    }
+
+    /**
+     * synchronized (this)  vs synchronized (StateHolder.class) This: "this" make instance level data thread safe. Class
+     * level: Class level locking should always be done to make static data thread safe
+     */
+    public void actOnThis() {
+        StateHolder stateHolder = new StateHolder(1);
+        synchronized (this) {
+            stateHolder.act();
         }
     }
 
