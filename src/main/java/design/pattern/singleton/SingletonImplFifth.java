@@ -5,8 +5,7 @@ package design.pattern.singleton;
 
 
 /**
- * Thread-Safe in the sense of static field with new instance, many thread can access resulting in multiple instance
- * created
+ * Thread-Safe in the sense of static field with new instance, many thread can access, single instance created
  */
 public class SingletonImplFifth {
 
