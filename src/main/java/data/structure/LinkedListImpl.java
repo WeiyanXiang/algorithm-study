@@ -21,14 +21,10 @@ public class LinkedListImpl {
      * @date 1 Feb 2018
      */
     public static class Node {
-        private int value;
-        private Node next;
+        public int value;
+        public Node next;
 
-        /**
-         * @param value
-         * @param prev
-         * @param next
-         */
+
         public Node(int value) {
             this.value = value;
         }
@@ -41,7 +37,7 @@ public class LinkedListImpl {
             this.value = value;
         }
 
-        public Node getNext() {
+        public Node next() {
             return next;
         }
 
@@ -180,12 +176,14 @@ public class LinkedListImpl {
 
     }
 
-    private static void printLinkedList(Node newNode) {
+    public static void printLinkedList(Node newNode) {
         System.out.println();
         Node element = newNode;
         while (element != null) {
-            System.out.println("Node value: " + element.value);
+            System.out.print(element.value + " -> ");
             element = element.next;
         }
+        System.out.print("NULL");
+        System.out.println();
     }
 }

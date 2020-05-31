@@ -1,7 +1,7 @@
 /**
  * 
  */
-package array;
+package linkedlist;
 
 /**
  * @author weiyan.xiang
