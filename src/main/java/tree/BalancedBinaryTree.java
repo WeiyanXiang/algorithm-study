@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package tree;
 
@@ -8,6 +8,21 @@ package tree;
  * @date 24 Mar 2018
  */
 public class BalancedBinaryTree {
+
+    public static boolean isBalancedTemplate(TreeNode root) {
+        return doIsBalanced(root).isB;
+    }
+
+    public static ReturnNode doIsBalanced(TreeNode root) {
+        // break
+        if (root == null) return new ReturnNode(true, 0);
+        // task
+        ReturnNode l = doIsBalanced(root.left);
+        ReturnNode r = doIsBalanced(root.right);
+        if (!l.isB || !r.isB) return new ReturnNode(false, 0);
+        if (Math.abs(l.d - r.d) > 1) return new ReturnNode(false, 0);
+        return new ReturnNode(true, Math.max(l.d, r.d) + 1);
+    }
 
     //@formatter:off
     /**
@@ -42,7 +57,6 @@ public class BalancedBinaryTree {
         Return false.
 
 
-     * @param args
      */
     //@formatter:on
     public static boolean isBalanced(TreeNode root) {
@@ -54,6 +68,16 @@ public class BalancedBinaryTree {
 
     private static int getDfsLength(TreeNode node) {
         return node == null ? 0 : 1 + Math.max(getDfsLength(node.left), getDfsLength(node.right));
+    }
+
+    private static class ReturnNode {
+        public boolean isB;
+        public int d;
+
+        public ReturnNode(boolean isB, int d) {
+            this.isB = isB;
+            this.d = d;
+        }
     }
 
     public static void main(String[] args) {
@@ -88,6 +112,7 @@ public class BalancedBinaryTree {
         node_2.left = node_3;
         TreeNode.printTreeInLevelOrder(node_1);
         System.out.println("\nfalse == " + isBalanced(node_1));
+        System.out.println("\nfalse == " + isBalancedTemplate(node_1));
 
     }
 }
