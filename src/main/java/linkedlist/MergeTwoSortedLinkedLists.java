@@ -7,7 +7,7 @@ package linkedlist;
  * @author weiyan.xiang
  * @date 4 Feb 2018
  */
-public class MergeTwoSortedLists {
+public class MergeTwoSortedLinkedLists {
 
     public ListNode mergeTwoListsRevised(ListNode l1, ListNode l2) {
         ListNode a = l1, b = l2;
@@ -61,7 +61,7 @@ public class MergeTwoSortedLists {
     }
 
     public static void main(String[] args) {
-        MergeTwoSortedLists testObject = new MergeTwoSortedLists();
+        MergeTwoSortedLinkedLists testObject = new MergeTwoSortedLinkedLists();
         /*
          * 1 -> 2 -> 4
          */

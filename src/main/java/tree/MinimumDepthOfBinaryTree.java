@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package tree;
 
@@ -10,46 +10,20 @@ package tree;
 public class MinimumDepthOfBinaryTree {
     /**
      * Given a binary tree, find its minimum depth.
-     * 
-     * The minimum depth is the number of nodes along the shortest path from the
-     * root node down to the nearest leaf node.
-     * 
+     * <p>
+     * The minimum depth is the number of nodes along the shortest path from the root node down to the nearest leaf
+     * node.
+     *
      * @param root
      * @return
      */
     public static int minDepthOptimal(TreeNode root) {
-        if (root == null)
-            return 0;
-        int left = minDepthOptimal(root.left);
-        int right = minDepthOptimal(root.right);
-        return left == 0 || right == 0 ? left + right + 1 : 1 + Math.min(left, right);
-    }
-
-    public static int minDepth(TreeNode root) {
-        if (root == null)
-            return 0;
-        if (root.left == null)
-            return 1 + getDfsMinLength(root.right);
-        if (root.right == null)
-            return 1 + getDfsMinLength(root.left);
-        return 1 + Math.min(getDfsMinLength(root.left), getDfsMinLength(root.right));
-    }
-
-    private static int getDfsMinLength(TreeNode node) {
-        if (node == null) {
-            return 0;
-        } else {
-            if (node.left == null && node.right == null) {
-                return 1 + getDfsMinLength(node.right);
-            } else {
-                if (node.left == null)
-                    return 1 + getDfsMinLength(node.right);
-                if (node.right == null)
-                    return 1 + getDfsMinLength(node.left);
-                else
-                    return 1 + Math.min(getDfsMinLength(node.left), getDfsMinLength(node.right));
-            }
-        }
+        if (root == null) return 0;
+        if (root.left == null && root.right == null) return 1;
+        int l = Integer.MAX_VALUE, r = Integer.MAX_VALUE;
+        if (root.left != null) l = minDepthOptimal(root.left);
+        if (root.right != null) r = minDepthOptimal(root.right);
+        return 1 + Math.min(l, r);
     }
 
     public static void main(String[] args) {
@@ -58,8 +32,8 @@ public class MinimumDepthOfBinaryTree {
                 1
                / \
               2   2
-             / \ / \
-            3  4 4  3
+             / \
+            3  4
         */
         //@formatter:on
         TreeNode root = new TreeNode(1);
@@ -67,16 +41,11 @@ public class MinimumDepthOfBinaryTree {
         TreeNode node3 = new TreeNode(2);
         TreeNode node4 = new TreeNode(3);
         TreeNode node5 = new TreeNode(4);
-        TreeNode node6 = new TreeNode(4);
-        TreeNode node7 = new TreeNode(3);
         root.left = node2;
         root.right = node3;
         node2.left = node4;
         node2.right = node5;
-        node3.left = node6;
-        node3.right = node7;
 
-        System.out.println(minDepth(root));
-        System.out.println(minDepthOptimal(root));
+        System.out.println("2 == " + minDepthOptimal(root));
     }
 }
