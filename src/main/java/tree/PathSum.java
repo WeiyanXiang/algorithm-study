@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package tree;
 
@@ -24,18 +24,30 @@ public class PathSum {
                  /  \      \
                 7    2      1
         return true, as there exist a root-to-leaf path 5->4->11->2 which sum is 22.
-     * @param node
+     * @param root
      * @param sum
      * @return
      */
     //@formatter:on
-    public static boolean hasPathSum(TreeNode node, int sum) {
+    public static boolean hasPathSum(TreeNode root, int sum) {
+        if (root == null) return false;
+        return doCheck(root, sum, 0);
+    }
+
+    private static boolean doCheck(TreeNode root, int sum, int cs) {
+        if (root == null) return false;
+        cs += root.val;
+        if (root.left == null && root.right == null && cs == sum) return true;
+        return doCheck(root.left, sum, cs) || doCheck(root.right, sum, cs);
+    }
+
+    public static boolean hasPathSumOptimised(TreeNode node, int sum) {
         if (node == null)
             return false;
         if (node.val == sum && node.left == null && node.right == null) {
             return true;
         } else if (node.left != null || node.right != null) {
-            return hasPathSum(node.left, sum - node.val) || hasPathSum(node.right, sum - node.val);
+            return hasPathSumOptimised(node.left, sum - node.val) || hasPathSumOptimised(node.right, sum - node.val);
         } else {
             return false;
         }
@@ -65,6 +77,7 @@ public class PathSum {
         node3.left = node6;
         node3.right = node7;
 
+        System.out.println("true == " + hasPathSumOptimised(root, 27));
         System.out.println("true == " + hasPathSum(root, 27));
     }
 
