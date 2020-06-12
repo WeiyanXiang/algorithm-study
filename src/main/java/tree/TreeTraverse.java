@@ -1,7 +1,7 @@
 /**
  *
  */
-package data.structure;
+package tree;
 
 /**
  * @author weiyan.xiang
