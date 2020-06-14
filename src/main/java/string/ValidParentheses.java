@@ -3,54 +3,23 @@
  */
 package string;
 
+import java.util.Stack;
+
 /**
  * @author weiyan.xiang
  * @date 4 Feb 2018
  */
 public class ValidParentheses {
 
-    static class Stack {
-        private char[] m;
-        private int top;
-
-        public Stack(int size) {
-            this.m = new char[size];
-            top = 0;
-        }
-
-        public char pop() {
-            return m[top--];
-        }
-
-        public char peek() {
-            return m[top];
-        }
-
-        public void push(char c) {
-            m[++top] = c;
-        }
-
-        public boolean isEmpty() {
-            return top == 0;
-        }
-
-    }
-
-
     public static boolean isValidShort(String s) {
-        Stack stack = new Stack(s.length() + 1);
+        Stack<Character> st = new Stack<>();
         for (char c : s.toCharArray()) {
-            if (c == '(') {
-                stack.push(')');
-            } else if (c == '[') {
-                stack.push(']');
-            } else if (c == '{') {
-                stack.push('}');
-            } else if (stack.isEmpty() || stack.pop() != c) {
-                return false;
-            }
+            if (c == '(') st.push(')');
+            else if (c == '{') st.push('}');
+            else if (c == '[') st.push(']');
+            else if (st.isEmpty() || st.pop() != c) return false;
         }
-        return stack.isEmpty();
+        return st.isEmpty();
     }
 
     /**
@@ -60,7 +29,7 @@ public class ValidParentheses {
      * @return
      */
     public static boolean isItValid(String s) {
-        Stack stack = new Stack(100);
+        Stack<Character> stack = new Stack<>();
         int i = 0;
         while (i < s.length()) {
             char c = s.charAt(i);
@@ -118,6 +87,5 @@ public class ValidParentheses {
         System.out.println("isValid(\"([]){[]}[[]]\") should be true => " + isValidShort("([]){[]}[[]]"));
         System.out.println("isValid(\"]]]][[[[\") should be false => " + isValidShort("]]]][[[["));
         System.out.println("isValid(\"[](){\") should be false => " + isValidShort("[](){"));
-        System.out.println("false == " + isValidShort("()"));
     }
 }
