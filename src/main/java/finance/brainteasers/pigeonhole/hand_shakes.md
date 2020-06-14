@@ -11,7 +11,7 @@ least 2 people present who shook hands with exactly the same number of people, i
 but i dont know the totle no of handshakes.
 So not sure how to approach this question
 
-Solution:
+Solution: https://www.youtube.com/watch?v=AXBLn1TQwR8 check this youtube, good explanation
 there are 26 people in party and each shakes hands with from 1 to 25 people.
 in other words, 26 pigeons with 25 holes, so at least two people must have shaken
 with exactly the same number of people.

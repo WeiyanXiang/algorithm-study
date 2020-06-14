@@ -9,6 +9,16 @@ package tree;
  */
 public class BalancedBinaryTree {
 
+    private static class ReturnNode {
+        public boolean isB;
+        public int d;
+
+        public ReturnNode(boolean isB, int d) {
+            this.isB = isB;
+            this.d = d;
+        }
+    }
+
     public static boolean isBalancedTemplate(TreeNode root) {
         return doIsBalanced(root).isB;
     }
@@ -68,16 +78,6 @@ public class BalancedBinaryTree {
 
     private static int getDfsLength(TreeNode node) {
         return node == null ? 0 : 1 + Math.max(getDfsLength(node.left), getDfsLength(node.right));
-    }
-
-    private static class ReturnNode {
-        public boolean isB;
-        public int d;
-
-        public ReturnNode(boolean isB, int d) {
-            this.isB = isB;
-            this.d = d;
-        }
     }
 
     public static void main(String[] args) {
