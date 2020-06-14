@@ -36,6 +36,23 @@ public class ValidParentheses {
 
     }
 
+
+    public static boolean isValidShort(String s) {
+        Stack stack = new Stack(s.length() + 1);
+        for (char c : s.toCharArray()) {
+            if (c == '(') {
+                stack.push(')');
+            } else if (c == '[') {
+                stack.push(']');
+            } else if (c == '{') {
+                stack.push('}');
+            } else if (stack.isEmpty() || stack.pop() != c) {
+                return false;
+            }
+        }
+        return stack.isEmpty();
+    }
+
     /**
      * use own Stack
      *
@@ -88,22 +105,6 @@ public class ValidParentheses {
         return stack.isEmpty() ? true : false;
     }
 
-    public static boolean isValidShort(String s) {
-        Stack stack = new Stack(s.length() + 1);
-        for (char c : s.toCharArray()) {
-            if (c == '(') {
-                stack.push(')');
-            } else if (c == '[') {
-                stack.push(']');
-            } else if (c == '{') {
-                stack.push('}');
-            } else if (!stack.isEmpty() && stack.pop() != c) {
-                return false;
-            }
-        }
-        return stack.isEmpty();
-    }
-
 
     public static void main(String[] args) {
         System.out.println("isValid(\"([]){[]}[[]]\") should be true => " + isValid("([]){[]}[[]]"));
@@ -117,5 +118,6 @@ public class ValidParentheses {
         System.out.println("isValid(\"([]){[]}[[]]\") should be true => " + isValidShort("([]){[]}[[]]"));
         System.out.println("isValid(\"]]]][[[[\") should be false => " + isValidShort("]]]][[[["));
         System.out.println("isValid(\"[](){\") should be false => " + isValidShort("[](){"));
+        System.out.println("false == " + isValidShort("()"));
     }
 }

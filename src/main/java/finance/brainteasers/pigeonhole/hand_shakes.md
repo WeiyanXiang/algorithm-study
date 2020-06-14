@@ -18,4 +18,6 @@ with exactly the same number of people.
 
 review:
 the point is everyone shakes hand with you!
-so there is 25 holes and 26 people.
+so there are 25 holes and 26 people.
+
+

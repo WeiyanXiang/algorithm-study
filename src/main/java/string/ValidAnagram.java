@@ -1,5 +1,7 @@
 package string;
 
+import java.util.Stack;
+
 /**
  * @author Weiyan Xiang on 2020/5/29
  */
@@ -23,6 +25,7 @@ public class ValidAnagram {
      * @return
      */
     public boolean isAnagram(String s, String t) {
+        Stack<Character> ss = new Stack<>();
         int[] alph = new int[26];
         for (int i = 0; i < s.length(); i++) alph[s.charAt(i) - 'a']++;
         for (int j = 0; j < t.length(); j++) alph[t.charAt(j) - 'a']--;
