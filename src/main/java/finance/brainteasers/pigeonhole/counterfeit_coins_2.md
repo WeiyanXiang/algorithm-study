@@ -22,3 +22,6 @@ Solution:
 ![alt text](counterfeit_coins_2_2.PNG "Question")
 ![alt text](counterfeit_coins_2_3.PNG "Question")
 ![alt text](counterfeit_coins_2_4.PNG "Question")
+
+review:
+hard to think but can understand, my idea was not in correct direction.
