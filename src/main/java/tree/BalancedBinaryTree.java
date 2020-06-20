@@ -24,11 +24,12 @@ public class BalancedBinaryTree {
     }
 
     public static ReturnNode doIsBalanced(TreeNode root) {
-        // break
+        // break / stop
         if (root == null) return new ReturnNode(true, 0);
-        // task
+        // task / this
         ReturnNode l = doIsBalanced(root.left);
         ReturnNode r = doIsBalanced(root.right);
+        // children
         if (!l.isB || !r.isB) return new ReturnNode(false, 0);
         if (Math.abs(l.d - r.d) > 1) return new ReturnNode(false, 0);
         return new ReturnNode(true, Math.max(l.d, r.d) + 1);
