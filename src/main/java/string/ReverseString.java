@@ -9,6 +9,33 @@ package string;
  */
 public class ReverseString {
 
+    public void reverseStringTwo(char[] c) {
+        for (int i = 0, j = c.length - 1; i < j; i++, j--) {
+            char temp = c[i];
+            c[i] = c[j];
+            c[j] = temp;
+        }
+    }
+
+    public void reverseStringThree(char[] c) {
+        int i = 0, j = c.length - 1;
+        while (i < j) {
+            char temp = c[i];
+            c[i++] = c[j];
+            c[j--] = temp;
+        }
+    }
+
+    public void reverseString(char[] s) {
+        if (s == null || s.length < 2) return;
+        int l = s.length;
+        for (int i = 0; i < l / 2; i++) {
+            char temp = s[i];
+            s[i] = s[l - i - 1];
+            s[l - i - 1] = temp;
+        }
+    }
+
     public static String reverse(String input) {
         int i = 0, j = input.length() - 1;
         char[] chars = input.toCharArray();
