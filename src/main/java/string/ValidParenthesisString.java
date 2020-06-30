@@ -6,6 +6,9 @@ import java.util.Stack;
  * @author Weiyan Xiang on 2020/6/14
  */
 public class ValidParenthesisString {
+    /**
+     * https://leetcode.com/problems/valid-parenthesis-string/
+     */
     public boolean checkValidString(String s) {
         Stack<Integer> s1 = new Stack<>();
         Stack<Integer> s2 = new Stack<>();

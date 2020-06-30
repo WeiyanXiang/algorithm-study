@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package string;
 
@@ -14,12 +14,9 @@ public class ReverseAStringWithoutSpecial {
         int i = 0, j = ss.length - 1;
         char temp;
         while (i < j) {
-            if (!isLetter(ss[i])) {
-                i++;
-            }
-            if (!isLetter(ss[j])) {
-                j--;
-            } else {
+            if (!isLetter(ss[i])) i++;
+            if (!isLetter(ss[j])) j--;
+            else {
                 temp = ss[i];
                 ss[i] = ss[j];
                 ss[j] = temp;
@@ -31,7 +28,8 @@ public class ReverseAStringWithoutSpecial {
     }
 
     private static boolean isLetter(char c) {
-        return c >= 'A' && c <= 'Z' || c >= 'a' && c <= 'z';
+        // c >= 'A' && c <= 'Z' || c >= 'a' && c <= 'z'
+        return Character.isLetter(c);
     }
 
     public static void main(String[] args) {
