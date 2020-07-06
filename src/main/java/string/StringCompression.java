@@ -2,70 +2,29 @@ package string;
 
 /**
  * @author Weiyan Xiang on 2020/3/5
- *
+ * <p>
  * https://leetcode.com/problems/string-compression/
  */
 public class StringCompression {
 
+
     public static int compress(char[] chars) {
-        int currentCharNum = 1;
-        int writeIndex = 0;
-        if (chars.length == 1) {
-            return 1;
-        }
-        for (int i = 1; i < chars.length; i++) {
-            if (chars[i - 1] == chars[i]) {
-                currentCharNum++;
-                if (i == chars.length - 1) {
-                    writeIndex = writeCompression(chars, currentCharNum, writeIndex, i);
-                }
-            } else {
-                writeIndex = writeCompression(chars, currentCharNum, writeIndex, i);
-                currentCharNum = 1;
-                if (i == chars.length - 1) {
-                    chars[writeIndex++] = chars[i];
-                }
+        int indexAns = 0, index = 0;
+        while (index < chars.length) {
+            char currentChar = chars[index];
+            int count = 0;
+            while (index < chars.length && chars[index] == currentChar) {
+                index++;
+                count++;
             }
+            chars[indexAns++] = currentChar;
+            if (count != 1)
+                for (char c : Integer.toString(count).toCharArray())
+                    chars[indexAns++] = c;
         }
-        return writeIndex;
+        return indexAns;
     }
 
-    public static char[] doCompress(char[] chars) {
-        int currentCharNum = 1;
-        int writeIndex = 0;
-        if (chars.length == 1) {
-            writeIndex++;
-            return chars;
-        }
-        for (int i = 1; i < chars.length; i++) {
-            if (chars[i - 1] == chars[i]) {
-                currentCharNum++;
-                if (i == chars.length - 1) {
-                    writeIndex = writeCompression(chars, currentCharNum, writeIndex, i);
-                }
-            } else {
-                writeIndex = writeCompression(chars, currentCharNum, writeIndex, i);
-                currentCharNum = 1;
-                if (i == chars.length - 1) {
-                    chars[writeIndex++] = chars[i];
-                }
-            }
-        }
-        return chars;
-    }
-
-
-    private static int writeCompression(char[] chars, int currentCharNum, int writeIndex, int i) {
-        chars[writeIndex++] = chars[i - 1];
-        if (currentCharNum > 1) {
-            char[] currentCharNumInChar = String.valueOf(currentCharNum).toCharArray();
-            for (char element : currentCharNumInChar) {
-                chars[writeIndex++] = element;
-            }
-            return writeIndex;
-        }
-        return writeIndex;
-    }
 
     public static void main(String[] args) {
         char[] chars0 = {'a'};
@@ -89,7 +48,6 @@ public class StringCompression {
 
     private static void printChars(char[] chars) {
         int digits = compress(chars);
-        chars = doCompress(chars);
         System.out.print('[');
         for (int i = 0; i < digits; i++) {
             if (i < digits - 1) {
