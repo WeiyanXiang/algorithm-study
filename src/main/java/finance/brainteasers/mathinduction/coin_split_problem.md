@@ -32,9 +32,11 @@ p(n) = x(n-x) + p(x) + p(n-x)
 
 for n coins, independent of intermediate splits, the final sum is n(n-1)/2
 
+Solution:
+![alt text](coin_split_problem_1.PNG "Solution 1")
+![alt text](coin_split_problem_2.PNG "Solution 2")
+
+review:
+my idea was ok but what I missed is to work out the exact sum = n(n-1)/2 and also f(n) = n(n-x) + f(x) + f(n-x) 
 
 
-
- 
-
- 
