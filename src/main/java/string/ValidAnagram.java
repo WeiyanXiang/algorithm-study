@@ -1,6 +1,7 @@
 package string;
 
-import java.util.Stack;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author Weiyan Xiang on 2020/5/29
@@ -25,7 +26,6 @@ public class ValidAnagram {
      * @return
      */
     public boolean isAnagram(String s, String t) {
-        Stack<Character> ss = new Stack<>();
         int[] alph = new int[26];
         for (int i = 0; i < s.length(); i++) alph[s.charAt(i) - 'a']++;
         for (int j = 0; j < t.length(); j++) alph[t.charAt(j) - 'a']--;
@@ -33,10 +33,24 @@ public class ValidAnagram {
         return true;
     }
 
+    public boolean isAnagramDict(String s, String t) {
+        if (s.length() != t.length()) return false;
+        Map<Character, Integer> dict = new HashMap<>();
+        for (char a : s.toCharArray()) dict.compute(a, (k, v) -> (v == null) ? 1 : v + 1);
+        for (char b : t.toCharArray()) {
+            if (!dict.containsKey(b) || dict.get(b) == 0) return false;
+            dict.put(b, dict.get(b) - 1);
+        }
+        return true;
+    }
+
+
     public static void main(String[] args) {
         ValidAnagram validAnagram = new ValidAnagram();
         System.out.println("false == " + validAnagram.isAnagram("rat", "car"));
         System.out.println("true == " + validAnagram.isAnagram("anagram", "nagaram"));
+        System.out.println("false == " + validAnagram.isAnagramDict("rat", "car"));
+        System.out.println("true == " + validAnagram.isAnagramDict("anagram", "nagaram"));
     }
 
 }
