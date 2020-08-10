@@ -12,6 +12,5 @@ Solution:
 ![alt text](irrational_number_1.PNG "Solution p1")
 
 
-
 review: 
 the angle of solution is based on check even
