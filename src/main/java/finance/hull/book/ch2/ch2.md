@@ -40,7 +40,7 @@ https://www.investopedia.com/terms/c/creditrisk.asp#:~:text=Credit%20risk%20is%2
 ###Market quotes:
 - Prices
 - Settlement price
-- Trading Volume and Open Interest
+- Trading Volume (volume of trades on that day) and Open Interest (sum of all contracts still open on that day)
 - Patterns of Futures:
     - normal market: gold, wheat, and live cattle settlement futures prices are an increasing function of the maturity 
                      of the contract. This is known as a normal market. The situation where settlement futures
@@ -96,6 +96,21 @@ broker’s discretion in an attempt to get a better price.
 
 
 ### Regulation
+- corner the market
+- front running
+refer to books for the actual case examples
+
+### Accounting the Tax
+
+### FORWARD vs. FUTURES CONTRACTS
+- forward in OTC market 
+- future in exchange traded market and daily settled. Often closed out prior to maturity.
+
+#### Foreign exchange quotes
+
+
+
+
 
 
 
