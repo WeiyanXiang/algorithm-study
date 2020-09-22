@@ -107,12 +107,19 @@ refer to books for the actual case examples
 - future in exchange traded market and daily settled. Often closed out prior to maturity.
 
 #### Foreign exchange quotes
+![alt text](ch2-1.PNG "chart1")
 
 
-
-
-
-
+futures prices where one currency is the US dollar are always
+quoted as the number of US dollars per unit of the foreign currency or as the number
+of US cents per unit of the foreign currency. Forward prices are always quoted in the
+same way as spot prices. This means that, for the British pound, the euro, the
+Australian dollar, and the New Zealand dollar, the forward quotes show the number
+of US dollars per unit of the foreign currency and are directly comparable with futures
+quotes. For other major currencies, forward quotes show the number of units of the
+foreign currency per US dollar (USD). Consider the Canadian dollar (CAD). A
+futures price quote of 0.9500 USD per CAD corresponds to a forward price quote
+of 1.0526 CAD per USD (1:0526 ¼ 1=0:9500).
 
 
 
