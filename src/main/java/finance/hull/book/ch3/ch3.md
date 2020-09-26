@@ -102,5 +102,23 @@ size of the exposure
 ΔF: Change in futures price, F, during a period of time equal to the life of the
 hedge.
 
+![alt text](ch3-2.PNG "chart1")
+
+#### Optimal Number of Contracts
+![alt text](ch3-3.PNG "chart1")
+
 
 ####Tailing the Hedge
+![alt text](ch3-4.PNG "chart1")
+
+### Stock Index Futures
+
+
+
+
+
+
+
+
+
+
