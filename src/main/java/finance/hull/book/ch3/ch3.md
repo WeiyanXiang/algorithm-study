@@ -172,6 +172,38 @@ i.e. continue with previous example:
 ![alt text](ch3-8.PNG "chart1")
 
 ####Locking in the Benefits of Stock Picking
+- if a stock you picked and you are confident it outperforms market:i.e. 
+The investor feels that the market will be very volatile over the next three months but that
+the company has a good chance of outperforming the market. The investor decides to use
+the August futures contract on the S&P 500 to hedge the market’s return during the three month period. 
+
+###Stack and Roll
+Sometimes the expiration date of the hedge is later than the delivery dates of all the
+futures contracts that can be used. The hedger must then roll the hedge forward by
+closing out one futures contract and taking the same position in a futures contract with
+a later delivery date. Hedges can be rolled forward many times. The procedure is known
+as stack and roll.
+refer more to books for more examples.
+
+### Summary
+
+This chapter has discussed various ways in which a company can take a position in
+futures contracts to offset an exposure to the price of an asset. 
+- If the exposure is such that the company gains when the price of the asset increases and loses when the price of
+the asset decreases, a short hedge is appropriate. 
+- If the exposure is the other way round
+(i.e., the company gains when the price of the asset decreases and loses when the price
+of the asset increases), a long hedge is appropriate.
+
+- basis risk: the difference between the spot price of an asset and its futures price
+- hedge ratio
+- Stock index futures: can be used to hedge the systematic risk in an equity portfolio
+- Stack and roll
+
+              
+
+
+
 
 
 
