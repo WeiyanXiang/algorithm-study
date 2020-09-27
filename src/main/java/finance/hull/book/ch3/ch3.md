@@ -112,8 +112,66 @@ hedge.
 ![alt text](ch3-4.PNG "chart1")
 
 ### Stock Index Futures
+####Hedging an Equity Portfolio
+![alt text](ch3-5.PNG "chart1")
+
+####capital asset pricing model
+
+When the portfolio does not mirror the index, we can use the capital asset pricing
+model (see the appendix to this chapter). The parameter beta () from the capital
+asset pricing model is the slope of the best-fit line obtained when excess return on the
+portfolio over the risk-free rate is regressed against the excess return of the index over
+the risk-free rate. When  ¼ 1:0, the return on the portfolio tends to mirror the return
+on the index; when  ¼ 2:0, the excess return on the portfolio tends to be twice as
+great as the excess return on the index; when  ¼ 0:5, it tends to be half as great; and
+so on.
+![alt text](ch3-6.PNG "chart1")
 
 
+![alt text](ch3-7.PNG "chart1")
+
+
+
+The risk-free interest rate is approximately 1% per 3 months. It follows that the expected
+return (%) on the portfolio during the 3 months when the 3-month return on the index
+
+is -9.75% is
+1.0 + (1.5 * (-9.75 - 1:0)) = -15:125
+The expected value of the portfolio (inclusive of dividends) at the end of the 3 months is
+therefore
+$5,050,000 * (1 - 0:15125) = $4,286,187
+It follows that the expected value of the hedger’s position, including the gain on the
+hedge, is
+$4,286,187 + $810,000 = $5,096,187
+
+###Reasons for Hedging an Equity Portfolio
+- hedging can be justified if the hedger feels that the stocks in the portfolio 
+have been chosen well. In these circumstances, the hedger
+might be very uncertain about the performance of the market as a whole, but
+confident that the stocks in the portfolio will outperform the market (after appropriate
+adjustments have been made for the beta of the portfolio). A hedge using index futures
+removes the risk arising from market moves and leaves the hedger exposed only to the
+performance of the portfolio relative to the market. 
+- Another reason for hedging may be that the hedger is planning to hold a
+portfolio for a long period of time and requires __short-term protection__ in an uncertain
+market situation. The alternative strategy of selling the portfolio and buying it back
+later might involve unacceptably high transaction costs.
+
+###Changing the Beta of a Portfolio
+####Def from online:  https://www.investopedia.com/terms/c/capm.asp
+The beta of a potential investment is a measure of how much risk the investment will add to a portfolio 
+that looks like the market. If a stock is riskier than the market, it will have a beta greater than one. If a stock has 
+a beta of less than one, the formula assumes it will reduce the risk of a portfolio.
+
+sometimes futures contracts are used to change the beta of a portfolio to some value other than zero.
+i.e. continue with previous example:
+
+250 * 1010=252,500
+
+1.5 * (5,050,000 / 252,500) = 30
+![alt text](ch3-8.PNG "chart1")
+
+####Locking in the Benefits of Stock Picking
 
 
 
