@@ -111,6 +111,17 @@ hedge.
 ####Tailing the Hedge
 ![alt text](ch3-4.PNG "chart1")
 
+Correlation Coefficient
+
+What Is the Correlation Coefficient?
+The correlation coefficient is a statistical measure of the strength of the relationship between the relative movements 
+of two variables. The values range between -1.0 and 1.0. 
+Standard deviation is a measure of the dispersion of data from its average. 
+Covariance is a measure of how two variables change together, but its magnitude is unbounded, so it is difficult to 
+interpret. By dividing covariance by the product of the two standard deviations, one can calculate the normalized version 
+of the statistic. This is the correlation coefficient.
+
+
 ### Stock Index Futures
 ####Hedging an Equity Portfolio
 ![alt text](ch3-5.PNG "chart1")
