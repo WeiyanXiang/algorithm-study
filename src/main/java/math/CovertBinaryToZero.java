@@ -3,6 +3,7 @@ package math;
 /**
  * @author Weiyan Xiang on 2020/9/30
  *
+ * https://stackoverflow.com/questions/63459099/algorithm-to-reduce-the-binary-value-to-zero-after-performing-operations
  * String S contains the binary representation of value V and we need to calculate number of operations after which this value becomes zero. There are 2 operations to perform:
  *
  * if V is even divide by 2

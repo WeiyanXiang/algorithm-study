@@ -6,7 +6,7 @@ package array;
  * https://stackoverflow.com/questions/56373582/how-can-i-count-how-many-horizontal-brush-strokes-are-required-to-draw-an-array
  */
 public class NumOfHorizontalStrokes {
-    int BrushCount(int[] buildings) {
+    static int brushCount(int[] buildings) {
         int brushCount = 0;
         int prevHeight = 0;
         for (int i = 0; i < buildings.length; i++) {
@@ -15,5 +15,10 @@ public class NumOfHorizontalStrokes {
             prevHeight = buildings[i];
         }
         return brushCount;
+    }
+
+    public static void main(String[] args) {
+        int[] buildings = {4, 1, 2, 1, 2, 2};
+        System.out.println(brushCount(buildings));
     }
 }
