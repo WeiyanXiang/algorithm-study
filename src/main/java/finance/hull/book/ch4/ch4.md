@@ -107,7 +107,7 @@ expressed with continuous compounding, it must be true that
 
 ![alt text](ch4-3.PNG "chart1")
 This equation can be solved using an iterative (‘‘trial and error’’) procedure to give
-y ¼ 6:76%.
+y = 6:76%
 
 ####Par Yield
 The par yield for a certain bond maturity is the coupon rate that causes the bond price to
@@ -162,6 +162,86 @@ The rates are assumed to be continuously compounded.
 ![alt text](ch4-10.PNG "chart1")
 ![alt text](ch4-11.PNG "chart1")
 ![alt text](ch4-12.PNG "chart1")
+
+###FORWARD RATE AGREEMENTS
+FRA: forward rate agreement (FRA) is an over-the-counter transaction designed to fix the
+     interest rate that will apply to either borrowing or lending a certain principal during a
+     specified future period of time.
+
+
+![alt text](ch4-14.PNG "chart1")
+
+![alt text](ch4-13.PNG "chart1")
+
+Business Snapshot:
+*yield curve play*: i.e. 
+Suppose a large investor can borrow or lend at the rates given in Table 4.5 and thinks
+that 1-year interest rates will not change much over the next 5 years. The investor can
+borrow 1-year funds and invest for 5-years. The 1-year borrowings can be rolled over
+for further 1-year periods at the end of the first, second, third, and fourth years. If
+interest rates do stay about the same, this strategy will yield a profit of about 2.3%
+per year, because interest will be received at 5.3% and paid at 3%.
+
+
+This interpretation of an FRA will be important when we
+consider interest rate swaps in Chapter 7.
+
+![alt text](ch4-15.PNG "chart1")
+
+
+####Valuation
+An FRA is worth zero when the fixed rate RK equals the forward rate RF.6 When it is
+first entered into RK is set equal to the current value of RF , so that the value of the
+contract to each side is zero.7 As time passes, interest rates change, so that the value is
+no longer zero.
+
+*mark-to-market*: 
+The market value of a derivative at a particular time is referred to as its *mark-to-market*,
+or MTM, value.
+
+![alt text](ch4-17.PNG "chart1")
+
+![alt text](ch4-16.PNG "chart1")
+
+###Duration
+The *duration*: of a bond, as its name implies, is a measure of how long on average the
+holder of the bond has to wait before receiving cash payments.
+
+A zero-coupon bond that lasts n years has a duration of n years. However, a coupon-bearing bond lasting
+n years has a duration of less than n years, because the holder receives some of the cash
+payments prior to year n.
+
+![alt text](ch4-18.PNG "chart1")
+This was compressed by above bond yield formula too.
+
+
+![alt text](ch4-19.PNG "chart1")
+
+####Modified Duration
+The preceding analysis is based on the assumption that y is expressed with continuous
+compounding. If y is expressed with annual compounding, it can be shown that the
+approximate relationship in equation (4.15) becomes
+![alt text](ch4-20.PNG "chart1")
+
+![alt text](ch4-21.PNG "chart1")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
