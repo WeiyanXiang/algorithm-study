@@ -13,10 +13,8 @@ public class Graph {
      *
      * refer more to notes
      */
-
-
     public int v;
-    public List[] adj;
+    public LinkedList[] adj;
 
     public Graph(int v) {
         this.v = v;
