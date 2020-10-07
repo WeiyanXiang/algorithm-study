@@ -7,6 +7,14 @@ import java.util.List;
  * @author Weiyan Xiang on 2020/10/6
  */
 public class Graph {
+
+    /**
+     * 3 ways to represent a graph : 1. Edge list 2.  Adjacency Matrices 3.  Adjacency Lists
+     *
+     * refer more to notes
+     */
+
+
     public int v;
     public List[] adj;
 
