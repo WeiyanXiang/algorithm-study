@@ -3,7 +3,7 @@
  */
 package sort;
 
-import sort.utils.SortUtils;
+import utils.PrintUtils;
 
 /**
  * @author weiyan.xiang
@@ -46,6 +46,6 @@ public class MergeSort {
     public static void main(String[] args) {
         MergeSort mergeSort = new MergeSort();
         mergeSort.sort(inputs, 0, inputs.length - 1);
-        SortUtils.printArray(inputs);
+        PrintUtils.printArray(inputs);
     }
 }

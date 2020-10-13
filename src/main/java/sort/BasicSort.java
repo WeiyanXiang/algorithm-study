@@ -1,6 +1,6 @@
 package sort;
 
-import static sort.utils.SortUtils.printArray;
+import static utils.PrintUtils.printArray;
 
 /**
  * @author Weiyan Xiang on 2020/5/24

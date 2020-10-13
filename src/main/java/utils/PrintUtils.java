@@ -1,13 +1,13 @@
 /**
  *
  */
-package sort.utils;
+package utils;
 
 /**
  * @author weiyan.xiang
  * @date 9 Mar 2018
  */
-public class SortUtils {
+public class PrintUtils {
 
     /**
      * using stream to print

@@ -34,8 +34,10 @@ public class PassByValueDemo {
         instance.increase(3);
         System.out.println(instance.value);
 
-        /*
+        /**
          * pass by value example
+         *
+         * copy of refs passed to method so tp1 and tp2 original refs remained unchanged.
          *
          */
         TestPoint tp1 = instance.new TestPoint("tp1");

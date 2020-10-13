@@ -1,11 +1,10 @@
 /**
- * 
+ *
  */
 package generics;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author weiyan.xiang
@@ -15,7 +14,7 @@ public class GenericMethodDemo {
 
     /**
      * generic methods
-     * 
+     *
      * @param obj1
      * @param obj2
      * @return
@@ -26,7 +25,7 @@ public class GenericMethodDemo {
 
     /*
      * Generic Methods and Bounded Type Parameters
-     * 
+     *
      */
     public static <T extends List<?>> void inspect(T input) {
         System.out.println("input class type is: " + input.getClass().getName());
@@ -34,7 +33,7 @@ public class GenericMethodDemo {
 
     /*
      * Generic Methods and multiple Bounded Type Parameters
-     * 
+     *
      */
 //    public static <T extends List<?> & Map<?, ?>> void inspectMulti(T input) {
 //        System.out.println("input class type is: " + input.getClass().getName());

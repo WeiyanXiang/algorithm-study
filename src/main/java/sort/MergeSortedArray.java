@@ -3,7 +3,7 @@
  */
 package sort;
 
-import sort.utils.SortUtils;
+import utils.PrintUtils;
 
 /**
  * @author weiyan.xiang
@@ -50,6 +50,6 @@ public class MergeSortedArray {
         int[] nums2 = { 2, 3, 4, 5, 6, 7 };
         int m = 5, n = 6;
         merge(nums1, m, nums2, n);
-        SortUtils.printArray(nums1);
+        PrintUtils.printArray(nums1);
     }
 }

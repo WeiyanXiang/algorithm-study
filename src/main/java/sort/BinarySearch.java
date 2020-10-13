@@ -20,23 +20,25 @@ public class BinarySearch {
     }
 
     /**
+     * binary search on sorted array
+     * <p>
      * recursive
      *
      * @param arr
-     * @param key
+     * @param input
      * @param j
      * @param k
      * @return
      */
-    private int binarySearchRecur(int[] arr, int key, int j, int k) {
+    private int binarySearchRecur(int[] arr, int input, int j, int k) {
         if (j < k) {
             int mid = (k + j) / 2;
-            if (arr[mid] == key) {
+            if (arr[mid] == input) {
                 return mid;
-            } else if (key > arr[mid]) {
-                return binarySearchRecur(arr, key, mid + 1, k);
+            } else if (input > arr[mid]) {
+                return binarySearchRecur(arr, input, mid + 1, k);
             } else {
-                return binarySearchRecur(arr, key, j, mid);
+                return binarySearchRecur(arr, input, j, mid);
             }
         }
         return -1;

@@ -29,14 +29,25 @@ public class TreeTraverse {
 
     Node root;
 
-    private void printPostorder(Node node) {
+
+    /**
+     * left root right
+     *
+     * @param node
+     */
+    private void printInorder(Node node) {
         if (node == null)
             return;
-        printPostorder(node.left);
-        printPostorder(node.right);
+        printInorder(node.left);
         System.out.println(node.key + " ");
+        printInorder(node.right);
     }
 
+    /**
+     * root left right
+     *
+     * @param node
+     */
     private void printPreorder(Node node) {
         if (node == null)
             return;
@@ -45,12 +56,17 @@ public class TreeTraverse {
         printPreorder(node.right);
     }
 
-    private void printInorder(Node node) {
+    /**
+     * left right root
+     *
+     * @param node
+     */
+    private void printPostorder(Node node) {
         if (node == null)
             return;
-        printInorder(node.left);
+        printPostorder(node.left);
+        printPostorder(node.right);
         System.out.println(node.key + " ");
-        printInorder(node.right);
     }
 
     public static void main(String[] args) {
