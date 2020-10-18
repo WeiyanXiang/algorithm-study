@@ -32,6 +32,10 @@ public class DFS {
 
     /**
      * iterative
+     * <p>
+     * time complexity: O(V+E), where V is vertices and E is edges.
+     * <p>
+     * space complexity: O(n)
      *
      * @param g
      * @param s
