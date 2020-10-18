@@ -8,7 +8,7 @@ import java.util.Stack;
  * <p>
  * https://www.baeldung.com/java-depth-first-search
  */
-public class DFSTraverse {
+public class DFS {
 
     private static Graph g;
 
