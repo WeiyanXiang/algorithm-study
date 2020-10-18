@@ -1,6 +1,5 @@
 package graph;
 
-import java.util.LinkedList;
 import java.util.Stack;
 
 /**
@@ -10,44 +9,49 @@ import java.util.Stack;
  */
 public class DFS {
 
-    private static Graph g;
+    private boolean[] visited = new boolean[10];
 
-    // from a given source v
-    static void dfs(int v) {
-        boolean visited[] = new boolean[10];
-
-        Stack<Integer> s = new Stack<>();
-        s.add(v);
-
-        visited[v] = true;
-        while (!s.isEmpty()) {
-            int c = s.pop();
-            System.out.println("Visited node: " + c);
-            LinkedList<Integer> ajList = g.adj[c];
-            for (int i = 0; i < ajList.size(); i++) {
-                int n = ajList.get(i);
-                if (!visited[n]) {
-                    s.add(n);
-                    visited[n] = true;
+    /**
+     * recursive
+     */
+    public void doDfs(Graph g, int s) {
+        Stack<Integer> stack = new Stack<>();
+        visited[s] = true;
+        stack.push(s);
+        while (!stack.isEmpty()) {
+            int top = stack.pop();
+            System.out.print("[" + top + "] ");
+            g.adj[top].forEach(e -> {
+                if (!visited[e]) {
+                    doDfs(g, e);
                 }
-            }
+            });
         }
+
     }
 
-    public static void main(String args[]) {
-        g = new Graph(8);
+    /**
+     * iterative
+     *
+     * @param g
+     * @param s
+     */
+    public void doDfsIterative(Graph g, int s) {
+        boolean[] myVisited = new boolean[8];
+        Stack<Integer> stack = new Stack<>();
+        stack.push(s);
+        myVisited[s] = true;
+        while (!stack.isEmpty()) {
+            int top = stack.pop();
+            System.out.print("[" + top + "] ");
+            g.adj[top].forEach(e -> {
+                if (!myVisited[e]) {
+                    stack.push(e);
+                    myVisited[e] = true;
+                }
+            });
+        }
 
-        g.addEdge(1, 2);
-        g.addEdge(1, 3);
-        g.addEdge(2, 4);
-        g.addEdge(2, 5);
-        g.addEdge(5, 6);
-        g.addEdge(3, 7);
-
-        System.out.println("Following is Depth First Traversal " +
-                "(starting from vertex 2)");
-
-        dfs(1);
     }
 
 }

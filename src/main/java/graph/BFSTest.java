@@ -25,6 +25,6 @@ public class BFSTest {
         g.addEdge(5, 4);
         g.addEdge(5, 6);
         // expected: 1,3,5,7,4,6
-        new BFS().doBfs(g, 1, 12);
+        new BFS().doBfs(g, 1, 8);
     }
 }
