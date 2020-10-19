@@ -4,6 +4,8 @@ import java.util.Arrays;
 
 /**
  * @author Weiyan Xiang on 2020/10/18
+ * <p>
+ * aka array list
  */
 public class DynamicArray {
 
