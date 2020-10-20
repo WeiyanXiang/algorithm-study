@@ -175,8 +175,7 @@ public class LinkedListImpl {
         remove(0);
         printLinkedList(root);
 
-        Node nodeToRemove = new Node(3);
-        remove(nodeToRemove);
+        remove(3);
         printLinkedList(root);
 
         System.out.println("current root value is: " + getFirst().value);

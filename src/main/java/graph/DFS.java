@@ -15,18 +15,14 @@ public class DFS {
      * recursive
      */
     public void doDfs(Graph g, int s) {
-        Stack<Integer> stack = new Stack<>();
         visited[s] = true;
-        stack.push(s);
-        while (!stack.isEmpty()) {
-            int top = stack.pop();
-            System.out.print("[" + top + "] ");
-            g.adj[top].forEach(e -> {
-                if (!visited[e]) {
-                    doDfs(g, e);
-                }
-            });
-        }
+        System.out.print("[" + s + "] ");
+        g.adj[s].forEach(e -> {
+            if (!visited[e]) {
+                doDfs(g, e);
+            }
+        });
+
 
     }
 
@@ -55,6 +51,35 @@ public class DFS {
                 }
             });
         }
+
+    }
+
+    /**
+     * my own answer for adj matrix. It should be correct.
+     * <p>
+     * it is also possible to use recursive, same idea as recusive adj list approaches.
+     *
+     * @param grid
+     */
+    public void doDfsGraphMatrix(char[][] grid) {
+        boolean[] myVisited = new boolean[8];
+        // row number represents node, so row number will be pushed to stack
+        Stack<Integer> stack = new Stack<>();
+        stack.push(0);
+        myVisited[0] = true;
+        // should be same idea, when adj list, loop the row
+        while (!stack.isEmpty()) {
+            Integer r = stack.pop();
+            System.out.print("[" + r + "] ");
+            for (int c = 0; c < grid[r].length; c++) {
+                // when there is a path
+                if (grid[r][c] == '1' && !visited[c]) {
+                    stack.push(c);
+                    visited[c] = true;
+                }
+            }
+        }
+
 
     }
 

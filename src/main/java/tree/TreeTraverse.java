@@ -3,6 +3,9 @@
  */
 package tree;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 /**
  * @author weiyan.xiang
  * @date 12 Feb 2018
@@ -67,6 +70,32 @@ public class TreeTraverse {
         printPostorder(node.left);
         printPostorder(node.right);
         System.out.println(node.key + " ");
+    }
+
+    /**
+     * BFS
+     *
+     * @param root
+     */
+    public static void printTreeInLevelOrder(TreeNode root) {
+        if (root == null)
+            return;
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            for (int i = 0; i < size; i++) {
+                TreeNode top = queue.poll();
+                System.out.print(top.val + " ");
+                if (top.left != null) {
+                    queue.add(top.left);
+                }
+                if (top.right != null) {
+                    queue.add(top.right);
+                }
+            }
+        }
+
     }
 
     public static void main(String[] args) {

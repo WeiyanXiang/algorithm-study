@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package tree;
 
@@ -32,6 +32,11 @@ public class TreeNode {
         }
     }
 
+    /**
+     * BFS
+     *
+     * @param root
+     */
     public static void printTreeInLevelOrder(TreeNode root) {
         if (root == null)
             return;

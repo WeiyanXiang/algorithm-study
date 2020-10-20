@@ -67,6 +67,14 @@ public class NumberOfIslands {
     private void dfs(int i, int j) {
         if (i < 0 || j < 0 || i >= y || j >= x || g[i][j] != '1') return;
         g[i][j] = 'X';
+        /**
+         * the reason why we need i-1 and j-1 is because for example below shape,
+         * it will return 2 without check left and up:
+         * 1 1 1
+         * 0 1 0
+         * 1 1 1
+         *
+         */
         dfs(i + 1, j);
         dfs(i - 1, j);
         dfs(i, j + 1);

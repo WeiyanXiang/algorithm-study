@@ -23,7 +23,7 @@ public class HashMapImpl {
      * object to the previous node object via linked list and both are stored
      */
     /**
-     * for my info, example hashCode is using a price to multiply the class field
+     * for my info, example hashCode is using a prime to multiply the class field
      @Override
      public int hashCode() {
      int hash = 7;

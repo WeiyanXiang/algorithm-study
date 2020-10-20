@@ -33,4 +33,16 @@ public class DFSTest {
         System.out.println();
         dfs.doDfsIterative(g, 0);
     }
+
+    @Test
+    public void testDFSGraphMatrix() {
+        char[][] grid = {
+                {'0', '1', '0', '0', '1'},
+                {'0', '0', '1', '0', '1'},
+                {'0', '0', '0', '1', '0'},
+                {'0', '0', '0', '0', '0'},
+                {'0', '0', '0', '0', '0'}
+        };
+        new DFS().doDfsGraphMatrix(grid);
+    }
 }
