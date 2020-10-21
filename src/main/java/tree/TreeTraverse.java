@@ -84,16 +84,15 @@ public class TreeTraverse {
         queue.add(root);
         while (!queue.isEmpty()) {
             int size = queue.size();
-            for (int i = 0; i < size; i++) {
-                TreeNode top = queue.poll();
-                System.out.print(top.val + " ");
-                if (top.left != null) {
-                    queue.add(top.left);
-                }
-                if (top.right != null) {
-                    queue.add(top.right);
-                }
+            TreeNode top = queue.poll();
+            System.out.print(top.val + " ");
+            if (top.left != null) {
+                queue.add(top.left);
             }
+            if (top.right != null) {
+                queue.add(top.right);
+            }
+
         }
 
     }
