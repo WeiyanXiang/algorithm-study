@@ -1,7 +1,7 @@
 /**
  * 
  */
-package data.structure;
+package data.structure.set;
 
 import java.util.HashMap;
 import java.util.Map;

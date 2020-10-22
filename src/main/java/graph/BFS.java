@@ -21,7 +21,7 @@ public class BFS {
         while (!queue.isEmpty()) {
             int latest = queue.poll();
             System.out.print("[" + latest + "] ");
-            graph.adj[latest].stream().forEach(e -> {
+            graph.adj[latest].forEach(e -> {
                 if (!visited[e]) {
                     visited[e] = true;
                     queue.add(e);

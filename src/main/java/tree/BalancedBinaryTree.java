@@ -10,17 +10,17 @@ package tree;
 public class BalancedBinaryTree {
 
     private static class ReturnNode {
-        public boolean isB;
+        public boolean isBalanced;
         public int d;
 
-        public ReturnNode(boolean isB, int d) {
-            this.isB = isB;
+        public ReturnNode(boolean isBalanced, int d) {
+            this.isBalanced = isBalanced;
             this.d = d;
         }
     }
 
     public static boolean isBalancedTemplate(TreeNode root) {
-        return doIsBalanced(root).isB;
+        return doIsBalanced(root).isBalanced;
     }
 
     public static ReturnNode doIsBalanced(TreeNode root) {
@@ -30,7 +30,7 @@ public class BalancedBinaryTree {
         ReturnNode l = doIsBalanced(root.left);
         ReturnNode r = doIsBalanced(root.right);
         // children
-        if (!l.isB || !r.isB) return new ReturnNode(false, 0);
+        if (!l.isBalanced || !r.isBalanced) return new ReturnNode(false, 0);
         if (Math.abs(l.d - r.d) > 1) return new ReturnNode(false, 0);
         return new ReturnNode(true, Math.max(l.d, r.d) + 1);
     }

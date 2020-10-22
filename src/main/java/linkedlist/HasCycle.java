@@ -1,6 +1,6 @@
 package linkedlist;
 
-import data.structure.LinkedListImpl;
+import data.structure.linkedlist.LinkedListImpl;
 
 /**
  * @author Weiyan Xiang on 2020/5/30

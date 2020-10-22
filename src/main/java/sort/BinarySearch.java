@@ -26,19 +26,19 @@ public class BinarySearch {
      *
      * @param arr
      * @param input
-     * @param j
-     * @param k
+     * @param s
+     * @param e
      * @return
      */
-    private int binarySearchRecur(int[] arr, int input, int j, int k) {
-        if (j < k) {
-            int mid = (k + j) / 2;
+    private int binarySearchRecur(int[] arr, int input, int s, int e) {
+        if (s < e) {
+            int mid = (e + s) / 2;
             if (arr[mid] == input) {
                 return mid;
             } else if (input > arr[mid]) {
-                return binarySearchRecur(arr, input, mid + 1, k);
+                return binarySearchRecur(arr, input, mid + 1, e);
             } else {
-                return binarySearchRecur(arr, input, j, mid);
+                return binarySearchRecur(arr, input, s, mid);
             }
         }
         return -1;

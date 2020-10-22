@@ -1,4 +1,4 @@
-package data.structure;
+package data.structure.map;
 /**
  *
  */

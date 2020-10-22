@@ -1,7 +1,7 @@
 /**
  *
  */
-package data.structure;
+package data.structure.queue;
 
 import java.util.concurrent.*;
 

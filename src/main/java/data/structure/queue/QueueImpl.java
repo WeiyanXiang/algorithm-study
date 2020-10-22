@@ -1,4 +1,4 @@
-package data.structure;
+package data.structure.queue;
 
 /**
  * @author Weiyan Xiang on 2020/3/24

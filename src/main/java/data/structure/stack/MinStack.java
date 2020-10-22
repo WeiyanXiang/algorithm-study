@@ -1,4 +1,4 @@
-package data.structure;
+package data.structure.stack;
 
 /**
  * @author Weiyan Xiang on 2020/6/23

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package data.structure;
+package data.structure.map;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

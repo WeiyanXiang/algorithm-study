@@ -1,7 +1,7 @@
 /**
  *
  */
-package data.structure;
+package data.structure.linkedlist;
 
 /**
  * @author weiyan.xiang
