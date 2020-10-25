@@ -12,64 +12,43 @@ import java.util.Queue;
  */
 public class TreeTraverse {
 
-
-    /*
-     *        1
-     *       / \
-     *      2    3
-     *     / \
-     *    4   5
-     */
-    private class Node {
-        int key;
-        Node left, right;
-
-        public Node(int item) {
-            key = item;
-            left = right = null;
-        }
-    }
-
-    Node root;
-
-
     /**
      * left root right
      *
-     * @param node
+     * @param treeNode
      */
-    private void printInorder(Node node) {
-        if (node == null)
+    public void printInorder(TreeNode treeNode) {
+        if (treeNode == null)
             return;
-        printInorder(node.left);
-        System.out.println(node.key + " ");
-        printInorder(node.right);
+        printInorder(treeNode.left);
+        System.out.print(treeNode.val + " ");
+        printInorder(treeNode.right);
     }
 
     /**
      * root left right
      *
-     * @param node
+     * @param treeNode
      */
-    private void printPreorder(Node node) {
-        if (node == null)
+    public void printPreorder(TreeNode treeNode) {
+        if (treeNode == null)
             return;
-        System.out.println(node.key + " ");
-        printPreorder(node.left);
-        printPreorder(node.right);
+        System.out.print(treeNode.val + " ");
+        printPreorder(treeNode.left);
+        printPreorder(treeNode.right);
     }
 
     /**
      * left right root
      *
-     * @param node
+     * @param treeNode
      */
-    private void printPostorder(Node node) {
-        if (node == null)
+    public void printPostorder(TreeNode treeNode) {
+        if (treeNode == null)
             return;
-        printPostorder(node.left);
-        printPostorder(node.right);
-        System.out.println(node.key + " ");
+        printPostorder(treeNode.left);
+        printPostorder(treeNode.right);
+        System.out.print(treeNode.val + " ");
     }
 
     /**
@@ -77,13 +56,13 @@ public class TreeTraverse {
      *
      * @param root
      */
-    public static void printTreeInLevelOrder(TreeNode root) {
+    public void printTreeInLevelOrder(tree.TreeNode root) {
         if (root == null)
             return;
-        Queue<TreeNode> queue = new LinkedList<>();
+        Queue<tree.TreeNode> queue = new LinkedList<>();
         queue.add(root);
         while (!queue.isEmpty()) {
-            TreeNode top = queue.poll();
+            tree.TreeNode top = queue.poll();
             System.out.print(top.val + " ");
             if (top.left != null) {
                 queue.add(top.left);
@@ -94,25 +73,6 @@ public class TreeTraverse {
 
         }
 
-    }
-
-    public static void main(String[] args) {
-
-        TreeTraverse tree = new TreeTraverse();
-        tree.root = tree.new Node(1);
-        tree.root.left = tree.new Node(2);
-        tree.root.right = tree.new Node(3);
-        tree.root.left.left = tree.new Node(4);
-        tree.root.left.right = tree.new Node(5);
-
-        System.out.println("Preorder traversal of binary tree is ");
-        tree.printPreorder(tree.root);
-
-        System.out.println("\nInorder traversal of binary tree is ");
-        tree.printInorder(tree.root);
-
-        System.out.println("\nPostorder traversal of binary tree is ");
-        tree.printPostorder(tree.root);
     }
 
 }
