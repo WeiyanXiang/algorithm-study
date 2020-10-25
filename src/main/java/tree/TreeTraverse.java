@@ -83,7 +83,6 @@ public class TreeTraverse {
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
         while (!queue.isEmpty()) {
-            int size = queue.size();
             TreeNode top = queue.poll();
             System.out.print(top.val + " ");
             if (top.left != null) {
