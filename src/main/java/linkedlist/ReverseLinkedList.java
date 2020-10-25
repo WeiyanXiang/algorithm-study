@@ -1,7 +1,5 @@
 package linkedlist;
 
-import static linkedlist.ListNode.printLinkedList;
-
 /**
  * @author Weiyan Xiang on 2020/5/30
  */
@@ -16,32 +14,15 @@ public class ReverseLinkedList {
      */
     public ListNode reverseList(ListNode head) {
         if (head == null) return null;
-        ListNode current = head;
-        ListNode previous = null;
-        while (current != null) {
-            ListNode nextListNode = current.next;
-            current.next = previous;
-            previous = current;
-            current = nextListNode;
+        ListNode prev = null;
+        ListNode cur = head;
+        while (cur != null) {
+            ListNode temp = cur.next;
+            cur.next = prev;
+            prev = cur;
+            cur = temp;
         }
-        return previous;
+        return prev;
     }
 
-
-    public static void main(String[] args) {
-        ListNode root = new ListNode(1);
-        ListNode ListNode1 = new ListNode(2);
-        ListNode ListNode2 = new ListNode(3);
-        ListNode ListNode3 = new ListNode(4);
-        ListNode ListNode4 = new ListNode(5);
-        root.next = ListNode1;
-        ListNode1.next = ListNode2;
-        ListNode2.next = ListNode3;
-        ListNode3.next = ListNode4;
-
-        printLinkedList(root);
-
-        ReverseLinkedList testObj = new ReverseLinkedList();
-        printLinkedList(testObj.reverseList(root));
-    }
 }
