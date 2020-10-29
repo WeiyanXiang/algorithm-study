@@ -1,5 +1,5 @@
 25 horses, each runs at constant speed that's different from others.
-Since the track only has 5 lanes, eachr ace can have at most 5 horses.
+Since the track only has 5 lanes, each race can have at most 5 horses.
 if you need to find 3 fastest horses, what's minimum number of races needed?
 
 Idea:
@@ -33,6 +33,9 @@ the top 3 will be 6  and top 2 of above
 Total 5+1+1 = 7 races needed
 
 Solution:
+
 what I made wrong is that last round 
-race [1] 2 3 6 7 11, the top 2 fatest
+race [1] 2 3 6 7 11, the top 2 fatest (suppose 1,6 and 11 are top three after racing the top 1 horse from initial rounds)
+
+
 

@@ -1,4 +1,4 @@
-you are blind folder ina  room and there are 1000 coins
+you are blind folder in a room and there are 1000 coins
 980 tails up and 20 heads up
 
 Can you separate the coins into 2 piles so to guarantee both have equal number of heads?

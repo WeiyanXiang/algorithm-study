@@ -37,6 +37,11 @@ if c1 and ask g2, no
 so looks the answer if yes is the other door, if no, it is the door the guard is looking after.
 
 Solution:
+
+answer: would the other guard say that you are guarding the door to offer?
+- if answer is yes, choose the other door
+- if answer is no, choose the door
+
 ![alt text](door_to_offer_1.PNG "Analysis")
 
 
