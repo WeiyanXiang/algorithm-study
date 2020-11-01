@@ -22,4 +22,14 @@ public class ListNode {
         System.out.print("NULL");
         System.out.println();
     }
+
+    public static ListNode buildLinkedListFromArray(int[] input) {
+        ListNode head = new ListNode(input[0]);
+        ListNode cur = head;
+        for (int i = 1; i < input.length; i++) {
+            cur.next = new ListNode(input[i]);
+            cur = cur.next;
+        }
+        return head;
+    }
 }
