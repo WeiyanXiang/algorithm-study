@@ -15,12 +15,6 @@ public class AddTwoNumbers {
      */
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         String test = "dsa";
-        char[] chars = test.toCharArray();
-        Set<Character> sub = new HashSet<>();
-        sub.cl
-        for(int i = 0; i< chars.length; i++) {
-            test.index
-        }
         if (l1 == null) return l2;
         if (l2 == null) return l1;
         ListNode c1 = l1;

@@ -14,6 +14,9 @@ import java.util.Set;
  */
 public class LongestSubString {
 
+    /**
+     * https://leetcode.com/problems/longest-substring-without-repeating-characters/
+     */
 
     /**
      * my version, not efficient, O(n^2)
@@ -73,17 +76,16 @@ public class LongestSubString {
      * slow)
      */
     private static int countSubStringLengthOptimal(String s) {
-        Map<Character, Integer> cacheMap = new HashMap<>();
-        int slow = 0, answer = 0;
-        for (int i = 0; i < s.length(); i++) {
-            char element = s.charAt(i);
-            if (cacheMap.containsKey(element)) {
-                slow = Math.max(slow, cacheMap.get(element) + 1);
+        int i = 0, ans = 0;
+        Map<Character, Integer> map = new HashMap<>();
+        for (int j = 0; j < s.length(); j++) {
+            if (map.containsKey(s.charAt(j))) {
+                i = Math.max(i, map.get(s.charAt(j)));
             }
-            answer = Math.max(answer, i - slow + 1);
-            cacheMap.put(element, i);
+            ans = Math.max(ans, j - i + 1);
+            map.put(s.charAt(j), j + 1);
         }
-        return answer;
+        return ans;
     }
 
     public static void main(String[] args) {
