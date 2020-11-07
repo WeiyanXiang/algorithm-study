@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package array;
 
@@ -26,8 +26,18 @@ public class MaxSubArray {
         return max;
     }
 
-    public static void main(String[] args) {
-        int[] input = { -2, 1, -3, 4, -1, 2, 1, -5, 4 };
-        System.out.println("6 == " + maxSubArray(input));
+    /**
+     * https://leetcode.com/problems/maximum-subarray/
+     */
+    public int maxSubArrayOptimal(int[] nums) {
+        // idea: maxEndingAtIndex[i] is max of maxEndingAtIndex[i-1] + nums[i] and nums[i]
+        int me = nums[0];
+        int max = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            me = Math.max(me + nums[i], nums[i]);
+            max = Math.max(max, me);
+        }
+        return max;
     }
+
 }
