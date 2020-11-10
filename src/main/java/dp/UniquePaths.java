@@ -6,9 +6,12 @@ package dp;
 public class UniquePaths {
 
     /**
-     * my first attempt
+     * 62. Unique Paths
      * <p>
      * https://leetcode.com/problems/unique-paths/
+     * <p>
+     * my first attempt
+     * <p>
      */
     public int uniquePathsNaiveRecursive(int m, int n) {
         if (m == 1 || n == 1) return 1;

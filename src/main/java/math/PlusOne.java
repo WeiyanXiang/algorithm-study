@@ -4,11 +4,13 @@ package math;
  * @author Weiyan Xiang on 2020/5/21
  */
 
-/**
- * https://leetcode.com/problems/plus-one/submissions/
- */
 public class PlusOne {
 
+    /**
+     * 66. Plus One
+     * <p>
+     * https://leetcode.com/problems/plus-one/submissions/
+     */
     public int[] plusOne(int[] d) {
         int n = d.length;
         for (int i = n - 1; i >= 0; i--) {
