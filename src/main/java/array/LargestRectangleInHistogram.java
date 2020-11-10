@@ -1,5 +1,7 @@
 package array;
 
+import java.util.Stack;
+
 /**
  * @author Weiyan Xiang on 2020/11/10
  */
@@ -32,4 +34,30 @@ public class LargestRectangleInHistogram {
         }
         return ans;
     }
+
+    /**
+     * below is draft of
+     * <p>
+     * https://leetcode.com/problems/largest-rectangle-in-histogram/discuss/28917/AC-Python-clean-solution-using-stack-76ms
+     */
+    public int largestRectangleAreaWithStack(int[] heights) {
+        Stack<Integer> s = new Stack<>();
+        s.push(-1);
+        int[] h = new int[heights.length + 1];
+        for (int i = 0; i < heights.length; i++) {
+            h[i] = heights[i];
+        }
+        h[heights.length] = 0;
+        int ans = 0;
+        for (int i = 0; i < h.length; i++) {
+            while (h[i] <= h[s.peek()]) {
+                int w = s.pop() - i - 1;
+                int hi = h[i];
+                ans = Math.max(ans, w * hi);
+            }
+            s.push(i);
+        }
+        return ans;
+    }
+
 }
