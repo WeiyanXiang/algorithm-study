@@ -5,6 +5,9 @@ package array;
  */
 public class MaxArea {
 
+    /**
+     * https://leetcode.com/problems/container-with-most-water/
+     */
     public int maxArea(int[] height) {
         int len = height.length;
         int l = 0, r = len - 1, ans = 0;
