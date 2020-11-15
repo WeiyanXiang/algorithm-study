@@ -1,7 +1,7 @@
 /**
  *
  */
-package string;
+package twopointers;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -76,16 +76,18 @@ public class LongestSubString {
      * slow)
      */
     private static int countSubStringLengthOptimal(String s) {
-        int i = 0, ans = 0;
-        Map<Character, Integer> map = new HashMap<>();
-        for (int j = 0; j < s.length(); j++) {
-            if (map.containsKey(s.charAt(j))) {
-                i = Math.max(i, map.get(s.charAt(j)));
+        int l = 0, r = 0, res = 0;
+        Map<Character, Integer> win = new HashMap<>();
+        while (r < s.length()) {
+            char cur = s.charAt(r);
+            if (win.containsKey(cur)) {
+                l = Math.max(l, win.get(cur) + 1); // why +1? caz we should have compared and stored max in res.
             }
-            ans = Math.max(ans, j - i + 1);
-            map.put(s.charAt(j), j + 1);
+            win.put(cur, r);
+            res = Math.max(res, r - l + 1);
+            r++;
         }
-        return ans;
+        return res;
     }
 
     public static void main(String[] args) {

@@ -1,7 +1,7 @@
 /**
  *
  */
-package array;
+package twopointers;
 
 /**
  * @author weiyan.xiang
