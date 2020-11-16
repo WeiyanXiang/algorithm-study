@@ -1,4 +1,4 @@
-package twopointers;
+package slidingwindow;
 
 import org.junit.Test;
 

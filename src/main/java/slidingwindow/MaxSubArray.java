@@ -1,7 +1,7 @@
 /**
  *
  */
-package twopointers;
+package slidingwindow;
 
 /**
  * @author weiyan.xiang
