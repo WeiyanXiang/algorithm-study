@@ -19,41 +19,27 @@ public class LongestSubString {
      */
 
     /**
-     * my version, not efficient, O(n^2)
+     * my version using template
      */
     public int lengthOfLongestSubstring(String s) {
-        if (s == null || s.isEmpty()) return 0;
-        Set<Character> sub = new HashSet<>();
-        int i = 0, max = 0;
-        char[] chars = s.toCharArray();
-        while (i < chars.length) {
-            int subMax = 0;
-            int j = i;
-            while (j < chars.length) {
-                if (!sub.contains(chars[j])) {
-                    sub.add(chars[j]);
-                    subMax++;
-                    max = Math.max(max, subMax);
-                } else {
-                    max = Math.max(max, subMax);
-                    sub.clear();
-                    i++;
-                    break;
-                }
-                j++;
+        int l = 0, r = 0, res = 0;
+        Map<Character, Integer> win = new HashMap<>();
+        while (r < s.length()) {
+            char cur = s.charAt(r);
+            while (win.containsKey(cur)) {
+                char curLeft = s.charAt(l);
+                l = Math.max(l + 1, win.get(s.charAt(l)) + 1);
+                win.remove(curLeft);
             }
+            win.put(cur, r);
+            res = Math.max(res, r - l + 1);
+            r++;
         }
-        return max;
+        return res;
     }
 
-    /*
-     * sub-optimal Time complexity : O(2n) = O(n)O(2n)=O(n). In the worst case
-     * each character will be visited twice by ii and jj.
-     *
-     * Space complexity : O(min(m, n))O(min(m,n)). Same as the previous
-     * approach. We need O(k)O(k) space for the sliding window, where kk is the
-     * size of the Set. The size of the Set is upper bounded by the size of the
-     * string nn and the size of the charset/alphabet mm.
+    /**
+     * use a set
      */
     private static int countSubStringLength(String s) {
         int count = 0, index = 0, slow = 0;
