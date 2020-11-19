@@ -1,9 +1,9 @@
-package array;
+package twopointers;
 
 /**
  * @author Weiyan Xiang on 2020/11/3
  */
-public class MaxArea {
+public class ContainerWithMostWater {
 
     /**
      * 11. Container With Most Water
