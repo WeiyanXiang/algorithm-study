@@ -1,4 +1,4 @@
-package linkedlist;
+package twopointers;
 
 import data.structure.linkedlist.LinkedListImpl;
 
@@ -6,6 +6,11 @@ import data.structure.linkedlist.LinkedListImpl;
  * @author Weiyan Xiang on 2020/5/30
  */
 public class HasCycle {
+    /**
+     * 141. Linked List Cycle
+     * <p>
+     * https://leetcode.com/problems/linked-list-cycle/
+     */
     public boolean hasCycle(LinkedListImpl.Node head) {
         if (head == null) return false;
         LinkedListImpl.Node fast = head.next;
