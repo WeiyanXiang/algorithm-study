@@ -17,13 +17,11 @@ public class DFS {
     public void doDfs(Graph g, int s) {
         visited[s] = true;
         System.out.print("[" + s + "] ");
-        g.adj[s].forEach(e -> {
+        for (int e : g.adj[s]) {
             if (!visited[e]) {
                 doDfs(g, e);
             }
-        });
-
-
+        }
     }
 
     /**
@@ -44,12 +42,12 @@ public class DFS {
         while (!stack.isEmpty()) {
             int top = stack.pop();
             System.out.print("[" + top + "] ");
-            g.adj[top].forEach(e -> {
+            for (int e : g.adj[top]) {
                 if (!myVisited[e]) {
                     stack.push(e);
                     myVisited[e] = true;
                 }
-            });
+            }
         }
 
     }

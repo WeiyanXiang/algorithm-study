@@ -27,6 +27,17 @@ public class BinaryTreeInorderTraversal {
      * 145. Binary Tree Postorder Traversal
      * <p>
      * https://leetcode.com/problems/binary-tree-postorder-traversal/
+     * <p>
+     * A very good explanation from discussion:
+     * <p>
+     * https://leetcode.com/problems/binary-tree-postorder-traversal/discuss/45551/Preorder-Inorder-and-Postorder-Iteratively-Summarization
+     */
+    /**
+     * (a) Inorder (Left, Root, Right)
+     * <p>
+     * (b) Preorder (Root, Left, Right)
+     * <p>
+     * (c) Postorder (Left, Right, Root)
      */
     public List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> ans = new ArrayList<>();
@@ -83,7 +94,7 @@ public class BinaryTreeInorderTraversal {
         Stack<TreeNode> stack = new Stack<>();
         TreeNode cur = root;
         LinkedList<Integer> ans = new LinkedList<>();
-        // right left root
+        // left right root
         while (!stack.isEmpty() || cur != null) {
             if (cur != null) {
                 ans.addFirst(cur.val); // reverse of preorder
