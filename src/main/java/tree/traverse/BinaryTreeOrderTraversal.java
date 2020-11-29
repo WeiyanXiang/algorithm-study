@@ -10,7 +10,7 @@ import java.util.Stack;
 /**
  * @author Weiyan Xiang on 2020/11/24
  */
-public class BinaryTreeInorderTraversal {
+public class BinaryTreeOrderTraversal {
     /**
      * 94. Binary Tree Inorder Traversal
      * <p>

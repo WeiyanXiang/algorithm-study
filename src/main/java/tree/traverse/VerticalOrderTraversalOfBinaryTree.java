@@ -17,30 +17,27 @@ public class VerticalOrderTraversalOfBinaryTree {
      * 987. Vertical Order Traversal of a Binary Tree
      */
     public List<List<Integer>> verticalTraversal(TreeNode root) {
+        // store x y to each node through dfs
         TreeMap<Integer, TreeMap<Integer, PriorityQueue<Integer>>> map = new TreeMap<>();
-        dfs(root, 0, 0, map);
+        dfs(map, root, 0, 0);
         List<List<Integer>> ans = new ArrayList<>();
         for (TreeMap<Integer, PriorityQueue<Integer>> ys : map.values()) {
-            ans.add(new ArrayList<>());
-            for (PriorityQueue<Integer> q : ys.values()) {
-                while (!q.isEmpty()) {
-                    ans.get(ans.size() - 1).add(q.poll());
-                }
+            List<Integer> x = new ArrayList<>();
+            for (PriorityQueue<Integer> list : ys.values()) {
+                while (!list.isEmpty()) x.add(list.poll());
             }
+            ans.add(x);
         }
         return ans;
     }
 
-    private void dfs(TreeNode root, int x, int y, TreeMap<Integer, TreeMap<Integer, PriorityQueue<Integer>>> map) {
+    private void dfs(TreeMap<Integer, TreeMap<Integer, PriorityQueue<Integer>>> map, TreeNode root, int x, int y) {
         if (root == null) return;
-        if (!map.containsKey(x)) {
-            map.put(x, new TreeMap<>());
-        }
-        if (!map.get(x).containsKey(y)) {
-            map.get(x).put(y, new PriorityQueue<>());
-        }
+        if (!map.containsKey(x)) map.put(x, new TreeMap<>());
+        if (!map.get(x).containsKey(y)) map.get(x).put(y, new PriorityQueue<Integer>());
         map.get(x).get(y).offer(root.val);
-        dfs(root.left, x - 1, y + 1, map);
-        dfs(root.right, x + 1, y + 1, map);
+        dfs(map, root.left, x - 1, y + 1);
+        dfs(map, root.right, x + 1, y + 1);
     }
+
 }
