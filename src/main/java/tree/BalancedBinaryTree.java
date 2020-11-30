@@ -19,6 +19,11 @@ public class BalancedBinaryTree {
         }
     }
 
+    /**
+     * 110. Balanced Binary Tree
+     * <p>
+     * https://leetcode.com/problems/balanced-binary-tree/submissions/
+     */
     public static boolean isBalancedTemplate(TreeNode root) {
         return doIsBalanced(root).isBalanced;
     }

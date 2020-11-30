@@ -1,9 +1,17 @@
-package tree;
+package tree.traverse;
+
+import tree.TreeNode;
 
 /**
  * @author Weiyan Xiang on 2020/6/1
  */
-public class MaxDepth {
+public class MaxDepthBinaryTree {
+
+    /**
+     * 104. Maximum Depth of Binary Tree
+     * <p>
+     * https://leetcode.com/problems/maximum-depth-of-binary-tree/
+     */
     public int maxDepth(TreeNode root) {
         if (root == null) return 0;
         return Math.max(1 + maxDepth(root.left), 1 + maxDepth(root.right));
@@ -38,7 +46,7 @@ public class MaxDepth {
         node3.right = node7;
         node4.left = node8;
 
-        MaxDepth testObj = new MaxDepth();
+        MaxDepthBinaryTree testObj = new MaxDepthBinaryTree();
 
         System.out.println("4 == " + testObj.maxDepth(root));
     }

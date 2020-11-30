@@ -1,8 +1,13 @@
 /**
- * 
+ *
  */
-package tree;
+package tree.traverse;
 
+import tree.TreeNode;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Stack;
 
 /**
@@ -11,6 +16,11 @@ import java.util.Stack;
  */
 public class SymmetricTree {
 
+    /**
+     * 101. Symmetric Tree
+     * <p>
+     * https://leetcode.com/problems/symmetric-tree/
+     */
     //@formatter:off
     /*
      * Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).
@@ -34,19 +44,74 @@ public class SymmetricTree {
      * Recursive approach is more effective and human readable
      */
     public static boolean isSymmetricRecur(TreeNode root) {
-        return root == null || isSubTreeSymmetric(root.left, root.right);
+        if (root == null) return true;
+        return isSubTreeSymmetric(root.left, root.right);
     }
 
     private static boolean isSubTreeSymmetric(TreeNode left, TreeNode right) {
-        if (left == null || right == null) {
-            return left == right;
-        } else if (left.val != right.val) {
-            return false;
-        } else {
-            return isSubTreeSymmetric(left.left, right.right) && isSubTreeSymmetric(left.right, right.left);
-        }
+        if (left == null || right == null) return left == right;
+        if (left.val != right.val) return false;
+        return isSubTreeSymmetric(left.left, right.right) && isSubTreeSymmetric(left.right, right.left);
     }
 
+    /**
+     * my own AC answer BFS using queue
+     */
+    public boolean isSymmetricIterativeBfs(TreeNode root) {
+        if (root == null) return true;
+        LinkedList<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        while (!queue.isEmpty()) {
+            int len = queue.size();
+            List<Integer> row = new ArrayList<>();
+            for (int i = 0; i < len; i++) {
+                TreeNode top = queue.pop();
+                if (top.left != null) {
+                    queue.add(top.left);
+                    row.add(top.left.val);
+                } else row.add(null);
+                if (top.right != null) {
+                    queue.add(top.right);
+                    row.add(top.right.val);
+                } else row.add(null);
+            }
+            // check each row whether it is symmetric
+            int s = 0, e = row.size() - 1;
+            while (s < e) {
+                if (row.get(s) != row.get(e)) return false;
+                s++;
+                e--;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * most upvoted using queue
+     */
+    public boolean isSymmetric(TreeNode root) {
+        LinkedList<TreeNode> q = new LinkedList<TreeNode>();
+        if (root == null) return true;
+        q.add(root.left);
+        q.add(root.right);
+        while (q.size() > 1) {
+            TreeNode left = q.poll(),
+                    right = q.poll();
+            if (left == null && right == null) continue;
+            // bitwise operator, return true if different, false if same;
+            if (left == null ^ right == null) return false;
+            if (left.val != right.val) return false;
+            q.add(left.left);
+            q.add(right.right);
+            q.add(left.right);
+            q.add(right.left);
+        }
+        return true;
+    }
+
+    /**
+     * most upvoted using stack: its same with using queue, doesnt matter here.
+     */
     public static boolean isSymmetricIterative(TreeNode root) {
         if (root == null)
             return true;
