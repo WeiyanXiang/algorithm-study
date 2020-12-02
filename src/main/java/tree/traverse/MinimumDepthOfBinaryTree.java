@@ -1,7 +1,9 @@
 /**
  *
  */
-package tree;
+package tree.traverse;
+
+import tree.TreeNode;
 
 /**
  * @author weiyan.xiang
@@ -9,13 +11,9 @@ package tree;
  */
 public class MinimumDepthOfBinaryTree {
     /**
-     * Given a binary tree, find its minimum depth.
+     * 111. Minimum Depth of Binary Tree
      * <p>
-     * The minimum depth is the number of nodes along the shortest path from the root node down to the nearest leaf
-     * node.
-     *
-     * @param root
-     * @return
+     * https://leetcode.com/problems/minimum-depth-of-binary-tree/submissions/
      */
     public static int minDepthOptimal(TreeNode root) {
         if (root == null) return 0;
@@ -24,6 +22,16 @@ public class MinimumDepthOfBinaryTree {
         if (root.left != null) l = minDepthOptimal(root.left);
         if (root.right != null) r = minDepthOptimal(root.right);
         return 1 + Math.min(l, r);
+    }
+
+    /**
+     * my second ac answer:
+     */
+    public int minDepth(TreeNode root) {
+        if (root == null) return 0;
+        int l = minDepth(root.left);
+        int r = minDepth(root.right);
+        return l == 0 || r == 0 ? Math.max(l, r) + 1 : Math.min(l, r) + 1;
     }
 
     public static void main(String[] args) {
