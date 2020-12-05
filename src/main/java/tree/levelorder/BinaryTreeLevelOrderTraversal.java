@@ -1,12 +1,11 @@
 /**
- * 
+ *
  */
-package tree;
+package tree.levelorder;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import tree.TreeNode;
+
+import java.util.*;
 
 /**
  * @author weiyan.xiang
@@ -33,6 +32,12 @@ public class BinaryTreeLevelOrderTraversal {
      */
     //@formatter:on
     // BFS
+
+    /**
+     * 102. Binary Tree Level Order Traversal
+     * <p>
+     * https://leetcode.com/problems/binary-tree-level-order-traversal/
+     */
     public static List<List<Integer>> levelOrder(TreeNode root) {
         if (root == null)
             return new ArrayList<>();
@@ -54,11 +59,37 @@ public class BinaryTreeLevelOrderTraversal {
             }
             answer.add(row);
         }
+        Collections.reverse(answer);
         return answer;
     }
 
+    /**
+     * 107. Binary Tree Level Order Traversal II
+     * <p>
+     * https://leetcode.com/problems/binary-tree-level-order-traversal-ii/
+     */
+    public List<List<Integer>> levelOrderBottom(TreeNode root) {
+        List<List<Integer>> ans = new ArrayList<>();
+        if (root == null) return ans;
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        while (!queue.isEmpty()) {
+            List<Integer> row = new ArrayList<>();
+            int len = queue.size();
+            for (int i = 0; i < len; i++) {
+                TreeNode top = queue.poll();
+                row.add(top.val);
+                if (top.left != null) queue.add(top.left);
+                if (top.right != null) queue.add(top.right);
+            }
+            ans.add(row);
+        }
+        Collections.reverse(ans);
+        return ans;
+    }
+
     public static void main(String[] args) {
-      //@formatter:off
+        //@formatter:off
         /*
                 1
                / \

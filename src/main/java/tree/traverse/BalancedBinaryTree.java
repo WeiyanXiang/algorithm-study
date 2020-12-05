@@ -1,7 +1,9 @@
 /**
  *
  */
-package tree;
+package tree.traverse;
+
+import tree.TreeNode;
 
 /**
  * @author weiyan.xiang

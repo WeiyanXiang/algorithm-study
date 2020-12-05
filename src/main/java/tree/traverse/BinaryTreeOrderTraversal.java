@@ -54,6 +54,25 @@ public class BinaryTreeOrderTraversal {
         }
     }
 
+    /**
+     * only preorder can do below template
+     */
+    public List<Integer> preorderTraversalIterativeBest(TreeNode root) {
+        Stack<TreeNode> stack = new Stack<>();
+        List<Integer> ans = new ArrayList<>();
+        if (root == null) return ans;
+        TreeNode cur = root;
+        stack.push(root);
+        // root left right
+        while (!stack.isEmpty()) {
+            TreeNode node = stack.pop();
+            ans.add(node.val);
+            if (node.right != null) stack.push(node.right);
+            if (node.left != null) stack.push(node.left);
+        }
+        return ans;
+    }
+
     public List<Integer> preorderTraversalIterative(TreeNode root) {
         Stack<TreeNode> stack = new Stack<>();
         List<Integer> ans = new ArrayList<>();
