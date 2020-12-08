@@ -1,7 +1,9 @@
 /**
  *
  */
-package tree;
+package tree.path;
+
+import tree.TreeNode;
 
 /**
  * @author weiyan.xiang
@@ -29,6 +31,12 @@ public class PathSum {
      * @return
      */
     //@formatter:on
+
+    /**
+     * 112. Path Sum
+     * <p>
+     * https://leetcode.com/problems/path-sum/
+     */
     public static boolean hasPathSum(TreeNode root, int sum) {
         if (root == null) return false;
         return doCheck(root, sum, 0);

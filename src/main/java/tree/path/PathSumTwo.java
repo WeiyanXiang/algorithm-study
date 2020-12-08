@@ -1,7 +1,9 @@
 /**
  *
  */
-package tree;
+package tree.path;
+
+import tree.TreeNode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,26 +34,26 @@ public class PathSumTwo {
 		]
 	 */
 	//@formatter:on
-    List<List<Integer>> r = new ArrayList<>();
 
+    /**
+     * 113. Path Sum II
+     * <p>
+     * https://leetcode.com/problems/path-sum-ii/
+     */
     public List<List<Integer>> pathSum(TreeNode root, int sum) {
-        if (root == null) return r;
-        doCheck(root, sum, 0, new ArrayList<>());
-        return r;
+        List<List<Integer>> ans = new ArrayList<>();
+        doPathSum(root, sum, 0, ans, new ArrayList<>());
+        return ans;
     }
 
-    private void doCheck(TreeNode root, int sum, int cs, List<Integer> p) {
-        if (root == null) {
-            return;
-        }
-        cs += root.val;
-        p.add(root.val);
-        if (root.left == null && root.right == null && sum == cs) {
-            r.add(new ArrayList<>(p));
-        }
-        doCheck(root.left, sum, cs, p);
-        doCheck(root.right, sum, cs, p);
-        p.remove(p.size() - 1);
+    private void doPathSum(TreeNode root, int sum, int cur, List<List<Integer>> ans, List<Integer> row) {
+        if (root == null) return;
+        cur += root.val;
+        row.add(root.val);
+        if (root.left == null && root.right == null && cur == sum) ans.add(new ArrayList<>(row));
+        doPathSum(root.left, sum, cur, ans, row);
+        doPathSum(root.right, sum, cur, ans, row);
+        row.remove(row.size() - 1); // backtrack
     }
 
     public static void main(String[] args) {
