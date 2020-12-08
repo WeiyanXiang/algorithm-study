@@ -58,6 +58,28 @@ public class TreeNode {
         return head;
     }
 
+    public static TreeNode buildTreeFromInts(Integer... input) {
+        if (input == null || input.length == 0) return null;
+        Queue<TreeNode> queue = new LinkedList<>();
+        TreeNode head = new TreeNode(input[0]);
+        queue.add(head);
+        int i = 1;
+        while (!queue.isEmpty()) {
+            TreeNode top = queue.poll();
+            if (i < input.length) {
+                top.left = input[i] == null ? null : new TreeNode(input[i]);
+                i++;
+                queue.add(top.left);
+            }
+            if (i < input.length) {
+                top.right = input[i] == null ? null : new TreeNode(input[i]);
+                i++;
+                queue.add(top.right);
+            }
+        }
+        return head;
+    }
+
     public static void printListOfList(List<List<Integer>> levelOrder) {
         for (List<Integer> elementList : levelOrder) {
             System.out.print("[");
