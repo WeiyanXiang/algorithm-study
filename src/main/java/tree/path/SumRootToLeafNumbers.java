@@ -1,4 +1,4 @@
-package tree.traverse;
+package tree.path;
 
 import tree.TreeNode;
 
