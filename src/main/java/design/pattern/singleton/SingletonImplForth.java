@@ -21,7 +21,7 @@ public class SingletonImplForth {
      * should avoid the instantiation until unless client calls the getInstance method. Also this method doesn�t provide
      * any options for exception handling.
      */
-    public SingletonImplForth getInstance() {
+    public static SingletonImplForth getInstance() {
         return INSTANCE;
     }
 }

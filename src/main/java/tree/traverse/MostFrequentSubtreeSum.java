@@ -17,9 +17,11 @@ public class MostFrequentSubtreeSum {
      * 508. Most Frequent Subtree Sum
      * <p>
      * https://leetcode.com/problems/most-frequent-subtree-sum/
+     * <p>
+     * mostly upvoted ac answer
      */
     public int[] findFrequentTreeSum(TreeNode root) {
-        // key: sum of all node values, value:frequency
+        // key: sum of subtree values, value:frequency
         dfs(root);
         List<Integer> ans = new ArrayList<>();
         for (int k : map.keySet()) {
