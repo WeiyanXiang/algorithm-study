@@ -46,11 +46,12 @@ public class BinaryTreeCameras {
     }
 
     /**
-    check the child:
+    check the child l/r:
     if leaf / 0 -> means it is the parent of a leaf, install camera, so return 1.
     if covered / 1 -> means it (the child) is installed with camera, the as the parent it is covered, so return 2.
     **/
     private int dfs(TreeNode root) {
+        // check the child: if it is leaf
         if (root == null) return 2;
         int l = dfs(root.left), r = dfs(root.right);
         // if the child l/r is leaf/0, then install camera: ans++, then return 1 to indicate that it is parent of leaf.
