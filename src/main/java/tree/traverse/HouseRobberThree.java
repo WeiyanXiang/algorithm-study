@@ -44,4 +44,30 @@ public class HouseRobberThree {
         map.put(root, cur);
         return cur;
     }
+
+    /**
+     * need to re-think, cannot understand this step:
+     * res[0] = Math.max(left[0], left[1]) + Math.max(right[0], right[1]);
+     * i can understand now: i.e. [2,1,3,null,4], the result should be 7. left and right not necessarily in sync, and
+     * root vs left or right not necessarily in opposite either
+     *
+     * https://leetcode.com/problems/house-robber-iii/discuss/79330/Step-by-step-tackling-of-the-problem
+     */
+    public int robDp(TreeNode root) {
+        int[] res = robSub(root);
+        return Math.max(res[0], res[1]);
+    }
+
+    private int[] robSub(TreeNode root) {
+        if (root == null) return new int[2];
+
+        int[] left = robSub(root.left);
+        int[] right = robSub(root.right);
+        int[] res = new int[2];
+
+        res[0] = Math.max(left[0], left[1]) + Math.max(right[0], right[1]);
+        res[1] = root.val + left[0] + right[0];
+
+        return res;
+    }
 }
