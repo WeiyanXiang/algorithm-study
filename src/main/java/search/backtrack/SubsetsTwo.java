@@ -1,4 +1,4 @@
-package backtrack;
+package search.backtrack;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -7,9 +7,11 @@ import java.util.List;
 /**
  * @author Weiyan Xiang on 2020/11/5
  */
-public class SubsetsWithDup {
+public class SubsetsTwo {
 
     /**
+     * 90. Subsets II
+     * <p>
      * https://leetcode.com/problems/subsets-ii/
      */
     public List<List<Integer>> subsetsWithDup(int[] nums) {

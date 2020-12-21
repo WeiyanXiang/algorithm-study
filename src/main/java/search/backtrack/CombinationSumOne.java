@@ -1,4 +1,4 @@
-package search;/**
+package search.backtrack;/**
  * @author Weiyan Xiang on 2020/12/20
  */
 
@@ -7,17 +7,17 @@ import java.util.Arrays;
 import java.util.List;
 
 /***
- * this one is very similar to CombinationSumOne
+ * this one is same to the class in package: backtrack.CombinationSum
  */
-public class CombinationSumTwo {
-    /***
-     * 40. Combination Sum II
-     *
-     * https://leetcode.com/problems/combination-sum-ii/
+public class CombinationSumOne {
+    /**
+     * 39. Combination Sum
+     * <p>
+     * https://leetcode.com/problems/combination-sum/
      *
      * template answer, learnt from huahua
      */
-    public List<List<Integer>> combinationSum2(int[] candidates, int target) {
+    public List<List<Integer>> combinationSum(int[] candidates, int target) {
         Arrays.sort(candidates);
         List<List<Integer>> ans = new ArrayList<>();
         List<Integer> path = new ArrayList<>();
@@ -33,10 +33,10 @@ public class CombinationSumTwo {
         }
         for (int i = start; i < nums.length; i++) {
             int n = nums[i];
-            if (i > start && nums[i] == nums[i - 1]) continue;
+
             path.add(n);
-            // pass i+1 each time instead of i to indicate we don't use repeat nums in the array to construct the sum of target
-            dfs(nums, i + 1, remain - n, path, ans);
+            // pass i each time instead of i+1 to indicate we can have repeat nums to construct the sum of target
+            dfs(nums, i, remain - n, path, ans);
             path.remove(path.size() - 1);
         }
     }

@@ -1,4 +1,4 @@
-package backtrack;
+package search.backtrack;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,6 +10,8 @@ import java.util.List;
 public class CombinationSum {
 
     /**
+     * 39. Combination Sum
+     *
      * https://leetcode.com/problems/combination-sum/
      */
     public List<List<Integer>> combinationSum(int[] candidates, int target) {

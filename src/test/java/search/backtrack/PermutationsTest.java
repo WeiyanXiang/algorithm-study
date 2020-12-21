@@ -1,4 +1,4 @@
-package backtrack;
+package search.backtrack;
 
 import org.junit.Test;
 

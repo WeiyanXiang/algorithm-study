@@ -1,4 +1,4 @@
-package backtrack;
+package search.backtrack;
 
 import java.util.ArrayList;
 import java.util.List;
