@@ -11,11 +11,12 @@ import java.util.Set;
 public class Permutations {
 
     /**
+     * 46. Permutations
+     * <p>
+     * https://leetcode.com/problems/permutations/
+     * <p>
      * I think contains is costly and found second method using additional set from the answer's comments
      * https://leetcode.com/problems/permutations/discuss/18239/A-general-approach-to-backtracking-questions-in-Java-(Subsets-Permutations-Combination-Sum-Palindrome-Partioning)
-     *
-     * @param nums
-     * @return
      */
     public List<List<Integer>> permute(int[] nums) {
         List<List<Integer>> list = new ArrayList<>();
