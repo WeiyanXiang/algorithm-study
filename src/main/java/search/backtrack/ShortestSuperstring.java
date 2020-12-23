@@ -12,8 +12,7 @@ public class ShortestSuperstring {
      * https://zxi.mytechroad.com/blog/searching/leetcode-943-find-the-shortest-superstring/
      *
      * below answer is dfs/backtracking.
-     * backtracking is not optimal, optimal method is the dp version:
-     * https://leetcode.com/problems/find-the-shortest-superstring/discuss/194932/Travelling-Salesman-Problem
+     * backtracking is not optimal, optimal method is the dp version in the tutorial
      */
     private int n;
     private int[][] g;
@@ -31,6 +30,7 @@ public class ShortestSuperstring {
         }
 
         for (int i = 0; i < n; ++i) {
+            // checks whether the i-th is 1
             if ((used & (1 << i)) != 0) continue;
             path[d] = i;
             dfs(d + 1,
