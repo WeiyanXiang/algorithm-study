@@ -22,4 +22,14 @@ public class GenerateParenthesesTest {
         assertEquals(2, actual.size());
         assertTrue(actual.containsAll(expected));
     }
+
+    @Test
+    public void generateParenthesisBacktrack() {
+        GenerateParentheses testObj = new GenerateParentheses();
+        // act
+        List<String> actual = testObj.generateParenthesisBacktrack(2);
+        List<String> expected = Arrays.asList("()()", "(())");
+        assertEquals(2, actual.size());
+        assertTrue(actual.containsAll(expected));
+    }
 }

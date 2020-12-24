@@ -11,7 +11,7 @@ public class GenerateParentheses {
      * 22. Generate Parentheses
      * <p>
      * https://leetcode.com/problems/generate-parentheses/
-     *
+     * <p>
      * upvoted ac answer
      */
     public List<String> generateParenthesis(int n) {
@@ -36,6 +36,33 @@ public class GenerateParentheses {
         }
         if (close < open) {
             dfs(ans, temp + ")", open, close + 1, n);
+        }
+    }
+
+
+    /**
+     * my backtrack version, easier to understand, so we construct temp and then prune the branch after backtrack
+     */
+    public List<String> generateParenthesisBacktrack(int n) {
+        List<String> ans = new ArrayList<>();
+        backtrack(ans, "", 0, 0, n);
+        return ans;
+    }
+
+    private void backtrack(List<String> ans, String temp, int open, int close, int n) {
+        if (temp.length() == 2 * n) {
+            ans.add(temp);
+            return;
+        }
+        if (open < n) {
+            temp += "(";
+            backtrack(ans, temp, open + 1, close, n);
+            temp = temp.substring(0, temp.length() - 1);
+        }
+        if (close < open) {
+            temp += ")";
+            backtrack(ans, temp, open, close + 1, n);
+            temp = temp.substring(0, temp.length() - 1);
         }
     }
 }
