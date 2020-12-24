@@ -18,13 +18,8 @@ public class RemoveInvalidParentheses {
         List<String> ans = new ArrayList<>();
         for (char ss : s.toCharArray()) {
             if (ss == '(') l++;
-            if (l == 0) {
-                if (ss == ')') {
-                    r++;
-                }
-            } else {
-                l--;
-            }
+            if (l == 0 && ss == ')') r++;
+            else if (ss == ')') l--;
         }
         dfs(0, l, r, s, ans);
         return ans;
@@ -52,8 +47,8 @@ public class RemoveInvalidParentheses {
         int count = 0;
         for (char c : s.toCharArray()) {
             if (c == '(') count++;
-            else if (c == ')') count--;
-            else if (c < 0) return false;
+            if (c == ')') count--;
+            if (count < 0) return false;
         }
         return count == 0;
     }
