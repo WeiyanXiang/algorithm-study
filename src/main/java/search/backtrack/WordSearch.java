@@ -1,4 +1,4 @@
-package search;
+package search.backtrack;
 
 /**
  * @author Weiyan Xiang on 2020/12/25
