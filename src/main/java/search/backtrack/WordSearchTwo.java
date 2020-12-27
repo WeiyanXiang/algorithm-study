@@ -33,8 +33,11 @@ public class WordSearchTwo {
         if (r < 0 || r > board.length - 1 || c < 0 || c > board[0].length - 1) return false;
         if (!visited[r][c] && word.charAt(i) == board[r][c]) {
             visited[r][c] = true;
-            boolean found = dfs(board, word, r + 1, c, i + 1, visited) || dfs(board, word, r - 1, c, i + 1, visited) ||
-                    dfs(board, word, r, c + 1, i + 1, visited) || dfs(board, word, r, c - 1, i + 1, visited);
+            boolean found =
+                    dfs(board, word, r + 1, c, i + 1, visited) ||
+                    dfs(board, word, r - 1, c, i + 1, visited) ||
+                    dfs(board, word, r, c + 1, i + 1, visited) ||
+                    dfs(board, word, r, c - 1, i + 1, visited);
             // backtrack
             visited[r][c] = false;
             return found;
@@ -42,6 +45,13 @@ public class WordSearchTwo {
         return false;
     }
 
+    /**
+     * using a Trie to efficiently solve,
+     *
+     * to help understand trie:
+     *
+     * https://www.youtube.com/watch?v=AXjmTQ8LEoI&ab_channel=TusharRoy-CodingMadeSimple
+     */
     private Set<String> ans;
     private boolean[][] visited;
 
