@@ -33,11 +33,11 @@ public class WordLadder {
                     for (char j = 'a'; j <= 'z'; j++) {
                         if (j == curChar) continue;
                         chs[i] = j;
-                        String updatedWord = new String(chs);
-                        if (updatedWord.equals(ew)) return count + 1;
-                        if (!dict.contains(updatedWord)) continue;
-                        dict.remove(updatedWord);
-                        queue.add(updatedWord);
+                        String uw = new String(chs);
+                        if (uw.equals(ew)) return count + 1;
+                        if (!dict.contains(uw)) continue;
+                        dict.remove(uw);
+                        queue.add(uw);
                     }
                     chs[i] = curChar;
                 }
@@ -46,44 +46,46 @@ public class WordLadder {
         return 0;
     }
 
-    public int ladderLength(String beginWord, String endWord, List<String> wordList) {
-        Set<String> dict = new HashSet<>();
-        for (String word : wordList) dict.add(word);
-        if (!dict.contains(endWord)) return 0;
+    public int ladderLength(String bw, String ew, List<String> wl) {
+        Set<String> dict = new HashSet<>(wl);
+        if (!dict.contains(ew)) return 0;
 
-        Set<String> q1 = new HashSet<>();
-        Set<String> q2 = new HashSet<>();
-        q1.add(beginWord);
-        q2.add(endWord);
+        // 2 queues, 1 from beginning 1 from end
+        Set<String> s1 = new HashSet<>();
+        s1.add(bw);
+        Set<String> s2 = new HashSet<>();
+        s2.add(ew);
 
-        int l = beginWord.length();
-        int steps = 0;
+        int l = bw.length();
+        int count = 0;
 
-        while (!q1.isEmpty() && !q2.isEmpty()) {
-            ++steps;
-            if (q1.size() > q2.size()) {
-                Set<String> tmp = q1;
-                q1 = q2;
-                q2 = tmp;
+        while (!s1.isEmpty() && !s2.isEmpty()) {
+            count++;
+            // always switch to shorter one to do bfs
+            if (s1.size() > s2.size()) {
+                Set<String> temp = s1;
+                s1 = s2;
+                s2 = temp;
             }
-            Set<String> q = new HashSet<>();
-            for (String w : q1) {
-                char[] chs = w.toCharArray();
-                for (int i = 0; i < l; ++i) {
+            Set<String> curQ = new HashSet<>();
+            for (String word : s1) {
+                char[] chs = word.toCharArray();
+                for (int i = 0; i < l; i++) {
                     char ch = chs[i];
-                    for (char c = 'a'; c <= 'z'; ++c) {
+                    for (char c = 'a'; c <= 'z'; c++) {
                         if (c == ch) continue;
                         chs[i] = c;
-                        String t = new String(chs);
-                        if (q2.contains(t)) return steps + 1;
-                        if (!dict.contains(t)) continue;
-                        dict.remove(t);
-                        q.add(t);
+                        String updatedWord = new String(chs);
+                        // s2 contains the word meaning it connects to s1 which builds a valid path.
+                        if (s2.contains(updatedWord)) return count + 1;
+                        if (!dict.contains(updatedWord)) continue;
+                        dict.remove(updatedWord);
+                        curQ.add(updatedWord);
                     }
                     chs[i] = ch;
                 }
             }
-            q1 = q;
+            s1 = curQ;
         }
         return 0;
     }
