@@ -11,77 +11,75 @@ public class WordLadderTwo {
      * https://leetcode.com/problems/word-ladder-ii/
      */
     public List<List<String>> findLadders(String bw, String ew, List<String> wl) {
-        List<List<String>> ans = new ArrayList<>();
-        // build dict
         Set<String> dict = new HashSet<>(wl);
-        if (!wl.contains(ew)) return ans;
-        // bfs
+        List<List<String>> res = new ArrayList<>();
+        // key: word, value: list of words that are children/neighbors of current word
+        Map<String, List<String>> nodeNeighbors = new HashMap<>();
         // key: word, value: shortest path length which reaches this word
-        Map<String, Integer> steps = new HashMap<>();
-        steps.put(bw, 1);
-        // key: word, value: list of words that are parents of current word
-        Map<String, List<String>> parents = new HashMap<>();
-        for (String str : dict) parents.put(str, new ArrayList<>());
+        Map<String, Integer> distance = new HashMap<>();
+        List<String> solution = new ArrayList<>();
 
-        int l = bw.length();
-        int step = 0;
-        boolean found = false;
+        dict.add(bw);
+        bfs(bw, ew, dict, nodeNeighbors, distance);
+        dfs(bw, ew, dict, nodeNeighbors, distance, solution, res);
+        return res;
+    }
 
-        LinkedList<String> queue = new LinkedList<>();
-        queue.add(bw);
+    private void bfs(String bw, String ew, Set<String> dict, Map<String, List<String>> nodeNeighbors, Map<String, Integer> distance) {
+        for (String str : dict) nodeNeighbors.put(str, new ArrayList<>());
 
-        while (!queue.isEmpty() && !found) {
-                step++;
-            int qs = queue.size();
-            // for each level
-            for (int ss = 0; ss < qs; ss++) {
-                String p = queue.poll();
-                char[] chs = p.toCharArray();
-                for (int i = 0; i < l; i++) {
-                    char cc = chs[i];
-                    for (char j = 'a'; j <= 'z'; j++) {
-                        // if j is same as current letter, skip
-                        if (j == cc) continue;
-                        chs[i] = j;
-                        String w = new String(chs);
-                        if (w.equals(ew)) {
-                            parents.get(w).add(p);
-                            found = true;
-                        } else {
-                            // Not a new word, but another transform
-                            // with the same number of steps
-                            if (steps.containsKey(w) && step < steps.get(w)) {
-                                parents.get(w).add(p);
-                            }
-                        }
-                        if (!dict.contains(w)) continue;
-                        dict.remove(w);
-                        queue.add(w);
-                        steps.put(w, step + 1);
-                        parents.get(w).add(p);
+        Queue<String> queue = new LinkedList<>();
+        queue.offer(bw);
+        distance.put(bw, 0);
+        while (!queue.isEmpty()) {
+            int count = queue.size();
+            boolean foundEnd = false;
+            for (int i = 0; i < count; i++) {
+                String cur = queue.poll();
+                int curDistance = distance.get(cur);
+                List<String> neighbors = getNeighbors(cur, dict);
+                for (String neighbor : neighbors) {
+                    nodeNeighbors.get(cur).add(neighbor);
+                    if (!distance.containsKey(neighbor)) {
+                        distance.put(neighbor, curDistance + 1);
+                        if (ew.equals(neighbor)) foundEnd = true;
+                        else queue.offer(neighbor);
                     }
-                    chs[i] = cc;
                 }
             }
-            if (found) {
-                List<String> curr = new ArrayList<>();
-                curr.add(ew);
-                dfsGetPaths(ew, bw, parents, curr, ans);
+            if (foundEnd) break;
+        }
+    }
+
+    private List<String> getNeighbors(String node, Set<String> dict) {
+        List<String> ans = new ArrayList<>();
+        char[] chs = node.toCharArray();
+        for (int i = 0; i < chs.length; i++) {
+            char oldChar = chs[i];
+            for (char ch = 'a'; ch <= 'z'; ch++) {
+                if (chs[i] == ch) continue;
+                chs[i] = ch;
+                String newWord = new String(chs);
+                if (!dict.contains(newWord)) continue;
+                ans.add(newWord);
             }
+            chs[i] = oldChar;
         }
         return ans;
     }
 
-    private void dfsGetPaths(String word, String bw, Map<String, List<String>> parents,
-                             List<String> curr, List<List<String>> ans) {
-        if (word == bw) {
-            ans.add(new ArrayList<>(curr));
-            return;
+    private void dfs(String cur, String end, Set<String> dict, Map<String, List<String>> nodeNeighbors,
+                     Map<String, Integer> distance, List<String> solution, List<List<String>> res) {
+        solution.add(cur);
+        if (end.equals(cur)) {
+            res.add(new ArrayList<>(solution));
         }
-        for (String p : parents.get(word)) {
-            curr.add(p);
-            dfsGetPaths(p, bw, parents, curr, ans);
-            curr.remove(curr.size() - 1);
+        for (String next : nodeNeighbors.get(cur)) {
+            if (distance.get(next) == distance.get(cur) + 1) {
+                dfs(next, end, dict, nodeNeighbors, distance, solution, res);
+            }
         }
+        solution.remove(solution.size() - 1);
     }
+
 }
