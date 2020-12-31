@@ -9,6 +9,8 @@ public class WordLadderTwo {
      * 126. Word Ladder II
      * <p>
      * https://leetcode.com/problems/word-ladder-ii/
+     * <p>
+     * upvoted answer
      */
     public List<List<String>> findLadders(String bw, String ew, List<String> wl) {
         Set<String> dict = new HashSet<>(wl);
@@ -21,7 +23,7 @@ public class WordLadderTwo {
 
         dict.add(bw);
         bfs(bw, ew, dict, nodeNeighbors, distance);
-        dfs(bw, ew, dict, nodeNeighbors, distance, solution, res);
+        dfs(bw, ew, nodeNeighbors, distance, solution, res);
         return res;
     }
 
@@ -40,6 +42,11 @@ public class WordLadderTwo {
                 List<String> neighbors = getNeighbors(cur, dict);
                 for (String neighbor : neighbors) {
                     nodeNeighbors.get(cur).add(neighbor);
+                    /**
+                     * in BFS , we can be sure that the distance of each node is the shortest one , because once we have
+                     * visited a node, we update the distance , if we first met one node ,it must be the shortest distance.
+                     * if we met the node again ,its distance must not be less than the distance we first met and set.
+                     */
                     if (!distance.containsKey(neighbor)) {
                         distance.put(neighbor, curDistance + 1);
                         if (ew.equals(neighbor)) foundEnd = true;
@@ -68,7 +75,7 @@ public class WordLadderTwo {
         return ans;
     }
 
-    private void dfs(String cur, String end, Set<String> dict, Map<String, List<String>> nodeNeighbors,
+    private void dfs(String cur, String end, Map<String, List<String>> nodeNeighbors,
                      Map<String, Integer> distance, List<String> solution, List<List<String>> res) {
         solution.add(cur);
         if (end.equals(cur)) {
@@ -76,7 +83,7 @@ public class WordLadderTwo {
         }
         for (String next : nodeNeighbors.get(cur)) {
             if (distance.get(next) == distance.get(cur) + 1) {
-                dfs(next, end, dict, nodeNeighbors, distance, solution, res);
+                dfs(next, end, nodeNeighbors, distance, solution, res);
             }
         }
         solution.remove(solution.size() - 1);
