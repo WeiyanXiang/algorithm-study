@@ -2,10 +2,7 @@ package search;/**
  * @author Weiyan Xiang on 2020/12/26
  */
 
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class WordLadder {
     /**
@@ -46,6 +43,9 @@ public class WordLadder {
         return 0;
     }
 
+    /**
+     * bi-directional BFS
+     */
     public int ladderLength(String bw, String ew, List<String> wl) {
         Set<String> dict = new HashSet<>(wl);
         if (!dict.contains(ew)) return 0;
@@ -88,6 +88,51 @@ public class WordLadder {
             s1 = curQ;
         }
         return 0;
+    }
+
+    /**
+     * Bi-directional BFS, optimal
+     */
+    public int openLockMyVersionBiDirectionalBFS(String[] deadends, String target) {
+        Set<String> deads = new HashSet<>(Arrays.asList(deadends));
+        String start = "0000";
+        if (deads.contains(start)) return -1;
+        if (start.equals(target)) return 0;
+        Set<String> q1 = new HashSet<>();
+        q1.add(start);
+        Set<String> q2 = new HashSet<>();
+        q2.add(target);
+        Set<String> v1 = new HashSet<>();
+        Set<String> v2 = new HashSet<>();
+
+        int depth = -1;
+        while (!q1.isEmpty() && !q2.isEmpty()) {
+            depth++;
+            if (q1.size() > q2.size()) {
+                Set<String> temp = q1;
+                q1 = q2;
+                q2 = temp;
+            }
+            Set<String> tempQ = new HashSet<>();
+            for (String pass : q1) {
+                if (q2.contains(pass)) return depth;
+                if (deads.contains(pass)) continue;
+                if (v1.contains(pass)) continue;
+                char[] chs = pass.toCharArray();
+                for (int i = 0; i < 4; i++) {
+                    char ch = chs[i];
+                    chs[i] = ch == '9' ? '0' : (char) (ch + 1);
+                    String uw1 = new String(chs);
+                    chs[i] = ch == '0' ? '9' : (char) (ch - 1);
+                    String uw2 = new String(chs);
+                    chs[i] = ch;
+                    tempQ.add(uw1);
+                    tempQ.add(uw2);
+                }
+            }
+            q1 = tempQ;
+        }
+        return -1;
     }
 
 

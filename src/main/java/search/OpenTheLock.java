@@ -42,4 +42,36 @@ public class OpenTheLock {
         return ans;
     }
 
+
+    public int openLockMyVersion(String[] deadends, String target) {
+        Set<String> deads = new HashSet<>(Arrays.asList(deadends));
+        Set<String> visited = new HashSet<>();
+        int depth = -1;
+        Queue<String> q = new LinkedList<>();
+        q.offer("0000");
+        while (!q.isEmpty()) {
+            depth++;
+            for (int qq = q.size(); qq > 0; qq--) {
+                String poll = q.poll();
+                if (poll.equals(target)) return depth;
+                if (deads.contains(poll)) continue;
+                if (visited.contains(poll)) continue;
+                visited.add(poll);
+                // build all possible updates from current polled digits
+                char[] chs = poll.toCharArray();
+                for (int i = 0; i < chs.length; i++) {
+                    char ch = chs[i];
+                    chs[i] = ch == '9' ? '0' : (char) (ch + 1);
+                    String s1 = new String(chs);
+                    q.offer(s1);
+                    chs[i] = ch == '0' ? '9' : (char) (ch - 1);
+                    String s2 = new String(chs);
+                    q.offer(s2);
+                    chs[i] = ch;
+                }
+            }
+        }
+        return -1;
+    }
+
 }
