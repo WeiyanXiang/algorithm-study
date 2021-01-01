@@ -12,6 +12,17 @@ public class JumpGame {
         return jump(nums, nums.length);
     }
 
+    public boolean canJumpRec(int[] nums) {
+        return jumpRec(nums, nums.length - 2, nums.length - 1);
+    }
+
+    private boolean jumpRec(int[] nums, int i, int last) {
+        if (i == 0) return true;
+        if (nums[i] + i < last) return false;
+        return jumpRec(nums, i - 1, i);
+    }
+
+
     /**
      * backward thinking
      */
@@ -29,11 +40,11 @@ public class JumpGame {
     }
 
     /**
-     * backward thinking
+     * Forward thinking
      */
     private boolean jumpForward(int[] nums, int n) {
         int reach = 0, i = 0;
-        for (; i < n && i <= reach; i++) {
+        for (i = 0; i < n && i <= reach; i++) {
             reach = Math.max(nums[i] + i, reach);
         }
         return i == n;
