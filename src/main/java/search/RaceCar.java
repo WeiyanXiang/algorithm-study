@@ -2,38 +2,85 @@ package search;/**
  * @author Weiyan Xiang on 2021/1/1
  */
 
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Set;
+import java.util.*;
 
 public class RaceCar {
     /**
      * 818. Race Car
      * <p>
      * https://leetcode.com/problems/race-car/
+     * <p>
+     * there are 2 DP solutions, below is the one easier to understand, ideas from huahua
+     * https://zxi.mytechroad.com/blog/searching/leetcode-818-race-car/
      */
-    public int racecar(int target) {
+    private static int[][] m;
+
+    public int racecarDp(int target) {
+        if (m == null) {
+            m = new int[10001][2];
+            for (int t = 1; t <= 10000; t++) {
+                // n steps to reach or exceed target position as per speed
+                int n = (int) Math.ceil(Math.log(t + 1) / Math.log(2));
+                // 0 is facing right, 1 is facing left
+                if (1 << n == t + 1) {
+                    m[t][0] = n;
+                    m[t][1] = n + 1;
+                    continue;
+                }
+                int l = (1 << n) - 1 - t;
+                // now turn back
+                // i.e. when reach t and facing right m[t][0], m[l][0]+1 means turn back
+                m[t][0] = n + 1 + Math.min(m[l][1], m[l][0] + 1);
+                m[t][1] = n + 1 + Math.min(m[l][0], m[l][1] + 1);
+                // now loop to assume each i is turning/restart point
+                for (int i = 1; i < t; i++) {
+                    for (int d = 0; d <= 1; d++) {
+                        m[t][d] = Math.min(m[t][d], Math.min(
+                                m[i][0] + 2 + m[t - i][d],
+                                m[i][1] + 1 + m[t - i][d]
+                        ));
+                    }
+                }
+
+            }
+        }
+        return Math.min(m[target][0], m[target][1]);
+    }
+
+    /**
+     * BFS with pruning, time limits exceeded.
+     * <p>
+     * TC: O(2^D)
+     * <p>
+     * SC: O(2^D)
+     * <p>
+     * D is depth of the path
+     */
+    public int racecarMyVersion(int target) {
         Queue<SpdAndPo> queue = new LinkedList<>();
         // initial position
         queue.add(new SpdAndPo(0, 1));
+        Set<String> visited = new HashSet<>(Arrays.asList("0_1", "0_-1"));
 
-        Set<SpdAndPo> visited = new HashSet<>();
         int depth = -1;
         while (!queue.isEmpty()) {
             depth++;
             for (int q = queue.size(); q > 0; q--) {
                 SpdAndPo cur = queue.poll();
                 int curPosition = cur.position;
+                int curSpeed = cur.speed;
                 if (curPosition == target) return depth;
-                if (visited.contains(cur)) continue;
-                if (curPosition > 2 * target || curPosition < 0) continue;
-                visited.add(cur);
-                // explore both A and R and add that to queue and continue BFS
-                // A
-                queue.offer(new SpdAndPo(curPosition + cur.speed, cur.speed * 2));
-                // R
-                queue.offer(new SpdAndPo(curPosition, cur.speed > 0 ? -1 : 1));
+                // explore both A and R and add that to queue and continue BFS with pruning
+                if (Math.abs(curSpeed) < 2 * target && Math.abs(curPosition) < 2 * target) {
+                    // A
+                    queue.offer(new SpdAndPo(curPosition + curSpeed, curSpeed * 2));
+                }
+                SpdAndPo newR = new SpdAndPo(curPosition, curSpeed > 0 ? -1 : 1);
+                if (!visited.contains(newR.position + "_" + newR.speed)) {
+                    // R
+                    queue.offer(new SpdAndPo(curPosition, curSpeed > 0 ? -1 : 1));
+                    visited.add(curPosition + "_" + curSpeed);
+                }
             }
         }
         return -1;
