@@ -19,7 +19,7 @@ public class RaceCar {
         if (m == null) {
             m = new int[10001][2];
             for (int t = 1; t <= 10000; t++) {
-                // n steps to reach or exceed target position as per speed
+                // least steps to reach or exceed target position as per speed
                 int n = (int) Math.ceil(Math.log(t + 1) / Math.log(2));
                 // 0 is facing right, 1 is facing left
                 if (1 << n == t + 1) {
@@ -29,14 +29,17 @@ public class RaceCar {
                 }
                 int l = (1 << n) - 1 - t;
                 // now turn back
-                // i.e. when reach t and facing right m[t][0], m[l][0]+1 means turn back
+                // n 是到达target，n+1是掉一次头，Math.min（）部分是对于不同朝向的去最小值
+                // 这些只是m[t][0]和m[t][1]的一个解，下面的for loop将会potentially优化
                 m[t][0] = n + 1 + Math.min(m[l][1], m[l][0] + 1);
                 m[t][1] = n + 1 + Math.min(m[l][0], m[l][1] + 1);
-                // now loop to assume each i is turning/restart point
+                // now loop to assume each i is turning/restart point, restart means reversing to achieve speed from 1
                 for (int i = 1; i < t; i++) {
                     for (int d = 0; d <= 1; d++) {
                         m[t][d] = Math.min(m[t][d], Math.min(
+                                // 方向正的（right）+2是因为掉2次头才可以
                                 m[i][0] + 2 + m[t - i][d],
+                                // 方向负的（left）+1是因为掉1次头就可以
                                 m[i][1] + 1 + m[t - i][d]
                         ));
                     }
