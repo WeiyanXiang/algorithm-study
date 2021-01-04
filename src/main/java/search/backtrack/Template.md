@@ -1,4 +1,4 @@
-https://www.youtube.com/watch?v=DKCbsiDBN6c&list=PLDN4rrl48XKpZkf03iYFl-O29szjTrs_O&index=63&ab_channel=AbdulBari
+https://www.youtube.com/watch?h=DKCbsiDBN6c&list=PLDN4rrl48XKpZkf03iYFl-O29szjTrs_O&index=63&ab_channel=AbdulBari
 
 What is backtracking?
 backtracking is a brute force approach.

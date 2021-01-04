@@ -14,9 +14,8 @@ public class Matrix01 {
      * <p>
      * https://leetcode.com/problems/01-matrix/
      * <p>
-     * bfs upvoted version, idea:
-     * At beginning, set cell value to Integer.MAX_VALUE if it is not 0.
-     * If newly calculated distance >= current distance, then we don't need to explore that cell again.
+     * bfs upvoted version, idea: At beginning, set cell value to Integer.MAX_VALUE if it is not 0. If a newly labelled
+     * cell (which is having max value) found, then we explore that cell.
      */
     public int[][] updateMatrix(int[][] matrix) {
         int m = matrix.length;
@@ -36,11 +35,13 @@ public class Matrix01 {
             for (int[] d : dirs) {
                 int r = p[0] + d[0];
                 int c = p[1] + d[1];
-                // if the l/r/u/d shifted location already having smaller distance, skip
-                if (r < 0 || r >= m || c < 0 || c >= n || matrix[r][c] <= matrix[p[0]][p[1]] + 1) continue;
-                q.offer(new int[]{r, c});
-                // because l/r/u/d is 1 steps away, so update it
-                matrix[r][c] = matrix[p[0]][p[1]] + 1;
+                // if out of bound
+                if (r < 0 || r >= m || c < 0 || c >= n) continue;
+                // if it is labelled to check distance
+                if (matrix[r][c] == Integer.MAX_VALUE) {
+                    q.offer(new int[]{r, c});
+                    matrix[r][c] = matrix[p[0]][p[1]] + 1;
+                }
             }
         }
         return matrix;
