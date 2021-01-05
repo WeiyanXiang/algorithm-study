@@ -2,12 +2,12 @@ package data.structure.queue;/**
  * @author Weiyan Xiang on 2021/1/4
  */
 
-import java.util.Objects;
+import java.util.Comparator;
 import java.util.PriorityQueue;
 
 public class PriorityQueueDemo {
 
-    static class Cell implements Comparable {
+    static class Cell {
         int r;
         int c;
         int h;
@@ -18,32 +18,25 @@ public class PriorityQueueDemo {
             this.h = h;
         }
 
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-            Cell cell = (Cell) o;
-            return h == cell.h;
-        }
-
-        @Override
-        public int hashCode() {
-            return Objects.hash(h);
-        }
-
-        @Override
-        public int compareTo(Object o) {
-            return this.h - ((Cell) o).h;
-        }
     }
 
     public static void main(String[] args) {
-        PriorityQueue<Cell> queue = new PriorityQueue<>();
-        queue.offer(new Cell(1, 1, 4));
-        queue.offer(new Cell(1, 1, 2));
-        queue.offer(new Cell(1, 1, 3));
-        queue.offer(new Cell(1, 1, 1));
+        PriorityQueue<Cell> queue = new PriorityQueue<>(Comparator.comparingInt(a -> a.h));
+        queue.offer(new Cell(0, 0, 1));
+        queue.offer(new Cell(0, 1, 2));
+        queue.offer(new Cell(0, 2, 3));
+        queue.offer(new Cell(1, 0, 0));
+        queue.offer(new Cell(1, 1, 0));
+        queue.offer(new Cell(1, 2, 4));
+        queue.offer(new Cell(2, 0, 7));
+        queue.offer(new Cell(2, 1, 6));
+        queue.offer(new Cell(2, 2, 5));
 
+        System.out.print(queue.poll().h);
+        System.out.print(queue.poll().h);
+        System.out.print(queue.poll().h);
+        System.out.print(queue.poll().h);
+        System.out.print(queue.poll().h);
         System.out.print(queue.poll().h);
         System.out.print(queue.poll().h);
         System.out.print(queue.poll().h);
