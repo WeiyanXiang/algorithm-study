@@ -22,6 +22,13 @@ public class CutOffTrees {
 
     }
 
+    /**
+     * 675. Cut Off Trees for Golf Event
+     * <p>
+     * https://leetcode.com/problems/cut-off-trees-for-golf-event/submissions/
+     *
+     * my own version with created object after learning from huahua ans
+     */
     public int cutOffTree(List<List<Integer>> forest) {
         // priority queue to keep tracks of sorted tree's location
         // BFS to work out the distances in total
