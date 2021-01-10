@@ -1,8 +1,5 @@
 package linkedlist;
 
-import java.util.HashSet;
-import java.util.Set;
-
 /**
  * @author Weiyan Xiang on 2020/11/2
  */
@@ -73,5 +70,19 @@ public class AddTwoNumbers {
         return sentinel.next;
     }
 
+    /**
+     * recursion version, upvoted answer
+     */
+    public ListNode addTwoNumbersRecursion(ListNode l1, ListNode l2) {
+        return addUp(l1, l2, false);
+    }
+
+    private ListNode addUp(ListNode l1, ListNode l2, boolean addOne) {
+        if (l1 == null && l2 == null && !addOne) return null;
+        int cs = (l1 == null ? 0 : l1.val) + (l2 == null ? 0 : l2.val) + (addOne ? 1 : 0);
+        ListNode p = new ListNode(cs % 10);
+        p.next = addUp(l1 == null ? null : l1.next, l2 == null ? null : l2.next, cs >= 10);
+        return p;
+    }
 
 }

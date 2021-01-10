@@ -29,7 +29,8 @@ public class RestoreIpAddresses {
             String section = s.substring(start, start + i);
             if (section.length() > 1 && section.startsWith("0")) break;
             if (Integer.valueOf(section) > 255) break;
-            dfs(s, ans, d == 0 ? section : cur + "." + section, d + 1, start + i);
+            String updatedCur = d == 0 ? section : cur + "." + section;
+            dfs(s, ans, updatedCur, d + 1, start + i);
         }
     }
 
