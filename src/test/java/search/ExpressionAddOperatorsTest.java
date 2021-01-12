@@ -15,7 +15,7 @@ public class ExpressionAddOperatorsTest {
     public void addOperators() {
         ExpressionAddOperators testObj = new ExpressionAddOperators();
         // act +-
-        List<String> actualAddMinus = testObj.addOperatorsAddMinusOnly("1232", 4);
+        List<String> actualAddMinus = testObj.addOperators("1232", 4);
         // assert
         Assert.assertTrue(actualAddMinus.containsAll(Arrays.asList("1+2+3-2")));
     }

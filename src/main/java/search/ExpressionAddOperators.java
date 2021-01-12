@@ -7,34 +7,42 @@ import java.util.List;
 
 public class ExpressionAddOperators {
 
-    public List<String> addOperatorsAddMinusCombine(String num, int target) {
+    /**
+     * 282. Expression Add Operators
+     * <p>
+     * https://leetcode.com/problems/expression-add-operators/
+     * <p>
+     * upvoted ans
+     */
+    public List<String> addOperators(String num, int target) {
         List<String> ans = new ArrayList<>();
-        searchAddMinusCombine(num, target, ans, "", 0, 0);
+        dfs(num, target, "", 0, 0, 0, ans);
         return ans;
     }
 
-    private void searchAddMinusCombine(String num, int target, List<String> ans, String curString, int curSum, int start) {
-        if (start > num.length()) return;
-        if (curSum == target && start == num.length()) ans.add(curString);
-        for (int i = start; i < num.length(); i++) {
-            char c = num.charAt(i);
-            int ic = c - '0';
-            int prevDigit = curString.isEmpty() ? 0 : curString.charAt(curString.length() - 1) - '0';
-            // combine
-            searchAddMinusCombine(num, target, ans,
-                    curString.isEmpty() ? "" + c : curString + c,
-                    curSum - prevDigit + prevDigit * 10 + ic,
-                    start + 1);
-            // +
-            searchAddMinusCombine(num, target, ans,
-                    curString.isEmpty() ? "" + c : curString + "+" + c,
-                    curSum + ic,
-                    start + 1);
-            // -
-            searchAddMinusCombine(num, target, ans,
-                    curString.isEmpty() ? "" + c : curString + "-" + c,
-                    curSum - ic,
-                    start + 1);
+    private void dfs(String num, int target,
+                     String path, long curr, long prev, int pos,
+                     List<String> ans) {
+        if (pos == num.length() && target == curr) {
+            ans.add(path);
+            return;
+        }
+        for (int i = pos; i < num.length(); i++) {
+            // leading 0
+            if (i != pos && num.charAt(pos) == '0') break;
+            // to achieve combine numbers in a loop
+            Long curNum = Long.valueOf(num.substring(pos, i + 1));
+            if (pos == 0) {
+                // there is no oeprators yet, combining numbers first only.
+                dfs(num, target, path + curNum, curNum, curNum, i + 1, ans);
+            } else {
+                //+
+                dfs(num, target, path + '+' + curNum, curr + curNum, curNum, i + 1, ans);
+                //-
+                dfs(num, target, path + '-' + curNum, curr - curNum, -curNum, i + 1, ans);
+                //*
+                dfs(num, target, path + '*' + curNum, curr - prev + curNum * prev, prev * curNum, i + 1, ans);
+            }
         }
     }
 
