@@ -28,7 +28,7 @@ public class ExpressionAddOperators {
             return;
         }
         for (int i = pos; i < num.length(); i++) {
-            // leading 0
+            // leading 0 sequences
             if (i != pos && num.charAt(pos) == '0') break;
             // to achieve combine numbers in a loop
             Long curNum = Long.valueOf(num.substring(pos, i + 1));

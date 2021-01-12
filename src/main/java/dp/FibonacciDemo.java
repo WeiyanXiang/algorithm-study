@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package dp;
 
@@ -11,7 +11,7 @@ public class FibonacciDemo {
 
     /**
      * Time: O(2^n)
-     * 
+     *
      * @param n
      * @return
      */
@@ -32,9 +32,8 @@ public class FibonacciDemo {
     }
 
     /**
-     * Time: O(n), use an array to cache already done computations and hence
-     * increase performance
-     * 
+     * Time: O(n), use an array to cache already done computations and hence increase performance
+     *
      * @param n
      * @return
      */
@@ -52,7 +51,7 @@ public class FibonacciDemo {
 
     /**
      * Time: O(n)
-     * 
+     *
      * @param n
      * @return
      */
@@ -70,10 +69,25 @@ public class FibonacciDemo {
         return doTopBottomFib(n - 1, cache) + doTopBottomFib(n - 2, cache);
     }
 
+    public static int fibTwoVars(int n) {
+        if (n < 2)
+            return n;
+        int a = 0;
+        int b = 1;
+        int ans = 0;
+        for (int i = 2; i <= n; i++) {
+            ans = a + b;
+            a = b;
+            b = ans;
+        }
+        return ans;
+    }
+
     public static void main(String[] args) {
         System.out.println("fibRecursice(18) => " + fibRecursice(18));
         System.out.println("fibBottomUpDp(18) => " + fibBottomUpDp(18));
         System.out.println("fibTopBottomDp(18) => " + fibTopBottomDp(18));
         System.out.println("fibOptimalDp(18) => " + fibOptimalDp(18));
+        System.out.println("fibTwoVars(18) => " + fibTwoVars(18));
     }
 }
