@@ -32,7 +32,7 @@ public class WordBreak {
     private Map<String, Boolean> map = new HashMap<>();
 
     /**
-     * my ac ans with recurison with mem, not fast though
+     * my ac ans with recursion with mem, not fast though
      */
     public boolean wordBreakRecurWithMem(String s, List<String> wordDict) {
         dict.addAll(wordDict);
@@ -41,8 +41,7 @@ public class WordBreak {
 
     private boolean checkWithMem(String s) {
         if (map.containsKey(s)) return map.get(s);
-        int len = s.length();
-        if (len == 0) {
+        if (s.isEmpty()) {
             map.put(s, true);
             return true;
         }
