@@ -15,15 +15,15 @@ public class WordBreakTwoTest {
     public void wordBreak() {
         WordBreakTwo testObj = new WordBreakTwo();
         // act
-//        String s = "pineapplepenapple";
-//        List<String> wordDict = Arrays.asList("apple", "pen", "applepen", "pine", "pineapple");
-//        List<String> actual = testObj.wordBreak(s, wordDict);
-//        // assert
-//        Assert.assertEquals(3, actual.size());
-//        Assert.assertTrue(actual.containsAll(Arrays.asList(
-//                "pine apple pen apple",
-//                "pineapple pen apple",
-//                "pine applepen apple")));
+        String s = "pineapplepenapple";
+        List<String> wordDict = Arrays.asList("apple", "pen", "applepen", "pine", "pineapple");
+        List<String> actual = testObj.wordBreak(s, wordDict);
+        // assert
+        Assert.assertEquals(3, actual.size());
+        Assert.assertTrue(actual.containsAll(Arrays.asList(
+                "pine apple pen apple",
+                "pineapple pen apple",
+                "pine applepen apple")));
 
         // act
         String s2 = "a";
