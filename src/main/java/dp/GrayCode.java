@@ -41,6 +41,26 @@ public class GrayCode {
             // why from len-1? because i.e. 0,1,3,2, next must be flip 1 digits so we take 3 (11) to flip
             for (int j = len - 1; j >= 0; j--) {
                 // put a "1" in the "head" of the old number. (e.g. make "101" to be 1101 (101 | 1000 == 1101))
+                /**
+                 * 00
+                 * 01
+                 * 11
+                 * 10
+                 *
+                 * 你可能已经想到了如何把上面的遍历顺序扩展到n=3的情况。n=3时一共有8种状态，其中前面4个把n=2的遍历顺序照搬下来，
+                 * 然后把它们对称翻折下去并在最前面加上1作为后面4个状态：
+                 *
+                 * 0k开头的就是前面循环的答案，所以每次 1<<i 即可
+                 * 000
+                 * 001
+                 * 011
+                 * 010  ↑
+                 * ——–
+                 * 110  ↓
+                 * 111
+                 * 101
+                 * 100
+                 */
                 ans.add(ans.get(j) | 1 << i);
             }
         }
