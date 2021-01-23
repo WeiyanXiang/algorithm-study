@@ -26,6 +26,7 @@ public class SudokuSolver {
                         if (isValid(board, d, i, j)) {
                             board[i][j] = d;
                             if (dfs(board)) return true;
+                            // backtrack
                             else board[i][j] = '.';
                         }
                     }
