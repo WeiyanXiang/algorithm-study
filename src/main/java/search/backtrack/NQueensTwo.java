@@ -16,6 +16,7 @@ public class NQueensTwo {
      **/
     public int totalNQueens(int n) {
         boolean[] v = new boolean[n];
+        // 2n-1 条对角线
         boolean[] l = new boolean[2 * n - 1];
         boolean[] r = new boolean[2 * n - 1];
         dfs(n, v, l, r, 0);
@@ -33,6 +34,7 @@ public class NQueensTwo {
             l[r - c + n - 1] = true;
             ri[r + c] = true;
             dfs(n, v, l, ri, c + 1);
+            // backtrack
             v[r] = false;
             l[r - c + n - 1] = false;
             ri[r + c] = false;
