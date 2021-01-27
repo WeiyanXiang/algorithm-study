@@ -33,10 +33,11 @@ public class BeautifulArrangementTwo {
              * Hence, to have a higher k, we just have to keep reversing the elements on top of each other from index 0 to index k - 1.
              */
             if (k % 2 == 0) {
-                ans[i] = l++;
-            } else {
                 ans[i] = r--;
+            } else {
+                ans[i] = l++;
             }
+            // if k is 1, keep adding l++ to ensure same dif, 1
             if (k > 1) {
                 k--;
             }
