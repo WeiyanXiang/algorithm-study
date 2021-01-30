@@ -14,6 +14,7 @@ public class AdditiveNumber {
      */
     public boolean isAdditiveNumber(String s) {
         int n = s.length();
+        // 2 for loop to try all possible combination of first and second numbers
         for (int i = 0; i < n; i++) {
             long a = parse(s.substring(0, i));
             if (a == -1) continue;
