@@ -19,19 +19,19 @@ public class Permutations {
      * https://leetcode.com/problems/permutations/discuss/18239/A-general-approach-to-backtracking-questions-in-Java-(Subsets-Permutations-Combination-Sum-Palindrome-Partioning)
      */
     public List<List<Integer>> permute(int[] nums) {
-        List<List<Integer>> list = new ArrayList<>();
-        backtrack(list, new ArrayList<>(), nums);
-        return list;
+        List<List<Integer>> ans = new ArrayList<>();
+        backtrack(ans, new ArrayList<>(), nums);
+        return ans;
     }
 
-    private void backtrack(List<List<Integer>> list, List<Integer> tempList, int[] nums) {
-        if (tempList.size() == nums.length) list.add(new ArrayList<>(tempList));
+    private void backtrack(List<List<Integer>> ans, List<Integer> cur, int[] nums) {
+        if (cur.size() == nums.length) ans.add(new ArrayList<>(cur));
         else {
             for (int i = 0; i < nums.length; i++) {
-                if (tempList.contains(nums[i])) continue;
-                tempList.add(nums[i]);
-                backtrack(list, tempList, nums);
-                tempList.remove(tempList.size() - 1);
+                if (cur.contains(nums[i])) continue;
+                cur.add(nums[i]);
+                backtrack(ans, cur, nums);
+                cur.remove(cur.size() - 1);
             }
         }
     }
