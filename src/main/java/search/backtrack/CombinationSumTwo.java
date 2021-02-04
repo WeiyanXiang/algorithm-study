@@ -25,19 +25,20 @@ public class CombinationSumTwo {
         return ans;
     }
 
-    private void dfs(int[] nums, int start, int remain, List<Integer> path, List<List<Integer>> ans) {
-        if (remain < 0) return;
-        if (remain == 0) {
-            ans.add(new ArrayList<>(path));
+    private void dfs(int[] cs, int start, int target, List<Integer> cur, List<List<Integer>> ans) {
+        if (target < 0) return;
+        if (target == 0) {
+            ans.add(new ArrayList<>(cur));
             return;
         }
-        for (int i = start; i < nums.length; i++) {
-            int n = nums[i];
-            if (i > start && nums[i] == nums[i - 1]) continue;
-            path.add(n);
-            // pass i+1 each time instead of i to indicate we don't use repeat nums in the array to construct the sum of target
-            dfs(nums, i + 1, remain - n, path, ans);
-            path.remove(path.size() - 1);
+        for (int i = start; i < cs.length; i++) {
+            int n = cs[i];
+            // if there is a solution like there are two 1 in cs and the solution 1,1,6 should be picked up once
+            if (i > start && cs[i] == cs[i - 1]) continue;
+            cur.add(n);
+            // pass i+1 each time instead of i to indicate we don't use repeat cs in the array
+            dfs(cs, i + 1, target - n, cur, ans);
+            cur.remove(cur.size() - 1);
         }
     }
 }

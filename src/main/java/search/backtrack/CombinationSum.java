@@ -21,14 +21,14 @@ public class CombinationSum {
         return list;
     }
 
-    private void backtrack(List<List<Integer>> list, List<Integer> tempList, int[] nums, int remain, int start) {
-        if (remain < 0) return;
-        else if (remain == 0) list.add(new ArrayList<>(tempList));
+    private void backtrack(List<List<Integer>> ans, List<Integer> cur, int[] cs, int target, int start) {
+        if (target < 0) return;
+        else if (target == 0) ans.add(new ArrayList<>(cur));
         else {
-            for (int i = start; i < nums.length; i++) {
-                tempList.add(nums[i]);
-                backtrack(list, tempList, nums, remain - nums[i], i);
-                tempList.remove(tempList.size() - 1);
+            for (int i = start; i < cs.length; i++) {
+                cur.add(cs[i]);
+                backtrack(ans, cur, cs, target - cs[i], i);
+                cur.remove(cur.size() - 1);
             }
         }
     }
