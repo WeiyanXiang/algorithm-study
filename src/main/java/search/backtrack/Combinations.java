@@ -21,15 +21,15 @@ public class Combinations {
         return ans;
     }
 
-    private void dfs(int n, int k, List<List<Integer>> ans, List<Integer> temp, int start) {
-        if (temp.size() == k) {
-            ans.add(new ArrayList<>(temp));
+    private void dfs(int n, int k, List<List<Integer>> ans, List<Integer> cur, int start) {
+        if (cur.size() == k) {
+            ans.add(new ArrayList<>(cur));
             return;
         }
         for (int i = start; i <= n; i++) {
-            temp.add(i);
-            dfs(n, k, ans, temp, i + 1);
-            temp.remove(temp.size() - 1);
+            cur.add(i);
+            dfs(n, k, ans, cur, i + 1);
+            cur.remove(cur.size() - 1);
         }
     }
 }

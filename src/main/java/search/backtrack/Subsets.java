@@ -12,20 +12,22 @@ public class Subsets {
      * 78. Subsets
      * <p>
      * https://leetcode.com/problems/subsets/
+     *
+     * my AC answer
      */
     public List<List<Integer>> subsets(int[] nums) {
-        List<List<Integer>> list = new ArrayList<>();
+        List<List<Integer>> ans = new ArrayList<>();
         if (nums == null) return null;
-        backtrack(list, new ArrayList<>(), nums, 0);
-        return list;
+        backtrack(nums, ans, new ArrayList<>(), 0);
+        return ans;
     }
 
-    private void backtrack(List<List<Integer>> list, List<Integer> tempList, int[] nums, int start) {
-        list.add(new ArrayList<>(tempList));
+    private void backtrack(int[] nums, List<List<Integer>> ans, List<Integer> cur, int start) {
+        ans.add(new ArrayList<>(cur));
         for (int i = start; i < nums.length; i++) {
-            tempList.add(nums[i]);
-            backtrack(list, tempList, nums, i + 1);
-            tempList.remove(tempList.size() - 1);
+            cur.add(nums[i]);
+            backtrack(nums, ans, cur, i + 1);
+            cur.remove(cur.size() - 1);
         }
     }
 }

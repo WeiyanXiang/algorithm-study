@@ -11,11 +11,11 @@ public class LetterCombinationsOfPhoneNumber {
      * <p>
      * https://leetcode.com/problems/letter-combinations-of-a-phone-number/
      * <p>
-     * ac answer from upvoted
+     * upvoted ac answer
      */
     public List<String> letterCombinations(String digits) {
         if (digits.length() == 0) return new ArrayList<>();
-        String[] d = new String[]{
+        String[] dict = new String[]{
                 " ",
                 "",
                 "abc",
@@ -26,20 +26,23 @@ public class LetterCombinationsOfPhoneNumber {
                 "pqrs",
                 "tuv",
                 "wxyz"};
-        char[] di = digits.toCharArray();
+        char[] ds = digits.toCharArray();
         List<String> ans = new ArrayList<>();
         ans.add("");
-        for (int i = 0; i < di.length; i++) {
+        // i.e. digits are [2 ,3]
+        for (int i = 0; i < ds.length; i++) {
             List<String> temp = new ArrayList<>();
-            String s = d[Character.getNumericValue(di[i])];
-            // i.e. "abc"
-            for (String aa : ans) {
-                for (char ss : s.toCharArray()) {
-                    temp.add(aa + ss);
+            // i.e. "abc", supported letters for current digit
+            String supportedLetters = dict[Character.getNumericValue(ds[i])];
+            for (String curLetters : ans) {
+                for (char letter : supportedLetters.toCharArray()) {
+                    temp.add(curLetters + letter);
                 }
             }
             ans = temp;
         }
         return ans;
     }
+
+
 }

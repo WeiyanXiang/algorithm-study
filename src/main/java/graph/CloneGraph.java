@@ -61,7 +61,7 @@ public class CloneGraph {
         Node newNode = new Node(node.val);
         aMap.put(node.val, newNode);
         for (Node nei : node.neighbors) {
-            newNode.neighbors.add(clone(nei));cur.remove(cur.get(cur.size()-1))
+            newNode.neighbors.add(clone(nei));
         }
         return newNode;
     }
