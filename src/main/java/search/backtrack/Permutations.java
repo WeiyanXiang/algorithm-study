@@ -20,17 +20,17 @@ public class Permutations {
      */
     public List<List<Integer>> permute(int[] nums) {
         List<List<Integer>> ans = new ArrayList<>();
-        backtrack(ans, new ArrayList<>(), nums);
+        backtrack(nums, ans, new ArrayList<>());
         return ans;
     }
 
-    private void backtrack(List<List<Integer>> ans, List<Integer> cur, int[] nums) {
+    private void backtrack(int[] nums, List<List<Integer>> ans, List<Integer> cur) {
         if (cur.size() == nums.length) ans.add(new ArrayList<>(cur));
         else {
             for (int i = 0; i < nums.length; i++) {
                 if (cur.contains(nums[i])) continue;
                 cur.add(nums[i]);
-                backtrack(ans, cur, nums);
+                backtrack(nums, ans, cur);
                 cur.remove(cur.size() - 1);
             }
         }
