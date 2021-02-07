@@ -29,23 +29,23 @@ public class LetterCasePermutation {
     //@formatter:on
     public List<String> letterCasePermutation(String S) {
         List<String> ans = new ArrayList<>();
-        String temp = "";
         dfs(S.toCharArray(), ans, 0);
         return ans;
     }
 
-    private void dfs(char[] s, List<String> ans, int i) {
-        if (i == s.length) {
+    private void dfs(char[] s, List<String> ans, int start) {
+        if (start == s.length) {
             ans.add(new String(s));
             return;
         }
-        if (!Character.isLetter(s[i])) {
-            dfs(s, ans, i + 1);
+        if (!Character.isLetter(s[start])) {
+            dfs(s, ans, start + 1);
             return;
         }
-        s[i] = Character.toUpperCase(s[i]);
-        dfs(s, ans, i + 1);
-        s[i] = Character.toLowerCase(s[i]);
-        dfs(s, ans, i + 1);
+        // 不需要for loop，因为每个level的recursion，都是确定的要么2个分支（如果是字母），要么1个分支（如果是数字）
+        s[start] = Character.toUpperCase(s[start]);
+        dfs(s, ans, start + 1);
+        s[start] = Character.toLowerCase(s[start]);
+        dfs(s, ans, start + 1);
     }
 }

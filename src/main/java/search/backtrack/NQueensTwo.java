@@ -1,5 +1,8 @@
 package search.backtrack;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * @author Weiyan Xiang on 2021/1/24
  */
@@ -12,32 +15,39 @@ public class NQueensTwo {
      * <p>
      * https://leetcode.com/problems/n-queens-ii/
      * <p>
-     * upvoted AC answer
+     * my AC answer
      **/
+    Set<Integer> row = new HashSet<>();
+    Set<Integer> dio1 = new HashSet<>();
+    Set<Integer> dio2 = new HashSet<>();
+    private int count = 0;
+
     public int totalNQueens(int n) {
-        boolean[] v = new boolean[n];
-        // 2n-1 条对角线
-        boolean[] l = new boolean[2 * n - 1];
-        boolean[] r = new boolean[2 * n - 1];
-        dfs(n, v, l, r, 0);
-        return res;
+        dfs(n, 0);
+        return count;
     }
 
-    private void dfs(int n, boolean[] v, boolean[] l, boolean[] ri, int c) {
+    private void dfs(int n, int c) {
         if (c == n) {
-            res++;
+            count++;
             return;
         }
         for (int r = 0; r < n; r++) {
-            if (v[r] || l[r - c + n - 1] || ri[r + c]) continue;
-            v[r] = true;
-            l[r - c + n - 1] = true;
-            ri[r + c] = true;
-            dfs(n, v, l, ri, c + 1);
-            // backtrack
-            v[r] = false;
-            l[r - c + n - 1] = false;
-            ri[r + c] = false;
+            // for \, r-c all same, for /, r+c all same
+            int leftD = r + c;
+            int rightD = r - c;
+            if (row.contains(r) || dio1.contains(leftD) || dio2.contains(rightD)) continue;
+
+            row.add(r);
+            dio1.add(leftD);
+            dio2.add(rightD);
+
+            dfs(n, c + 1);
+
+            row.remove(r);
+            dio1.remove(leftD);
+            dio2.remove(rightD);
+
         }
     }
 
@@ -76,6 +86,7 @@ public class NQueensTwo {
     private boolean isValid(char[][] board, int r, int c) {
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < c; j++) {
+                // for \, i-j all same, for /, i+j all same
                 if (board[i][j] == 'Q' && (i == r || Math.abs(r - i) == Math.abs(c - j))) {
                     return false;
                 }

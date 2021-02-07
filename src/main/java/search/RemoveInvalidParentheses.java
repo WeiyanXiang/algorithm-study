@@ -11,7 +11,7 @@ public class RemoveInvalidParentheses {
      * <p>
      * https://leetcode.com/problems/remove-invalid-parentheses/
      * <p>
-     * learnt the iead from huahua: https://zxi.mytechroad.com/blog/searching/leetcode-301-remove-invalid-parentheses/
+     * learnt the idea from huahua: https://zxi.mytechroad.com/blog/searching/leetcode-301-remove-invalid-parentheses/
      */
     public List<String> removeInvalidParentheses(String s) {
         int l = 0, r = 0;

@@ -17,6 +17,7 @@ public class PathWithMaximumGold {
         int col = grid[0].length;
         int max = 0;
         boolean[][] visited = new boolean[row][col];
+        // select every point as starting point
         for (int r = 0; r < row; r++) {
             for (int c = 0; c < col; c++) {
                 max = Math.max(max, dfs(grid, visited, r, c, 0));
@@ -34,7 +35,8 @@ public class PathWithMaximumGold {
         int right = dfs(grid, visited, r, c + 1, curSum);
         int up = dfs(grid, visited, r - 1, c, curSum);
         int down = dfs(grid, visited, r + 1, c, curSum);
-        curSum -= grid[r][c];
+        // no needs, never used.
+        // curSum -= grid[r][c];
         visited[r][c] = false;
         return Math.max(Math.max(left, right), Math.max(up, down));
     }
