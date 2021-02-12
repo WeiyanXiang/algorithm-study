@@ -49,6 +49,7 @@ public class WordSearchTwo {
      * using a Trie to efficiently solve,
      *
      * to help understand trie:
+     * so prefix path check can consider to use trie 
      *
      * https://www.youtube.com/watch?v=AXjmTQ8LEoI&ab_channel=TusharRoy-CodingMadeSimple
      */
