@@ -32,11 +32,10 @@ public class CountSortedVowelStrings {
         return a+e+i+o+u;
     }
     /**
-     * TLE my dfs ans, TC: 5^n
+     * my dfs ac slow ans, TC: 5^n
      */
     private int count = 0;
-    private Set<String> set = new HashSet<>();
-    public int countVowelStringsDFS(int n) {
+    public int countVowelStringsDfs(int n) {
         // combination with resuable dict
         char[] chs = {'a','e','i','o','u'};
         dfs(n,chs,"",0);
@@ -44,9 +43,7 @@ public class CountSortedVowelStrings {
     }
 
     private void dfs(int n, char[] chs, String cur, int start){
-        if(set.contains(cur)) return;
         if(cur.length()==n) {
-            set.add(cur);
             count++;
             return;
         }
