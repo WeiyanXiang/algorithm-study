@@ -21,22 +21,26 @@ public class ConstructLexiLargestValidSequence {
         return ans;
     }
 
-    private boolean dfs(int n, boolean[] used, int[] ans, int start) {
-        if (start == ans.length) return true;
-        if (ans[start] != 0) return dfs(n, used, ans, start + 1);
+    /**
+     * why return boolean? use the returned value to terminate the dfs searching, whenever found the ans, return it.
+     * Which can guarantee the largest array
+     */
+    private boolean dfs(int n, boolean[] used, int[] ans, int index) {
+        if (index == ans.length) return true;
+        if (ans[index] != 0) return dfs(n, used, ans, index + 1);
         for (int i = n; i >= 1; i--) {
             if (used[i]) continue;
             used[i] = true;
-            ans[start] = i;
+            ans[index] = i;
             if (i == 1) {
-                if (dfs(n, used, ans, start + 1)) return true;
-            } else if (start + i < ans.length && ans[start + i] == 0) {
+                if (dfs(n, used, ans, index + 1)) return true;
+            } else if (index + i < ans.length && ans[index + i] == 0) {
                 // second filling which should following the distance rule
-                ans[start + i] = i;
-                if (dfs(n, used, ans, start + 1)) return true;
-                ans[start + i] = 0;
+                ans[index + i] = i;
+                if (dfs(n, used, ans, index + 1)) return true;
+                ans[index + i] = 0;
             }
-            ans[start] = 0;
+            ans[index] = 0;
             used[i] = false;
         }
         return false;
