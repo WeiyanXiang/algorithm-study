@@ -67,7 +67,7 @@ public class DFS {
         myVisited[0] = true;
         // should be same idea, when adj list, loop the row
         while (!stack.isEmpty()) {
-            Integer r = stack.pop();
+            int r = stack.pop();
             System.out.print("[" + r + "] ");
             for (int c = 0; c < grid[r].length; c++) {
                 // when there is a path

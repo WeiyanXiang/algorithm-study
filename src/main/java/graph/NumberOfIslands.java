@@ -1,4 +1,4 @@
-package dfs;
+package graph;
 
 /**
  * @author Weiyan Xiang on 2020/3/11
@@ -45,7 +45,8 @@ public class NumberOfIslands {
         for (int i = 0; i < y; i++) {
             for (int j = 0; j < x; j++) {
                 if (g[i][j] == '1') {
-                    dfs(i, j);
+                    // if same island, mark other bricks to visited
+                    dfsMark(i, j);
                     count++;
                 }
             }
@@ -64,7 +65,7 @@ public class NumberOfIslands {
      * @param i, the row index of the given grid
      * @param j, the column index of the given grid
      */
-    private void dfs(int i, int j) {
+    private void dfsMark(int i, int j) {
         if (i < 0 || j < 0 || i >= y || j >= x || g[i][j] != '1') return;
         g[i][j] = 'X';
         /**
@@ -75,9 +76,9 @@ public class NumberOfIslands {
          * 1 1 1
          *
          */
-        dfs(i + 1, j);
-        dfs(i - 1, j);
-        dfs(i, j + 1);
-        dfs(i, j - 1);
+        dfsMark(i + 1, j);
+        dfsMark(i - 1, j);
+        dfsMark(i, j + 1);
+        dfsMark(i, j - 1);
     }
 }
