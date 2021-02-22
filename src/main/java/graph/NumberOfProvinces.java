@@ -39,22 +39,22 @@ public class NumberOfProvinces {
     }
 
     /**
-     * my own dfs ans with iterative idea
+     * my own bfs ans with iterative idea
      */
-    public int findCircleNumIterativeDfs(int[][] grid) {
+    public int findCircleBfs(int[][] grid) {
         int n = grid.length;
         int count = 0;
         boolean[] visited = new boolean[n];
         for (int i = 0; i < n; i++) {
             if (!visited[i]) {
-                dfsIterative(grid, visited, i);
+                bfs(grid, visited, i);
                 count++;
             }
         }
         return count;
     }
 
-    private void dfsIterative(int[][] grid, boolean[] visited, int index) {
+    private void bfs(int[][] grid, boolean[] visited, int index) {
         Stack<Integer> stack = new Stack<>();
         stack.push(index);
         visited[index] = true;
