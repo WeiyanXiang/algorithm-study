@@ -22,6 +22,7 @@ public class MakingALargeIsland {
         for (int i = 0; i < x; i++) {
             for (int j = 0; j < y; j++) {
                 // starting point, if it's 0, flip to 1.
+                // if it's 1, meaning should have been handled
                 if (grid[i][j] == 0) {
                     grid[i][j] = 1;
                     max = Math.max(max, dfs(grid, i, j, new boolean[x][y]));
