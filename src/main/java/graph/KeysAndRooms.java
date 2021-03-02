@@ -4,23 +4,24 @@ package graph;/**
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class KeysAndRooms {
     /**
      * 841. Keys and Rooms
-     *
+     * <p>
      * https://leetcode.com/problems/keys-and-rooms/
-     *
+     * <p>
      * my ac ans
      */
-    public boolean canVisitAllRooms(List<List<Integer>> rooms) {
+    public boolean canVisitAllRooms(List<List<Integlexier>> rooms) {
         // dfs find all rooms
         HashSet<Integer> set = new HashSet<>();
         set.add(0);
         return dfs(rooms, 0, set);
     }
 
-    private boolean dfs(List<List<Integer>> rooms, int r, HashSet<Integer> set) {
+    private boolean dfs(List<List<Integer>> rooms, int r, Set<Integer> set) {
         if (set.size() == rooms.size()) return true;
         List<Integer> row = rooms.get(r);
         for (int i = 0; i < row.size(); i++) {

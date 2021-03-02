@@ -20,7 +20,6 @@ public class HappyString {
         char[] chars = {'a', 'b', 'c'};
         List<String> ans = new ArrayList<>();
         dfs(chars, n, "", ans);
-        System.out.print(ans);
         return k > ans.size() ? "" : ans.get(k - 1);
     }
 
