@@ -14,7 +14,7 @@ public class KeysAndRooms {
      * <p>
      * my ac ans
      */
-    public boolean canVisitAllRooms(List<List<Integlexier>> rooms) {
+    public boolean canVisitAllRooms(List<List<Integer>> rooms) {
         // dfs find all rooms
         HashSet<Integer> set = new HashSet<>();
         set.add(0);
