@@ -5,16 +5,12 @@ import java.util.*
 /**
  * @author Weiyan Xiang on 2021/3/5
  */
-fun main() {
-    println("Hello world!")
-}
 
 fun sum(l: Int, r: Int): Int = l + r
 
 fun printSum(l: Int, r: Int) = println("sum of $l and $r is ${l + r}")
 
 fun main(args: Array<String>) {
-    main()
     print(sum(1, 2))
     printSum(1, 2)
     foo(baz = 2) // The default value bar = 0 is used
@@ -24,7 +20,6 @@ fun main(args: Array<String>) {
 
     var num1 = 1
     println(num1 doAdd 2 == num1.doAdd(2))
-
 
 }
 
@@ -37,6 +32,13 @@ fun practice() {
 
     var x = 1
     x++
+    val name: String? = null
+
+    when (name) {
+        null -> println("null")
+        "a" -> println("a => $name")
+        else -> println(name)
+    }
 }
 
 // default value
@@ -127,6 +129,30 @@ private fun findFixPoint(): Double {
         if (Math.abs(x - y) < eps) return x
         x = Math.cos(x)
     }
+}
+
+// collections & iterations
+fun testCollections(): Unit {
+    val its = arrayOf("kotlin", "programming", "book")
+    println(its[0])
+    println(its.get(0))
+    println(its.size)
+
+    its.forEach { it -> println(it) }
+    its.forEach(::println)
+    its.forEachIndexed { i, it -> println(it[i]) }
+
+    val ss = listOf("kotlin", "programming", "book")
+    ss.forEach(::println)
+    ss.forEach { s -> println("[$s]") }
+
+    val mutableMap = mutableMapOf(1 to "a", 2 to "b", 3 to "c")
+    mutableMap.put(4, "d")
+
+
+    val map = mapOf(1 to "a", 2 to "b", 3 to "c")
+    map.forEach { t, u -> println("$t -> $u") }
+
 }
 
 
