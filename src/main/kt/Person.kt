@@ -5,7 +5,10 @@ package kt
  */
 // public - by default/ internal / private
 class Person(val firstName: String = "defaultFN", val lastName: String = "defaultLN") {
-    // internal - same package / protected - same class or subclass/ private - same class
+    // modifier:
+    // internal - same package
+    // protected - same class subclass
+    // private - same class
     var nickname: String? = null
         set(value) {
             field = value

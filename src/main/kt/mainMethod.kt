@@ -18,7 +18,18 @@ fun main(args: Array<String>) {
 
     */
     val me = Person("Weiyan", "X")
-    val provider = BasicInfoProvider()
+//    val provider = BasicInfoProvider()
+    val provider = FancyInfoProvider()
+
+
+    // object expression / anonymous class
+    val anotherProvier = object : PersonalInfoProvider {
+        override val providerInfo: String
+            get() = "New info provider"
+
+        fun getSessionId() = "id"
+    }
+    // companion objects
     provider.printInfo(me)
 }
 
