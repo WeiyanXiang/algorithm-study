@@ -8,7 +8,7 @@ import java.util.*
 enum class EntityType {
     EASY, MEDIUM, HARD, HELP;
 
-    fun getFormattedName() = name.toLowerCase()
+    fun getFormattedName() = name.toLowerCase().capitalize()
 }
 
 object EntityFactory {
@@ -30,18 +30,35 @@ object EntityFactory {
     }
 }
 
-
+// sealed class:
+/**
+ * Sealed Classes allow us to fix type hierarchies and forbid developers from creating new subclasses.
+They are useful when you have a very strict inheritance hierarchy, with a specific set of possible subclasses and no
+others. The compiler guarantees that only classes defined in the same source file as the sealed class are able to
+inherit from it.
+ */
 sealed class Entity {
     object Help : Entity() {
         val name = "Help"
     }
 
-    // data class generating hashing automatically
+    // data class generating eauls,hashcode automatically
     data class Easy(val id: String, val name: String) : Entity()
 
     data class Medium(val id: String, val name: String) : Entity()
+    // difference in sealed class VS enum here is you can overload the method with different params,
+    // compiler will do smart casting
     data class Hard(val id: String, val name: String, val multiplier: Float) : Entity()
 }
+
+// extension method
+fun Entity.Medium.printInfo() {
+    println("Medium class: $id, $info")
+}
+
+// extension var
+val Entity.Medium.info: String
+    get() = "some medium info"
 
 fun main(args: Array<String>) {
 //    val entity = Entity.Factory.create()
@@ -70,4 +87,15 @@ fun main(args: Array<String>) {
     if (entity01 === entity01) {
         println("$entity01 and $entity01 are equal with ref equal too")
     }
+
+    val mediumEntity = Entity.Medium("id", "medium name")
+    val mediumEntityFromFactory = EntityFactory.create(EntityType.MEDIUM)
+    mediumEntity.printInfo()
+    mediumEntity.info
+
+    if (mediumEntityFromFactory is Entity.Medium) {
+        mediumEntityFromFactory.printInfo()
+    }
+
+
 }

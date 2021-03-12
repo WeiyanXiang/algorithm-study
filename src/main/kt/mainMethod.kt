@@ -33,6 +33,7 @@ fun main(args: Array<String>) {
     provider.printInfo(me)
 }
 
+
 fun checkTypes(infoProvider: PersonalInfoProvider) {
     if (infoProvider !is SessionInfoProvider) {
         println("not SessionInfoProvider")
