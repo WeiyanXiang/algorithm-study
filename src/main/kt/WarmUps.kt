@@ -21,6 +21,8 @@ fun main(args: Array<String>) {
     var num1 = 1
     println(num1 doAdd 2 == num1.doAdd(2))
 
+    testRanges()
+
 }
 
 fun practice() {
@@ -152,6 +154,23 @@ fun testCollections(): Unit {
 
     val map = mapOf(1 to "a", 2 to "b", 3 to "c")
     map.forEach { t, u -> println("$t -> $u") }
+
+}
+
+fun testRanges() {
+    val list = listOf("a", "b", "c")
+    if (-1 !in 0..list.lastIndex) {
+        println("out of range")
+    }
+    if (2 in 0..list.lastIndex) {
+        println("within range")
+    }
+    for (i in 9 downTo 1 step 4) {
+        println(i)
+    }
+    for (i in 1..10 step 3) {
+        println(i)
+    }
 
 }
 
