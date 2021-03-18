@@ -22,6 +22,10 @@ fun main(args: Array<String>) {
     println(num1 doAdd 2 == num1.doAdd(2))
 
     testRanges()
+    testOutMap()
+
+    println(myLazyVal)
+    println(myLazyVal)
 
 }
 
@@ -173,6 +177,30 @@ fun testRanges() {
     }
 
 }
+
+fun testOutMap() {
+    val map = mapOf("a" to 1, "b" to 2, "c" to 3)
+    println("map testing:")
+    println(map["a"])
+    println(map.get("a"))
+    println(map.getValue("a"))
+    println(map["c"])
+    println(map["d"])
+
+    map.forEach { k, v -> println("$k - $v") }
+
+    for ((k, v) in map) {
+        println("$k - $v")
+    }
+
+}
+
+// https://kotlinlang.org/docs/delegated-properties.html#lazy-properties
+val myLazyVal: String by lazy {
+    println("done once, should not see twice this message")
+    "Hello"
+}
+
 
 
 
