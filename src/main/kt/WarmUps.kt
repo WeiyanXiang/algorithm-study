@@ -1,6 +1,11 @@
 package kt
 
+import junit.framework.Assert.assertEquals
 import java.util.*
+import java.util.concurrent.CountDownLatch
+import java.util.concurrent.Executors
+import java.util.concurrent.TimeUnit
+import java.util.concurrent.atomic.AtomicInteger
 
 /**
  * @author Weiyan Xiang on 2021/3/5
@@ -27,6 +32,8 @@ fun main(args: Array<String>) {
     println(myLazyVal)
     println(myLazyVal)
 
+    whenGetItUsingPublication_thenCouldInitializeItMoreThanOnce()
+    testLateInit()
 }
 
 fun practice() {
@@ -195,12 +202,56 @@ fun testOutMap() {
 
 }
 
-// https://kotlinlang.org/docs/delegated-properties.html#lazy-properties
+/**
+ * https://kotlinlang.org/docs/delegated-properties.html#lazy-properties
+ *
+ * https://www.baeldung.com/kotlin/lazy-initialization
+ *
+ * We can see that using the lazy initialization pattern in Java is quite cumbersome. We need to write a lot of
+ * boilerplate code to achieve our goal. Luckily, the Kotlin language has built-in support for lazy initialization.
+ */
 val myLazyVal: String by lazy {
     println("done once, should not see twice this message")
     "Hello"
 }
 
+class ClassWithHeavyInitialization
+
+
+fun whenGetItUsingPublication_thenCouldInitializeItMoreThanOnce() {
+    println("Test LazyThreadSafetyMode:")
+    // given
+    val numberOfInitializations: AtomicInteger = AtomicInteger()
+    /**
+     * We can pass a PUBLICATION as a mode – which will cause that every thread can initialize given property.
+     * The object assigned to the reference will be the first returned value – so the first thread wins.
+     */
+    val lazyValue: ClassWithHeavyInitialization
+            by lazy(LazyThreadSafetyMode.PUBLICATION) {
+                numberOfInitializations.incrementAndGet()
+                println(numberOfInitializations)
+                ClassWithHeavyInitialization()
+            }
+    val executorService = Executors.newFixedThreadPool(2)
+    val countDownLatch = CountDownLatch(1)
+
+    // when
+    executorService.submit { countDownLatch.await(); println(lazyValue) }
+    executorService.submit { countDownLatch.await(); println(lazyValue) }
+    countDownLatch.countDown()
+
+    // then
+    executorService.awaitTermination(1, TimeUnit.SECONDS)
+    executorService.shutdown()
+    assertEquals(numberOfInitializations.get(), 2)
+}
+
+fun testLateInit() {
+    lateinit var a: String
+    // println(a) // Exception in thread "main" kotlin.UninitializedPropertyAccessException: lateinit property a has not been initialized
+    a = "a"
+    println(a)
+}
 
 
 
