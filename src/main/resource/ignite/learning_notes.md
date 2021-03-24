@@ -36,3 +36,40 @@ the most optimal page. If the key-value pair size exceeds the maximum capacity o
 more than one page. The same logic applies to updating the data.
 
 SQL and cache indexes are stored in structures known as B+ Trees. Cache keys are ordered by their key values.
+
+#Lifecycle
+Each Ignite node runs on a single JVM instance. However, it's possible to configure to have multiple Ignite nodes 
+running in a single JVM process.
+
+Lifecycle event types:
+
+BEFORE_NODE_START – before the Ignite node startup
+AFTER_NODE_START – fires just after the Ignite node start
+BEFORE_NODE_STOP – before initiating the node stop
+AFTER_NODE_STOP – after the Ignite node stops
+To start a default Ignite node:
+```
+Ignite ignite = Ignition.start();
+```
+Or from a configuration file:
+```
+Ignite ignite = Ignition.start("config/example-cache.xml");
+```
+In case we need more control over the initialization process, there is another way with the help of 
+LifecycleBean interface:
+```
+public class CustomLifecycleBean implements LifecycleBean {
+ 
+    @Override
+    public void onLifecycleEvent(LifecycleEventType lifecycleEventType) 
+      throws IgniteException {
+ 
+        if(lifecycleEventType == LifecycleEventType.AFTER_NODE_START) {
+            // ...
+        }
+    }
+}
+```
+
+
+
