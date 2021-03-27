@@ -142,10 +142,56 @@ Files.lines(path)
 With the use of streamer.addData() put the employee objects into the stream.
 
 
+#SQL Support
+The platform provides memory-centric, fault-tolerant SQL database.
 
+We can connect either with pure SQL API or with JDBC. SQL syntax here is ANSI-99, so all the standard aggregation 
+functions in the queries, DML, DDL language operations are supported.
 
+##JDBC
+To get more practical, let's create a table of employees and add some data to it.  
+For that purpose, we register a JDBC driver and open a connection as a next step:
+```java
+Class.forName("org.apache.ignite.IgniteJdbcThinDriver");
+Connection conn = DriverManager.getConnection("jdbc:ignite:thin://127.0.0.1/");
 
+sql.executeUpdate("CREATE TABLE Employee (" +
+  " id LONG PRIMARY KEY, name VARCHAR, isEmployed tinyint(1)) " +
+  " WITH \"template=replicated\"");
+```
+After the WITH keyword, we can set the cache configuration template. Here we use the REPLICATED. By default, 
+the template mode is PARTITIONED. To specify the number of copies of the data we can also specify BACKUPS parameter 
+here, which is 0 by default.
+Then, let's add up some data by using INSERT DML statement:
+```java
+PreparedStatement sql = conn.prepareStatement(
+  "INSERT INTO Employee (id, name, isEmployed) VALUES (?, ?, ?)");
 
+sql.setLong(1, 1);
+sql.setString(2, "James");
+sql.setBoolean(3, true);
+sql.executeUpdate();
 
+// then select to view result
+ResultSet rs 
+  = sql.executeQuery("SELECT e.name, e.isEmployed " 
+    + " FROM Employee e " 
+    + " WHERE e.isEmployed = TRUE ")
+```
+##Query the Objects
+It's also possible to perform a query over Java objects stored in the cache. Ignite treats Java object as a separate 
+SQL record:
+```java
+IgniteCache<Integer, Employee> cache = ignite.cache("baeldungCache");
+
+SqlFieldsQuery sql = new SqlFieldsQuery(
+  "select name from Employee where isEmployed = 'true'");
+
+QueryCursor<List<?>> cursor = cache.query(sql);
+
+for (List<?> row : cursor) {
+    // do something with the row
+}
+```
 
 
