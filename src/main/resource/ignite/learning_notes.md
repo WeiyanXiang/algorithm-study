@@ -19,6 +19,18 @@ Pages interact with the memory using the PageMemory abstraction.
 
 It helps to read, write a page, also to allocate a page id. Inside the memory, Ignite associates pages with Memory Buffers.
 
+#Clustering
+ Clustering forms the basis for any distributed system. So, we will discuss how clustering can be configured in Apache 
+ Ignite with a particular focus on auto-discovery.
+ 
+ There are many definitions of clustering. Here we define clustering as the ability to start multiple nodes in a cluster 
+ deployment and for those nodes to discover each other and work together. In Apache Ignite, nodes can automatically 
+ discover each other in any environment. This environment could be a public cloud such as Amazon Web Services or 
+ OpenStack, a private cloud, a hybrid cloud, or even a personal computer such as a desktop or a laptop. Apache Ignite 
+ can also run in containerized environments, such as Docker. Apache Ignite supports all of these environments by default.
+ 
+ Let's see an example of auto-discovery in action.
+ 
 #Memory Pages
 A Page can have the following states:
 
