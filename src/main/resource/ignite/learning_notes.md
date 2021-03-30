@@ -23,13 +23,12 @@ It helps to read, write a page, also to allocate a page id. Inside the memory, I
  Clustering forms the basis for any distributed system. So, we will discuss how clustering can be configured in Apache 
  Ignite with a particular focus on auto-discovery.
  
- There are many definitions of clustering. Here we define clustering as the ability to start multiple nodes in a cluster 
+Here we define clustering as the ability to start multiple nodes in a cluster 
  deployment and for those nodes to discover each other and work together. In Apache Ignite, nodes can automatically 
  discover each other in any environment. This environment could be a public cloud such as Amazon Web Services or 
  OpenStack, a private cloud, a hybrid cloud, or even a personal computer such as a desktop or a laptop. Apache Ignite 
  can also run in containerized environments, such as Docker. Apache Ignite supports all of these environments by default.
  
- Let's see an example of auto-discovery in action.
  
 #Memory Pages
 A Page can have the following states:
@@ -205,5 +204,11 @@ for (List<?> row : cursor) {
     // do something with the row
 }
 ```
+
+
+#Data Grid
+In Apache Ignite, a Data Grid can be thought of as a distributed Key-Value (K-V) store or a distributed HashMap.
+we can see an example Apache Ignite cluster, where the entire data set is held in the Ignite Distributed In-Memory Cache
+![alt text](p1.PNG "data grid")
 
 
