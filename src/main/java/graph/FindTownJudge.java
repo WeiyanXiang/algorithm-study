@@ -17,7 +17,9 @@ public class FindTownJudge {
         int[] arr = new int[N + 1];
         int count = 0;
         for (int[] t : trust) {
+            // outbound
             arr[t[0]]--;
+            // inbound
             arr[t[1]]++;
         }
         for (int i = 1; i <= N; i++) {
