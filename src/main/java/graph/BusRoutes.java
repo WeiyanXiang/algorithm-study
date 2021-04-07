@@ -23,6 +23,7 @@ public class BusRoutes {
             }
         }
         // BFS
+        // visited buses
         int[] visited = new int[500];
         Queue<Integer> queue = new LinkedList<>();
         int count = 0;
