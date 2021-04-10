@@ -27,10 +27,10 @@ public class AllNodesDistanceK {
 
     private void dfs(TreeNode cur, TreeNode t, int k, int d) {
         if (cur == null) return;
-        int curD = map.containsKey(cur.val) ? map.get(cur.val) : d + 1;
+        int curD = map.containsKey(cur.val) ? map.get(cur.val) : d;
         if (curD == k) ans.add(cur.val);
-        dfs(cur.left, t, k, curD);
-        dfs(cur.right, t, k, curD);
+        dfs(cur.left, t, k, curD + 1);
+        dfs(cur.right, t, k, curD + 1);
     }
 
     private int prep(TreeNode cur, TreeNode target) {

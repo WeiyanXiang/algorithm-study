@@ -35,6 +35,12 @@ public class IsGraphBipartite {
     }
 
     private boolean dfsValid(int[][] graph, int[] colors, int color, int index) {
+        /**
+         * if (colors[index] == color) return true;
+         * if (colors[index] == -color) return false;
+         *
+         * can also be simplified to:
+         */
         if (colors[index] != 0) return colors[index] == color;
         colors[index] = color;
         for (int next : graph[index]) {

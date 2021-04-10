@@ -28,23 +28,4 @@ public class FindTownJudge {
         return -1;
     }
 
-    public int findJudgeBF(int N, int[][] trust) {
-        int count = 0, ans = -1;
-        for (int i = 1; i <= N; i++) {
-            if (isJudge(i, trust, N) && count == 0) {
-                count++;
-                ans = i;
-            }
-        }
-        return count == 1 ? ans : -1;
-    }
-
-    private boolean isJudge(int cur, int[][] trust, int N) {
-        int count = 0;
-        for (int[] t : trust) {
-            if (t[0] == cur) return false;
-            if (t[1] == cur) count++;
-        }
-        return count == N - 1;
-    }
 }

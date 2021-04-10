@@ -28,9 +28,9 @@ public class FlowerPlantingWithNoAdj {
         int[] res = new int[n]; // colors of each node index in graph
         for (int i = 0; i < n; i++) {
             int[] colors = new int[5]; // for each node, new a colors array to use index 1-5
-            for (int neiIndex : graph[i]) {
-                // Mark the color as used if neighbor has used it before.
-                colors[res[neiIndex]] = 1;
+            for (int next : graph[i]) {
+                // mark used color for all current node's neighbors
+                colors[res[next]] = 1;
             }
             // now color the available colors
             for (int c = 4; c >= 1; c--) {

@@ -18,9 +18,9 @@ public class PossibleBipartition {
         for (int i = 0; i < N; i++) {
             graph[i] = new ArrayList<>();
         }
-        for (int i = 0; i < dislikes.length; i++) {
-            int a = dislikes[i][0] - 1;
-            int b = dislikes[i][1] - 1;
+        for (int[] d : dislikes) {
+            int a = d[0] - 1;
+            int b = d[1] - 1;
             graph[a].add(b);
             graph[b].add(a);
         }
