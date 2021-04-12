@@ -27,8 +27,8 @@ public class MinimumGeneticMutation {
                 if (cur.equals(end)) {
                     return count;
                 }
-                List<String> availables = getNextAvailableGene(cur, bank);
-                queue.addAll(availables);
+                List<String> nextAvailableGene = getNextAvailableGene(cur, bank);
+                queue.addAll(nextAvailableGene);
             }
             count++;
         }
