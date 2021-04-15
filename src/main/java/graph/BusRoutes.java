@@ -15,11 +15,11 @@ public class BusRoutes {
     public int numBusesToDestination(int[][] routes, int source, int target) {
         // build map: stop - list of buses
         // bfs to find the path using least bus
-        Map<Integer, List<Integer>> map = new HashMap<>();
+        Map<Integer, List<Integer>> stopMap = new HashMap<>();
         for (int i = 0; i < routes.length; i++) {
             for (int stop : routes[i]) {
-                if (map.containsKey(stop)) map.get(stop).add(i);
-                else map.put(stop, new ArrayList(Arrays.asList(i)));
+                if (stopMap.containsKey(stop)) stopMap.get(stop).add(i);
+                else stopMap.put(stop, new ArrayList(Arrays.asList(i)));
             }
         }
         // BFS
@@ -34,7 +34,7 @@ public class BusRoutes {
             count++;
             for (int i = 0; i < len; i++) {
                 int cur = queue.poll();
-                for (int nextBus : map.get(cur)) {
+                for (int nextBus : stopMap.get(cur)) {
                     if (visited[nextBus] != 0) continue;
                     visited[nextBus] = 1;
                     for (int s : routes[nextBus]) {

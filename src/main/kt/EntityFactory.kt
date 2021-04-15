@@ -14,7 +14,6 @@ enum class EntityType {
 object EntityFactory {
     fun create(type: EntityType): Entity {
         val id = UUID.randomUUID().toString()
-//        val name = type.getFormattedName()
         val name = when (type) {
             EntityType.EASY -> type.getFormattedName()
             EntityType.MEDIUM -> type.name
