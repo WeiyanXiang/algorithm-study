@@ -15,36 +15,37 @@ public class AllNodesDistanceK {
      * <p>
      * upvoted ans: prep a map to store from root to target, target having 0 depth, root having the distance
      */
-    Map<Integer, Integer> map = new HashMap<>();
-    List<Integer> ans = new ArrayList<>();
+    Map<TreeNode, Integer> map = new HashMap<>();
 
     public List<Integer> distanceK(TreeNode root, TreeNode target, int K) {
-        // prep a map to store from root to target, target having 0 depth, root having the distance
+        List<Integer> answer = new ArrayList<>();
         prep(root, target);
-        dfs(root, target, K, 0);
-        return ans;
+        dfs(root, K, 0, answer);
+        return answer;
     }
 
-    private void dfs(TreeNode cur, TreeNode t, int k, int d) {
-        if (cur == null) return;
-        int curD = map.containsKey(cur.val) ? map.get(cur.val) : d;
-        if (curD == k) ans.add(cur.val);
-        dfs(cur.left, t, k, curD + 1);
-        dfs(cur.right, t, k, curD + 1);
+    private void dfs(TreeNode node, int k, int c, List<Integer> ans) {
+        if (node == null) return;
+        int d = map.containsKey(node) ? map.get(node) : c;
+        if (d == k) ans.add(node.val);
+        dfs(node.left, k, d + 1, ans);
+        dfs(node.right, k, d + 1, ans);
     }
 
-    private int prep(TreeNode cur, TreeNode target) {
-        if (cur == null) return -1;
-        if (cur == target) {
-            map.put(cur.val, 0);
+    private int prep(TreeNode node, TreeNode target) {
+        if (node == null) return -1;
+        if (target == node) {
+            map.put(node, 0);
             return 0;
         }
-        int left = prep(cur.left, target);
-        int right = prep(cur.right, target);
-        if (left == -1 && right == -1) return -1;
+        int l = prep(node.left, target);
+        int r = prep(node.right, target);
+        // if it is a leaf, then -1
+        if (l == -1 && r == -1) return -1;
+        int distance = Math.max(l, r) + 1;
+        // if there is a node which is in the path from root to target, then add its distance into map
+        if (l >= 0 || r >= 0) map.put(node, distance);
+        return distance;
 
-        int depth = (left >= 0 ? left : right) + 1;
-        map.put(cur.val, depth);
-        return depth;
     }
 }
