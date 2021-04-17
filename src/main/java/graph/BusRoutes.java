@@ -13,7 +13,7 @@ public class BusRoutes {
      * huahua ans, build map based on key is stop and value is the list of buses and then BFS
      */
     public int numBusesToDestination(int[][] routes, int source, int target) {
-        // build map: stop - list of buses
+        // build a map: <stop, list of buses>
         // bfs to find the path using least bus
         Map<Integer, List<Integer>> stopMap = new HashMap<>();
         for (int i = 0; i < routes.length; i++) {
@@ -33,11 +33,13 @@ public class BusRoutes {
             int len = queue.size();
             count++;
             for (int i = 0; i < len; i++) {
-                int cur = queue.poll();
-                for (int nextBus : stopMap.get(cur)) {
-                    if (visited[nextBus] != 0) continue;
-                    visited[nextBus] = 1;
-                    for (int s : routes[nextBus]) {
+                int curStop = queue.poll();
+                // explore all buses
+                for (int bus : stopMap.get(curStop)) {
+                    if (visited[bus] != 0) continue;
+                    visited[bus] = 1;
+                    // try all bus's steps since they are connected components
+                    for (int s : routes[bus]) {
                         if (s == target) return count;
                         queue.add(s);
                     }
