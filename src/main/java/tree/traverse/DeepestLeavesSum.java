@@ -83,4 +83,32 @@ public class DeepestLeavesSum {
         }
         return sum;
     }
+
+    /**
+     * my ac version using an object to hold depth and value
+     */
+    class ReturnNode {
+        int d;
+        int v;
+
+        ReturnNode(int d, int v) {
+            this.d = d;
+            this.v = v;
+        }
+    }
+
+    public int deepestLeavesSumMyVersion(TreeNode root) {
+        return dfsDepth(root).v;
+    }
+
+    private ReturnNode dfsDepth(TreeNode node) {
+        if (node == null) return new ReturnNode(0, 0);
+        if (node.left == null && node.right == null) return new ReturnNode(1, node.val);
+        ReturnNode l = dfsDepth(node.left);
+        ReturnNode r = dfsDepth(node.right);
+        if (l.d > r.d) return new ReturnNode(l.d + 1, l.v);
+        else if (l.d < r.d) return new ReturnNode(r.d + 1, r.v);
+        else return new ReturnNode(l.d + 1, l.v + r.v);
+
+    }
 }
