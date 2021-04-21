@@ -4,10 +4,7 @@ package tree.traverse;/**
 
 import tree.TreeNode;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class MostFrequentSubtreeSum {
     Map<Integer, Integer> map = new HashMap<>();
