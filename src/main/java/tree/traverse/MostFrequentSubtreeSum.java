@@ -21,7 +21,7 @@ public class MostFrequentSubtreeSum {
      * mostly upvoted ac answer
      */
     public int[] findFrequentTreeSum(TreeNode root) {
-        // key: sum of subtree values, value:frequency
+        // map <sum,frequency>
         dfs(root);
         List<Integer> ans = new ArrayList<>();
         for (int k : map.keySet()) {
