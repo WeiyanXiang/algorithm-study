@@ -21,7 +21,7 @@ object EntityFactory {
             EntityType.HELP -> type.getFormattedName()
         }
         return when (type) {
-            EntityType.EASY -> Entity.Easy(id, name)
+            EntityType.EASY -> Entity.Easy(id=id, name=name)
             EntityType.MEDIUM -> Entity.Medium(id, name)
             EntityType.HARD -> Entity.Hard(id, name, 2f)
             EntityType.HELP -> Entity.Help
