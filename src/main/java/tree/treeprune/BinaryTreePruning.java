@@ -23,6 +23,7 @@ public class BinaryTreePruning {
         if (root == null) return null;
         root.left = pruneTree(root.left);
         root.right = pruneTree(root.right);
+        // when at bottom it is a 0
         if (root.val == 0 && root.left == null && root.right == null) return null;
         return root;
     }
