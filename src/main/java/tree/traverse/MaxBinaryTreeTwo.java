@@ -5,6 +5,13 @@ package tree.traverse;/**
 import tree.TreeNode;
 
 public class MaxBinaryTreeTwo {
+    /**
+     * 998. Maximum Binary Tree II
+     * <p>
+     * https://leetcode.com/problems/maximum-binary-tree-ii/
+     * <p>
+     * my ans: BOTTOM UP: return nomal node OR return inserted node. only update root.right as node is append to right.
+     */
     public TreeNode insertIntoMaxTree(TreeNode root, int val) {
         if (root == null) return new TreeNode(val);
         if (root.val < val) {

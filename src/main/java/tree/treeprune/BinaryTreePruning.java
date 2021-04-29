@@ -12,7 +12,7 @@ public class BinaryTreePruning {
      * <p>
      * https://leetcode.com/problems/binary-tree-pruning/
      * <p>
-     * my own ac answer
+     * my own ac answer, bottom up recusion, L-R-Root
      */
     public TreeNode pruneTree(TreeNode root) {
         TreeNode cur = root;
@@ -23,7 +23,7 @@ public class BinaryTreePruning {
         if (root == null) return null;
         root.left = pruneTree(root.left);
         root.right = pruneTree(root.right);
-        // when at bottom it is a 0
+        // bottom-up recursion, when at bottom it is a 0
         if (root.val == 0 && root.left == null && root.right == null) return null;
         return root;
     }
