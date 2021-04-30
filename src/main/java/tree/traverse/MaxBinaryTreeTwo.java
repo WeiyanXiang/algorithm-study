@@ -10,7 +10,7 @@ public class MaxBinaryTreeTwo {
      * <p>
      * https://leetcode.com/problems/maximum-binary-tree-ii/
      * <p>
-     * my ans: BOTTOM UP: return nomal node OR return inserted node. only update root.right as node is append to right.
+     * my ans: BOTTOM UP: return normal node OR return inserted node. only update root.right as node is append to right.
      */
     public TreeNode insertIntoMaxTree(TreeNode root, int val) {
         if (root == null) return new TreeNode(val);
