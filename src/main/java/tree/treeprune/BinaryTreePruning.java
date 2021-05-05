@@ -12,7 +12,7 @@ public class BinaryTreePruning {
      * <p>
      * https://leetcode.com/problems/binary-tree-pruning/
      * <p>
-     * my own ac answer, bottom up recusion, L-R-Root
+     * my own ac answer, bottom up recursion, L-R-Root
      */
     public TreeNode pruneTree(TreeNode root) {
         TreeNode cur = root;

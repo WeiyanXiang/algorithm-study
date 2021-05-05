@@ -12,25 +12,31 @@ public class NumberOfGoodLeaf {
      * <p>
      * ac ans, idea is to track current leaf's depth
      */
-    int res = 0;
+    int count = 0;
 
     public int countPairs(TreeNode root, int distance) {
         dfs(root, distance);
-        return res;
+        return count;
     }
 
-    public int[] dfs(TreeNode root, int distance) {
+    /**
+     * idea: bottom-up, at leaf, return depth of 1 to parent. keep track of list of leafs depth on the fly and if it
+     * matches <= d, return it
+     */
+    public int[] dfs(TreeNode root, int d) {
         if (root == null) return new int[0];
         if (root.left == null && root.right == null) return new int[]{1};
-        int[] left = dfs(root.left, distance), right = dfs(root.right, distance);
-        for (int l : left)
-            for (int r : right)
-                if (l + r <= distance) res++;
-        int idx = 0;
-        int[] cur = new int[left.length + right.length];
-        // array/list to track current depth of leafs
-        for (int l : left) cur[idx++] = l + 1;
-        for (int r : right) cur[idx++] = r + 1;
-        return cur;
+        int[] l = dfs(root.left, d);
+        int[] r = dfs(root.right, d);
+        for (int le : l) {
+            for (int ri : r) {
+                if (le + ri <= d) count++;
+            }
+        }
+        int[] list = new int[l.length + r.length];
+        int i = 0;
+        for (int le : l) list[i++] = le + 1;
+        for (int ri : r) list[i++] = ri + 1;
+        return list;
     }
 }
