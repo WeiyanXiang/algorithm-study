@@ -20,8 +20,8 @@ public class NumberOfGoodLeaf {
     }
 
     /**
-     * idea: bottom-up, at leaf, return depth of 1 to parent. keep track of list of leafs depth on the fly and if it
-     * matches <= d, return it
+     * idea: bottom-up, keep track of array of leafs' depths, at leaf, return depth of 1 to parent. keep track of list
+     * of leafs depth on the fly and if it matches <= d, return it
      */
     public int[] dfs(TreeNode root, int d) {
         if (root == null) return new int[0];
