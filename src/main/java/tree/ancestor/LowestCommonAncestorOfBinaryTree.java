@@ -12,25 +12,24 @@ public class LowestCommonAncestorOfBinaryTree {
      * <p>
      * https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/
      * <p>
-     * my first super slow ac answer
+     * my ac answer
      */
-    TreeNode ans;
-
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        // dfs: return the deepest node that can find both p and q
         if (root == null) return null;
-        if (hasPath(root, p) && hasPath(root, q)) ans = root;
-        lowestCommonAncestor(root.left, p, q);
-        lowestCommonAncestor(root.right, p, q);
-        return ans;
+        TreeNode le = lowestCommonAncestor(root.left, p, q);
+        TreeNode ri = lowestCommonAncestor(root.right, p, q);
+        // dfs canFind after bottom up
+        if (canFind(le, p) && canFind(le, q)) return le;
+        if (canFind(ri, p) && canFind(ri, q)) return ri;
+        return root;
     }
 
-    private boolean hasPath(TreeNode root, TreeNode n) {
+    // dfs to return whether can find target node
+    private boolean canFind(TreeNode root, TreeNode t) {
         if (root == null) return false;
-        if (root.val == n.val) return true;
-        return hasPath(root.left, n) || hasPath(root.right, n);
+        if (root == t) return true;
+        return canFind(root.left, t) || canFind(root.right, t);
     }
-
 
     /**
      * upvoted answer
