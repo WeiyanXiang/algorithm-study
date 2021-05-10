@@ -17,8 +17,10 @@ public class LowestCommonAncestorOfBinarySearchTree {
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         if (root == null) return null;
         if (root == q || root == p) return root;
+        // if both p and q < root val then it will only be possible at left subtree
         if (p.val < root.val && q.val < root.val) return lowestCommonAncestor(root.left, p, q);
+        // vice versa
         if (p.val > root.val && q.val > root.val) return lowestCommonAncestor(root.right, p, q);
-        else return root;
+        return root;
     }
 }
