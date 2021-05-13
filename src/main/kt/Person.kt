@@ -20,6 +20,8 @@ class Person(val firstName: String = "defaultFN", val lastName: String = "defaul
             return nickNameToPrint
         }
 
+    constructor() : this("", "")
+
     fun printInfo() {
         val nickNameToPrice = nickname ?: "no nickname"
         println("$firstName ($nickNameToPrice) $lastName")
