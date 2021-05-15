@@ -21,6 +21,7 @@ public class LowestCommonAncestorOfBinarySearchTree {
         if (p.val < root.val && q.val < root.val) return lowestCommonAncestor(root.left, p, q);
         // vice versa
         if (p.val > root.val && q.val > root.val) return lowestCommonAncestor(root.right, p, q);
+        // if across left and right
         return root;
     }
 }
