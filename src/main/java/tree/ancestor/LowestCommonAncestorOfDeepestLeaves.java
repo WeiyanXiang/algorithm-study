@@ -33,7 +33,7 @@ public class LowestCommonAncestorOfDeepestLeaves {
 
     private ReturnNode lca(TreeNode root) {
         if (root == null) return new ReturnNode(root, -1);
-
+        if (root.left == null && root.right == null) return new ReturnNode(root, 0);
         ReturnNode l = lca(root.left);
         ReturnNode r = lca(root.right);
 
