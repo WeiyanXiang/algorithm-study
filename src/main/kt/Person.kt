@@ -23,7 +23,7 @@ class Person(val firstName: String = "defaultFN", val lastName: String = "defaul
     constructor() : this("", "")
 
     fun printInfo() {
-        val nickNameToPrice = nickname ?: "no nickname"
+        val nickNameToPrice = nickname ?: "no nickname" // it means if nickname is null then "no nickname"
         println("$firstName ($nickNameToPrice) $lastName")
     }
 }
