@@ -18,8 +18,7 @@ public class TreeTraverse {
      * @param treeNode
      */
     public void printInorder(TreeNode treeNode) {
-        if (treeNode == null)
-            return;
+        if (treeNode == null) return;
         printInorder(treeNode.left);
         System.out.print(treeNode.val + " ");
         printInorder(treeNode.right);
@@ -31,8 +30,7 @@ public class TreeTraverse {
      * @param treeNode
      */
     public void printPreorder(TreeNode treeNode) {
-        if (treeNode == null)
-            return;
+        if (treeNode == null) return;
         System.out.print(treeNode.val + " ");
         printPreorder(treeNode.left);
         printPreorder(treeNode.right);
