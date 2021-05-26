@@ -8,7 +8,7 @@ import java.util.Stack;
 /**
  * @author Weiyan Xiang on 2020/11/25
  */
-public class NaryTreePreorderTraversal {
+public class BinaryTreePreorderTraversal {
 
     /**
      * https://leetcode.com/problems/n-ary-tree-preorder-traversal/
