@@ -24,8 +24,10 @@ public class FlipBinaryTreeToMatchPreorderTraversal {
 
     private boolean dfs(TreeNode root, int[] v) {
         if (root == null) return true;
+        // compare current node value, which can be coming from the swapped subtree
         if (i < v.length && root.val != v[i]) return false;
         i++;
+        // compare left node and swap
         if (root.left != null && i < v.length && root.left.val != v[i]) {
             res.add(root.val);
             return dfs(root.right, v) && dfs(root.left, v);
