@@ -14,24 +14,22 @@ public class FlipBinaryTreeToMatchPreorderTraversal {
      * <p>
      * https://leetcode.com/problems/flip-binary-tree-to-match-preorder-traversal/
      */
-    private List<Integer> res = new ArrayList<>();
-    private int index = 0;
+    List<Integer> res = new ArrayList<>();
+    int i = 0;
 
     public List<Integer> flipMatchVoyage(TreeNode root, int[] voyage) {
-        if (root == null) return res;
-        if (root.left != null) {
-            if (root.left.val != voyage[index]) {
-                TreeNode temp = root.left;
-                root.left = root.right;
-                root.right = temp;
-
-                res.add(root.val);
-            }
-        }
-        index++;
-        flipMatchVoyage(root.left, voyage);
-        flipMatchVoyage(root.right, voyage);
-        return res.isEmpty() ? Arrays.asList(-1) : res;
+        dfs(root, voyage);
+        return dfs(root, voyage) ? res : Arrays.asList(-1);
     }
 
+    private boolean dfs(TreeNode root, int[] v) {
+        if (root == null) return true;
+        if (i < v.length && root.val != v[i]) return false;
+        i++;
+        if (root.left != null && i < v.length && root.left.val != v[i]) {
+            res.add(root.val);
+            return dfs(root.right, v) && dfs(root.left, v);
+        }
+        return dfs(root.left, v) && dfs(root.right, v);
+    }
 }
