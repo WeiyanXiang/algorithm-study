@@ -1,4 +1,4 @@
-package tree.traverse.topdown;
+package tree.traverse.topdown.construct;
 
 import tree.TreeNode;
 

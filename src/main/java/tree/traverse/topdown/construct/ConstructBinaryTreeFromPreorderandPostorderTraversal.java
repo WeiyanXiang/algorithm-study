@@ -1,4 +1,4 @@
-package tree.traverse.topdown;/**
+package tree.traverse.topdown.construct;/**
  * @author Weiyan Xiang on 2021/6/5
  */
 
