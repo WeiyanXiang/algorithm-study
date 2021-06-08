@@ -2,46 +2,54 @@ package tree.serialize;
 
 import tree.TreeNode;
 
-import java.util.Arrays;
 import java.util.LinkedList;
 
 /**
- * @author Weiyan Xiang on 2020/12/10
+ * 449. Serialize and Deserialize BST
+ * <p>
+ * https://leetcode.com/problems/serialize-and-deserialize-bst/submissions/
+ * <p>
+ * * same question to SerializeDeserializeBSTGeneralIdea
  */
 public class SerializeDeserializeBST {
-    String ans = "";
+    String cache = "";
 
     // Encodes a tree to a single string.
     public String serialize(TreeNode root) {
-        doSerialize(root);
-        return ans;
-    }
-
-    private void doSerialize(TreeNode root) {
-        if (root == null) return;
-        ans += root.val + ",";
-        doSerialize(root.left);
-        doSerialize(root.right);
+        // preorder
+        if (root == null) return cache; //because of BST, we can skip null leaf value
+        else {
+            cache += root.val + ",";
+            serialize(root.left);
+            serialize(root.right);
+        }
+        return cache;
     }
 
     // Decodes your encoded data to tree.
     public TreeNode deserialize(String data) {
         if (data.isEmpty()) return null;
-        LinkedList<String> list = new LinkedList<>();
-        list.addAll(Arrays.asList(data.split(",")));
-        return doDeserialize(list, Integer.MIN_VALUE, Integer.MAX_VALUE);
+        String[] raw = data.split(",");
+        LinkedList<String> nodes = new LinkedList<>();
+        for (int i = 0; i < raw.length; i++) nodes.add(raw[i]);
+        return dfs(nodes, -1, 10001);
     }
 
-    private TreeNode doDeserialize(LinkedList<String> list, int lo, int hi) {
-        if (list.isEmpty()) return null;
-        String peek = list.peek();
-        int v = Integer.valueOf(peek);
-        // below is because otherwise the tree will go deeper instead of obeying right BST rule
-        if (v < lo || v > hi) return null;
-        list.poll();
-        TreeNode root = new TreeNode(v);
-        root.left = doDeserialize(list, lo, v);
-        root.right = doDeserialize(list, v, hi);
-        return root;
+    private int index = 0;
+
+    private TreeNode dfs(LinkedList<String> nodes, int lo, int hi) {
+        if (nodes.isEmpty()) return null;
+        int intValue = Integer.valueOf(nodes.peek());
+        //because of BST, we can check here to avoid checking out-of-bounce/null values
+        /**
+         * if when serializing, when root == null, we do cache+="X," then String is not the most compact
+         * and we need to handle null values, but we wont need handle below pruning
+         */
+        if (intValue < lo || intValue > hi) return null;
+        nodes.poll();
+        TreeNode node = new TreeNode(intValue);
+        node.left = dfs(nodes, lo, intValue);
+        node.right = dfs(nodes, intValue, hi);
+        return node;
     }
 }
