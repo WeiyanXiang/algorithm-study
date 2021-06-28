@@ -15,7 +15,7 @@ public class AllNodesDistanceK {
      * <p>
      * upvoted ans: prep a map to store from root to target, target having 0 depth, root having the distance
      */
-    Map<TreeNode, Integer> map = new HashMap<>();
+    Map<Integer, Integer> map = new HashMap<>();
 
     public List<Integer> distanceK(TreeNode root, TreeNode target, int K) {
         List<Integer> answer = new ArrayList<>();
@@ -26,7 +26,7 @@ public class AllNodesDistanceK {
 
     private void dfs(TreeNode node, int k, int c, List<Integer> ans) {
         if (node == null) return;
-        int d = map.containsKey(node) ? map.get(node) : c;
+        int d = map.containsKey(node.val) ? map.get(node.val) : c;
         if (d == k) ans.add(node.val);
         dfs(node.left, k, d + 1, ans);
         dfs(node.right, k, d + 1, ans);
@@ -35,7 +35,7 @@ public class AllNodesDistanceK {
     private int prep(TreeNode node, TreeNode target) {
         if (node == null) return -1;
         if (target == node) {
-            map.put(node, 0);
+            map.put(node.val, 0);
             return 0;
         }
         int l = prep(node.left, target);
@@ -44,7 +44,7 @@ public class AllNodesDistanceK {
         if (l == -1 && r == -1) return -1;
         int distance = Math.max(l, r) + 1;
         // if there is a node which is in the path from root to target, then add its distance into map
-        if (l >= 0 || r >= 0) map.put(node, distance);
+        if (l >= 0 || r >= 0) map.put(node.val, distance);
         return distance;
 
     }
