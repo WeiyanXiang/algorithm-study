@@ -13,7 +13,9 @@ public class AllNodesDistanceK {
      * <p>
      * https://leetcode.com/problems/all-nodes-distance-k-in-binary-tree/
      * <p>
-     * upvoted ans: prep a map to store from root to target, target having 0 depth, root having the distance
+     * upvoted ans: prep a map to store from root to target, target having 0 depth, root having the distance, on the
+     * other side of target, the distance will be -1, note that the map only covers from root to target, the nodes under
+     * target will not be in the map, instead handled by dfs with depth
      */
     Map<Integer, Integer> map = new HashMap<>();
 
@@ -24,9 +26,9 @@ public class AllNodesDistanceK {
         return answer;
     }
 
-    private void dfs(TreeNode node, int k, int c, List<Integer> ans) {
+    private void dfs(TreeNode node, int k, int depth, List<Integer> ans) {
         if (node == null) return;
-        int d = map.containsKey(node.val) ? map.get(node.val) : c;
+        int d = map.containsKey(node.val) ? map.get(node.val) : depth;
         if (d == k) ans.add(node.val);
         dfs(node.left, k, d + 1, ans);
         dfs(node.right, k, d + 1, ans);
