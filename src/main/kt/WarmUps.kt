@@ -82,8 +82,13 @@ fun foo(
 https://kotlinlang.org/docs/functions.html#default-arguments
  */
 fun testFoo() {
+    // check null otherwise
+    var map = mutableMapOf<String, String>()
+    map.put("2", "3")
+    val test = map["2"] ?: "2"
+
     foo() // bar=0, baz=1
-    foo(bar=3) // bar=3, baz=1
+    foo(bar = 3) // bar=3, baz=1
     fooWithLambda(1) { println("hello") }     // Uses the default value baz = 1
     fooWithLambda(qux = { println("hello") }) // Uses both default values bar = 0 and baz = 1
     fooWithLambda { println("hello") }        // Uses both default values bar = 0 and baz = 1
