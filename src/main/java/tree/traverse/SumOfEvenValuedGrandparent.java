@@ -25,31 +25,22 @@ public class SumOfEvenValuedGrandparent {
     }
 
     /**
-     * my ac ans: L-R Pattern
+     * my ac ans: bottom-up
      */
-    int ans = 0;
-
-    public int sumEvenGrandparentMyAns(TreeNode root) {
-        // traverse to check whether value is even, find the groundsons and sum up
-        dfs(root);
-        return ans;
-    }
-
-    private void dfs(TreeNode root) {
-        if (root == null) return;
-        if (root.val % 2 == 0) addGrandsons(root);
-        dfs(root.left);
-        dfs(root.right);
-    }
-
-    private void addGrandsons(TreeNode node) {
-        if (node.left != null) {
-            if (node.left.left != null) ans += node.left.left.val;
-            if (node.left.right != null) ans += node.left.right.val;
+    public int sumEvenGrandparentMy(TreeNode root) {
+        if (root == null) return 0;
+        int l = sumEvenGrandparent(root.left);
+        int r = sumEvenGrandparent(root.right);
+        if (root.val % 2 == 0) {
+            if (root.left != null) {
+                l += root.left.left == null ? 0 : root.left.left.val;
+                l += root.left.right == null ? 0 : root.left.right.val;
+            }
+            if (root.right != null) {
+                r += root.right.left == null ? 0 : root.right.left.val;
+                r += root.right.right == null ? 0 : root.right.right.val;
+            }
         }
-        if (node.right != null) {
-            if (node.right.left != null) ans += node.right.left.val;
-            if (node.right.right != null) ans += node.right.right.val;
-        }
+        return l + r;
     }
 }
