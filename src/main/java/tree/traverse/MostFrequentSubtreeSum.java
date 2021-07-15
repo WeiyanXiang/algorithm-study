@@ -4,7 +4,10 @@ package tree.traverse;/**
 
 import tree.TreeNode;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class MostFrequentSubtreeSum {
     Map<Integer, Integer> map = new HashMap<>();
@@ -30,8 +33,8 @@ public class MostFrequentSubtreeSum {
     private int dfs(TreeNode root) {
         if (root == null) return 0;
         int sum = dfs(root.left) + dfs(root.right) + root.val;
-        map.put(sum, map.getOrDefault(sum, 0) + 1);
         maxCount = Math.max(maxCount, map.get(sum));
+        map.put(sum, map.getOrDefault(sum, 0) + 1);
         return sum;
     }
 }

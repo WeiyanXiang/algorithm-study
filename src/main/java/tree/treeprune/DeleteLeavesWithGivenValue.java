@@ -12,6 +12,8 @@ public class DeleteLeavesWithGivenValue {
      * https://leetcode.com/problems/delete-leaves-with-a-given-value/
      * <p>
      * my own ac answer: this is very much same to @BinaryTreePruning
+     * <p>
+     * bottom up recursion
      */
     public TreeNode removeLeafNodes(TreeNode root, int t) {
         if (root == null) return null;
