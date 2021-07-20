@@ -17,7 +17,8 @@ public class DeleteLeavesWithGivenValue {
      */
     public TreeNode removeLeafNodes(TreeNode root, int t) {
         if (root == null) return null;
-        // first work out lef and right, because in case of recursive cases: i.e. removing the leaf, the new leaf is again the target
+        // first work out lef and right, because in case of recursive cases:
+        // i.e. removing the leaf, the new leaf is again the target
         root.left = removeLeafNodes(root.left, t);
         root.right = removeLeafNodes(root.right, t);
         // second check whether it is target
