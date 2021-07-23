@@ -158,14 +158,14 @@ fun testCollections(): Unit {
 
     its.forEach { it -> println(it) }
     its.forEach(::println)
-    its.forEachIndexed { i, it -> println(it[i]) }
+    its.forEachIndexed { i, element -> println(element[i]) }
 
     val ss = listOf("kotlin", "programming", "book")
     ss.forEach(::println)
     ss.forEach { s -> println("[$s]") }
 
     val mutableMap = mutableMapOf(1 to "a", 2 to "b", 3 to "c")
-    mutableMap.put(4, "d")
+    mutableMap[4] = "d"
 
 
     val map = mapOf(1 to "a", 2 to "b", 3 to "c")
@@ -194,7 +194,6 @@ fun testOutMap() {
     val map = mapOf("a" to 1, "b" to 2, "c" to 3)
     println("map testing:")
     println(map["a"])
-    println(map.get("a"))
     println(map.getValue("a"))
     println(map["c"])
     println(map["d"])
