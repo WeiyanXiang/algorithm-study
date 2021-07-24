@@ -22,6 +22,7 @@ public class DeleteNodesAndReturnForest {
     public List<TreeNode> delNodes(TreeNode root, int[] to_delete) {
         Set<Integer> deleteSet = new HashSet<>();
         for (int e : to_delete) deleteSet.add(e);
+        // to handle root case
         if (!deleteSet.contains(root.val)) ans.add(root);
         dfs(root, deleteSet);
         return ans;
