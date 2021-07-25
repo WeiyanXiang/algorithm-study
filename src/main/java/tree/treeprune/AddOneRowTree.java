@@ -19,6 +19,7 @@ public class AddOneRowTree {
     private TreeNode dfs(TreeNode root, int val, int curD, int depth, boolean isLeft) {
         if (curD == depth) {
             TreeNode newNode = new TreeNode(val);
+            // if left, build left
             if (isLeft) newNode.left = root;
             else newNode.right = root;
             return newNode;
