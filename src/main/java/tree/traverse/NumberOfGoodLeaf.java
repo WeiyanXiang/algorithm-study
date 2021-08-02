@@ -28,6 +28,7 @@ public class NumberOfGoodLeaf {
         if (root.left == null && root.right == null) return new int[]{1};
         int[] l = dfs(root.left, d);
         int[] r = dfs(root.right, d);
+        // check from left to right tree, is there any matching pair, note in a recursion all sub-tree will be covered
         for (int le : l) {
             for (int ri : r) {
                 if (le + ri <= d) count++;
