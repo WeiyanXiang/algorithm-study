@@ -29,11 +29,13 @@ public class DistributeCoinsInBinaryTree {
         int l = dfs(root.left);
         int r = dfs(root.right);
         count += Math.abs(l) + Math.abs(r);
+        // keep 1 coin at the node, all others can be used to move
         return root.val + l + r - 1;
     }
 
 
     private int res = 0;
+
     /**
      * res += abs[num of subTree, sum of coins]
      */
