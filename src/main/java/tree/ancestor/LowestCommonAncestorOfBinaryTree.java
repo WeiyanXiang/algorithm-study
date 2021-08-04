@@ -32,7 +32,7 @@ public class LowestCommonAncestorOfBinaryTree {
     }
 
     /**
-     * upvoted answer
+     * upvoted answer: better performance
      */
     public TreeNode lowestCommonAncestorOptimal(TreeNode root, TreeNode p, TreeNode q) {
         if (root == null) return null;

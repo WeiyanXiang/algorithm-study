@@ -28,6 +28,7 @@ public class DistributeCoinsInBinaryTree {
         if (root == null) return 0;
         int l = dfs(root.left);
         int r = dfs(root.right);
+        // because l and r were returned value which already taken into account keeping 1 coin at the node, so no need to -1
         count += Math.abs(l) + Math.abs(r);
         // keep 1 coin at the node, all others can be used to move
         return root.val + l + r - 1;
