@@ -1,7 +1,5 @@
 package tree;
 
-import tree.TreeNode;
-
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -39,19 +37,14 @@ public class BinaryTreeOrderTraversal {
      * <p>
      * (c) Postorder (Left, Right, Root)
      */
-    public List<Integer> inorderTraversal(TreeNode root) {
-        List<Integer> ans = new ArrayList<>();
-        traverse(ans, root);
-        return ans;
-    }
+    List<Integer> list = new ArrayList<>();
 
-    private void traverse(List<Integer> ans, TreeNode root) {
-        if (root == null) return;
-        else {
-            traverse(ans, root.left);
-            ans.add(root.val);
-            traverse(ans, root.right);
-        }
+    public List<Integer> inorderTraversal(TreeNode root) {
+        if (root == null) return list;
+        inorderTraversal(root.left);
+        list.add(root.val);
+        inorderTraversal(root.right);
+        return list;
     }
 
     /**

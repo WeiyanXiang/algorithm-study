@@ -14,35 +14,34 @@ public class UniqueBSTTwo {
      * <p>
      * https://leetcode.com/problems/unique-binary-search-trees-ii/
      * <p>
-     * my ac ans: pick each 1-n as root and dfs left [1,i-1] and right [i+1,n]
+     * upvoted ans: pick each 1-n as root and dfs left [1,i-1] and right [i+1,n]
+     * <p>
+     * I start by noting that 1..n is the in-order traversal for any BST with nodes 1 to n. So if I pick i-th node as my
+     * root, the left subtree will contain elements 1 to (i-1), and the right subtree will contain elements (i+1) to n.
+     * I use recursive calls to get back all possible trees for left and right subtrees and combine them in all possible
+     * ways with the root.
      */
     public List<TreeNode> generateTrees(int n) {
         return dfs(1, n);
     }
 
-    private List<TreeNode> dfs(int start, int end) {
-        List<TreeNode> res = new ArrayList<>();
-        if (start == end) {
-            TreeNode node = new TreeNode(start);
-            res.add(node);
-            return res;
+    private List<TreeNode> dfs(int l, int r) {
+        List<TreeNode> list = new ArrayList<>();
+        if (l > r) {
+            list.add(null);
         }
-        if (start > end) {
-            res.add(null); // remember to pass null
-            return res;
-        }
-        for (int i = start; i <= end; i++) {
-            List<TreeNode> left = dfs(start, i - 1);
-            List<TreeNode> right = dfs(i + 1, end);
-            for (TreeNode l : left) {
-                for (TreeNode r : right) {
-                    TreeNode root = new TreeNode(i);
-                    root.left = l;
-                    root.right = r;
-                    res.add(root);
+        for (int i = l; i <= r; i++) {
+            List<TreeNode> left = dfs(l, i - 1);
+            List<TreeNode> right = dfs(i + 1, r);
+            for (TreeNode leftNode : left) {
+                for (TreeNode rightNode : right) {
+                    TreeNode cur = new TreeNode(i);
+                    cur.left = leftNode;
+                    cur.right = rightNode;
+                    list.add(cur);
                 }
             }
         }
-        return res;
+        return list;
     }
 }
