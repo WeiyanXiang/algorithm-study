@@ -2,8 +2,6 @@ package tree;/**
  * @author Weiyan Xiang on 2021/8/8
  */
 
-import tree.TreeNode;
-
 public class RecoverBST {
 
 
@@ -38,7 +36,6 @@ public class RecoverBST {
 
         traverse(root.left);
 
-        // Start of "do some business",
         // If first element has not been found, assign it to prevElement (refer to 6 in the example above)
         if (firstElement == null && (prevElement != null && prevElement.val >= root.val)) {
             firstElement = prevElement;
@@ -49,8 +46,6 @@ public class RecoverBST {
             secondElement = root;
         }
         prevElement = root;
-
-        // End of "do some business"
 
         traverse(root.right);
     }

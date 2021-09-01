@@ -28,8 +28,10 @@ public class UniqueBSTTwo {
     private List<TreeNode> dfs(int l, int r) {
         List<TreeNode> list = new ArrayList<>();
         if (l > r) {
+            // to handle when there's a nil
             list.add(null);
         }
+        // pick each i as root, from start to end, and work out generating the BST
         for (int i = l; i <= r; i++) {
             List<TreeNode> left = dfs(l, i - 1);
             List<TreeNode> right = dfs(i + 1, r);

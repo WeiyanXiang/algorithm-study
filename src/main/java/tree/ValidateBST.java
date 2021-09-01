@@ -4,16 +4,24 @@ package tree;
  * @author Weiyan Xiang on 2020/6/9
  */
 public class ValidateBST {
+
+    /**
+     * 98. Validate Binary Search Tree
+     * <p>
+     * https://leetcode.com/problems/validate-binary-search-tree/
+     * <p>
+     * upvoted ans
+     */
     public boolean isValidBST(TreeNode root) {
-        return doCheck(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
+        return doCheck(root, null, null);
     }
 
-    private static boolean doCheck(TreeNode root, Integer min, Integer max) {
-        // stop
+    // use TreeNode min and max instead of int to overcome the test case of max integer
+    private boolean doCheck(TreeNode root, TreeNode min, TreeNode max) {
         if (root == null) return true;
-        if ((min != null && root.val <= min) || (max != null && root.val >= max)) return false;
-        // this & children
-        return doCheck(root.left, min, root.val) && doCheck(root.right, root.val, max);
+        if (min != null && root.val <= min.val) return false;
+        if (max != null && root.val >= max.val) return false;
+        return doCheck(root.left, min, root) && doCheck(root.right, root, max);
     }
 
 
