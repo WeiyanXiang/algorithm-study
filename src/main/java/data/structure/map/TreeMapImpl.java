@@ -55,7 +55,7 @@ public class TreeMapImpl {
          * Treemap class is like HashMap which stores key- value pairs . The
          * major difference is that Treemap sorts the key in ascending order.
          */
-        treeMap.keySet()
+        treeMap.keySet();
         for (Entry<Key, String> entry : treeMap.entrySet()) {
             System.out.println("key: " + entry.getKey().getValue() + ", value: " + entry.getValue());
         }
