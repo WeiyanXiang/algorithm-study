@@ -29,7 +29,7 @@ call buyer pay $x
 call seller receivers $x
 
  
-![alt text](hull-ch1-1.PNG "chart1")
+![alt text](ch1-1.PNG "chart1")
 
 for buyer:
 - limited loss
