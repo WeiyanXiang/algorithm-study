@@ -49,6 +49,7 @@ public class SymmetricTree {
     }
 
     private static boolean isSubTreeSymmetric(TreeNode left, TreeNode right) {
+        // check whether only 1 node is null
         if (left == null || right == null) return left == right;
         if (left.val != right.val) return false;
         return isSubTreeSymmetric(left.left, right.right) && isSubTreeSymmetric(left.right, right.left);
