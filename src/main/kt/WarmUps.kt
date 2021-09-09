@@ -259,6 +259,29 @@ fun testLateInit() {
 
 
 
+/*
+Dispatchers and threads﻿
+The coroutine context includes a coroutine dispatcher (see CoroutineDispatcher) that determines what thread or threads the corresponding coroutine uses for its execution. The coroutine dispatcher can confine coroutine execution to a specific thread, dispatch it to a thread pool, or let it run unconfined.
+
+All coroutine builders like launch and async accept an optional CoroutineContext parameter that can be used to explicitly specify the dispatcher for the new coroutine and other context elements.
+
+Try the following example:
+
+launch { // context of the parent, main runBlocking coroutine
+    println("main runBlocking      : I'm working in thread ${Thread.currentThread().name}")
+}
+launch(Dispatchers.Unconfined) { // not confined -- will work with main thread
+    println("Unconfined            : I'm working in thread ${Thread.currentThread().name}")
+}
+launch(Dispatchers.Default) { // will get dispatched to DefaultDispatcher
+    println("Default               : I'm working in thread ${Thread.currentThread().name}")
+}
+launch(newSingleThreadContext("MyOwnThread")) { // will get its own new thread
+    println("newSingleThreadContext: I'm working in thread ${Thread.currentThread().name}")
+}
+
+
+*/
 
 
 
