@@ -64,6 +64,26 @@ public class BinaryTreeLevelOrderTraversal {
     }
 
     /**
+     * DFS approach
+     */
+    List<List<Integer>> ans = new ArrayList<>();
+
+    public List<List<Integer>> levelOrderDfs(TreeNode root) {
+        dfs(root, 0);
+        return ans;
+    }
+
+    private void dfs(TreeNode root, int h) {
+        if (root == null) return;
+        if (h == ans.size()) {
+            ans.add(new ArrayList<>());
+        }
+        ans.get(h).add(root.val);
+        dfs(root.left, h + 1);
+        dfs(root.right, h + 1);
+    }
+
+    /**
      * 107. Binary Tree Level Order Traversal II
      * <p>
      * https://leetcode.com/problems/binary-tree-level-order-traversal-ii/
