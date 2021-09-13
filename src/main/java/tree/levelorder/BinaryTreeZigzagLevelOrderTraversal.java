@@ -40,4 +40,25 @@ public class BinaryTreeZigzagLevelOrderTraversal {
         }
         return ans;
     }
+
+    /**
+     * DFS approach
+     */
+    List<List<Integer>> res = new ArrayList<>();
+
+    public List<List<Integer>> zigzagLevelOrderDfs(TreeNode root) {
+        dfs(root, 0);
+        return res;
+    }
+
+    private void dfs(TreeNode root, int h) {
+        if (root == null) return;
+        if (res.size() == h) res.add(new ArrayList<>());
+        if (h % 2 == 0) res.get(h).add(root.val);
+            // when opposite append
+        else res.get(h).add(0, root.val);
+        dfs(root.left, h + 1);
+        dfs(root.right, h + 1);
+    }
+
 }

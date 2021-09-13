@@ -2,8 +2,6 @@ package tree;/**
  * @author Weiyan Xiang on 2021/6/30
  */
 
-import tree.TreeNode;
-
 public class LongestZigZagPathInBinaryTree {
 
     private int max = 0;
@@ -32,5 +30,6 @@ public class LongestZigZagPathInBinaryTree {
             dfs(root.right, 1, 1);// try again from start
         }
     }
+
 
 }
