@@ -39,7 +39,7 @@ public class BinaryTreeZigzagLevelOrderTraversal {
             inOrder = !inOrder;
         }
         return ans;
-    }
+    }maxDepth(
 
     /**
      * DFS approach

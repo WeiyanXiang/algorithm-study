@@ -2,6 +2,9 @@ package tree.construct;
 
 import tree.TreeNode;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @author Weiyan Xiang on 2021/6/2
  */
@@ -15,27 +18,25 @@ public class ConstructBinaryTreefromInorderandPostorderTraversal {
      * <p>
      * upvoted ans
      */
-    private int postIndex = 0;
+    int postIndex = 0;
+    Map<Integer, Integer> map = new HashMap<>();
 
     public TreeNode buildTree(int[] inorder, int[] postorder) {
+        for (int i = 0; i < inorder.length; i++) map.put(inorder[i], i);
         postIndex = postorder.length - 1;
-        return dfsInorder(0, postorder.length - 1, inorder, postorder);
+        return dfs(postorder, 0, postorder.length - 1);
     }
 
-    private TreeNode dfsInorder(int l, int r, int[] inorder, int[] postorder) {
+    private TreeNode dfs(int[] postorder, int l, int r) {
         if (l > r || postIndex < 0) return null;
-        int rootValue = postorder[postIndex--];
-        int rootIndex = findIndexFromValue(rootValue, inorder);
-        TreeNode root = new TreeNode(rootValue);
-        root.right = dfsInorder(rootIndex + 1, r, inorder, postorder);
-        root.left = dfsInorder(l, rootIndex - 1, inorder, postorder);
+        TreeNode root = new TreeNode(postorder[postIndex]);
+        int mid = map.get(postorder[postIndex]);
+        postIndex--;
+        /**
+         * why right -> left here? because postorder is R->L->Root, it keeps popping the right's parent first
+         */
+        root.right = dfs(postorder, mid + 1, r);
+        root.left = dfs(postorder, l, mid - 1);
         return root;
-    }
-
-    private int findIndexFromValue(int value, int[] inorder) {
-        for (int i = 0; i < inorder.length; i++) {
-            if (value == inorder[i]) return i;
-        }
-        return -1;
     }
 }

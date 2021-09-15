@@ -27,6 +27,7 @@ public class ConstructBinaryTreeFromPreorderAndInorderTraversal {
 
     private TreeNode dfs(int[] pre, int[] in, int l, int r) {
         if (l > r || preIndex > pre.length - 1) return null;
+        // inorder traverse by picking up root from preorder
         TreeNode root = new TreeNode(pre[preIndex]);
         int midIndex = inMap.get(pre[preIndex]);
         preIndex++;
