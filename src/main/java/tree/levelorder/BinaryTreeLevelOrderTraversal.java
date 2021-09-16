@@ -88,6 +88,22 @@ public class BinaryTreeLevelOrderTraversal {
      * <p>
      * https://leetcode.com/problems/binary-tree-level-order-traversal-ii/
      */
+    List<List<Integer>> res = new ArrayList<>();
+
+    public List<List<Integer>> levelOrderBottomDfs(TreeNode root) {
+        dfsLevel(root, 0);
+        Collections.reverse(res);
+        return res;
+    }
+
+    private void dfsLevel(TreeNode root, int h) {
+        if (root == null) return;
+        if (res.size() == h) res.add(new ArrayList<>());
+        res.get(h).add(root.val);
+        dfsLevel(root.left, h + 1);
+        dfsLevel(root.right, h + 1);
+    }
+
     public List<List<Integer>> levelOrderBottom(TreeNode root) {
         List<List<Integer>> ans = new ArrayList<>();
         if (root == null) return ans;
