@@ -3,8 +3,6 @@
  */
 package tree;
 
-import tree.TreeNode;
-
 /**
  * @author weiyan.xiang
  * @date 25 Mar 2018
@@ -22,6 +20,15 @@ public class MinimumDepthOfBinaryTree {
         if (root.left != null) l = minDepthOptimal(root.left);
         if (root.right != null) r = minDepthOptimal(root.right);
         return 1 + Math.min(l, r);
+    }
+
+    public int minDepthMyOwn(TreeNode root) {
+        if (root == null) return 0;
+        int l = minDepth(root.left);
+        int r = minDepth(root.right);
+        if (l == 0) return r + 1; // remember to +1
+        if (r == 0) return l + 1;
+        return Math.min(l, r) + 1;
     }
 
     /**

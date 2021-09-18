@@ -45,6 +45,8 @@ public class PathSum {
     private static boolean doCheck(TreeNode root, int sum, int cs) {
         if (root == null) return false;
         cs += root.val;
+        // cannot do things like if(root==null) return target==cur, because we need the path of root-to-leaf, whereas
+        // root itself doesnt form a valid path
         if (root.left == null && root.right == null && cs == sum) return true;
         return doCheck(root.left, sum, cs) || doCheck(root.right, sum, cs);
     }

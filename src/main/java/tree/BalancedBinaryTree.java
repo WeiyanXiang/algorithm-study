@@ -3,8 +3,6 @@
  */
 package tree;
 
-import tree.TreeNode;
-
 /**
  * @author weiyan.xiang
  * @date 24 Mar 2018
@@ -78,14 +76,15 @@ public class BalancedBinaryTree {
      */
     //@formatter:on
     public static boolean isBalanced(TreeNode root) {
-        if (root == null)
-            return true;
-        return Math.abs(getDfsLength(root.left) - getDfsLength(root.right)) <= 1 && isBalanced(root.left)
-                && isBalanced(root.right);
+        if (root == null) return true;
+        int l = dfsLength(root.left);
+        int r = dfsLength(root.right);
+        return Math.abs(l - r) <= 1 && isBalanced(root.left) && isBalanced(root.right);
     }
 
-    private static int getDfsLength(TreeNode node) {
-        return node == null ? 0 : 1 + Math.max(getDfsLength(node.left), getDfsLength(node.right));
+    private static int dfsLength(TreeNode root) {
+        if (root == null) return 0;
+        return Math.max(dfsLength(root.left), dfsLength(root.right)) + 1;
     }
 
     public static void main(String[] args) {
