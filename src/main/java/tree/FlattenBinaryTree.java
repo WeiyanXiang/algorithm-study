@@ -31,6 +31,28 @@ public class FlattenBinaryTree {
 
         TreeNode cur = root;
         cur.right = l;
+        /**
+         * why?
+         *
+         * i.e.
+         *         1
+         *       /   \
+         *      2    3
+         *      /\  /\
+         *     4 5 6 7
+         *
+         *     when do at node 1, the tree will be like:
+         *
+         *           1
+         *         /  \
+         *        2   3
+         *        \    \
+         *        4     6
+         *         \     \
+         *          5     7
+         *
+         *  hence we need while loop to go to bottom right to connect 5 to 4
+         */
         while (cur.right != null) cur = cur.right;
         cur.right = r;
 
