@@ -6,7 +6,8 @@ Solution:
 https://www.glassdoor.fr/Entretien/Suppose-you-toss-a-fair-coin-400-times-What-is-the-probability-that-you-get-at-least-220-heads-Round-your-answer-to-the-QTN_224604.htm
 
 This is a central limit theorem question. The trick is to view each toss as a random variable that returns 1 if a head
- is tossed and 0 if a tail is tossed. Then each such random variable has expected value 1/2 and variance 1/4. So your Z-variable (for using the central limit theorem) will be:
+ is tossed and 0 if a tail is tossed. Then each such random variable has expected value 1/2 and variance 1/4. 
+ So your Z-variable (for using the central limit theorem) will be:
 
 (220-200)/(sqrt(400*(1/4))) = 20/10 = 2
 

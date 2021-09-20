@@ -1,4 +1,4 @@
-part A if you keep toss a fiar coin
+part A if you keep toss a fair coin
 expected number of tosses such that you can have HHH in a row?
 what is expected number of tosses to have THH in a row?
 

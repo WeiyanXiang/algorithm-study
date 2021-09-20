@@ -41,4 +41,26 @@ public class PopulatingNextRightPointers {
         connect(root.right);
         return root;
     }
+
+
+    /**
+     * my another dfs ans: pass a parent to traverse
+     */
+    public Node connectMyOwn(Node root) {
+        dfs(root, null);
+        return root;
+    }
+
+    private void dfs(Node root, Node pre) {
+        if (root == null) return;
+        if (pre != null) {
+            if (pre.left == root) {
+                root.next = pre.right;
+            } else {
+                root.next = pre.next == null ? null : pre.next.left;
+            }
+        }
+        dfs(root.left, root);
+        dfs(root.right, root);
+    }
 }
