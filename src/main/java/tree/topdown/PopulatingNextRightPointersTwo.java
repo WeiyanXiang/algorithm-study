@@ -1,5 +1,8 @@
 package tree.topdown;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 /**
  * @author Weiyan Xiang on 2021/5/21
  */
@@ -66,6 +69,26 @@ public class PopulatingNextRightPointersTwo {
         if (root.left != null) return root.left;
         if (root.right != null) return root.right;
         return getNextLeftMost(root.next);
+    }
+
+    /**
+     * BFS approach: my own ac ans
+     */
+    public Node connectBfs(Node root) {
+        if (root == null) return null;
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(root);
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            for (int i = 0; i < size; i++) {
+                Node node = queue.poll();
+                node.next = (i == size - 1 || queue.peek() == null) ? null : queue.peek();
+                if (node.left != null) queue.add(node.left);
+                if (node.right != null) queue.add(node.right);
+            }
+
+        }
+        return root;
     }
 
 }
