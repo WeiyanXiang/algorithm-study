@@ -25,7 +25,7 @@ public class SynchronizedMapDemo {
          */
         currencies = Collections.synchronizedMap(currencies);
 
-        Set<String> keySet = currencies.keySet();
+        List<String> keySet = new ArrayList<String>(currencies.keySet());
         synchronized (currencies) {
             // Must be in synchronized block while (itr.hasNext()){ System.out.println(itr.next()); } }
             Iterator<String> itr = keySet.iterator();

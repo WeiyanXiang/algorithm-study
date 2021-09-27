@@ -24,6 +24,12 @@ public class DeleteNodeInBST {
             // node with two children, replace with the inOrder successor(minVal) in the right subtree
             root.val = findMin(root.right);
             root.right = deleteNode(root.right, root.val);
+
+            /**
+             * node with two children, can also replace with the inOrder successor(minVal) in the left subtree
+             root.val=findMin(root.left);
+             root.left=deleteNode(root.left,root.val);
+             */
         }
         return root;
 
