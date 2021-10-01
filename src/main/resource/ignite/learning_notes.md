@@ -212,3 +212,34 @@ we can see an example Apache Ignite cluster, where the entire data set is held i
 ![alt text](p1.PNG "data grid")
 
 
+#Cache
+CACHE-ASIDE DEPLOYMENT
+With the cache-aside deployment strategy, a cache is deployed separately from the primary data store and might not 
+even know that the primary store exists. An application or change-data-capture (CDC) process becomes responsible for 
+data synchronization between the two storage locations. For example, if a record is updated in the primary data store, 
+then its new value needs to be replicated to the cache.
+
+This strategy works well when the cached data is relatively static (not updated frequently) or when temporary data lag 
+is allowed between the primary store and the cache. It's usually assumed that changes will be fully replicated eventually 
+and, thus, the cache and the primary store will become consistent.
+
+When Apache Ignite is deployed in a cache-aside configuration, its native persistence can be used as a disk store for 
+Ignite datasets. Native persistence allows for elimination of the time-consuming cache warm-up step. Furthermore, 
+because native persistence maintains a full copy of data on disk, you can cache a subset of records in memory. If a 
+required data record is missing from memory, then Ignite reads the record from the disk automatically, regardless of 
+which API you use—whether SQL, key-value, or scan queries.
+
+READ-THROUGH/WRITE-THROUGH CACHING
+The read-through/write-through caching strategy can be classified as an in-memory, data-grid type of deployment. When 
+Apache Ignite is deployed as a data grid, the application layer begins to treat Ignite as the primary store. As 
+applications write to and read from the data grid, Ignite ensures that all underlying external databases stay updated 
+and are consistent with the in-memory data.
+
+This strategy is recommended for architectures that need to accelerate disk-based databases or to create a shared 
+caching layer across various data sources. Ignite integrates with many databases out-of-the-box and, in write-through 
+or write-behind mode, can synchronize all changes to the databases. The strategy also applies to ACID transactions: 
+Ignite will coordinate and commit a transaction across its in-memory cluster as well as to a relational database.
+
+Read-through capability implies that, if a record is missing from memory, a cache can read the data from an 
+external database. Ignite fully supports this capability for key-value APIs. However, when you use Ignite SQL, you must 
+preload the dataset into memory—because Ignite SQL can query on-disk data only if the data is stored in native persistence.
