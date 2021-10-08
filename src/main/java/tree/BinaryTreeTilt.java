@@ -10,7 +10,7 @@ public class BinaryTreeTilt {
      * <p>
      * https://leetcode.com/problems/binary-tree-tilt/
      * <p>
-     * my ac ans: can be refined
+     * my ac ans
      */
     int sum = 0;
 
@@ -19,15 +19,15 @@ public class BinaryTreeTilt {
         return sum;
     }
 
-    private void dfs(TreeNode root) {
-        if (root == null) return;
-        sum += Math.abs(dfsSum(root.left) - dfsSum(root.right));
-        dfs(root.left);
-        dfs(root.right);
+    /**
+     * bottom up
+     */
+    private int dfs(TreeNode root) {
+        if (root == null) return 0;
+        int left = dfs(root.left);
+        int right = dfs(root.right);
+        sum += Math.abs(left - right);
+        return root.val + left + right;
     }
 
-    private int dfsSum(TreeNode root) {
-        if (root == null) return 0;
-        return root.val + dfsSum(root.left) + dfsSum(root.right);
-    }
 }
