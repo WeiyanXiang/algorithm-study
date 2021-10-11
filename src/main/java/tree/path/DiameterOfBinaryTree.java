@@ -21,12 +21,13 @@ public class DiameterOfBinaryTree {
         return ans;
     }
 
-    // for each recusion: path must be via root, at least 1 child in path
+    // for each node: path must be via root
     private int maxD(TreeNode root) {
         if (root == null) return 0;
         int l = maxD(root.left);
         int r = maxD(root.right);
         int curMaxD = l + r;
+        // update the max
         ans = Math.max(ans, curMaxD);
         // must return either left or right path, as path is single route cannot be two directions
         return Math.max(l, r) + 1;
