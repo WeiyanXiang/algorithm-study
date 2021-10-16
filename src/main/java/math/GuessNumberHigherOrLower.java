@@ -24,22 +24,25 @@ public class GuessNumberHigherOrLower {
 
 
     public int guessNumber(int n) {
+        // "i + (j - i) / 2" is faster than "(i + j) / 2" because the latter one could have integer overflow
+        // (becoming negative). that could result infinite loop...
         int l = 1, r = n;
-        int mid = l + (r - l) / 2;
         while (l < r) {
+            int mid = l + (r - l) / 2;
             if (guess(mid) == 0) return mid;
-            if (guess(mid) == -1) {
-                r = mid;
-            } else if (guess(mid) == 1) {
-                l = mid + 1;
-            }
-            mid = l + (r - l) / 2;
+            else if (guess(mid) == -1) r = mid;
+            else l = mid + 1;
         }
         return l;
     }
 
+    /**
+     * -1 if num is lower than the guess number
+     * 1 if num is higher than the guess number
+     * otherwise return 0
+     */
     int guess(int num) {
-        return 0;
+        return -1;
     }
 
 }
