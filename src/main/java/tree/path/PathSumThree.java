@@ -11,7 +11,6 @@ import java.util.Map;
 public class PathSumThree {
     int count = 0;
 
-    // prefix sum: key is sum of current path until cur node, value is how many ways of this sum until cur node.
 
     /**
      * 437. Path Sum III
@@ -21,6 +20,7 @@ public class PathSumThree {
      * upvoted answer: https://leetcode.com/problems/path-sum-iii/discuss/91878/17-ms-O(n)-java-Prefix-sum-method
      */
     public int pathSum(TreeNode root, int target) {
+        // The map stores <prefix sum, frequency> pairs before getting to the current node.
         Map<Integer, Integer> map = new HashMap<>();
         // to handle start from root pre sum case
         // [5,4,8,11,null,13,4,7,2,null,null,5,1] and target is 22
@@ -32,17 +32,20 @@ public class PathSumThree {
 
     private void doPathSum(TreeNode root, int target, int cur, Map<Integer, Integer> map) {
         if (root == null) return;
+        // cur now will be sum from root to current node
         cur += root.val;
         /**
          * The map stores <prefix sum, frequency> pairs before getting to the current node. We can imagine a path from
          * the root to the current node. The sum from any node in the middle of the path to the current node =
          * the difference between the sum from the root to the current node and the prefix sum of the node in the middle.
          */
+        // if there is a node in the mid of the path which fulfills the target, add the frequency
         count += map.getOrDefault(cur - target, 0);
         map.put(cur, map.getOrDefault(cur, 0) + 1);
 
         doPathSum(root.left, target, cur, map);
         doPathSum(root.right, target, cur, map);
+        // backtrack
         map.put(cur, map.get(cur) - 1);
     }
 
