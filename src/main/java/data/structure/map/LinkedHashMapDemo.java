@@ -19,7 +19,7 @@ public class LinkedHashMapDemo {
          * running through all of its entries. o The reason why double linked
          * list rather than single is because to implement O(1) removal of
          * element requires the node to know previous node as well.
-         * 
+         *
          */
         Map<String, String> testObj = new LinkedHashMap<>();
 
