@@ -1,5 +1,8 @@
 package twopointers;
 
+import java.util.Arrays;
+import java.util.Collections;
+
 /**
  * @author Weiyan Xiang on 2021/10/21
  */
@@ -33,6 +36,15 @@ public class ReverseWordsInString {
             l++;
             r--;
         }
+    }
+
+    /**
+     * upvoted, out of box methods
+     */
+    public String reverseWordsUpvoted(String s) {
+        String[] raw = s.trim().split("\\s+");
+        Collections.reverse(Arrays.asList(raw));
+        return String.join(" ", raw);
     }
 
 }
