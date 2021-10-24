@@ -14,15 +14,42 @@ public class CountCompleteTreeNodes {
      * <p>
      * https://leetcode.com/problems/count-complete-tree-nodes/
      * <p>
-     * my ac ans: the question requires O(n) time
+     * my ac ans: not fastest as it's O(n)
      */
     public int countNodes(TreeNode root) {
-        if (root == null) return count;
-        if (map.containsKey(root)) return count;
-        count++;
-        map.put(root, 1);
-        countNodes(root.left);
-        countNodes(root.right);
-        return count;
+        if (root == null) return 0;
+        int left = countNodes(root.left);
+        int right = countNodes(root.right);
+        return right + left + 1;
+    }
+
+    /**
+     * O(logn * logn)
+     */
+    public int countNodesOptimal(TreeNode root) {
+        if (root == null) return 0;
+        int leftD = dfsD(root, true);
+        int rightD = dfsD(root, false);
+        if (leftD == rightD) {
+            return (1 << leftD) - 1;
+        } else {
+            return 1 + countNodes(root.left) + countNodes(root.right);
+        }
+    }
+
+    private int dfsD(TreeNode root, boolean isLeft) {
+        int c = 0;
+        if (isLeft) {
+            while (root != null) {
+                root = root.left;
+                c++;
+            }
+        } else {
+            while (root != null) {
+                root = root.right;
+                c++;
+            }
+        }
+        return c;
     }
 }
