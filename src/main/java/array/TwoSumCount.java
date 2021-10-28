@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package array;
 
@@ -14,22 +14,22 @@ import java.util.Map.Entry;
 public class TwoSumCount {
 
     public static void main(String[] args) {
-        int[] input1 = { 2, 2, 3, 3, 3, 5, 5 };
+        int[] input1 = {2, 2, 3, 3, 3, 5, 5};
         System.out.println("6 == " + getTwoSum(input1, 5));
-        int[] input2 = { 1, 1, 1, 1 };
+        int[] input2 = {1, 1, 1, 1};
         System.out.println("6 == " + getTwoSum(input2, 2));
-        int[] input3 = { 1, 5, 7, -1, 5 };
+        int[] input3 = {1, 5, 7, -1, 5};
         System.out.println("3 == " + getTwoSum(input3, 6));
-        int[] input4 = { 1, 5, 7, -1 };
+        int[] input4 = {1, 5, 7, -1};
         System.out.println("2 == " + getTwoSum(input4, 6));
     }
 
     /**
-     * Given an array of integers, and a number ‘sum’, find the number of pairs
-     * of integers in the array whose sum is equal to ‘sum’.
-     * 
+     * Given an array of integers, and a number ï¿½sumï¿½, find the number of pairs of integers in the array whose sum is
+     * equal to ï¿½sumï¿½.
+     * <p>
      * Time: O(n) * 2
-     * 
+     *
      * @param input
      * @param i
      * @return

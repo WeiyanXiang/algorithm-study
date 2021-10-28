@@ -19,6 +19,7 @@ public class ThreeSum {
         Arrays.sort(nums);
         List<List<Integer>> ans = new ArrayList<>();
         for (int i = 0; i < nums.length - 2; i++) {
+            // when previous loop already checked
             if (i > 0 && nums[i] == nums[i - 1]) {
                 continue;
             }
