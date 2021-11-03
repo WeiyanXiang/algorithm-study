@@ -18,7 +18,6 @@ public class SumRootToLeafNumbers {
     int sum = 0;
 
     public int sumNumbersRecursionWithBackTracking(TreeNode root) {
-        if (root == null) return 0;
         doSum(root, 0);
         return sum;
     }
@@ -26,6 +25,7 @@ public class SumRootToLeafNumbers {
     private void doSum(TreeNode root, int cur) {
         if (root == null) return;
         cur = cur * 10 + root.val;
+        // check leaf so that add to sum once
         if (root.left == null && root.right == null) sum += cur;
         doSum(root.left, cur);
         doSum(root.right, cur);
