@@ -75,6 +75,22 @@ public class BestTimeToBuyAndSellStock {
         return max;
     }
 
+    /**
+     * basically same as above
+     */
+    public int maxProfitMyVersion(int[] prices) {
+        if (prices.length <= 1) return 0;
+        int sum = 0, prev = prices[0];
+        for (int i = 1; i < prices.length; i++) {
+            if (prev < prices[i]) {
+                sum = Math.max(prices[i] - prev, sum);
+            } else {
+                prev = prices[i];
+            }
+        }
+        return sum;
+    }
+
     public static void main(String[] args) {
         BestTimeToBuyAndSellStock buyTime = new BestTimeToBuyAndSellStock();
 

@@ -5,16 +5,20 @@ package dfs;
  */
 public class BestTimeToBuyAndSellStockII {
     /**
-     * https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
+     * 122. Best Time to Buy and Sell Stock II
+     * <p>
+     * https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/
+     * <p>
+     * my ac ans: track the trend
      */
-    public int maxProfitMyAnswer(int[] p) {
-        if (p == null || p.length < 2) return 0;
-        int maxSoFar = 0, maxCur = 0;
-        for (int i = 0; i < p.length - 1; i++) {
-            maxCur = Math.max(0, maxCur += p[i + 1] - p[i]);
-            maxSoFar = Math.max(maxCur, maxSoFar);
+    public int maxProfit(int[] prices) {
+        if (prices.length <= 1) return 0;
+        int sum = 0;
+        for (int i = 1; i < prices.length; i++) {
+            if (prices[i - 1] < prices[i]) {
+                sum += prices[i] - prices[i - 1];
+            }
         }
-        return maxSoFar;
-
+        return sum;
     }
 }
