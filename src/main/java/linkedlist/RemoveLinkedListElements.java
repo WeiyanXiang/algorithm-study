@@ -42,6 +42,28 @@ public class RemoveLinkedListElements {
         return dummy.next;
     }
 
+    /**
+     * very similar to above, dif is prev starts with null instead of dummy
+     *
+     * @param head
+     * @param val
+     * @return
+     */
+    public ListNode removeElementsMyAc(ListNode head, int val) {
+        ListNode prev = null;
+        ListNode node = head;
+        while (node != null) {
+            if (node.val == val) {
+                if (prev != null) prev.next = node.next;
+                else head = node.next;
+            } else {
+                prev = node;
+            }
+            node = node.next;
+        }
+        return head;
+    }
+
     public static void main(String[] args) {
         /*
          * 1 -> 3 -> 4 -> 1 -> 6
