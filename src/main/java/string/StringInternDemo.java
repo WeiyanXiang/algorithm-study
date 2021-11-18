@@ -29,6 +29,10 @@ public class StringInternDemo {
     }
 
     public static void main(String[] args) {
+        short a = 1;
+        // a = a+1;
+        a++;
+
         String s3 = "name";
         StringInternDemo instance = new StringInternDemo("name", "name");
         System.out.println(instance.name1 == instance.name2);
