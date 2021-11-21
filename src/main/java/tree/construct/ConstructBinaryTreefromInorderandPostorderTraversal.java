@@ -24,6 +24,8 @@ public class ConstructBinaryTreefromInorderandPostorderTraversal {
     public TreeNode buildTree(int[] inorder, int[] postorder) {
         for (int i = 0; i < inorder.length; i++) map.put(inorder[i], i);
         postIndex = postorder.length - 1;
+        // inorder: left - root - right
+        // postorder: left - right - root
         return dfs(postorder, 0, postorder.length - 1);
     }
 
