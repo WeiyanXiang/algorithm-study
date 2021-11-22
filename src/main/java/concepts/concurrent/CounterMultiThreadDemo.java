@@ -1,4 +1,4 @@
-package concurrent;
+package concepts.concurrent;
 
 /**
  * @author Weiyan Xiang on 2020/10/14

@@ -1,7 +1,7 @@
 /**
  *
  */
-package concurrent;
+package concepts.concurrent;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantLock;

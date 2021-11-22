@@ -1,7 +1,7 @@
 /**
  * 
  */
-package concurrent;
+package concepts.concurrent;
 
 /**
  * @author weiyan.xiang

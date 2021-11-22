@@ -1,7 +1,7 @@
 /**
  *
  */
-package concurrent;
+package concepts.concurrent;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

@@ -1,7 +1,7 @@
 /**
  *
  */
-package concurrent;
+package concepts.concurrent;
 
 import java.util.Arrays;
 import java.util.List;

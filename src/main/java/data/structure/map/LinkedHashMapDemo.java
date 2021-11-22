@@ -21,8 +21,7 @@ public class LinkedHashMapDemo {
          * element requires the node to know previous node as well.
          *
          */
-        Map<String, String> testObj = new LinkedHashMap<>();
-
+        LinkedHashMap<String, String> testObj = new LinkedHashMap<>();
         testObj.put("key1", "value1");
         testObj.put("key2", "value2");
         testObj.put("key3", "value3");
