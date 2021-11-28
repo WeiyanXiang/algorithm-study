@@ -13,7 +13,7 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 public class ThreadLocalDemo {
 
-    /*
+    /**
      * common usage of threadLocal: You can wrap any non Thread Safe object in
      * ThreadLocal and suddenly its uses becomes Thread-safe, as its only being
      * used by Thread Safe. One of the classic example of ThreadLocal is sharing
@@ -21,9 +21,12 @@ public class ThreadLocalDemo {
      * global formatter may not work but having per Thread formatter will
      * certainly work.
      *
+     * 在一些场景 (尤其是使用线程池) 下，由于 ThreadLocal.ThreadLocalMap 的底层数据结构导致 ThreadLocal 有内存泄漏的情况，
+     * 应该尽可能在每次使用 ThreadLocal 后手动调用 remove()，以避免出现 ThreadLocal 经典的内存泄漏甚至是造成自身业务混乱的风险。
      *
-     */
+     **/
     public static class SampleThread implements Runnable {
+
         private ThreadLocal<SimpleDateFormat> threadLocal = ThreadLocal.withInitial(() -> {
             System.out.println("Thread local created.");
             return new SimpleDateFormat("yyyyMMdd HHmm");
