@@ -1,5 +1,7 @@
 package array;
 
+import java.util.Arrays;
+
 /**
  * @author Weiyan Xiang on 2020/11/4
  */
@@ -12,7 +14,8 @@ public class FindRangeOfElementInSortedArray {
      */
     public int[] searchRange(int[] nums, int target) {
         int lo = 0, hi = nums.length - 1;
-        int[] res = new int[]{-1, -1};
+        int[] res = new int[2];
+        Arrays.fill(res, -1);
         while (lo <= hi) {
             int mid = (lo + hi) / 2;
             // find lowest bound
