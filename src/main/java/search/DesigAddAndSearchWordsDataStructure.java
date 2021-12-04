@@ -55,47 +55,54 @@ public class DesigAddAndSearchWordsDataStructure {
 
 
     /**
-     * Trie DFS AC upvoted answer, importance is on how Trie constructed
+     * Trie DFS AC upvoted answer, importance is on how Trie constructed // https://www.geeksforgeeks.org/trie-insert-and-search/
      */
-    public class TrieNode {
-        public TrieNode[] children = new TrieNode[26];
-        public boolean isWord;
-    }
+    class WordDictionary {
 
-    private TrieNode root = new TrieNode();
-
-    // Adds a word into the data structure.
-    // https://www.geeksforgeeks.org/trie-insert-and-search/
-    public void addWordTrie(String word) {
-        TrieNode node = root;
-        for (char c : word.toCharArray()) {
-            if (node.children[c - 'a'] == null) {
-                node.children[c - 'a'] = new TrieNode();
-            }
-            node = node.children[c - 'a'];
+        class TrieNode {
+            // aphabet array of trieNode
+            TrieNode[] children = new TrieNode[26];
+            boolean isWord;
         }
-        node.isWord = true;
-    }
 
-    public boolean searchTrie(String word) {
-        return dfs(word.toCharArray(), 0, root);
-    }
+        TrieNode root;
 
-    private boolean dfs(char[] words, int start, TrieNode node) {
-        if (start == words.length) {
-            return node.isWord;
+        public WordDictionary() {
+            this.root = new TrieNode();
         }
-        if (words[start] == '.') {
-            for (int i = 0; i < node.children.length; i++) {
-                if (node.children[i] != null && dfs(words, start + 1, node.children[i])) {
-                    return true;
+
+        public void addWord(String word) {
+            TrieNode cur = root;
+            char[] cs = word.toCharArray();
+            for (int i = 0; i < cs.length; i++) {
+                char c = cs[i];
+                if (cur.children[c - 'a'] == null) {
+                    cur.children[c - 'a'] = new TrieNode();
                 }
+                cur = cur.children[c - 'a'];
+                if (i == cs.length - 1) cur.isWord = true;
             }
-        } else {
-            return node.children[words[start] - 'a'] != null &&
-                    dfs(words, start + 1, node.children[words[start] - 'a']);
         }
-        return false;
+
+        public boolean search(String word) {
+            return dfs(word.toCharArray(), root, 0);
+        }
+
+        private boolean dfs(char[] words, TrieNode cur, int start) {
+            if (cur == null) return false;
+            if (start == words.length) return cur.isWord;
+            if (words[start] == '.') {
+                // search for all 26 letters at same level
+                for (int i = 0; i < 26; i++) {
+                    if (cur.children[i] != null && dfs(words, cur.children[i], start + 1)) return true;
+                }
+            } else {
+                return dfs(words, cur.children[words[start] - 'a'], start + 1);
+            }
+            return false;
+        }
+
+
     }
 
 }

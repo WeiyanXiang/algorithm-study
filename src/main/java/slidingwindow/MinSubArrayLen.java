@@ -7,21 +7,19 @@ public class MinSubArrayLen {
     /**
      * https://leetcode.com/problems/minimum-size-subarray-sum/submissions/
      * <p>
-     * my own answer using template idea to approach
+     * Sliding window
      */
-    public int minSubArrayLen(int s, int[] nums) {
-        int l = 0, r = 0, sum = 0, res = nums.length + 1;
+    public int minSubArrayLen(int target, int[] nums) {
+        int l = 0, r = 0, sum = 0, ans = Integer.MAX_VALUE;
         while (r < nums.length) {
             // right
-            sum += nums[r];
-            r++;
+            sum += nums[r++];
             // left
-            while (sum >= s) {
-                sum -= nums[l];
-                res = Math.min(res, r - l);
-                l++;
+            while (sum >= target) {
+                sum -= nums[l++];
+                ans = Math.min(ans, r - l + 1);
             }
         }
-        return res == nums.length + 1 ? 0 : res;
+        return ans == Integer.MAX_VALUE ? 0 : ans;
     }
 }

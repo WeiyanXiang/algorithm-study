@@ -13,24 +13,60 @@ public class FindRangeOfElementInSortedArray {
      * my own answer: not fully efficient as there is some linear search on left most and right most
      */
     public int[] searchRange(int[] nums, int target) {
-        int lo = 0, hi = nums.length - 1;
-        int[] res = new int[2];
-        Arrays.fill(res, -1);
-        while (lo <= hi) {
-            int mid = (lo + hi) / 2;
-            // find lowest bound
-            if (nums[mid] == target) {
-                int lm = mid, hm = mid;
-                while (lm > 0 && nums[lm] == nums[lm - 1]) lm--;
-                res[0] = lm;
-                while (hm < nums.length - 1 && nums[hm] == nums[hm + 1]) hm++;
-                res[1] = hm;
+        int l = 0, r = nums.length - 1;
+        int[] res = new int[]{-1, -1};
+        while (l <= r) {
+            int mid = (l + r) / 2;
+            if (target == nums[mid]) {
+                int ll = mid, rr = mid;
+                while (ll >= 1 && nums[ll] == nums[ll - 1]) ll--;
+                while (rr < nums.length - 1 && nums[rr] == nums[rr + 1]) rr++;
+                res[0] = ll;
+                res[1] = rr;
                 return res;
-            } else if (nums[mid] < target) lo = mid + 1;
-            else hi = mid - 1;
+            } else if (target > nums[mid]) l = mid + 1;
+            else r = mid - 1;
         }
         return res;
     }
+
+    /**
+     * There must be two indices in the array. Which means, we can just simply apply to binary search twice to find each
+     * index of the target element.
+     */
+    public int[] searchRangeReadiable(int[] nums, int target) {
+        int[] res = new int[2];
+        res[0] = findLeft(nums, target);
+        res[1] = findRight(nums, target);
+        return res;
+    }
+
+    private int findLeft(int[] nums, int target) {
+        int l = 0, r = nums.length - 1, idx = -1;
+        while (l <= r) {
+            int mid = l + (r - l) / 2;
+            if (target <= nums[mid]) r = mid - 1;
+            else l = mid + 1;
+
+            if (target == nums[mid]) idx = mid;
+
+        }
+        return idx;
+    }
+
+    private int findRight(int[] nums, int target) {
+        int l = 0, r = nums.length - 1, idx = -1;
+        while (l <= r) {
+            int mid = l + (r - l) / 2;
+            if (target >= nums[mid]) l = mid + 1;
+            else r = mid - 1;
+
+            if (target == nums[mid]) idx = mid;
+
+        }
+        return idx;
+    }
+
 
     /**
      * LC formal solution: 2 binary search for leftMost and rightMost
