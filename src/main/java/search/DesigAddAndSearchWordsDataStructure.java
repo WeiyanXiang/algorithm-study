@@ -62,7 +62,7 @@ public class DesigAddAndSearchWordsDataStructure {
         class TrieNode {
             // aphabet array of trieNode
             TrieNode[] children = new TrieNode[26];
-            boolean isWord;
+            boolean isEnd;
         }
 
         TrieNode root;
@@ -80,7 +80,7 @@ public class DesigAddAndSearchWordsDataStructure {
                     cur.children[c - 'a'] = new TrieNode();
                 }
                 cur = cur.children[c - 'a'];
-                if (i == cs.length - 1) cur.isWord = true;
+                if (i == cs.length - 1) cur.isEnd = true;
             }
         }
 
@@ -90,7 +90,7 @@ public class DesigAddAndSearchWordsDataStructure {
 
         private boolean dfs(char[] words, TrieNode cur, int start) {
             if (cur == null) return false;
-            if (start == words.length) return cur.isWord;
+            if (start == words.length) return cur.isEnd;
             if (words[start] == '.') {
                 // search for all 26 letters at same level
                 for (int i = 0; i < 26; i++) {

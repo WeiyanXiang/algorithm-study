@@ -12,9 +12,9 @@ public class DesigAddAndSearchWordsDataStructureTest {
     @Test
     public void add() {
         DesigAddAndSearchWordsDataStructure testObj = new DesigAddAndSearchWordsDataStructure();
-        testObj.addWordTrie("bad");
-        testObj.addWordTrie("dad");
-        testObj.addWordTrie("bcd");
+        testObj.addWord("bad");
+        testObj.addWord("dad");
+        testObj.addWord(("bcd"));
 
     }
 }

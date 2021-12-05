@@ -4,42 +4,68 @@ package tree;
  * @author Weiyan Xiang on 2021/10/8
  */
 
+/**
+ * 208. Implement Trie (Prefix Tree)
+ * <p>
+ * https://leetcode.com/problems/implement-trie-prefix-tree/
+ * <p>
+ * build a Trie / prefix tree
+ */
 public class Trie {
 
-    private Trie[] kids;
-    private boolean isWord;
+    Trie[] children = new Trie[26];
+    boolean isEnd;
 
 
     public Trie() {
-        this.kids = new Trie[26];
     }
 
     public void insert(String word) {
-        char[] words = word.toCharArray();
-        Trie root = this;
-        for (int i = 0; i < words.length; i++) {
-            if (root.kids[words[i] - 'a'] == null) {
-                root.kids[words[i] - 'a'] = new Trie();
-            }
-            root = root.kids[words[i] - 'a'];
+        Trie cur = this;
+        for (char c : word.toCharArray()) {
+            if (cur.children[c - 'a'] == null) cur.children[c - 'a'] = new Trie();
+            cur = cur.children[c - 'a'];
         }
-        root.isWord = true;
+        cur.isEnd = true;
     }
-
 
     public boolean search(String word) {
-        return dfs(word, 0, this, true);
+        Trie cur = this;
+        for (char c : word.toCharArray()) {
+            if (cur.children[c - 'a'] == null) return false;
+            cur = cur.children[c - 'a'];
+        }
+        return cur.isEnd;
     }
 
-    private boolean dfs(String word, int index, Trie root, boolean needToFindWord) {
-        if (!needToFindWord && word.length() == index) return true;
-        if (word.length() == index && (needToFindWord && root.isWord)) return true;
-        if (index >= word.length()) return false;
-        if (root.kids[word.charAt(index) - 'a'] == null) return false;
-        return dfs(word, index + 1, root.kids[word.charAt(index) - 'a'], needToFindWord);
+
+    public boolean startsWith(String word) {
+        Trie cur = this;
+        for (char c : word.toCharArray()) {
+            if (cur.children[c - 'a'] == null) return false;
+            cur = cur.children[c - 'a'];
+        }
+        return true;
     }
 
-    public boolean startsWith(String prefix) {
-        return dfs(prefix, 0, this, false);
+    public boolean searchDfs(String word) {
+        return dfs(word.toCharArray(), 0, this);
+    }
+
+    private boolean dfs(char[] cs, int start, Trie cur) {
+        if (cur == null) return false;
+        if (start == cs.length) return cur.isEnd;
+        return dfs(cs, start + 1, cur.children[cs[start] - 'a']);
+    }
+
+    public boolean startsWithDfs(String prefix) {
+        return dfsStartWith(prefix.toCharArray(), 0, this);
+    }
+
+    private boolean dfsStartWith(char[] cs, int start, Trie cur) {
+        if (cur != null && start == cs.length) return true;
+        if (cur == null) return false;
+        if (start >= cs.length) return false;
+        return dfsStartWith(cs, start + 1, cur.children[cs[start] - 'a']);
     }
 }
