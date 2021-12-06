@@ -2,6 +2,8 @@ package search;/**
  * @author Weiyan Xiang on 2021/2/7
  */
 
+import com.sun.xml.internal.bind.v2.TODO;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -86,6 +88,10 @@ public class DesigAddAndSearchWordsDataStructure {
 
         public boolean search(String word) {
             return dfs(word.toCharArray(), root, 0);
+        }
+
+        public List<String> getTop5Words(String prefix) {
+            return null;
         }
 
         private boolean dfs(char[] words, TrieNode cur, int start) {

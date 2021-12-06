@@ -3,26 +3,48 @@ package string;
 /**
  * @author Weiyan Xiang on 2020/3/5
  * <p>
+ * 443. String Compression
+ *
+ * <p>
  * https://leetcode.com/problems/string-compression/
  */
 public class StringCompression {
 
 
     public static int compress(char[] chars) {
-        int indexAns = 0, index = 0;
-        while (index < chars.length) {
-            char currentChar = chars[index];
+        int writeIndex = 0, readIndex = 0;
+        while (readIndex < chars.length) {
+            char currentChar = chars[readIndex];
             int count = 0;
-            while (index < chars.length && chars[index] == currentChar) {
-                index++;
+            while (readIndex < chars.length && chars[readIndex] == currentChar) {
+                readIndex++;
                 count++;
             }
-            chars[indexAns++] = currentChar;
+            chars[writeIndex++] = currentChar;
             if (count != 1)
                 for (char c : Integer.toString(count).toCharArray())
-                    chars[indexAns++] = c;
+                    chars[writeIndex++] = c;
         }
-        return indexAns;
+        return writeIndex;
+    }
+
+    // sliding window for each compress
+    public int compressMyOwn(char[] chars) {
+        int wi = 0, ri = 0;
+        while (ri < chars.length) {
+            char c = chars[ri];
+            int count = 1;
+            while (ri + 1 < chars.length && chars[ri] == chars[ri + 1]) {
+                ri++;
+                count++;
+            }
+            ri++;
+            chars[wi++] = c;
+            if (count != 1) {
+                for (char cc : Integer.toString(count).toCharArray()) chars[wi++] = cc;
+            }
+        }
+        return wi;
     }
 
 

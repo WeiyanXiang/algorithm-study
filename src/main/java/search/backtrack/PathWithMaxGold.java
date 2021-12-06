@@ -4,7 +4,7 @@ package search.backtrack;
  * @author Weiyan Xiang on 2021/1/15
  */
 
-public class PathWithMaximumGold {
+public class PathWithMaxGold {
     /**
      * 1219. Path with Maximum Gold
      * <p>
@@ -13,13 +13,13 @@ public class PathWithMaximumGold {
      * my own ac ans
      */
     public int getMaximumGold(int[][] grid) {
-        int row = grid.length;
-        int col = grid[0].length;
+        int xLen = grid.length;
+        int yLen = grid[0].length;
         int max = 0;
-        boolean[][] visited = new boolean[row][col];
+        boolean[][] visited = new boolean[xLen][yLen];
         // select every point as starting point
-        for (int r = 0; r < row; r++) {
-            for (int c = 0; c < col; c++) {
+        for (int r = 0; r < xLen; r++) {
+            for (int c = 0; c < yLen; c++) {
                 max = Math.max(max, dfs(grid, visited, r, c, 0));
             }
         }

@@ -1,6 +1,7 @@
 package array;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.PriorityQueue;
 
 /**
@@ -17,7 +18,7 @@ public class MeetingRoomsTwo {
      * @return
      */
     public int minMeetingRooms(int[][] intervals) {
-        Arrays.sort(intervals, (i1, i2) -> Integer.compare(i1[0], i2[0]));
+        Arrays.sort(intervals, Comparator.comparingInt(i -> i[0]));
         PriorityQueue<Integer> heap = new PriorityQueue<>(intervals.length);
         int count = 0;
         for (int i = 0; i < intervals.length - 1; i++) {
