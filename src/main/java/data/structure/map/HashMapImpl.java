@@ -3,8 +3,12 @@ package data.structure.map;
  *
  */
 
+import kotlin.ranges.IntRange;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 import java.util.*;
 import java.util.Map.Entry;
+import java.util.stream.IntStream;
 
 /**
  * @author weiyan.xiang
@@ -24,8 +28,7 @@ public class HashMapImpl {
      */
     /**
      * for my info, example hashCode is using a prime to multiply the class field
-     @Override
-     public int hashCode() {
+     @Override public int hashCode() {
      int hash = 7;
      hash = 31 * hash + (int) id;
      hash = 31 * hash + (name == null ? 0 : name.hashCode());
@@ -35,13 +38,11 @@ public class HashMapImpl {
      */
     public HashMapImpl() {
         this.buckets = new ArrayList<>(capacity);
-        for (int i = 0; i < capacity; i++) {
-            this.buckets.add(new LinkedList<>());
-        }
+        IntStream.range(0, capacity).forEach(it -> this.buckets.add(new LinkedList<>()));
     }
 
     public int hashCode(int key) {
-        return key;
+        return new HashCodeBuilder(17,313).append(key).hashCode();
     }
 
     @Override
