@@ -15,14 +15,21 @@ public class MergeSortedArray {
      * 88. Merge Sorted Array
      * <p>
      * https://leetcode.com/problems/merge-sorted-array/
+     *
+     * idea: start from backwards
      */
-    public static void merge(int[] nums1, int m, int[] nums2, int n) {
-        int t1 = m - 1, t2 = n - 1, f = m + n - 1;
-        while (t1 >= 0 && t2 >= 0) {
-            nums1[f--] = nums1[t1] > nums2[t2] ? nums1[t1--] : nums2[t2--];
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+        int i1 = m - 1, i2 = n - 1, i = m + n - 1;
+        while (i1 >= 0 && i2 >= 0) {
+            if (nums1[i1] > nums2[i2]) {
+                nums1[i--] = nums1[i1--];
+            } else {
+                nums1[i--] = nums2[i2--];
+            }
         }
-        while (t2 >= 0 && f >= 0) {
-            nums1[f--] = nums2[t2--];
+        // when there is additional smaller values in nums2
+        while (i2 >= 0) {
+            nums1[i--] = nums2[i2--];
         }
     }
 
@@ -36,7 +43,7 @@ public class MergeSortedArray {
 
         int[] nums2 = {2, 3, 4, 5, 6, 7};
         int m = 5, n = 6;
-        merge(nums1, m, nums2, n);
+        new MergeSortedArray().merge(nums1, m, nums2, n);
         PrintUtils.printArray(nums1);
     }
 }
