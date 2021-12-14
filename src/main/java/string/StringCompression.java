@@ -12,20 +12,20 @@ public class StringCompression {
 
 
     public static int compress(char[] chars) {
-        int writeIndex = 0, readIndex = 0;
-        while (readIndex < chars.length) {
-            char currentChar = chars[readIndex];
+        int wi = 0, ri = 0;
+        while (ri < chars.length) {
+            char currentChar = chars[ri];
             int count = 0;
-            while (readIndex < chars.length && chars[readIndex] == currentChar) {
-                readIndex++;
+            while (ri < chars.length && chars[ri] == currentChar) {
+                ri++;
                 count++;
             }
-            chars[writeIndex++] = currentChar;
+            chars[wi++] = currentChar;
             if (count != 1)
                 for (char c : Integer.toString(count).toCharArray())
-                    chars[writeIndex++] = c;
+                    chars[wi++] = c;
         }
-        return writeIndex;
+        return wi;
     }
 
     // sliding window for each compress
