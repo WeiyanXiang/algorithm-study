@@ -59,5 +59,15 @@ public class CandyCrush1D {
      *
      */
 
+    public String candyCrush(String s){
+        return null;
+    }
+
+    public static void main(String[] args) {
+        CandyCrush1D candyCrush = new CandyCrush1D();
+        String actual = candyCrush.candyCrush("aabbbacd");
+        System.out.println(actual+" == " + "cd");
+    }
+
 
 }
