@@ -41,34 +41,37 @@ public class CandyCrush1D {
 
     public String candyCrush(String s) {
         Stack<Character> stack = new Stack<>();
-        Stack<Integer> occurance = new Stack<>();
-        for (int i = 0; i < s.length(); ) {
+        Stack<Integer> counts = new Stack<>();
+        int i = 0;
+        while (i < s.length()) {
             char c = s.charAt(i);
+            // if empty or different letter found
             if (stack.isEmpty() || c != stack.peek()) {
-                if (!stack.isEmpty() && occurance.peek() >= 3) {
+                if (!stack.isEmpty() && counts.peek() >= 3) {
                     stack.pop();
-                    occurance.pop();
+                    counts.pop();
+                    // no need to i++ because we need to keep checking this incoming letter after the 3 letters crushed
                 } else {
                     stack.push(c);
-                    occurance.push(1);
+                    counts.push(1);
                     i++;
                 }
             } else {
-                int count = occurance.pop();
-                occurance.push(count + 1);
+                // when it's same letter, update counts count
+                counts.push(counts.pop() + 1);
                 i++;
             }
         }
 
-        if (occurance.peek() >= 3) {
+        if (counts.peek() >= 3) {
             stack.pop();
-            occurance.pop();
+            counts.pop();
         }
 
         StringBuilder sb = new StringBuilder();
         while (!stack.isEmpty()) {
             char c = stack.pop();
-            int count = occurance.pop();
+            int count = counts.pop();
             while (count > 0) {
                 sb.append(c);
                 count--;
