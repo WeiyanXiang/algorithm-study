@@ -20,16 +20,17 @@ public class ValidAnagram {
      * Follow up: What if the inputs contain unicode characters? How would you adapt your solution to such case?
      * <p>
      * https://leetcode.com/problems/valid-anagram/
-     *
-     * @param s
-     * @param t
-     * @return
      */
     public boolean isAnagram(String s, String t) {
-        int[] alph = new int[26];
-        for (int i = 0; i < s.length(); i++) alph[s.charAt(i) - 'a']++;
-        for (int j = 0; j < t.length(); j++) alph[t.charAt(j) - 'a']--;
-        for (int e : alph) if (e != 0) return false;
+        int[] all = new int[26];
+        if (s.length() != t.length()) return false;
+        for (int i = 0; i < s.length(); i++) {
+            all[s.charAt(i) - 'a']++;
+            all[t.charAt(i) - 'a']--;
+        }
+        for (int c : all) {
+            if (c != 0) return false;
+        }
         return true;
     }
 
