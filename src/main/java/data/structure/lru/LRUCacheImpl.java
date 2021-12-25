@@ -4,6 +4,7 @@
 package data.structure.lru;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
 
 /**
@@ -59,10 +60,6 @@ public class LRUCacheImpl {
 
     }
 
-    /**
-     * @param map
-     * @param head
-     */
     public LRUCacheImpl(int size) {
         this.map = new HashMap<>();
         this.head = new Node(null, null);
@@ -132,6 +129,7 @@ public class LRUCacheImpl {
     }
 
     public static void main(String[] args) {
+        LinkedList<Integer> haha = new LinkedList<>();
         LRUCacheImpl testObj = new LRUCacheImpl(3);
         testObj.put(1, 1);
         testObj.put(2, 2);
