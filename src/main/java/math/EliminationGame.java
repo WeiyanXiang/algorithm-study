@@ -7,11 +7,36 @@ import java.util.*;
 public class EliminationGame {
     /**
      * 390. Elimination Game
-     *
+     * <p>
      * https://leetcode.com/problems/elimination-game/
-     *
+     * <p>
      * upvoted ans: math question
+     *
+     * Denote L as traversing [1,...,n] from left to right, R as traversing [1,...,n] from right to left.
+     *
+     * When n is odd:
+     * L(1234567) = R(246) = R(123)*2
+     * R(1234567) = L(246) = L(123)*2
+     *
+     * When n is even:
+     * L(123456) = R(246) = R(123)*2
+     * R(123456) = L(135) = L(123)*2 - 1
      */
+    public int lastRemaining(int n) {
+        return leftToRight(n);
+    }
+
+    private static int leftToRight(int n) {
+        if (n <= 2) return n;
+        return 2 * rightToLeft(n / 2);
+    }
+
+    private static int rightToLeft(int n) {
+        if (n <= 2) return 1;
+        if (n % 2 == 1) return 2 * leftToRight(n / 2);
+        return 2 * leftToRight(n / 2) - 1;
+    }
+
     //@formatter:off
     /**
      *  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24
@@ -43,7 +68,7 @@ public class EliminationGame {
      * while loop end, return head
      */
     //@formatter:on
-    public int lastRemaining(int n) {
+    public int lastRemainingAnother(int n) {
         boolean left = true;
         int remaining = n;
         int step = 1, head = 1;
