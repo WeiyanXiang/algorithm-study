@@ -32,9 +32,6 @@ public class NumberOfIslands {
      * Given a 2d grid map of '1's (land) and '0's (water), count the number of islands.
      * <p>
      * This method approaches the problem as one of depth-first connected components search
-     *
-     * @param grid, the given grid.
-     * @return the number of islands.
      */
     public int numIslands(char[][] grid) {
         y = grid.length;
