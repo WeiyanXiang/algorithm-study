@@ -37,12 +37,10 @@ public class MiniKnightMoves {
             for (int j = 0; j < qSize; j++) {
                 int[] cur = queue.poll();
                 if (cur[0] == x && cur[1] == y) return count;
+                if (visited.contains(cur)) continue;
                 visited.add(cur);
                 for (int i = 0; i < directions.length; i++) {
-                    int[] nextLocation = {cur[0] + directions[i][0], cur[1] + directions[i][1]};
-                    if (!visited.contains(nextLocation)) {
-                        queue.add(nextLocation);
-                    }
+                    queue.add(new int[]{cur[0] + directions[i][0], cur[1] + directions[i][1]});
                 }
             }
             count++;

@@ -16,6 +16,7 @@ public class MiniKnightMovesTest {
     public void testMoves() {
         assertThat(new MiniKnightMoves().minKnightMoves(2, 1), is(1));
         assertThat(new MiniKnightMoves().minKnightMoves(5, 5), is(4));
+        assertThat(new MiniKnightMoves().minKnightMoves(11, 6), is(7));
     }
 
 }
