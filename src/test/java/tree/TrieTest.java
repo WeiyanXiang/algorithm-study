@@ -17,12 +17,28 @@ public class TrieTest {
         trie.insert("appeal");
         trie.insert("word");
         assertTrue(trie.startsWith("appe"));
+        assertTrue(trie.startsWithDfs("appe"));
+
         assertFalse(trie.startsWith("xxo"));
+        assertFalse(trie.startsWithDfs("xxo"));
+
         assertTrue(trie.startsWith("appl"));
+        assertTrue(trie.startsWithDfs("appl"));
+
         assertTrue(trie.search("word"));
+        assertTrue(trie.searchDfs("word"));
+
         assertTrue(trie.search("apple"));
+        assertTrue(trie.searchDfs("apple"));
+
         assertTrue(trie.search("appeal"));
+        assertTrue(trie.searchDfs("appeal"));
+
         assertFalse(trie.search("appealxx"));
+        assertFalse(trie.searchDfs("appealxx"));
+
         assertFalse(trie.search("app"));
+        assertFalse(trie.searchDfs("app"));
     }
+
 }

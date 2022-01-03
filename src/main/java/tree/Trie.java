@@ -5,7 +5,9 @@ package tree;
  */
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
+import java.util.PriorityQueue;
 
 /**
  * 208. Implement Trie (Prefix Tree)
@@ -15,25 +17,9 @@ import java.util.Objects;
  * build a Trie / prefix tree
  */
 public class Trie {
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Trie trie = (Trie) o;
-        return isEnd == trie.isEnd && Arrays.equals(children, trie.children);
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 31 * hash + Objects.hash(isEnd);
-        hash = 31 * hash + Arrays.hashCode(children);
-        return hash;
-    }
 
     Trie[] children = new Trie[26];
     boolean isEnd;
-
 
     public Trie() {
     }
@@ -80,10 +66,10 @@ public class Trie {
         return dfsStartWith(prefix.toCharArray(), 0, this);
     }
 
-    private boolean dfsStartWith(char[] cs, int start, Trie cur) {
-        if (cur != null && start == cs.length) return true;
+    private boolean dfsStartWith(char[] prefix, int start, Trie cur) {
+        if (cur != null && start == prefix.length) return true;
         if (cur == null) return false;
-        if (start >= cs.length) return false;
-        return dfsStartWith(cs, start + 1, cur.children[cs[start] - 'a']);
+        if (start >= prefix.length) return false;
+        return dfsStartWith(prefix, start + 1, cur.children[prefix[start] - 'a']);
     }
 }
