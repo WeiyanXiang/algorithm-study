@@ -8,10 +8,16 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
+import static java.util.concurrent.Executors.newCachedThreadPool;
+
 public class AwaitSignalExample {
     private Lock lock = new ReentrantLock();
     private Condition condition = lock.newCondition();
 
+    /**
+     * java.util.concurrent 类库中提供了 Condition 类来实现线程之间的协调，可以在 Condition 上调用 await() 方法使线程等待，其它线程调用 signal() 或 signalAll()
+     * 方法唤醒等待的线程。
+     */
     public void before() {
         lock.lock();
         try {
@@ -36,8 +42,8 @@ public class AwaitSignalExample {
 
     public static void main(String[] args) {
         AwaitSignalExample example = new AwaitSignalExample();
-        ExecutorService executorService = Executors.newCachedThreadPool();
-        executorService.submit(() -> example.after());
-        executorService.submit(() -> example.before());
+        ExecutorService executorService = newCachedThreadPool();
+        executorService.submit(example::after);
+        executorService.submit(example::before);
     }
 }
