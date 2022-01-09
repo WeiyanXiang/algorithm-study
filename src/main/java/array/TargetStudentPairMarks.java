@@ -28,19 +28,26 @@ public class TargetStudentPairMarks {
      */
 
     public List<List<String>> getPairs(int n, int target, List<String> studentsWithMarks) {
-        Map<Integer, LinkedList<String>> map = new HashMap<>();
+        Map<Integer, LinkedList<String>> map = new LinkedHashMap<>();
+        List<List<String>> ans = new ArrayList<>();
         for (String ss : studentsWithMarks) {
             String[] s = ss.split(" ");
             Integer mark = Integer.valueOf(s[1]);
             if (map.containsKey(mark)) {
                 map.get(mark).offer(s[0]);
             } else {
-                new LinkedList<String>().offer(s[0]);
-                map.put(mark, new LinkedList<String>());
+                LinkedList<String> queue = new LinkedList<>();
+                queue.offer(s[0]);
+                map.put(mark, queue);
             }
         }
         // now map with points and names
-
-        return null;
+        for (int i : map.keySet()) {
+            while (map.containsKey(target - i) && !map.get(i).isEmpty() && !map.get(target - i).isEmpty()) {
+                ans.add(Arrays.asList(map.get(i).poll(), map.get(target - i).poll()));
+            }
+        }
+        return ans;
     }
+
 }
