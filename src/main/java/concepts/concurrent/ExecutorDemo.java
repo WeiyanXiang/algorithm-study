@@ -19,7 +19,7 @@ public class ExecutorDemo {
         ExecutorService executorService = Executors.newFixedThreadPool(3);
         try {
             RunnableImpl runnableTask = new RunnableImpl();
-            CallalableImpl callalableTask = new CallalableImpl();
+            CallableImpl callalableTask = new CallableImpl();
 
             System.out.println("below is submit and execute demo ==> \n");
             submitAndExecuteDemo(executorService, runnableTask, callalableTask);
@@ -36,8 +36,20 @@ public class ExecutorDemo {
         }
     }
 
+    private void waysToCreateExecutor() {
+        ExecutorService cachedThreadPool = Executors.newCachedThreadPool();
+        ExecutorService fixedThreadPool = Executors.newFixedThreadPool(1);
+        ExecutorService singleThreadExecutor = Executors.newSingleThreadExecutor();
+
+        Thread thread = new Thread(new RunnableImpl());
+        // thread.setDaemon(true);
+        // 对静态方法 Thread.yield() 的调用声明了当前线程已经完成了生命周期中最重要的部分，可以切换给其它线程来执行。
+        // 该方法只是对线程调度器的一个建议，而且也只是建议具有相同优先级的其它线程可以运行。
+        Thread.yield();
+    }
+
     private static void submitAndExecuteDemo(ExecutorService executorService, RunnableImpl runnableTask,
-                                             CallalableImpl callalableTask) {
+                                             CallableImpl callalableTask) {
         executorService.execute(runnableTask);
         Future<?> submit1 = executorService.submit(runnableTask);
         Future<String> submit2 = executorService.submit(callalableTask);
