@@ -53,7 +53,6 @@ public class ThreadLocalDemo {
     public static void main(String[] args) {
         Thread t1 = new Thread(new SampleThread());
         Thread t2 = new Thread(new SampleThread());
-
         t1.start();
         t2.start();
 

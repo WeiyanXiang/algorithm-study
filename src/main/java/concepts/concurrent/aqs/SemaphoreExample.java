@@ -19,6 +19,7 @@ public class SemaphoreExample {
                 try {
                     semaphore.acquire();
                     System.out.println(semaphore.availablePermits() + " ");
+                    System.out.println(semaphore.getQueueLength() + "in queue ");
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } finally {

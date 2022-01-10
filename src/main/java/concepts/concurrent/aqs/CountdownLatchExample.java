@@ -14,8 +14,9 @@ public class CountdownLatchExample {
         CountDownLatch countDownLatch = new CountDownLatch(totalThread);
         ExecutorService executorService = Executors.newCachedThreadPool();
         for (int i = 0; i < totalThread; i++) {
+            int cur = i;
             executorService.submit(() -> {
-                System.out.println("start");
+                System.out.println("start " + cur);
                 countDownLatch.countDown();
             });
         }
