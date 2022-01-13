@@ -1,5 +1,10 @@
 package search.backtrack;
 
+import java.util.Arrays;
+import java.util.Objects;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 /**
  * @author Weiyan Xiang on 2021/1/15
  */
@@ -13,6 +18,7 @@ public class PathWithMaxGold {
      * my own ac ans
      */
     public int getMaximumGold(int[][] grid) {
+        Stream.of(grid).filter(Objects::nonNull).collect(Collectors.toList());
         int xLen = grid.length;
         int yLen = grid[0].length;
         int max = 0;

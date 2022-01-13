@@ -33,6 +33,13 @@ public class Person {
 
     public static void main(String[] args) {
         List<Person> list = new ArrayList<>();
+        list.add(new Person(1,1,"london"));
+        list.add(new Person(2,2,"Sydney"));
+        list.add(new Person(3,3,"Manchester"));
+
+        List<Person> list2 = new ArrayList<>(list);
+        list2.get(0).score=10;
+        System.out.println(list.get(0).score + " == 1");
 
         // find each city's highest score
 //        Map<String, List<Person>> collect = list.stream().collect(Collectors.groupingBy(p -> p.city));

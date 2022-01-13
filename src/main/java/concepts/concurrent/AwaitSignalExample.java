@@ -2,6 +2,8 @@ package concepts.concurrent;/**
  * @author Weiyan Xiang on 2021/11/23
  */
 
+import java.math.BigDecimal;
+import java.math.MathContext;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.locks.Condition;
@@ -19,6 +21,7 @@ public class AwaitSignalExample {
      * 方法唤醒等待的线程。
      */
     public void before() {
+        BigDecimal bd = new BigDecimal("1.5");
         lock.lock();
         try {
             System.out.println("before");

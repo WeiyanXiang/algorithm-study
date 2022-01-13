@@ -21,6 +21,8 @@ public class StreamDemo {
 
         System.out.println("\nCompare stream and parallel stream usage: ");
         compareWithParallelStreams();
+
+        System.out.println(Arrays.asList(1, 2, 3, 4, 5).stream().reduce(0, (sub, ele) -> sub + ele) + " == 15");
     }
 
     private static void demoStream() {
