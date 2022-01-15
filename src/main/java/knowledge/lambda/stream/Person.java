@@ -48,7 +48,7 @@ public class Person {
         Map<Boolean, List<String>> personWithScoreGreaterThan5 = list.stream().collect(
                 partitioningBy(s -> s.id > 5, mapping(e -> e.toString(), toList())));
         System.out.println(personWithScoreGreaterThan5);
-        
+
         String allCities = list.stream().map(e -> e.city).distinct().collect(joining(" | ", "All cities are: [", "]"));
         System.out.println(allCities);
 
