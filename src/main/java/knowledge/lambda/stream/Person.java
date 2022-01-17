@@ -10,7 +10,6 @@ import java.util.stream.Stream;
 
 import static java.util.Comparator.comparingInt;
 import static java.util.stream.Collectors.*;
-
 public class Person {
     private int id;
     private int score;
@@ -23,6 +22,30 @@ public class Person {
     }
 
     public static void main(String[] args) {
+        /**
+         * auther  book_name  publish_date(int)
+         * a1      b1         19900101
+         * a1      b2         20000101
+         * a2      b3         20200101
+         *
+         *  2. Author  latest year that he published the book
+         * select author, max(publish_date) from book group by author
+         *
+         *   3. Auther that has more than 1 book published
+         * select author from book group by author having count(book_name) > 1
+         *
+         *
+         *  4. auther latest_book_name
+         * select author, book_name from
+         * (select author,book_name, rank() over (partition by author order by publish_date DESC) as RK from book)
+         * where RK=1
+         *
+         * 
+         *
+         */
+
+
+
         List<Person> list = new ArrayList<>();
         list.add(new Person(4, 10, "london"));
         list.add(new Person(1, 1, "london"));
@@ -113,4 +136,6 @@ public class Person {
                 ", city='" + city + '\'' +
                 '}';
     }
+
+
 }

@@ -26,20 +26,15 @@ public final class ImmutableClassDemo {
     private final String name;
     private final User user;
 
-    /**
-     * @param date
-     * @param name
-     * @param user
-     */
     public ImmutableClassDemo(Date date, String name, User user) {
-        this.date = (Date) date.clone();
+        this.date = new Date(date.getTime());
         this.name = name;
         User tempUser = new User(user.getUsername(), user.getAge());
         this.user = tempUser;
     }
 
     public Date getDate() {
-        return (Date) date.clone();
+        return new Date(date.getTime());
     }
 
     public String getName() {

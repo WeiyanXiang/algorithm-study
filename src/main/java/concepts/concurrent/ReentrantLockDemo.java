@@ -26,4 +26,37 @@ public class ReentrantLockDemo {
         }
     }
 
+    public void tryLockAFunction() {
+        try {
+            boolean flag = lock.tryLock(100, TimeUnit.MILLISECONDS);
+            if (flag) {
+                try {
+                    System.out.println(Thread.currentThread().getName() + " is locked.");
+                    System.out.println("performing task");
+                } finally {
+                    lock.unlock();
+                    System.out.println(Thread.currentThread().getName() + "is unlocked");
+                }
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void lockInterruptilyAFunction() {
+        try {
+            lock.lockInterruptibly();
+            try {
+                System.out.println(Thread.currentThread().getName() + " is locked.");
+                System.out.println("performing task");
+                Thread.sleep(1000);
+            } finally {
+                lock.unlock();
+                System.out.println(Thread.currentThread().getName() + "is unlocked");
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
