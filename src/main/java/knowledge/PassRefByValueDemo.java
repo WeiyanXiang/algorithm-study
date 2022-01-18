@@ -4,7 +4,7 @@ package knowledge;
  * @author weiyan.xiang
  * @date 3 Feb 2018
  */
-public class PassByValueDemo {
+public class PassRefByValueDemo {
 
     private int value = 0;
 
@@ -30,7 +30,7 @@ public class PassByValueDemo {
     }
 
     public static void main(String[] args) {
-        PassByValueDemo instance = new PassByValueDemo();
+        PassRefByValueDemo instance = new PassRefByValueDemo();
         instance.increase(3);
         System.out.println(instance.value);
 

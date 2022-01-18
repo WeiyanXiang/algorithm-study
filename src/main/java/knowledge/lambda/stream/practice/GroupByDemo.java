@@ -1,4 +1,4 @@
-package knowledge.lambda.stream;
+package knowledge.lambda.stream.practice;
 
 import java.util.Arrays;
 import java.util.List;
@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 /**
  * @author Weiyan Xiang on 2020/6/19
  */
-public class GrourpByDemo {
+public class GroupByDemo {
 
     static class Person {
         private String lastName;
