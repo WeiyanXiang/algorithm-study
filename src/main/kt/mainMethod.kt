@@ -3,8 +3,14 @@ package kt
 /**
  * @author Weiyan Xiang on 2021/3/7
  */
+import javafx.application.Application.launch
+import java.nio.*
+import java.nio.channels.*
+import java.nio.file.*
+import kotlinx.coroutines.*
 
 fun main(args: Array<String>) {
+
     /*
     testCollections()
 
@@ -20,8 +26,6 @@ fun main(args: Array<String>) {
     val me = Person("Weiyan", "X")
 //    val provider = BasicInfoProvider()
     val provider = FancyInfoProvider()
-
-
     // object expression / anonymous class
     val anotherProvier = object : PersonalInfoProvider {
         override val providerInfo: String
@@ -33,6 +37,15 @@ fun main(args: Array<String>) {
     provider.printInfo(me)
 }
 
+
+fun main() = runBlocking {
+    repeat(100_000) { // launch a lot of coroutines
+        launch {
+            delay(5000L)
+            print(".")
+        }
+    }
+}
 
 fun checkTypes(infoProvider: PersonalInfoProvider) {
     if (infoProvider !is SessionInfoProvider) {
