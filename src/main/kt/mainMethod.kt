@@ -8,6 +8,7 @@ import java.nio.*
 import java.nio.channels.*
 import java.nio.file.*
 import kotlinx.coroutines.*
+import kotlin.coroutines.CoroutineContext
 
 fun main(args: Array<String>) {
 
@@ -38,16 +39,26 @@ fun main(args: Array<String>) {
 }
 
 
-fun main() = runBlocking {
-    repeat(100_000) { // launch a lot of coroutines
-        launch {
-            delay(5000L)
-            print(".")
-        }
+fun mainTedt() = runBlocking {
+    doWorld()
+    println("Done")
+}
+
+// Concurrently executes both sections
+suspend fun doWorld() = coroutineScope { // this: CoroutineScope
+    launch {
+        delay(2000L)
+        println("World 2")
     }
+    launch {
+        delay(1000L)
+        println("World 1")
+    }
+    println("Hello")
 }
 
 fun checkTypes(infoProvider: PersonalInfoProvider) {
+
     if (infoProvider !is SessionInfoProvider) {
         println("not SessionInfoProvider")
     } else {
