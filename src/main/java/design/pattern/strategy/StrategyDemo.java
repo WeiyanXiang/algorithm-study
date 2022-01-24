@@ -7,6 +7,11 @@ package design.pattern.strategy;
  */
 public class StrategyDemo {
 
+    public static PaymentStrategy payPalPayment = payment -> {
+        System.out.println("paypal payment");
+        return payment;
+    };
+
     /**
      * In Strategy pattern, a class behavior or its algorithm can be changed at run time. This type of design pattern
      * comes under behavior pattern.
@@ -17,7 +22,11 @@ public class StrategyDemo {
      * @param args
      */
     public static void main(String[] args) {
-        SingleCalculator calculator = new SingleCalculator(new Add());
-        System.out.println(calculator.doCalculate(1, 1));
+        Shopper shopper1 = new Shopper(new CashPayment());
+        shopper1.makePayment(1);
+        Shopper shopper2 = new Shopper(new CardPayment());
+        shopper2.makePayment(2);
+        Shopper shopper3 = new Shopper(payPalPayment);
+        shopper3.makePayment(3);
     }
 }

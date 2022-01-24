@@ -11,6 +11,9 @@ public class SingletonImplFirst {
 
     private static SingletonImplFirst instance;
 
+    private SingletonImplFirst() {
+    }
+
     /**
      * lazy initialization
      *
@@ -36,17 +39,20 @@ public class SingletonImplFirst {
     }
 
     /**
-     * A performance enhancement but not thread-safe
+     * A performance enhancement but not thread-safe, can see partially constructed objects
      *
      * @return
      */
     public static SingletonImplFirst getInstanceEnhancedThreadSafe() {
-        synchronized (SingletonImplFirst.class) {
-            if (instance == null) {
-                return new SingletonImplFirst();
+        if (instance == null) {
+            // static method, use class level locking
+            synchronized (SingletonImplFirst.class) {
+                if (instance == null) {
+                    return new SingletonImplFirst();
+                }
             }
-            return instance;
         }
+        return instance;
     }
 
 }
