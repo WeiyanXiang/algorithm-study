@@ -40,9 +40,35 @@ public class ThreadSafeBankAccount {
             }
         }
 
+        /**
+         * volatile guarantees visibility so we dont need additional synchronized for reading
+         */
         public long getBalance() {
             return balance;
         }
 
+    }
+
+    public class BankAccountImmutable {
+        private final float balance;
+
+        public BankAccountImmutable(float balance) {
+            this.balance = balance;
+        }
+
+        public BankAccountImmutable deposit(float amount) {
+            return new BankAccountImmutable(balance + amount);
+        }
+
+        public BankAccountImmutable withdraw(float amount) {
+            return new BankAccountImmutable(balance - amount);
+        }
+
+        /**
+         * primitive type is immutable by nature
+         */
+        public float getBalance() {
+            return balance;
+        }
     }
 }

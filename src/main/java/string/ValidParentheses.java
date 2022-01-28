@@ -77,6 +77,8 @@ public class ValidParentheses {
 
 
     public static void main(String[] args) {
+
+
         System.out.println("isValid(\"([]){[]}[[]]\") should be true => " + isValid("([]){[]}[[]]"));
         System.out.println("isValid(\"]]]][[[[\") should be false => " + isValid("]]]][[[["));
         System.out.println("isValid(\"[](){\") should be false => " + isValid("[](){"));
