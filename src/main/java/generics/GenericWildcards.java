@@ -3,6 +3,7 @@
  */
 package generics;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -44,7 +45,8 @@ public class GenericWildcards {
         setAnotherListUpperBounded(Arrays.asList(1, 2, 1.1f, 1.3d));
         // setAnotherListUpperBounded(Arrays.asList(1, 1, "this will not compile
         // due to wild card bound"));
-
+        List<?> wildCardList = new ArrayList<>();
+        // wildCardList.add("test"); // this will not compile
         // setAnotherListLowerBounded(Arrays.asList(1, 2.1, "dsa"));
     }
 }

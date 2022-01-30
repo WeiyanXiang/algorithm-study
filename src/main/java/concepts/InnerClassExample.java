@@ -38,6 +38,21 @@ public class InnerClassExample {
         }
     }
 
+
+    void myMethod(){
+        int num = 23;
+        name = "weiyan";
+        name.concat("dsa");
+        class MethodLevelInnerClass{
+            public void method1(){
+                name += "test access";
+                // compile error
+                // num++;
+            }
+        }
+
+    }
+
     public void testFromOuter() {
         InnerClassExample example = new InnerClassExample();
         InnerClassExample.A a = new A();
