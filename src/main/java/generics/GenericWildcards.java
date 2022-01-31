@@ -39,7 +39,7 @@ public class GenericWildcards {
     }
 
     public static void main(String[] args) {
-        int test1 = 0b0101_0110;
+        int test1 = 0b1010110;
         System.out.println(test1);
 
         setAnotherListUpperBounded(Arrays.asList(1, 2, 1.1f, 1.3d));

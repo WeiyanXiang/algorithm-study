@@ -35,7 +35,7 @@ public class ThreadSafeListByReadWriteLock<E> {
             Thread.sleep(5000);
             try {
                 list.add(o);
-                System.out.println("writing element by thread" + Thread.currentThread().getName());
+                System.out.println("writing element by thread: " + Thread.currentThread().getName());
             } finally {
                 writeLock.unlock();
             }
@@ -45,7 +45,7 @@ public class ThreadSafeListByReadWriteLock<E> {
     public E get(int i) {
         readLock.lock();
         try {
-            System.out.println("reading elements by thread" + Thread.currentThread().getName());
+            System.out.println("reading elements by thread: " + Thread.currentThread().getName());
             return list.get(i);
         } finally {
             readLock.unlock();
