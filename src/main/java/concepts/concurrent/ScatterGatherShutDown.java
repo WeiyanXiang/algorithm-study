@@ -38,7 +38,7 @@ public class ScatterGatherShutDown {
     public void executeTasksCmpl(List<Callable<String>> tasks) {
         try {
             tasks.forEach(fut -> completionService.submit(fut));
-            for (Callable<String> task : tasks) {
+            for (int i = 0; i < tasks.size(); i++) {
                 completionService.take().get();
             }
         } catch (InterruptedException | ExecutionException e) {
