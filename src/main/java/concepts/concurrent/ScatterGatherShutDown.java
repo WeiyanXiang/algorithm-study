@@ -40,6 +40,7 @@ public class ScatterGatherShutDown {
             tasks.forEach(fut -> completionService.submit(fut));
             for (int i = 0; i < tasks.size(); i++) {
                 completionService.take().get();
+                // do sth, take like 2 sec
             }
         } catch (InterruptedException | ExecutionException e) {
             Thread.currentThread().interrupt();
