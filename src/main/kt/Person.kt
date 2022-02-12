@@ -26,4 +26,5 @@ class Person(val firstName: String = "defaultFN", val lastName: String = "defaul
         val nickNameToPrice = nickname ?: "no nickname" // it means if nickname is null then "no nickname"
         println("$firstName ($nickNameToPrice) $lastName")
     }
+
 }
