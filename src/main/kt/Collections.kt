@@ -67,4 +67,38 @@ fun main() {
     val numberPairs: List<Pair<String, Int>> = listOf("one" to 1, "two" to 2, "three" to 3, "four" to 4)
     val unzip: Pair<List<String>, List<Int>> = numberPairs.unzip()
     println(unzip)
+
+    val numbs = listOf("one", "two", "three", "four")
+    println(numbs.associateWith { it.length })
+    // key: first letter in upper case
+    println(numbs.associateBy { it.first().uppercaseChar() })
+    // key: first letter in upper case; value: length of word
+    println(numbs.associateBy(keySelector = { it.first().uppercaseChar() }, valueTransform = { it.length }))
+
+    /**
+     * Note that associate() produces short-living Pair objects which may affect the performance. Thus, associate()
+     * should be used when the performance isn't critical or it's more preferable than other options.
+     */
+    val names = listOf("Alice Adams", "Brian Brown", "Clara Campbell")
+    val pairs: Map<String, String> = names.associate { name -> parseFullName(name).let { it.lastName to it.firstName } }
+    println(pairs)
+
+    val numberSets = listOf(setOf(1, 2, 3), setOf(4, 5, 6), setOf(1, 2))
+    println(numberSets.flatten())
+
+    val containers = listOf(
+        listOf("one", "two", "three"),
+        listOf("four", "five", "six"),
+        listOf("seven", "eight")
+    )
+    println(containers.flatMap { it })
+}
+
+data class FullName(val firstName: String, val lastName: String)
+
+fun parseFullName(fullName: String): FullName {
+    val nameParts = fullName.split(" ")
+    if (nameParts.size == 2) {
+        return FullName(nameParts[0], nameParts[1])
+    } else throw Exception("Wrong name format")
 }
