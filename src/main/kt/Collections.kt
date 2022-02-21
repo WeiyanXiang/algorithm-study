@@ -92,6 +92,22 @@ fun main() {
         listOf("seven", "eight")
     )
     println(containers.flatMap { it })
+
+    val numsMap = mapOf("key1" to 1, "key2" to 2, "key3" to 3, "key11" to 11)
+    val filteredMap = numsMap.filter { (k, v) -> k.endsWith("1") && v > 10 }
+    println(filteredMap)
+
+    val list = listOf("one", "two", "three", "four")
+    val (match, rest) = list.partition { it.length > 3 }
+    println(match)
+    println(rest)
+    println(list.any { it.endsWith("e") })
+    println(list.none { it.endsWith("a") })
+    println(list.all { it.endsWith("e") })
+    // check emptyness
+    println(list.any())
+    println(list.none())
+
 }
 
 data class FullName(val firstName: String, val lastName: String)
