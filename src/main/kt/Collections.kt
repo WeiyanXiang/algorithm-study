@@ -108,6 +108,46 @@ fun main() {
     println(list.any())
     println(list.none())
 
+    val plusList = listOf("1", "2", "3", "4", "5")
+    println(plusList + "6")
+    println(plusList - "2")
+
+    val toGroup = listOf("one", "two", "three", "four", "five")
+    val groupBy: Map<String, List<String>> = toGroup.groupBy { it.first().uppercase() }
+    println(groupBy.count())
+    val groupBy1: Map<Char, List<String>> =
+        toGroup.groupBy(keySelector = { it.first() }, valueTransform = { it.uppercase() })
+    println(groupBy1)
+
+    val toSlice = listOf("one", "two", "three", "four", "five")
+    println(toSlice.slice(0..4 step 2))
+    println(toSlice.slice(0..4))
+    println(toSlice.slice(listOf(3, 4, 0)))
+
+    val toTake = listOf("one", "two", "three", "four", "five", "six")
+    println(toTake.take(3))
+    println(toTake.takeLast(3))
+    println(toTake.drop(1))
+    println(toTake.dropLast(5))
+
+    println(toTake.takeWhile { !it.startsWith('f') })
+    println(toTake.takeLastWhile { it != "three" })
+    println(toTake.dropWhile { it.length == 3 })
+    println(toTake.dropLastWhile { it.contains('i') })
+
+    val chunkWindowZip = (0..13).toList()
+    println(chunkWindowZip.chunked(3))
+    println(chunkWindowZip.windowed(3))
+    /**
+     * partialWindows includes windows of smaller sizes that start from the elements at the end of the collection. For
+     * example, if you request windows of three elements, you can't build them for the last two elements. Enabling
+     * partialWindows in this case includes two more lists of sizes 2 and 1.
+     */
+    println(chunkWindowZip.windowed(3, 1, true))
+
+    println(chunkWindowZip.zipWithNext())
+    println(chunkWindowZip.zipWithNext { s1, s2 -> s1 > s2 })
+    println(chunkWindowZip.zip(chunkWindowZip))
 }
 
 data class FullName(val firstName: String, val lastName: String)
