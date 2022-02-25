@@ -148,6 +148,24 @@ fun main() {
     println(chunkWindowZip.zipWithNext())
     println(chunkWindowZip.zipWithNext { s1, s2 -> s1 > s2 })
     println(chunkWindowZip.zip(chunkWindowZip))
+
+    val retrieveList = listOf(1, 2, 3, 4, 5)
+    println(retrieveList.elementAt(0))
+    println(retrieveList.elementAtOrNull(0))
+    println(retrieveList.elementAtOrElse(0) { 777 })
+    println(retrieveList.first())
+    println(retrieveList.last())
+    // java.util.NoSuchElementException if no match
+    val first: Int = retrieveList.first { it > 3 }
+    val firstOrNull: Int? = retrieveList.firstOrNull { it > 8 }
+
+    val lengthComparator = Comparator<String> { s1, s2 -> s1.length - s2.length }
+    println(listOf("aaa", "bb", "c").sortedWith(lengthComparator))
+    println(listOf("aaa", "bb", "c").sorted())
+    println(listOf("aaa", "bb", "c").sortedDescending())
+    println(listOf("aaa", "bb", "c").sortedBy { it.length })
+    println(listOf("aaa", "bb", "c").reversed())
+    println(listOf("aaa", "bb", "c").shuffled())
 }
 
 data class FullName(val firstName: String, val lastName: String)
