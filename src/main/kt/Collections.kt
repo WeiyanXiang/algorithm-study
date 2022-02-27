@@ -166,6 +166,43 @@ fun main() {
     println(listOf("aaa", "bb", "c").sortedBy { it.length })
     println(listOf("aaa", "bb", "c").reversed())
     println(listOf("aaa", "bb", "c").shuffled())
+
+    val aggregateList = listOf(5, 32, 12, 54, 21)
+    aggregateList.minOrNull()
+    aggregateList.maxOrNull()
+    aggregateList.maxByOrNull { it % 2 == 0 }
+    aggregateList.maxWithOrNull(compareBy { it })
+
+    val reduce: Int = aggregateList.reduce { sum, element -> sum + element }
+
+    /**
+     * The difference between the two functions is that fold() takes an initial value and uses it as the accumulated
+     * value on the first step, whereas the first step of reduce() uses the first and the second elements as operation
+     * arguments on the first step.
+     */
+    val fold: Int = aggregateList.fold(1) { sum, element -> sum + element * 2 }
+    val foldRight: Int = aggregateList.foldRight(1) { sum, element -> sum + element * 2 }
+    println(reduce)
+    println(fold)
+    println(foldRight)
+
+    /**
+     * For cases where you want to save intermediate accumulator values, there are functions
+     * runningFold() (or its synonym scan()) and runningReduce().
+     */
+    val runningReduceSum: List<Int> = aggregateList.runningReduce { sum, item -> sum + item }
+    val runningFoldSum: List<Int> = aggregateList.runningFold(10) { sum, item -> sum + item }
+    println(runningReduceSum)
+    println(runningFoldSum)
+
+    val updateList = mutableListOf(1, 2, 34, 5, 6, 23, 2, 5, 21)
+    updateList -= 2 // remove first 2
+    updateList += 5
+    updateList.retainAll { it != 0 }
+    println(updateList)
+    updateList.removeAll(listOf(2)) // remove all matched 2 in the list
+    println(updateList)
+
 }
 
 data class FullName(val firstName: String, val lastName: String)
