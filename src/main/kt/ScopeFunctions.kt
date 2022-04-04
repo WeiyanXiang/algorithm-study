@@ -1,5 +1,7 @@
 package kt
 
+import kotlin.random.Random
+
 /**
  * @author Weiyan Xiang on 2022/2/12
  *
@@ -73,6 +75,28 @@ fun main() {
 
     alsoUseCases()
 
+    takeUseCases()
+
+}
+
+private fun takeUseCases() {
+    val number = Random.nextInt(100)
+
+    val evenOrNull = number.takeIf { it % 2 == 0 }
+    val oddOrNull = number.takeUnless { it % 2 == 0 }
+    println("even: $evenOrNull, odd: $oddOrNull")
+
+    val str = "hello"
+    val uppercase: String? = str.takeIf(String::isNotEmpty)?.uppercase()
+    println(uppercase)
+
+    displaySubstringPos("test_string_hello", "hello")
+}
+
+fun displaySubstringPos(input: String, sub: String) {
+    input.indexOf(sub).takeIf { it >= 0 }?.let {
+        println("found substring $sub on index $it")
+    }
 }
 
 private fun alsoUseCases() {
