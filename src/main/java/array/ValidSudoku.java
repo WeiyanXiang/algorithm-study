@@ -14,34 +14,38 @@ public class ValidSudoku {
      * my ac ans, basic loop
      */
     public boolean isValidSudoku(char[][] board) {
+        if (check(board, true)) return false;
+        if (check(board, false)) return false;
+        if (checkBlocks(board)) return false;
+        return true;
+    }
+
+    private boolean checkBlocks(char[][] board) {
+        for (int a = 0; a < 9; a += 3) {
+            for (int b = 0; b < 9; b += 3) {
+                Set<Character> block = new HashSet<>();
+                for (int c = 0; c < 3; c++) {
+                    for (int d = 0; d < 3; d++) {
+                        char bb = board[a + c][b + d];
+                        if (block.contains(bb)) return true;
+                        if (bb != '.') block.add(bb);
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    private boolean check(char[][] board, boolean isCol) {
         for (int i = 0; i < 9; i++) {
+            Set<Character> col = new HashSet<>();
             for (int j = 0; j < 9; j++) {
-                if (!isValid(board, i, j)) return false;
+                char c = isCol ? board[i][j] : board[j][i];
+                if (col.contains(c)) return true;
+                if (c != '.') col.add(c);
             }
         }
-        return true;
+        return false;
     }
 
-    private boolean isValid(char[][] board, int i, int j) {
-        Set<Character> col = new HashSet<>();
-        for (int a = 0; a < 9; a++) {
-            if (board[i][a] != '.' && col.contains(board[i][a])) return false;
-            col.add(board[i][a]);
-        }
-
-        Set<Character> row = new HashSet<>();
-        for (int b = 0; b < 9; b++) {
-            if (board[b][j] != '.' && row.contains(board[b][j])) return false;
-            row.add(board[b][j]);
-        }
-        Set<Character> loc = new HashSet<>();
-        for (int c = 0; c < 3; c++) {
-            for (int d = 0; d < 3; d++) {
-                char bb = board[i - i % 3 + c][j - j % 3 + d];
-                if (bb != '.' && loc.contains(bb)) return false;
-                loc.add(bb);
-            }
-        }
-        return true;
-    }
 }
