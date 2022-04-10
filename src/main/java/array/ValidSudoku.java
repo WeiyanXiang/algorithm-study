@@ -8,7 +8,9 @@ import java.util.Set;
 public class ValidSudoku {
     /**
      * 36. Valid Sudoku
+     *
      * https://leetcode.com/problems/valid-sudoku/
+     *
      * my ac ans, basic loop
      */
     public boolean isValidSudoku(char[][] board) {
