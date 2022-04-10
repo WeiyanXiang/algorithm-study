@@ -11,7 +11,7 @@ public class ValidSudoku {
      *
      * https://leetcode.com/problems/valid-sudoku/
      *
-     * my ac ans, basic loop
+     * my ac answer, basic loop
      */
     public boolean isValidSudoku(char[][] board) {
         if (check(board, true)) return false;
