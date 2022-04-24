@@ -8,10 +8,10 @@ import java.util.Set;
 public class ValidSudoku {
     /**
      * 36. Valid Sudoku
-     * <p>
+     *
      * https://leetcode.com/problems/valid-sudoku/
-     * <p>
-     * my ac ans, basic loop
+     *
+     * my ac answer, basic loop
      */
     public boolean isValidSudoku(char[][] board) {
         if (check(board, true)) return false;
@@ -26,9 +26,9 @@ public class ValidSudoku {
                 Set<Character> block = new HashSet<>();
                 for (int c = 0; c < 3; c++) {
                     for (int d = 0; d < 3; d++) {
-                        char bb = board[a + c][b + d];
-                        if (block.contains(bb)) return true;
-                        if (bb != '.') block.add(bb);
+                        char cur = board[a + c][b + d];
+                        if (block.contains(cur)) return true;
+                        if (cur != '.') block.add(cur);
                     }
                 }
             }
