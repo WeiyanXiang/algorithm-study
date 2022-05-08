@@ -3,12 +3,10 @@ package kt
 /**
  * @author Weiyan Xiang on 2021/3/7
  */
-import javafx.application.Application.launch
-import java.nio.*
-import java.nio.channels.*
-import java.nio.file.*
-import kotlinx.coroutines.*
-import kotlin.coroutines.CoroutineContext
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 fun main(args: Array<String>) {
 

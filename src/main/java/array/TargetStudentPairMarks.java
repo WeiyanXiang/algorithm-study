@@ -2,8 +2,6 @@ package array;/**
  * @author Weiyan Xiang on 2022/1/8
  */
 
-import javafx.util.Pair;
-
 import java.util.*;
 
 public class TargetStudentPairMarks {
