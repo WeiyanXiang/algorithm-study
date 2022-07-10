@@ -27,17 +27,14 @@ public class StairsCountThree {
      *
      */
     private static int fibCacheCount(int n) {
-        if (n == 0)
-            return 0;
+        if (n == 0) return 0;
         cache[1] = 1;
         cache[2] = 2;
         cache[3] = 3;
         for (int i = 4; i <= n; i++) {
             cache[i] = cache[i - 1] + cache[i - 2] + cache[i - 3];
-
         }
         return cache[n];
-
     }
 
     /*
